@@ -1,0 +1,79 @@
+name: publish
+
+on:
+  schedule:
+    - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). public 저장소면 '*/30 * * * *' 도 무료
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ['content/**', 'public/thumbs/**', '**.md']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+  NEXT_PUBLIC_SITE_NAME: ${{ vars.SITE_NAME }}
+  NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+  NEXT_PUBLIC_ADSENSE_ID: ${{ vars.ADSENSE_ID }}
+  NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
+  NEXT_PUBLIC_SHOPEE_AFFILIATE_ID: ${{ vars.SHOPEE_AFFILIATE_ID }}
+  INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+
+      # 폰트/거절목록 캐시 유지 (무료 LLM 쿼터 절약)
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: pipeline-${{ github.run_id }}
+          restore-keys: pipeline-
+
+      - name: Generate posts
+        id: pipe
+        if: github.event_name != 'push'
+        run: node scripts/run-pipeline.mjs
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          MAX_PER_RUN: ${{ vars.MAX_PER_RUN || '3' }}
+          MAX_PER_DAY: ${{ vars.MAX_PER_DAY || '40' }}
+          USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
+
+      - name: Commit new posts
+        if: steps.pipe.outputs.published > 0
+        run: |
+          git config user.name "thaibuzz-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content public/thumbs
+          git commit -m "content: ${{ steps.pipe.outputs.published }} new posts"
+          git pull --rebase && git push
+
+      # 새 글이 있거나 코드 변경/수동 실행일 때만 빌드·배포 (불필요한 배포 방지)
+      - name: Build
+        if: steps.pipe.outputs.published > 0 || github.event_name != 'schedule'
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.pipe.outputs.published > 0 || github.event_name != 'schedule'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=${{ vars.CF_PROJECT || 'thaibuzz' }} --branch=main --commit-dirty=true
+
+      - name: Ping IndexNow (Bing/Yandex/Naver/Seznam)
+        if: steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != ''
+        run: node scripts/indexnow.mjs

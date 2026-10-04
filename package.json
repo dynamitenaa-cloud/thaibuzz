@@ -1,0 +1,37 @@
+{
+  "name": "thai-buzz",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx -y serve@14 out -l 3000",
+    "pipeline": "node --env-file-if-exists=.env.local scripts/run-pipeline.mjs",
+    "pipeline:dry": "node scripts/run-pipeline.mjs --dry",
+    "assets": "node scripts/assets.mjs",
+    "demo": "node scripts/seed-demo.mjs",
+    "demo:clean": "node -e \"const fs=require('fs');for(const d of ['content/posts','public/thumbs'])for(const f of fs.readdirSync(d))if(f.startsWith('demo-'))fs.rmSync(d+'/'+f)\"",
+    "indexnow": "node scripts/indexnow.mjs",
+    "typecheck": "tsc --noEmit",
+    "postbuild": "node scripts/postbuild.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^4.0.87",
+    "@resvg/resvg-js": "^2.6.2",
+    "ai": "^7.0.127",
+    "fast-xml-parser": "^5.11.2",
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "satori": "^0.35.0",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "playwright": "^1.63.0",
+    "typescript": "^7.0.2"
+  }
+}
