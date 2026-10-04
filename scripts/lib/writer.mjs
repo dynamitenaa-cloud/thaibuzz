@@ -1,10 +1,10 @@
 // LLM 기사 작성 + 품질 게이트
+import fs from 'node:fs';
 import { generateText, Output } from 'ai';
 import { google } from '@ai-sdk/google';
 import { z } from 'zod';
 
 export const CATEGORY_NAMES = ['บันเทิง', 'ซีรีส์/หนัง', 'โซเชียล/ไวรัล', 'ข่าวทั่วไป', 'กีฬา', 'ไลฟ์สไตล์'];
-const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 
 const Article = z.object({
   publishable: z.boolean().describe('true เฉพาะเมื่อข้อมูลเพียงพอ ถูกต้อง และปลอดภัยตามกฎ'),
@@ -34,13 +34,62 @@ const SYSTEM = `คุณคือบรรณาธิการอาวุโ�
 6. ห้ามคัดลอกประโยคจากแหล่งข่าวยาวเกิน 10 คำ ให้เรียบเรียงใหม่ทั้งหมด
 7. ไม่ต้องใส่ลิงก์หรือชื่อเว็บไซต์ของเราในเนื้อหา`;
 
-// 재시도해도 소용없는 오류(모델 단종·키/권한 문제) → 즉시 전체 중단하고 워크플로를 실패 처리해 알림이 가게 함
+// 오류 분류
+//  - FatalError: API 키/권한 문제 → 즉시 중단, 워크플로 실패 처리(알림 메일)
+//  - QuotaExhausted: 사용 가능한 모든 모델의 무료 한도 소진 → 정상 종료, 다음 실행에서 재시도
 export class FatalError extends Error {}
-const FATAL = /no longer available|not found|is not supported|API key|permission|unauthorized|forbidden|invalid.*key|billing/i;
+export class QuotaExhausted extends Error {}
+const AUTH = /API key not valid|API_KEY_INVALID|permission denied|unauthorized|forbidden|PERMISSION_DENIED/i;
+const QUOTA = /quota|RESOURCE_EXHAUSTED|\b429\b|rate.?limit|exceeded your current/i;
+const GONE = /no longer available|is not found|not supported for generateContent|model.*not found/i;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function writeArticle(c, facts, model = google(MODEL)) {
+// 사용 가능한 모델을 API 로 직접 조회 (모델명 단종/변경에 자동 대응).
+// 순서: GEMINI_MODEL(지정 시) → flash-lite 계열(무료 한도 큼) → 나머지 flash. 이미지/음성/임베딩 등 제외
+let chain = null, idx = 0;
+
+// 한도 소진된 모델은 쿨다운 동안 건너뜀 (.cache 는 Actions 캐시로 실행 간 유지). 구글이 알려주는 "Please retry in 8h19m" 을 파싱
+const COOL = '.cache/model-cooldown.json';
+const readCool = () => { try { return JSON.parse(fs.readFileSync(COOL, 'utf8')); } catch { return {}; } };
+function markCooldown(name, msg) {
+  const m = msg.match(/retry in (?:(\d+)h)?(?:(\d+)m)?/i);
+  const ms = m && (m[1] || m[2]) ? ((+m[1] || 0) * 60 + (+m[2] || 0) + 1) * 6e4 : 6 * 36e5;
+  const c = readCool(); c[name] = Date.now() + ms;
+  fs.mkdirSync('.cache', { recursive: true }); fs.writeFileSync(COOL, JSON.stringify(c));
+}
+export async function resolveModels() {
+  const pinned = (process.env.GEMINI_MODEL || '').split(',').map((s) => s.trim()).filter(Boolean);
+  let found = [];
+  try {
+    const r = await fetch('https://generativelanguage.googleapis.com/v1beta/models?pageSize=200', {
+      headers: { 'x-goog-api-key': process.env.GOOGLE_GENERATIVE_AI_API_KEY || '' },
+      signal: AbortSignal.timeout(20000),
+    });
+    if (r.status === 400 || r.status === 401 || r.status === 403) throw new FatalError(`모델 목록 조회 실패 ${r.status} — API 키 확인`);
+    if (r.ok) {
+      const ids = (await r.json()).models
+        .filter((m) => m.supportedGenerationMethods?.includes('generateContent'))
+        .map((m) => m.name.replace('models/', ''))
+        .filter((n) => /flash/.test(n) && !/image|tts|live|audio|embed|robotics|computer|thinking|exp\b|-latest/.test(n));
+      const ver = (n) => (n.match(/(\d+(?:\.\d+)?)/)?.[1] ?? '0');
+      const byNew = (a, b) => parseFloat(ver(b)) - parseFloat(ver(a)) || b.localeCompare(a);
+      found = [...ids.filter((n) => /lite/.test(n)).sort(byNew), ...ids.filter((n) => !/lite/.test(n)).sort(byNew)];
+    }
+  } catch (e) { if (e instanceof FatalError) throw e; console.warn('모델 목록 조회 실패:', e.message); }
+  const cool = readCool();
+  const all = [...new Set([...pinned, ...found, 'gemini-3.8-flash'])];
+  chain = all.filter((n) => !(cool[n] > Date.now()));
+  const skipped = all.filter((n) => cool[n] > Date.now());
+  if (skipped.length) console.log('쿨다운 중(한도 소진):', skipped.join(', '));
+  if (!chain.length) throw new QuotaExhausted('모든 모델이 쿨다운 중 (무료 한도 소진)');
+  console.log('model chain:', chain.slice(0, 6).join(' → '));
+  return chain;
+}
+
+export async function writeArticle(c, facts, model) {
+  if (!model && !chain) await resolveModels();
+  const getModel = () => model ?? google(chain[idx]);
   const prompt = `คีย์เวิร์ดที่กำลังเป็นกระแสในไทย: "${c.keyword}"${c.traffic ? ` (ค้นหามากกว่า ${c.traffic.toLocaleString()} ครั้ง)` : ''}
 วันที่ปัจจุบัน: ${new Date().toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'long' })}
 
@@ -48,20 +97,29 @@ export async function writeArticle(c, facts, model = google(MODEL)) {
 ${facts}
 
 เขียนบทความตามกฎทั้งหมด`;
-  let lastErr;
-  for (let i = 0; i < 4; i++) {
+  let lastErr, overload = 0;
+  while (true) {
     try {
-      const { output } = await generateText({ model, system: SYSTEM, prompt, output: Output.object({ schema: Article }), temperature: 0.6 });
+      const { output } = await generateText({ model: getModel(), system: SYSTEM, prompt, output: Output.object({ schema: Article }), temperature: 0.6, maxRetries: 0 });
       return output;
     } catch (e) {
       lastErr = e;
-      if (FATAL.test(String(e?.message))) throw new FatalError(String(e.message));
-      const wait = /429|quota|rate/i.test(String(e?.message)) ? 30000 * (i + 1) : 4000 * (i + 1);
-      console.warn(`  retry ${i + 1} in ${wait / 1000}s: ${String(e?.message).slice(0, 120)}`);
+      const msg = String(e?.message);
+      if (AUTH.test(msg)) throw new FatalError(msg);
+      if (!model && (QUOTA.test(msg) || GONE.test(msg))) {
+        // 한도 소진/단종 → 다음 모델로 전환 (이 글 요청은 처음부터 다시)
+        console.warn(`  model ${chain[idx]} 사용 불가 (${QUOTA.test(msg) ? '한도 소진' : '단종'}) → 다음 모델`);
+        markCooldown(chain[idx], QUOTA.test(msg) ? msg : 'retry in 24h0m');
+        if (++idx >= chain.length) throw new QuotaExhausted('모든 모델의 무료 한도가 소진됨');
+        continue;
+      }
+      // 일시 과부하("high demand") 등 → 짧게 대기 후 재시도 (요청마다 무료 한도를 쓰므로 최대 2회)
+      if (++overload > 2) throw lastErr;
+      const wait = 8000 * overload;
+      console.warn(`  retry ${overload} in ${wait / 1000}s: ${msg.slice(0, 120)}`);
       await sleep(wait);
     }
   }
-  throw lastErr;
 }
 
 const len = (s) => [...(s || '')].length;

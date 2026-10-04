@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { trendsTH, newsTopicTH, searchNews, fetchArticleText, similarity, jaccard } from './lib/sources.mjs';
-import { writeArticle, qualityCheck, normalize, FatalError } from './lib/writer.mjs';
+import { writeArticle, qualityCheck, normalize, FatalError, QuotaExhausted } from './lib/writer.mjs';
 import { makeThumb } from './lib/thumbs.mjs';
 
 const ROOT = process.cwd();
@@ -124,6 +124,7 @@ if (budget > 0) {
     } catch (e) {
       console.error('  ❌ failed:', e.message);
       if (e instanceof FatalError) { fatal = e; break; }
+      if (e instanceof QuotaExhausted) { console.log('  ⏸ ' + e.message + ' → 이번 실행 종료, 다음 실행에서 재시도'); break; }
     }
   }
 }
