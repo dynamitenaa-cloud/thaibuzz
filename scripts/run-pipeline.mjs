@@ -131,5 +131,7 @@ if (budget > 0) {
 saveRejected();
 fs.writeFileSync(path.join(CACHE, 'new-urls.txt'), newUrls.join('\n'));
 console.log(`\ndone: ${newUrls.length} new`);
+// 설정 문제(모델 단종/키 오류)는 워크플로를 실패 처리 → GitHub 이메일 알림
+if (fatal) { console.error('FATAL: 설정 문제로 중단 (GEMINI_MODEL 변수 / API 키 확인)'); process.exitCode = 1; }
 // GitHub Actions 에서 다음 단계(빌드/배포) 실행 여부 판단용
 if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `published=${newUrls.length}\n`);
