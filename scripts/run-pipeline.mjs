@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { trendsTH, newsTopicTH, searchNews, fetchArticleText, similarity, jaccard } from './lib/sources.mjs';
-import { writeArticle, qualityCheck, normalize } from './lib/writer.mjs';
+import { writeArticle, qualityCheck, normalize, FatalError } from './lib/writer.mjs';
 import { makeThumb } from './lib/thumbs.mjs';
 
 const ROOT = process.cwd();
@@ -72,6 +72,7 @@ async function buildFacts(c) {
 }
 
 const newUrls = [];
+let fatal = null;
 console.log(`budget: ${budget} (today ${publishedToday}/${MAX_PER_DAY})`);
 
 if (budget > 0) {
@@ -122,6 +123,7 @@ if (budget > 0) {
       budget--;
     } catch (e) {
       console.error('  ❌ failed:', e.message);
+      if (e instanceof FatalError) { fatal = e; break; }
     }
   }
 }

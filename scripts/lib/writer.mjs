@@ -4,7 +4,7 @@ import { google } from '@ai-sdk/google';
 import { z } from 'zod';
 
 export const CATEGORY_NAMES = ['บันเทิง', 'ซีรีส์/หนัง', 'โซเชียล/ไวรัล', 'ข่าวทั่วไป', 'กีฬา', 'ไลฟ์สไตล์'];
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 
 const Article = z.object({
   publishable: z.boolean().describe('true เฉพาะเมื่อข้อมูลเพียงพอ ถูกต้อง และปลอดภัยตามกฎ'),
@@ -34,6 +34,10 @@ const SYSTEM = `คุณคือบรรณาธิการอาวุโ�
 6. ห้ามคัดลอกประโยคจากแหล่งข่าวยาวเกิน 10 คำ ให้เรียบเรียงใหม่ทั้งหมด
 7. ไม่ต้องใส่ลิงก์หรือชื่อเว็บไซต์ของเราในเนื้อหา`;
 
+// 재시도해도 소용없는 오류(모델 단종·키/권한 문제) → 즉시 전체 중단하고 워크플로를 실패 처리해 알림이 가게 함
+export class FatalError extends Error {}
+const FATAL = /no longer available|not found|is not supported|API key|permission|unauthorized|forbidden|invalid.*key|billing/i;
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export async function writeArticle(c, facts, model = google(MODEL)) {
@@ -51,6 +55,7 @@ ${facts}
       return output;
     } catch (e) {
       lastErr = e;
+      if (FATAL.test(String(e?.message))) throw new FatalError(String(e.message));
       const wait = /429|quota|rate/i.test(String(e?.message)) ? 30000 * (i + 1) : 4000 * (i + 1);
       console.warn(`  retry ${i + 1} in ${wait / 1000}s: ${String(e?.message).slice(0, 120)}`);
       await sleep(wait);

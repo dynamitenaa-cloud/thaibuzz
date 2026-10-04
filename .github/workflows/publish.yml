@@ -53,7 +53,7 @@ jobs:
           USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
 
       - name: Commit new posts
-        if: steps.pipe.outputs.published > 0
+        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -63,11 +63,11 @@ jobs:
 
       # 새 글이 있거나 코드 변경/수동 실행일 때만 빌드·배포 (불필요한 배포 방지)
       - name: Build
-        if: steps.pipe.outputs.published > 0 || github.event_name != 'schedule'
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule') }}
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        if: steps.pipe.outputs.published > 0 || github.event_name != 'schedule'
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule') }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -75,5 +75,5 @@ jobs:
           command: pages deploy out --project-name=${{ vars.CF_PROJECT || 'thaibuzz' }} --branch=main --commit-dirty=true
 
       - name: Ping IndexNow (Bing/Yandex/Naver/Seznam)
-        if: steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != ''
+        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != '' }}
         run: node scripts/indexnow.mjs
