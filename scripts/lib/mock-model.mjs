@@ -9,6 +9,7 @@ export default new MockLanguageModelV4({
     const kw = text.match(/คีย์เวิร์ดที่กำลังเป็นกระแสในไทย: \\"(.+?)\\"/)?.[1] ?? 'ทดสอบ';
     const article = {
       publishable: true,
+      duplicateOf: '',
       rejectReason: '',
       title: `[ทดสอบระบบ] ${kw} สรุปประเด็นที่คนพูดถึง`,
       excerpt: `บทความทดสอบสำหรับคีย์เวิร์ด ${kw} เพื่อตรวจสอบการทำงานของระบบอัตโนมัติตั้งแต่ต้นจนจบ`,

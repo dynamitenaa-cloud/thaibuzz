@@ -8,6 +8,7 @@ export const CATEGORY_NAMES = ['บันเทิง', 'ซีรีส์/ห�
 
 const Article = z.object({
   publishable: z.boolean().describe('true เฉพาะเมื่อข้อมูลเพียงพอ ถูกต้อง และปลอดภัยตามกฎ'),
+  duplicateOf: z.string().describe('ถ้าเรื่องนี้คือเหตุการณ์/ประเด็นเดียวกับบทความที่เผยแพร่แล้วในรายการ "บทความล่าสุดของเรา" ให้ใส่หัวข้อของบทความนั้นตรงตัว ถ้าไม่ซ้ำให้เป็นสตริงว่าง'),
   rejectReason: z.string().describe('เหตุผลหากไม่เผยแพร่ ถ้าเผยแพร่ให้เป็นสตริงว่าง'),
   title: z.string().describe('พาดหัวภาษาไทย 40-90 ตัวอักษร ดึงดูดแต่ตรงกับเนื้อหา'),
   excerpt: z.string().describe('คำโปรย/meta description 120-160 ตัวอักษร'),
@@ -87,16 +88,21 @@ export async function resolveModels() {
   return chain;
 }
 
-export async function writeArticle(c, facts, model) {
+export async function writeArticle(c, facts, model, recentTitles = []) {
   if (!model && !chain) await resolveModels();
   const getModel = () => model ?? google(chain[idx]);
+  // 의미 기반 중복 방지: 최근 발행 제목을 보여주고 같은 사건이면 스스로 거부하게 함 (단어 비교로는 영/태 혼용 중복을 못 잡음)
+  const recentBlock = recentTitles.length
+    ? 'บทความล่าสุดของเรา (ห้ามเขียนซ้ำเหตุการณ์เดียวกัน แม้จะใช้คีย์เวิร์ดหรือภาษาต่างกัน เช่น ชื่อทีมภาษาอังกฤษกับภาษาไทย):\n' +
+      recentTitles.map((t) => `- ${t}`).join('\n') + '\n\n'
+    : '';
   const prompt = `คีย์เวิร์ดที่กำลังเป็นกระแสในไทย: "${c.keyword}"${c.traffic ? ` (ค้นหามากกว่า ${c.traffic.toLocaleString()} ครั้ง)` : ''}
 วันที่ปัจจุบัน: ${new Date().toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'long' })}
 
 ข้อมูลจากแหล่งข่าว:
 ${facts}
 
-เขียนบทความตามกฎทั้งหมด`;
+${recentBlock}เขียนบทความตามกฎทั้งหมด (ถ้าซ้ำกับบทความข้างต้น → duplicateOf ใส่หัวข้อนั้น และ publishable=false)`;
   let lastErr, overload = 0;
   while (true) {
     try {
@@ -129,7 +135,8 @@ const words = (s) => [...seg.segment(s)].filter((x) => x.isWordLike).length;
 // 품질 게이트: 통과 못 하면 발행 안 함 (얇은 글은 사이트 전체 평가를 깎음)
 export function qualityCheck(a) {
   const problems = [];
-  if (!a.publishable) problems.push(`not publishable: ${a.rejectReason}`);
+  if (a.duplicateOf?.trim()) problems.push(`duplicate of: ${a.duplicateOf.slice(0, 60)}`);
+  else if (!a.publishable) problems.push(`not publishable: ${a.rejectReason}`);
   if (len(a.title) < 20 || len(a.title) > 130) problems.push(`title length ${len(a.title)}`);
   if (a.summary.length < 3) problems.push('summary < 3');
   if (a.sections.length < 3) problems.push('sections < 3');

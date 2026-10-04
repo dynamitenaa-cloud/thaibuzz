@@ -86,7 +86,7 @@ if (budget > 0) {
       if (f.richness < 3) { console.log('  skip: not enough sources'); rejected[c.keyword.toLowerCase()] = Date.now(); continue; }
       if (DRY) { console.log(f.facts.slice(0, 800)); budget--; continue; }
 
-      const raw = await writeArticle(c, f.facts, MODEL);
+      const raw = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title));
       const q = qualityCheck(raw);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); rejected[c.keyword.toLowerCase()] = Date.now(); continue; }
       const a = normalize(raw);
