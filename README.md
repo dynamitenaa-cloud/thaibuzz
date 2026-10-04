@@ -68,3 +68,17 @@ npm run assets          # 아이콘·기본 OG 이미지 재생성 (브랜드 �
 - **소스 약관**: Google Trends / Google News RSS 는 공식 상업용 API 가 아닙니다. 구조가 바뀌거나 막히면 파이프라인이 해당 소스를 건너뛰고(다른 소스는 계속) 로그에 남깁니다.
 - **실존 인물 가십**: 프롬프트·게이트가 루머 단정, 미성년자, 미확인 사망/질병을 막지만 AI 는 틀릴 수 있습니다. 정정 요청 경로(연락처 페이지)를 꼭 실제 이메일로 바꿔두세요.
 - **Vercel Hobby 는 상업용(광고) 금지** → 그래서 Cloudflare Pages 를 씁니다.
+
+## Facebook 자동 포스팅 설정
+
+새 글이 배포되면 Facebook 페이지에 링크 게시물로 자동 업로드됩니다 (`scripts/facebook.mjs`). 시크릿이 없으면 이 단계는 조용히 건너뜁니다.
+
+1. 개인 계정으로 **Facebook 페이지** 생성 (예: ThaiBuzz)
+2. https://developers.facebook.com → My Apps → Create App → 유형 **Business** (또는 Other)
+3. 앱에 **Facebook Login for Business** 또는 Graph API 사용 설정. 앱은 **개발 모드 그대로** 둬도 됨 — 본인(앱 관리자)이 관리하는 페이지에는 앱 검수 없이 게시 가능
+4. Graph API Explorer 에서 권한 `pages_manage_posts`, `pages_read_engagement`, `pages_show_list` 선택 → 사용자 토큰 발급
+5. 사용자 토큰을 **장기 토큰**으로 교환 → `/me/accounts` 호출 시 나오는 **페이지 토큰은 만료되지 않음**
+6. GitHub Secrets 에 `FB_PAGE_ID`, `FB_PAGE_TOKEN` 등록
+7. 토큰이 만료/폐기되면 워크플로가 실패 표시 → GitHub 알림 메일이 옴 (사이트 배포 자체는 영향 없음)
+
+주의: 게시 간격은 글당 3초, 실행당 최대 3건. 자동 게시가 지나치게 많으면 페이스북이 스팸으로 도달을 제한하므로 발행량을 무리하게 올리지 마세요.

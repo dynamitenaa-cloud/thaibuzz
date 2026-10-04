@@ -23,6 +23,8 @@ env:
   NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
   NEXT_PUBLIC_SHOPEE_AFFILIATE_ID: ${{ vars.SHOPEE_AFFILIATE_ID }}
   INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+  FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+  FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
 
 jobs:
   run:
@@ -77,3 +79,8 @@ jobs:
       - name: Ping IndexNow (Bing/Yandex/Naver/Seznam)
         if: ${{ !cancelled() && steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != '' }}
         run: node scripts/indexnow.mjs
+
+      # 배포가 끝난 뒤에 올려야 링크 미리보기(OG 이미지)가 정상 생성됨
+      - name: Post to Facebook Page
+        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 && env.FB_PAGE_TOKEN != '' }}
+        run: node scripts/facebook.mjs
