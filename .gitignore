@@ -8,3 +8,4 @@ next-env.d.ts
 # 데모 데이터 (npm run demo) 는 커밋하지 않음
 content/posts/demo-*
 public/thumbs/demo-*
+content/archive/demo-*

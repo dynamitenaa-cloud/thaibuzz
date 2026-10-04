@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { getPosts, postUrl, trending } from '@/lib/posts';
 
 export default function Ticker() {
@@ -10,7 +9,7 @@ export default function Ticker() {
         <span className="ticker-label">มาแรง</span>
         <div className="ticker-list">
           {items.map((p) => (
-            <Link key={p.slug} href={postUrl(p)} className="chip">#{p.keyword}</Link>
+            <a key={p.slug} href={postUrl(p)} className="chip">#{p.keyword}</a>
           ))}
         </div>
       </div>

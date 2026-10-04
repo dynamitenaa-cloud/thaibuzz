@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { SearchIcon } from '@/components/Icons';
 
@@ -65,10 +64,10 @@ export default function SearchClient() {
       <div style={{ minHeight: '100vh' }}>
         {results.map((d) => (
           <article key={d.s} className="row">
-            <div className="media"><img src={d.i} alt="" width={640} height={336} loading="lazy" /></div>
+            <div className="media">{d.i ? <img src={d.i} alt="" width={640} height={336} loading="lazy" /> : <div className="thumb-ph" aria-hidden>📰</div>}</div>
             <div>
               <div className="meta"><span className="cat">{d.c}</span></div>
-              <h2 className="clamp-3" style={{ fontSize: '1.12rem' }}><Link href={`/post/${d.s}/`}><Hi text={d.t} q={q.trim()} /></Link></h2>
+              <h2 className="clamp-3" style={{ fontSize: '1.12rem' }}><a href={`/post/${d.s}/`}><Hi text={d.t} q={q.trim()} /></a></h2>
               <p className="clamp-2"><Hi text={d.e} q={q.trim()} /></p>
             </div>
           </article>

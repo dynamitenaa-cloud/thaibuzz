@@ -79,15 +79,15 @@ export async function makeThumb(slug, { text, category, color = '#e11d48', image
   const svg = await satori(tree, { width: 1200, height: 630, fonts: await fonts() });
   const png = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
   // OG/Discover 용: 텍스트가 박힌 버전
-  await sharp(png).jpeg({ quality: 80, mozjpeg: true }).toFile(path.join(OUT, `${slug}.jpg`));
+  await sharp(png).jpeg({ quality: 72, mozjpeg: true }).toFile(path.join(OUT, `${slug}.jpg`));
   if (bg) {
     // 사이트 내 카드/헤드라인용: 텍스트 없는 깨끗한 사진 (제목이 HTML 로 따로 표시되므로 중복 방지)
     const photo = Buffer.from(bg.split(',')[1], 'base64');
-    await sharp(photo).webp({ quality: 74 }).toFile(path.join(OUT, `${slug}-clean.webp`));
-    await sharp(photo).resize(640).webp({ quality: 72 }).toFile(path.join(OUT, `${slug}-sm.webp`));
+    await sharp(photo).webp({ quality: 66, effort: 5 }).toFile(path.join(OUT, `${slug}-clean.webp`));
+    await sharp(photo).resize(640).webp({ quality: 62 }).toFile(path.join(OUT, `${slug}-sm.webp`));
   } else {
-    await sharp(png).webp({ quality: 74 }).toFile(path.join(OUT, `${slug}-lg.webp`));
-    await sharp(png).resize(640).webp({ quality: 72 }).toFile(path.join(OUT, `${slug}-sm.webp`));
+    await sharp(png).webp({ quality: 66, effort: 5 }).toFile(path.join(OUT, `${slug}-lg.webp`));
+    await sharp(png).resize(640).webp({ quality: 62 }).toFile(path.join(OUT, `${slug}-sm.webp`));
   }
   return {
     thumb: `/thumbs/${slug}.jpg`,

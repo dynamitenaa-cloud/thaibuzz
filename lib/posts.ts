@@ -17,6 +17,7 @@ export type Post = {
   faq: { q: string; a: string }[];
   tags: string[];
   category: string;
+  lite?: boolean; // true = 썸네일 삭제된 오래된 글 (thumb* 가 빈 문자열)
   thumb: string; // 1200x630 jpg (OG / hero)
   thumbSm: string; // 640x336 webp (cards)
   thumbLg?: string; // 1200x630 webp สำหรับแสดงบนเว็บ (เบากว่า jpg)
@@ -43,6 +44,10 @@ export const getPosts = cache((): Post[] => {
 
 // ภาพสำหรับแสดงบนเว็บ: webp ถ้ามี, jpg (OG) เป็นทางสำรองสำหรับโพสต์เก่า
 export const displayImg = (p: Post) => p.thumbClean || p.thumbLg || p.thumb;
+
+// 오래된 글은 용량(Cloudflare Pages 20,000 파일 한도) 때문에 썸네일을 지우고 HTML 만 남김 (scripts/archive.mjs)
+export const hasImg = (p: Post) => !!p.thumb;
+export const ogImage = (p: Post) => p.thumb || '/og-default.jpg';
 
 export const getPost = (slug: string) => getPosts().find((p) => p.slug === slug);
 export const postUrl = (p: Pick<Post, 'slug'>) => `/post/${p.slug}/`;

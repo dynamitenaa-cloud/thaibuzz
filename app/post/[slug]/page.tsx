@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { catOf, displayImg, getPost, getPosts, postUrl, readingMinutes, related, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
+import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
@@ -14,8 +14,8 @@ import ThaiText from '@/components/ThaiText';
 function ReadMore({ p }: { p: Post }) {
   return (
     <aside className="readmore" aria-label="อ่านเพิ่มเติม">
-      <img src={p.thumbSm} alt="" width={120} height={63} loading="lazy" />
-      <div><small>อ่านเพิ่มเติม</small><Link href={postUrl(p)} className="clamp-2">{p.title}</Link></div>
+      {hasImg(p) && <img src={p.thumbSm} alt="" width={120} height={63} loading="lazy" />}
+      <div><small>อ่านเพิ่มเติม</small><a href={postUrl(p)} className="clamp-2">{p.title}</a></div>
     </aside>
   );
 }
@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     alternates: { canonical: url },
     openGraph: {
       type: 'article', url, title: p.title, description: p.excerpt,
-      images: [{ url: p.thumb, width: 1200, height: 630, alt: p.imageAlt }],
+      images: [{ url: ogImage(p), width: 1200, height: 630, alt: p.imageAlt }],
       publishedTime: p.createdAt, modifiedTime: p.updatedAt ?? p.createdAt, section: p.category, tags: p.tags,
     },
-    twitter: { card: 'summary_large_image', title: p.title, description: p.excerpt, images: [p.thumb] },
+    twitter: { card: 'summary_large_image', title: p.title, description: p.excerpt, images: [ogImage(p)] },
   };
 }
 
@@ -73,7 +73,7 @@ export default async function PostPage({ params }: P) {
               mainEntityOfPage: url,
               headline: p.title,
               description: p.excerpt,
-              image: [`${SITE.url}${p.thumb}`],
+              image: [`${SITE.url}${ogImage(p)}`],
               datePublished: p.createdAt,
               dateModified: p.updatedAt ?? p.createdAt,
               articleSection: p.category,
@@ -117,10 +117,12 @@ export default async function PostPage({ params }: P) {
             <Share url={url} title={p.title} />
           </header>
 
+          {hasImg(p) && (
           <figure className="art-fig">
             <img src={displayImg(p)} srcSet={`${p.thumbSm} 640w, ${displayImg(p)} 1200w`} sizes="(max-width: 800px) 100vw, 760px" alt={p.imageAlt || p.title} width={1200} height={630} fetchPriority="high" />
             {p.imageCredit && <figcaption>ภาพ: {p.imageCredit}</figcaption>}
           </figure>
+          )}
 
           <section className="tldr" aria-label="สรุปประเด็น">
             <h2>⚡ สรุปประเด็นสั้น ๆ</h2>
@@ -178,8 +180,8 @@ export default async function PostPage({ params }: P) {
 
           {(newer || older) && (
             <nav className="prevnext" aria-label="บทความก่อนหน้าและถัดไป">
-              {older && <Link href={postUrl(older)}><small>‹ ก่อนหน้า</small><span className="clamp-2">{older.title}</span></Link>}
-              {newer && <Link href={postUrl(newer)} className="next"><small>ถัดไป ›</small><span className="clamp-2">{newer.title}</span></Link>}
+              {older && <a href={postUrl(older)}><small>‹ ก่อนหน้า</small><span className="clamp-2">{older.title}</span></a>}
+              {newer && <a href={postUrl(newer)} className="next"><small>ถัดไป ›</small><span className="clamp-2">{newer.title}</span></a>}
             </nav>
           )}
         </article>

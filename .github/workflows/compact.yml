@@ -1,0 +1,31 @@
+name: compact-history
+
+# git 이력에는 지워진 썸네일이 계속 남아 저장소가 커진다 (하루 30건 ≈ 연 1.5GB).
+# 이 워크플로는 현재 파일 상태는 그대로 두고 이력만 한 커밋으로 합쳐 용량을 되돌린다.
+# ⚠️ main 을 force-push 하므로 기본은 꺼져 있다. 저장소 Variables 에 COMPACT_HISTORY=true 를 넣어야 동작.
+on:
+  schedule:
+    - cron: '30 3 1 * *' # 매월 1일 03:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish # publish 워크플로와 동시 실행 방지
+  cancel-in-progress: false
+
+jobs:
+  compact:
+    if: ${{ vars.COMPACT_HISTORY == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Squash history into one commit
+        run: |
+          git config user.name "thaibuzz-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan compacted
+          git add -A
+          git commit -m "chore: compact history ($(date -u +%F))"
+          git push --force origin compacted:main

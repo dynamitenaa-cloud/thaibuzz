@@ -25,7 +25,26 @@ function walk(dir) {
   }
 }
 
+// 글 페이지는 일반 <a> 링크(전체 로드)로만 연결되므로 RSC 부속 파일이 필요 없다 → 글당 7파일 → 1파일.
+// Cloudflare Pages 무료 한도(배포당 20,000 파일)를 위한 핵심 절감.
+function stripPostPayloads() {
+  let removed = 0;
+  const base = path.join(OUT, 'post');
+  if (!fs.existsSync(base)) return 0;
+  for (const slug of fs.readdirSync(base)) {
+    const dir = path.join(base, slug);
+    if (!fs.statSync(dir).isDirectory()) continue;
+    for (const e of fs.readdirSync(dir)) {
+      if (e === 'index.html') continue;
+      fs.rmSync(path.join(dir, e), { recursive: true, force: true });
+      removed++;
+    }
+  }
+  return removed;
+}
+
 if (fs.existsSync(OUT)) {
+  console.log(`postbuild: ${stripPostPayloads()} post payload files stripped`);
   walk(OUT);
   console.log(`postbuild: ${n} RSC segment files flattened`);
 

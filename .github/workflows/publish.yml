@@ -54,6 +54,14 @@ jobs:
           MAX_PER_DAY: ${{ vars.MAX_PER_DAY || '40' }}
           USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
 
+      # 오래된 글 단계적 보관 (Cloudflare 파일 한도/저장소 용량 관리). scripts/archive.mjs 참고
+      - name: Archive old posts
+        if: ${{ !cancelled() && github.event_name != 'push' }}
+        run: node scripts/archive.mjs
+        env:
+          LIVE_FULL: ${{ vars.LIVE_FULL || '3000' }}
+          LIVE_LITE: ${{ vars.LIVE_LITE || '6000' }}
+
       - name: Commit new posts
         if: ${{ !cancelled() && steps.pipe.outputs.published > 0 }}
         run: |
