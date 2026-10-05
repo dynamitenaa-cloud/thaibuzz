@@ -52,28 +52,6 @@ async function synth(model, text) {
 }
 
 // 무음 구간 탐지 → 가장 긴 무음 (n-1)개를 시간순으로 = 문단 경계
-// 문단 경계 찾기: 글자 수로 예상한 경계 위치에서 "가장 가까운" 무음을 고름.
-// (가장 긴 무음을 고르면 TTS 가 문장 중간에서 길게 쉴 때 경계를 잘못 잡음 — 실제로 발생)
-// expected: 예상 경계 시각들(초, 오름차순). 가까운 무음이 없으면 null → 호출 쪽에서 글자 수 비례로 대체
-export async function boundaries(wav, expected, total) {
-  const { stderr } = await run(ffmpegPath, ['-i', wav, '-af', 'silencedetect=noise=-35dB:d=0.25', '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
-  const starts = [...String(stderr).matchAll(/silence_start: ([\d.]+)/g)].map((m) => +m[1]);
-  const ends = [...String(stderr).matchAll(/silence_end: ([\d.]+) \| silence_duration: ([\d.]+)/g)].map((m) => ({ end: +m[1], dur: +m[2] }));
-  const gaps = ends.map((e, i) => ({ mid: (starts[i] ?? e.end - e.dur) + e.dur / 2, dur: e.dur })).filter((g) => g.mid > 0.5 && g.mid < total - 0.5);
-  const tol = Math.max(2.5, total * 0.12); // 예상 위치에서 이만큼 안쪽의 무음만 후보
-  const picked = [];
-  let prev = 0;
-  for (const x of expected) {
-    // 후보 중 예상 위치와의 거리가 가깝고, 무음이 길수록 우선 (순서가 뒤바뀌지 않게 이전 경계 이후만)
-    const cand = gaps.filter((g) => g.mid > prev + 1 && Math.abs(g.mid - x) <= tol)
-      .sort((a, b) => (Math.abs(a.mid - x) - a.dur * 2) - (Math.abs(b.mid - x) - b.dur * 2))[0];
-    if (!cand) return null;
-    picked.push(cand.mid);
-    prev = cand.mid;
-  }
-  return picked;
-}
-
 // 구간 [a, b] 안에서 실제 말이 시작/끝나는 지점 (앞뒤 무음 제외). silenceremove 는 끝부분 무음을 못 자르는 버전이 있어 silencedetect 로 직접 계산
 export async function speechBounds(wav, a, b) {
   const { stderr } = await run(ffmpegPath, ['-ss', a.toFixed(3), '-to', b.toFixed(3), '-i', wav, '-af', 'silencedetect=noise=-40dB:d=0.08', '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
@@ -93,44 +71,49 @@ export async function durationOf(file) {
   return m ? +m[1] * 3600 + +m[2] * 60 + +m[3] : 0;
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const STYLE = 'อ่านแบบผู้ประกาศข่าวบันเทิง น้ำเสียงสดใส ชัดเจน กระชับ:\n\n';
+
+// 문단 하나 → 정리된 wav (앞뒤 무음 제거 + 음량 정규화). 분당 한도(429 + 짧은 대기)는 한 번 기다렸다가 재시도
+async function speakOne(model, text, file) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const { pcm, rate } = await synth(model, STYLE + text);
+      const raw = file + '.pcm', tmp = file + '.tmp.wav';
+      fs.writeFileSync(raw, pcm);
+      await run(ffmpegPath, ['-y', '-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw, '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '44100', '-ac', '2', tmp]);
+      fs.rmSync(raw, { force: true });
+      const len = await durationOf(tmp);
+      const [a, b] = await speechBounds(tmp, 0, len);
+      await run(ffmpegPath, ['-y', '-i', tmp, '-ss', a.toFixed(3), '-to', b.toFixed(3), file]);
+      fs.rmSync(tmp, { force: true });
+      return b - a;
+    } catch (e) {
+      const wait = String(e.message).match(/retry in\s*([\d.]+)s/i);
+      if (attempt === 0 && /429|quota|RESOURCE_EXHAUSTED/i.test(e.message) && wait && +wait[1] <= 60) { await sleep((+wait[1] + 1) * 1000); continue; }
+      throw e;
+    }
+  }
+}
+
 /**
- * segments: 읽을 문단들 (제목, 요약1..3). 반환: { wav, total, durations[] } — durations 는 문단별 길이(초)
- * 실패(키 없음/한도/오류) 시 null
+ * segments: 읽을 문단들 (제목, 요약1..3). 문단마다 따로 합성 → 장면과 정확히 1:1 싱크
+ * (한 번에 읽힌 음성을 무음 기준으로 쪼개면 TTS 가 문장 중간에서 길게 쉴 때 경계가 틀어짐 — 실제로 발생)
+ * 반환: { parts: [{ wav, dur }], total } / 실패(키 없음·한도·오류) 시 null → 무음 영상
  */
 export async function narrate(segments, outDir) {
   if (!KEY() || process.env.REELS_VOICE === 'false') return null;
-  const script = 'อ่านแบบผู้ประกาศข่าวบันเทิง น้ำเสียงสดใส ชัดเจน กระชับ และเว้นจังหวะหยุดสั้น ๆ ระหว่างแต่ละย่อหน้า:\n\n' + segments.join('\n\n');
+  fs.mkdirSync(outDir, { recursive: true });
   for (const model of await ttsModels()) {
     try {
-      const { pcm, rate } = await synth(model, script);
-      fs.mkdirSync(outDir, { recursive: true });
-      const raw = path.join(outDir, 'voice.pcm'), wav = path.join(outDir, 'voice.wav');
-      fs.writeFileSync(raw, pcm);
-      // 앞뒤 무음 정리 + 음량 정규화
-      await run(ffmpegPath, ['-y', '-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw,
-        '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-16:TP=-1.5:LRA=11',
-        '-ar', '44100', '-ac', '2', wav]);
-      fs.rmSync(raw, { force: true });
-      const total = await durationOf(wav);
-      if (total < 3) throw new Error(`audio too short (${total}s)`);
-      // 문단 경계: 무음 탐지 → 실패 시 글자 수 비례
-      // 글자 수 비례로 예상 경계 계산 → 그 근처의 실제 무음으로 보정
-      const lens = segments.map((s) => [...s].length), sum = lens.reduce((a, b) => a + b, 0);
-      let acc = 0;
-      const expected = lens.slice(0, -1).map((l) => (acc += (l / sum) * total));
-      const cuts = await boundaries(wav, expected, total);
-      const marks = cuts ?? expected;
-      const points = [0, ...marks, total];
-      // 문단별로 잘라 앞뒤 무음 제거 → 장면 사이 긴 공백(이탈 요인) 없이 말이 바로 이어지게
       const parts = [];
       for (let i = 0; i < segments.length; i++) {
-        const part = path.join(outDir, `part${i}.wav`);
-        const [s, e] = await speechBounds(wav, points[i], points[i + 1]);
-        await run(ffmpegPath, ['-y', '-i', wav, '-ss', s.toFixed(3), '-to', e.toFixed(3), part]);
-        parts.push({ wav: part, dur: e - s });
+        const wav = path.join(outDir, `part${i}.wav`);
+        const dur = await speakOne(model, segments[i], wav);
+        if (dur < 0.5) throw new Error(`segment ${i} too short`);
+        parts.push({ wav, dur });
       }
-      if (parts.some((p) => p.dur < 0.5)) throw new Error('segment split failed');
-      console.log(`tts: ${model} ${total.toFixed(1)}s → 문단 ${parts.map((p) => p.dur.toFixed(1)).join('/')}s${cuts ? '' : ' (proportional)'}`);
+      console.log(`tts: ${model} → 문단 ${parts.map((p) => p.dur.toFixed(1)).join('/')}s`);
       return { parts, total: parts.reduce((a, p) => a + p.dur, 0) };
     } catch (e) {
       console.warn(`tts: ${model} 실패 → ${String(e.message).slice(0, 160)}`);
