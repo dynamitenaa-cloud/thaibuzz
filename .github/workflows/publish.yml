@@ -13,6 +13,10 @@ on:
         description: '이미 올린 글이어도 다시 게시 (중복 게시물이 생김)'
         type: boolean
         default: false
+      reel_preview:
+        description: '미리보기: 가장 최근 글로 숏폼 영상만 만들어 다운로드용 파일로 저장 (게시 안 함)'
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths-ignore: ['content/**', 'public/thumbs/**', '**.md']
@@ -61,7 +65,7 @@ jobs:
 
       - name: Generate posts
         id: pipe
-        if: ${{ github.event_name != 'push' && !inputs.fb_test }}
+        if: ${{ github.event_name != 'push' && !inputs.fb_test && !inputs.reel_preview }}
         run: node scripts/run-pipeline.mjs
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
@@ -100,7 +104,7 @@ jobs:
       # 커밋이 실패했으면 배포/게시하지 않음 (배포만 되고 저장소엔 없는 글 → 다음 배포에서 사라져 페북 링크 404)
       - name: Build
         id: build
-        if: ${{ !cancelled() && steps.commit.outcome != 'failure' && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule' || steps.code.outputs.changed == 'true') }}
+        if: ${{ !cancelled() && !inputs.reel_preview && steps.commit.outcome != 'failure' && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule' || steps.code.outputs.changed == 'true') }}
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
@@ -136,6 +140,31 @@ jobs:
       - name: Post Reels
         if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
         run: node scripts/reels.mjs
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
+          GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
+          REELS_VOICE: ${{ vars.REELS_VOICE }}
+
+      # 미리보기: 가장 최근 글로 영상만 만들어 Actions 실행 화면의 Artifacts 에서 다운로드 (게시 안 함)
+      - name: Render reel preview
+        if: ${{ inputs.reel_preview }}
+        run: |
+          mkdir -p .cache
+          node -e "const fs=require('fs');const p=fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0];fs.writeFileSync('.cache/new-urls.txt','/post/'+p.slug+'/');console.log('preview target:',p.slug)"
+          node scripts/reels.mjs --dry
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
+          GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
+
+      - name: Upload reel preview
+        if: ${{ inputs.reel_preview }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: reel-preview
+          path: .cache/reels/*.mp4
+          retention-days: 3
 
       # 실패한 실행이어도 거절 목록·모델 쿨다운·배포 해시를 보존 (안 그러면 매시간 같은 실패에 무료 한도를 다시 씀)
       - name: Save pipeline cache

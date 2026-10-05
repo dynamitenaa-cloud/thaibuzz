@@ -3,7 +3,8 @@
 // `--dry` : 영상만 만들고 게시 안 함.  REELS=false 면 건너뜀
 import fs from 'node:fs';
 import path from 'node:path';
-import { makeReel } from './lib/video.mjs';
+import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
+import { narrate } from './lib/tts.mjs';
 import { loadLedger, saveLedger } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -60,8 +61,11 @@ for (const slug of slugs) {
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   if (!p.summary?.length) continue;
   try {
-    const reel = await makeReel(p, CAT_COLOR[p.category]);
-    console.log(`reels: rendered ${slug} (${(reel.size / 1e6).toFixed(1)}MB, ${reel.duration.toFixed(1)}s)`);
+    // 태국어 음성 낭독 (실패하면 null → 무음 영상으로 그대로 게시)
+    const voice = await narrate(narrationSegments(p), path.join(REEL_DIR, `${slug}-voice`));
+    const reel = await makeReel(p, CAT_COLOR[p.category], voice);
+    fs.rmSync(path.join(REEL_DIR, `${slug}-voice`), { recursive: true, force: true });
+    console.log(`reels: rendered ${slug} (${(reel.size / 1e6).toFixed(1)}MB, ${reel.duration.toFixed(1)}s, ${reel.voiced ? '음성' : '무음'})`);
     if (DRY) continue;
     const description = `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${p.tags.slice(0, 4).map(hashtag).join(' ')} #ข่าววันนี้`;
     const r = await publishReel(reel.file, description);
