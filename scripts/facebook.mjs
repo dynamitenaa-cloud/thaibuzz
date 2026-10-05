@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadLedger, saveLedger } from './lib/posted.mjs';
+import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -34,6 +35,7 @@ let failed = 0;
 const ledger = loadLedger(slugs);
 const FORCE = process.env.FB_FORCE === 'true';
 for (const slug of slugs) {
+  if (overLimit('facebook')) break;
   if (!FORCE && ledger.photo[slug]) { console.log(`facebook: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;
@@ -59,6 +61,7 @@ ${message}
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     body,
   });
+  trackUsage(r);
   const j = await r.json().catch(() => ({}));
   const id = j.post_id || j.id;
   if (r.ok && id) { console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`); ledger.photo[slug] = Date.now(); saveLedger(ledger); }

@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
+import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 import { loadLedger, saveLedger } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -23,6 +24,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function graph(pathname, params) {
   const r = await fetch(`${API}/${pathname}`, { method: 'POST', body: new URLSearchParams({ ...params, access_token: TOKEN }) });
+  trackUsage(r);
   const j = await r.json().catch(() => ({}));
   if (!r.ok || j.error) throw new Error(JSON.stringify(j.error ?? j).slice(0, 300));
   return j;
@@ -39,9 +41,10 @@ async function publishReel(file, description) {
   // 3) 게시
   await graph(`${PAGE_ID}/video_reels`, { upload_phase: 'finish', video_id, video_state: 'PUBLISHED', description });
   // 4) 처리 상태 확인 (최대 약 2분). 처리 중이어도 페이스북이 이어서 게시하므로 실패로 보지 않음
-  for (let i = 0; i < 12; i++) {
-    await sleep(10000);
-    const s = await (await fetch(`${API}/${video_id}?fields=status&access_token=${TOKEN}`)).json().catch(() => ({}));
+  for (let i = 0; i < 8; i++) {
+    await sleep(15000);
+    const sr = await fetch(`${API}/${video_id}?fields=status&access_token=${TOKEN}`); trackUsage(sr);
+    const s = await sr.json().catch(() => ({}));
     const st = s.status?.video_status;
     if (st === 'ready' || st === 'published') return { video_id, status: st };
     if (st === 'error') throw new Error('processing error: ' + JSON.stringify(s.status).slice(0, 300));
@@ -72,9 +75,10 @@ async function publishIgReel(igId, file, caption) {
   const uj = await up.json().catch(() => ({}));
   if (!up.ok || uj.success === false) throw new Error('ig upload: ' + JSON.stringify(uj).slice(0, 300));
   // 인스타 쪽 처리 완료(FINISHED)까지 대기 후 게시 (최대 약 4분)
-  for (let i = 0; i < 24; i++) {
-    await sleep(10000);
-    const s = await (await fetch(`${API}/${c.id}?fields=status_code,status&access_token=${TOKEN}`)).json().catch(() => ({}));
+  for (let i = 0; i < 16; i++) {
+    await sleep(15000);
+    const sr = await fetch(`${API}/${c.id}?fields=status_code,status&access_token=${TOKEN}`); trackUsage(sr);
+    const s = await sr.json().catch(() => ({}));
     if (s.status_code === 'FINISHED') {
       const pub = await graph(`${igId}/media_publish`, { creation_id: c.id });
       return pub.id;
@@ -90,6 +94,7 @@ const FORCE = process.env.FB_FORCE === 'true';
 const igId = await findIgUser();
 if (!DRY) console.log(igId ? `reels: 인스타그램 연결됨 (${igId})` : 'reels: 인스타그램 미연결 → 페이스북만');
 for (const slug of slugs) {
+  if (overLimit('reels')) break;
   const needFb = DRY || FORCE || !ledger.reel[slug];
   const needIg = !!igId && (FORCE || !ledger.ig[slug]);
   if (!needFb && !needIg) { console.log(`reels: already posted → skip ${slug}`); continue; }
@@ -127,3 +132,6 @@ for (const slug of slugs) {
   fs.rmSync(reel.file, { force: true });
 }
 if (failed) process.exitCode = 1;
+
+// 사용률 기록 (Actions 로그에서 추이 확인용)
+console.log(`reels: Meta API 사용률 최고 ${(await import('./lib/meta-usage.mjs')).usagePeak()}%`);
