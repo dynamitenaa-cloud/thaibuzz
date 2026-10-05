@@ -61,6 +61,19 @@ export async function boundaries(wav, n) {
   return gaps.sort((a, b) => b.dur - a.dur).slice(0, n - 1).map((g) => g.mid).sort((a, b) => a - b);
 }
 
+// 구간 [a, b] 안에서 실제 말이 시작/끝나는 지점 (앞뒤 무음 제외). silenceremove 는 끝부분 무음을 못 자르는 버전이 있어 silencedetect 로 직접 계산
+export async function speechBounds(wav, a, b) {
+  const { stderr } = await run(ffmpegPath, ['-ss', a.toFixed(3), '-to', b.toFixed(3), '-i', wav, '-af', 'silencedetect=noise=-40dB:d=0.08', '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
+  const out = String(stderr), len = b - a;
+  const starts = [...out.matchAll(/silence_start: (-?[\d.]+)/g)].map((m) => Math.max(0, +m[1]));
+  const ends = [...out.matchAll(/silence_end: ([\d.]+)/g)].map((m) => +m[1]);
+  let s = 0, e = len;
+  if (starts.length && starts[0] < 0.05 && ends[0] !== undefined) s = ends[0]; // 앞 무음
+  const lastStart = starts[starts.length - 1];
+  if (lastStart !== undefined && (ends.length < starts.length || ends[ends.length - 1] >= len - 0.05) && lastStart > s) e = lastStart; // 뒤 무음
+  return [a + Math.max(0, s - 0.05), a + Math.min(len, e + 0.08)]; // 말 앞뒤로 아주 조금 여유
+}
+
 export async function durationOf(file) {
   const { stderr } = await run(ffmpegPath, ['-i', file, '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
   const m = String(stderr).match(/time=(\d+):(\d+):([\d.]+)/g)?.pop()?.match(/(\d+):(\d+):([\d.]+)/);
@@ -95,9 +108,17 @@ export async function narrate(segments, outDir) {
         return lens.slice(0, -1).map((l) => (acc += (l / sum) * total));
       })();
       const points = [0, ...marks, total];
-      const durations = segments.map((_, i) => points[i + 1] - points[i]);
-      console.log(`tts: ${model} ${total.toFixed(1)}s, scenes ${durations.map((d) => d.toFixed(1)).join('/')}${cuts ? '' : ' (proportional)'}`);
-      return { wav, total, durations };
+      // 문단별로 잘라 앞뒤 무음 제거 → 장면 사이 긴 공백(이탈 요인) 없이 말이 바로 이어지게
+      const parts = [];
+      for (let i = 0; i < segments.length; i++) {
+        const part = path.join(outDir, `part${i}.wav`);
+        const [s, e] = await speechBounds(wav, points[i], points[i + 1]);
+        await run(ffmpegPath, ['-y', '-i', wav, '-ss', s.toFixed(3), '-to', e.toFixed(3), part]);
+        parts.push({ wav: part, dur: e - s });
+      }
+      if (parts.some((p) => p.dur < 0.5)) throw new Error('segment split failed');
+      console.log(`tts: ${model} ${total.toFixed(1)}s → 문단 ${parts.map((p) => p.dur.toFixed(1)).join('/')}s${cuts ? '' : ' (proportional)'}`);
+      return { parts, total: parts.reduce((a, p) => a + p.dur, 0) };
     } catch (e) {
       console.warn(`tts: ${model} 실패 → ${String(e.message).slice(0, 160)}`);
     }

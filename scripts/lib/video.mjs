@@ -83,23 +83,24 @@ async function renderPng(tree, file) {
 export const narrationSegments = (post) => [post.title, ...post.summary.slice(0, 3)];
 
 /**
- * voice: tts.narrate() 결과 { wav, durations[] } 또는 null(무음)
- * 음성이 있으면 장면 길이를 각 문단 낭독 길이(+여유)에 맞추고, 음성을 장면별로 잘라 붙여 싱크가 밀리지 않게 함
+ * voice: tts.narrate() 결과 { parts: [{ wav, dur }] } 또는 null(무음)
+ * 음성이 있으면 장면 길이를 각 문단 낭독 길이(+여유)에 맞추고, 문단 음성을 장면마다 따로 넣어 싱크가 밀리지 않게 함
  */
+const LEAD = 0.15; // 장면 전환 직후 말이 시작되기까지 간격(초)
 export async function makeReel(post, color = '#e11d48', voice = null) {
   fs.mkdirSync(REEL_DIR, { recursive: true });
   const work = fs.mkdtempSync(path.join(REEL_DIR, `${post.slug}-`));
   const list = scenes(post, await visuals(post), color);
-  const voiced = voice && voice.durations.length === list.length - 1 ? voice : null; // 마무리 장면은 음성 없음
-  if (voiced) voiced.durations.forEach((d, i) => { list[i].dur = Math.max(2.4, d + 0.35); });
+  const voiced = voice && voice.parts?.length === list.length - 1 ? voice : null; // 마무리 장면은 음성 없음
+  if (voiced) voiced.parts.forEach((p, i) => { list[i].dur = Math.max(2.4, p.dur + LEAD + 0.35); });
   for (let i = 0; i < list.length; i++) await renderPng(list[i].tree, path.join(work, `s${i}.png`));
 
   // 장면마다 살짝 줌인(켄 번스) + 0.25초 페이드 → 이어 붙이기
   const total = list.reduce((a, s) => a + s.dur, 0);
   const args = ['-y'];
   list.forEach((_, i) => args.push('-i', path.join(work, `s${i}.png`)));
-  const A = list.length; // 오디오 입력 번호
-  if (voiced) args.push('-i', voiced.wav);
+  const A = list.length; // 첫 오디오 입력 번호
+  if (voiced) voiced.parts.forEach((p) => args.push('-i', p.wav));
   else args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=44100:cl=stereo'); // 무음 트랙(Reels 호환)
   const chains = list.map((s, i) => {
     const frames = Math.round(s.dur * FPS);
@@ -108,13 +109,9 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   });
   let audioOut = `${A}:a`;
   if (voiced) {
-    // 음성을 문단 경계에서 잘라 각 장면 길이로 늘린 뒤 이어 붙임 (+ 마무리 장면 길이만큼 무음)
-    let t = 0;
-    const segs = voiced.durations.map((d, i) => {
-      const part = `[${A}:a]atrim=start=${t.toFixed(3)}:end=${(t + d).toFixed(3)},asetpts=PTS-STARTPTS,apad=whole_dur=${list[i].dur.toFixed(3)}[a${i}]`;
-      t += d;
-      return part;
-    });
+    // 문단 음성을 장면 시작 직후(LEAD)에 배치하고 장면 길이까지 무음으로 채움 → 이어 붙임 (+ 마무리 장면 무음)
+    const segs = voiced.parts.map((_, i) =>
+      `[${A + i}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay=${Math.round(LEAD * 1000)}:all=1,apad=whole_dur=${list[i].dur.toFixed(3)},atrim=duration=${list[i].dur.toFixed(3)}[a${i}]`);
     const last = list.length - 1;
     segs.push(`anullsrc=r=44100:cl=stereo,atrim=duration=${list[last].dur.toFixed(3)}[a${last}]`);
     chains.push(...segs, `${list.map((_, i) => `[a${i}]`).join('')}concat=n=${list.length}:v=0:a=1[aout]`);
