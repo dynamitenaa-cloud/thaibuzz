@@ -52,13 +52,26 @@ async function synth(model, text) {
 }
 
 // 무음 구간 탐지 → 가장 긴 무음 (n-1)개를 시간순으로 = 문단 경계
-export async function boundaries(wav, n) {
-  const { stderr } = await run(ffmpegPath, ['-i', wav, '-af', 'silencedetect=noise=-35dB:d=0.3', '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
+// 문단 경계 찾기: 글자 수로 예상한 경계 위치에서 "가장 가까운" 무음을 고름.
+// (가장 긴 무음을 고르면 TTS 가 문장 중간에서 길게 쉴 때 경계를 잘못 잡음 — 실제로 발생)
+// expected: 예상 경계 시각들(초, 오름차순). 가까운 무음이 없으면 null → 호출 쪽에서 글자 수 비례로 대체
+export async function boundaries(wav, expected, total) {
+  const { stderr } = await run(ffmpegPath, ['-i', wav, '-af', 'silencedetect=noise=-35dB:d=0.25', '-f', 'null', '-'], { maxBuffer: 16 * 1024 * 1024 }).catch((e) => e);
   const starts = [...String(stderr).matchAll(/silence_start: ([\d.]+)/g)].map((m) => +m[1]);
   const ends = [...String(stderr).matchAll(/silence_end: ([\d.]+) \| silence_duration: ([\d.]+)/g)].map((m) => ({ end: +m[1], dur: +m[2] }));
-  const gaps = ends.map((e, i) => ({ mid: (starts[i] ?? e.end - e.dur) + e.dur / 2, dur: e.dur })).filter((g) => g.mid > 0.5);
-  if (gaps.length < n - 1) return null;
-  return gaps.sort((a, b) => b.dur - a.dur).slice(0, n - 1).map((g) => g.mid).sort((a, b) => a - b);
+  const gaps = ends.map((e, i) => ({ mid: (starts[i] ?? e.end - e.dur) + e.dur / 2, dur: e.dur })).filter((g) => g.mid > 0.5 && g.mid < total - 0.5);
+  const tol = Math.max(2.5, total * 0.12); // 예상 위치에서 이만큼 안쪽의 무음만 후보
+  const picked = [];
+  let prev = 0;
+  for (const x of expected) {
+    // 후보 중 예상 위치와의 거리가 가깝고, 무음이 길수록 우선 (순서가 뒤바뀌지 않게 이전 경계 이후만)
+    const cand = gaps.filter((g) => g.mid > prev + 1 && Math.abs(g.mid - x) <= tol)
+      .sort((a, b) => (Math.abs(a.mid - x) - a.dur * 2) - (Math.abs(b.mid - x) - b.dur * 2))[0];
+    if (!cand) return null;
+    picked.push(cand.mid);
+    prev = cand.mid;
+  }
+  return picked;
 }
 
 // 구간 [a, b] 안에서 실제 말이 시작/끝나는 지점 (앞뒤 무음 제외). silenceremove 는 끝부분 무음을 못 자르는 버전이 있어 silencedetect 로 직접 계산
@@ -101,12 +114,12 @@ export async function narrate(segments, outDir) {
       const total = await durationOf(wav);
       if (total < 3) throw new Error(`audio too short (${total}s)`);
       // 문단 경계: 무음 탐지 → 실패 시 글자 수 비례
-      const cuts = await boundaries(wav, segments.length);
-      const marks = cuts ?? (() => {
-        const lens = segments.map((s) => [...s].length), sum = lens.reduce((a, b) => a + b, 0);
-        let acc = 0;
-        return lens.slice(0, -1).map((l) => (acc += (l / sum) * total));
-      })();
+      // 글자 수 비례로 예상 경계 계산 → 그 근처의 실제 무음으로 보정
+      const lens = segments.map((s) => [...s].length), sum = lens.reduce((a, b) => a + b, 0);
+      let acc = 0;
+      const expected = lens.slice(0, -1).map((l) => (acc += (l / sum) * total));
+      const cuts = await boundaries(wav, expected, total);
+      const marks = cuts ?? expected;
       const points = [0, ...marks, total];
       // 문단별로 잘라 앞뒤 무음 제거 → 장면 사이 긴 공백(이탈 요인) 없이 말이 바로 이어지게
       const parts = [];
