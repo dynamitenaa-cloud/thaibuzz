@@ -10,6 +10,10 @@ import { SITE } from '@/lib/site';
 const body = Noto_Sans_Thai({ subsets: ['thai', 'latin'], weight: ['400', '600'], variable: '--font-body', display: 'optional' });
 const head = Prompt({ subsets: ['thai', 'latin'], weight: ['600', '700'], variable: '--font-head', display: 'optional' });
 
+// <meta ... content="값" /> 태그 전체를 붙여넣어도 content 값만 추출
+const rawVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? '';
+const googleVerification = (rawVerification.match(/content=["']([^"']+)["']/)?.[1] ?? rawVerification).trim();
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} — ${SITE.tagline}`, template: `%s | ${SITE.name}` },
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   formatDetection: { telephone: false },
   // Search Console 소유권 확인 (HTML 태그 방식). GitHub Variables 의 GOOGLE_SITE_VERIFICATION 값
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : undefined,
+  verification: googleVerification ? { google: googleVerification } : undefined,
 };
 
 export const viewport: Viewport = {
