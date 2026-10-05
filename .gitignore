@@ -10,3 +10,6 @@ content/posts/demo-*
 public/thumbs/demo-*
 content/archive/demo-*
 preview/
+# YouTube OAuth 클라이언트 파일 (비밀 값 포함) — 절대 커밋 금지
+yt-client.json
+client_secret*.json
