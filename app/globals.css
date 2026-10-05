@@ -302,3 +302,9 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .soc { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--fg-2); font-size: .85rem; }
 .soc:hover { border-color: var(--brand); color: var(--fg); }
 .soc-facebook svg { color: #1877f2; } .soc-instagram svg { color: #e1306c; }
+
+/* 편집자 노트 */
+.ed-note { border-left: 4px solid var(--fg); background: var(--bg-soft); border-radius: var(--radius-sm); padding: 14px 18px; margin: -12px 0 28px; }
+.ed-note b { display: block; font-size: .95rem; margin-bottom: 4px; }
+.ed-note p { margin: 0 0 4px; font-size: 1.02rem; }
+.ed-note small { color: var(--mut); font-size: .8rem; }

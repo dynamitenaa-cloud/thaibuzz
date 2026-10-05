@@ -18,6 +18,10 @@ export type Post = {
   tags: string[];
   entities?: { name: string; type: 'person' | 'work' | 'group' | 'other' }[]; // 핵심 인물/작품 (허브 페이지 분류)
   category: string;
+  editorNote?: string; // 편집자(사람)가 남긴 코멘트 (태국어)
+  editorNoteAt?: string;
+  format?: string; // 글 형식 (standard/brief/explainer/qa)
+  model?: string; // 작성 모델
   lite?: boolean; // true = 썸네일 삭제된 오래된 글 (thumb* 가 빈 문자열)
   thumb: string; // 1200x630 jpg (OG / hero)
   thumbSm: string; // 640x336 webp (cards)

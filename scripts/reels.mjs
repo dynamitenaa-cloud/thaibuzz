@@ -142,9 +142,13 @@ for (const slug of slugs) {
       const tiktokCaption = `${p.title}
 
 ${p.tags.slice(0, 5).map(hashtag).join(' ')} #ข่าววันนี้ #ข่าวบันเทิง #fyp #ฟีดดดシ`;
+      // 🆔 줄: 이 메시지에 답장하면 editor-notes.mjs 가 해당 글에 편집자 노트로 붙임
       await sendTelegramVideo(reel.file, `📱 TikTok용 영상
 
-${tiktokCaption}`);
+${tiktokCaption}
+
+🆔 ${slug}
+💬 이 메시지에 답장하면 사이트 글에 '편집자 노트'로 붙습니다 (한국어 OK)`);
       console.log(`reels: telegram sent ← ${slug}`);
       ledger.tg[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; console.error(`reels: telegram FAILED ${slug}:`, e.message); }

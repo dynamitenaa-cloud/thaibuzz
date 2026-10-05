@@ -3,7 +3,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { trendsTH, newsTopicTH, nicheCandidates, suggestions, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
-import { writeArticle, qualityCheck, normalize, FatalError, QuotaExhausted } from './lib/writer.mjs';
+import { writeArticle, qualityCheck, normalize, polish, FatalError, QuotaExhausted } from './lib/writer.mjs';
+
+// 좋은 모델을 쓸 검색량 기준 (Google Trends approx_traffic)
+const PREMIUM_TRAFFIC = Number(process.env.PREMIUM_TRAFFIC || 10000);
+// 다른 매체 기사를 모아 싣는 사이트 → "원 보도" 출처로 치지 않음
+const AGGREGATOR = /line today|teenee|msn|yahoo|google|dek-d|kapook|sanook/i;
+// 사생활·사건 관련 단어 (헤드라인 기준). 이런 주제는 원 보도 언론사 2곳 이상일 때만 작성
+const SENSITIVE = /เลิกรา|เลิกกัน|หย่า|นอกใจ|มือที่สาม|ทะเลาะ|ชีวิตคู่|ตั้งครรภ์|ตั้งท้อง|แท้ง|ป่วยหนัก|มะเร็ง|เสียชีวิต|ดับสลด|คดี|จับกุม|ฟ้อง|ยาเสพติด|ทำร้าย|ข่มขืน|อนาจาร|แฉ|ด่ากราด|ทวงหนี้|หนี้สิน/;
 import { makeThumb } from './lib/thumbs.mjs';
 
 const ROOT = process.cwd();
@@ -98,14 +105,26 @@ if (budget > 0) {
     try {
       const f = await buildFacts(c);
       if (f.richness < 3) { console.log('  skip: not enough sources'); reject(c.keyword); continue; }
+      // 출처 기준: 서로 다른 언론사 2곳 이상. 사생활·사건 주제는 "원 보도" 언론사 2곳 이상 (모음 사이트 제외)
+      //  → 출처 하나짜리 가십(명예훼손 위험 최대)을 LLM 호출 전에 걸러 한도도 절약
+      const outlets = [...new Set(f.news.map((n) => String(n.source || '').toLowerCase().replace(/^www\.|\.(co\.th|com|net|th)$/g, '').trim()).filter(Boolean))];
+      const original = outlets.filter((s) => !AGGREGATOR.test(s));
+      const headlineText = [c.keyword, ...f.news.map((n) => n.title)].join(' ');
+      if (outlets.length < 2) { console.log(`  skip: single source (${outlets.join(',')})`); reject(c.keyword); continue; }
+      if (SENSITIVE.test(headlineText) && original.length < 2) { console.log(`  skip: sensitive topic needs 2+ original outlets (${original.join(',') || 'none'})`); reject(c.keyword); continue; }
       if (DRY) { console.log(f.facts.slice(0, 800)); budget--; continue; }
 
       attempts++;
       // 롱테일: 이 주제로 사람들이 실제 검색하는 말 (구글 자동완성)
       const searchTerms = [...new Set([...(await suggestions(c.query || c.keyword)), ...(c.query && c.query !== c.keyword ? await suggestions(c.keyword) : [])])].slice(0, 12);
       if (searchTerms.length) console.log(`  search terms: ${searchTerms.slice(0, 5).join(' | ')}`);
-      const raw = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title), searchTerms);
-      const q = qualityCheck(raw);
+      // 검색량 큰 주제만 좋은 모델(하루 한도 작음) 우선 사용
+      const premium = (c.traffic || 0) >= PREMIUM_TRAFFIC;
+      const w = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title), searchTerms, { premium });
+      // AI 티 자동 교정: 오타(자음 3연속), 교훈형 마무리 문단 제거
+      const { article: raw, removedClosers } = polish(w.article);
+      const q = qualityCheck(raw, w.format);
+      console.log(`  model: ${w.model}${premium ? ' (premium)' : ''} | format: ${w.format}${removedClosers ? ` | removed ${removedClosers} cliché closer` : ''}`);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
       const a = normalize(raw);
       if (recent.some((p) => jaccard(a.title, p.title) >= 0.6)) { console.log('  skip: duplicate story'); reject(c.keyword); continue; }
@@ -134,6 +153,8 @@ if (budget > 0) {
         createdAt: now.toISOString(),
         traffic: c.traffic,
         keyword: c.keyword,
+        format: w.format,
+        model: w.model,
         sources: f.news.slice(0, 6).map(({ title, url, source }) => ({ title, url, source })),
       };
       writeAtomic(path.join(POSTS, `${slug}.json`), JSON.stringify(post, null, 2));

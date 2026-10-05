@@ -127,6 +127,15 @@ export default async function PostPage({ params }: P) {
             <ul>{p.summary.map((s, i) => <li key={i}>{s}</li>)}</ul>
           </section>
 
+          {/* 편집자 노트: 사람이 직접 남긴 코멘트 (텔레그램 답장 → scripts/editor-notes.mjs) */}
+          {p.editorNote && (
+            <aside className="ed-note" aria-label="หมายเหตุจากบรรณาธิการ">
+              <b>📝 หมายเหตุจากบรรณาธิการ</b>
+              <p>{p.editorNote}</p>
+              {p.editorNoteAt && <small>{thaiDate(p.editorNoteAt)}</small>}
+            </aside>
+          )}
+
           <div className="prose">
             {p.sections.map((s, i) => (
               <section key={i}>

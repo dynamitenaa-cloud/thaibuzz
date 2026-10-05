@@ -48,6 +48,8 @@ env:
   FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
   FB_FORCE: ${{ inputs.force }}
   THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
 jobs:
   run:
@@ -89,21 +91,31 @@ jobs:
           LIVE_FULL: ${{ vars.LIVE_FULL || '2500' }}
           LIVE_LITE: ${{ vars.LIVE_LITE || '4500' }}
 
+      # 편집자 노트: 텔레그램 영상 메시지에 답장한 코멘트를 해당 글에 반영
+      - name: Apply editor notes from Telegram
+        id: notes
+        if: ${{ !cancelled() && github.event_name != 'push' && env.TELEGRAM_BOT_TOKEN != '' }}
+        run: node scripts/editor-notes.mjs
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content public/thumbs
-          git commit -m "content: ${{ steps.pipe.outputs.published }} new posts"
+          git diff --cached --quiet && exit 0
+          git commit -m "content: ${{ steps.pipe.outputs.published || 0 }} new posts, ${{ steps.notes.outputs.changed || 0 }} editor notes"
           git pull --rebase && git push
 
       # 예약 실행에서 새 글이 0건이어도, 마지막 배포 이후 코드가 바뀌었으면 배포 (대기열에서 밀려 취소된 push 실행 보완)
       - name: Detect code change since last deploy
         id: code
         run: |
-          HASH=$(git ls-tree -r HEAD | grep -vE $'\t(content|public/thumbs)/' | sha1sum | cut -c1-40)
+          # 코드뿐 아니라 글(content)도 포함 → GitHub 웹에서 글을 고치거나 지워도 다음 실행에서 배포됨
+          HASH=$(git ls-tree -r HEAD | grep -vE $'\tpublic/thumbs/' | sha1sum | cut -c1-40)
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
           if [ "$(cat .cache/deployed-code-hash 2>/dev/null)" != "$HASH" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
 
