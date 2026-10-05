@@ -16,6 +16,7 @@ export type Post = {
   timeline: { when: string; what: string }[];
   faq: { q: string; a: string }[];
   tags: string[];
+  entities?: { name: string; type: 'person' | 'work' | 'group' | 'other' }[]; // 핵심 인물/작품 (허브 페이지 분류)
   category: string;
   lite?: boolean; // true = 썸네일 삭제된 오래된 글 (thumb* 가 빈 문자열)
   thumb: string; // 1200x630 jpg (OG / hero)
@@ -62,10 +63,48 @@ export const tagUrl = (tag: string) => `/tag/${tagSlug(tag)}/`;
 export const MIN_TAG_POSTS = 2;
 export const tagHasPage = (tag: string) => (getTags().get(tagSlug(tag))?.count ?? 0) >= MIN_TAG_POSTS;
 
+// ── 인물·작품 허브 (= 태그 페이지를 확장) ──
+// 글 3개 이상 쌓인 대상만 검색 색인 (그 미만은 페이지는 있되 noindex — 빈약한 페이지로 사이트 평가가 깎이지 않게)
+export const MIN_HUB_INDEX = 3;
+export type HubKind = 'person' | 'work' | 'group' | 'other';
+export const HUB_LABEL: Record<HubKind, string> = { person: 'คนดัง', work: 'ซีรีส์/ผลงาน', group: 'วง/ทีม', other: 'ประเด็น' };
+
+export const hubPosts = (slug: string) => getPosts().filter((p) => p.tags.some((t) => tagSlug(t) === slug));
+
+// 글들의 entities 에서 이 이름이 어떤 종류로 가장 많이 분류됐는지 (없으면 other)
+export function hubKind(name: string): HubKind {
+  const n = name.trim().toLowerCase();
+  const votes = new Map<HubKind, number>();
+  for (const p of getPosts()) for (const e of p.entities ?? []) if (e.name.trim().toLowerCase() === n) votes.set(e.type, (votes.get(e.type) ?? 0) + 1);
+  return [...votes].sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'other';
+}
+
+export function hubs() {
+  return [...getTags()]
+    .filter(([, t]) => t.count >= MIN_TAG_POSTS)
+    .map(([slug, t]) => {
+      const posts = hubPosts(slug);
+      return { slug, name: t.tag, count: t.count, kind: hubKind(t.tag), latest: posts[0]?.createdAt ?? '' };
+    })
+    .sort((a, b) => b.count - a.count || b.latest.localeCompare(a.latest));
+}
+
+// 일반어 태그("ข่าวบันเทิง", "ไวรัล" 등)는 카테고리 페이지와 중복이고 롱테일 효과도 없어 허브/태그 페이지를 만들지 않음
+const GENERIC_TAGS = new Set([
+  'บันเทิง', 'ดารา', 'ดาราไทย', 'คนดัง', 'ศิลปิน', 'นักแสดง', 'วงการบันเทิง', 'ซีรีส์', 'ซีรีส์ไทย', 'ละคร', 'หนัง', 'ภาพยนตร์', 'เพลง', 'เพลงใหม่',
+  'ไวรัล', 'โซเชียล', 'ดราม่า', 'เทรนด์', 'กระแส', 'กีฬา', 'ฟุตบอล', 'ไลฟ์สไตล์', 'แฟชั่น', 'ความงาม', 'ท่องเที่ยว', 'อาหาร',
+  'ทดสอบ', 'ตัวอย่าง', 'ระบบอัตโนมัติ', 'ต่างประเทศ', 'ไทย', 'thailand', 'news',
+]);
+export const isGenericTag = (t: string) => {
+  const s = t.trim().toLowerCase();
+  return GENERIC_TAGS.has(s) || s.startsWith('ข่าว') || [...s].length < 2;
+};
+
 export function getTags() {
   const map = new Map<string, { tag: string; count: number }>();
   for (const p of getPosts())
     for (const t of p.tags) {
+      if (isGenericTag(t)) continue;
       const s = tagSlug(t);
       const cur = map.get(s);
       map.set(s, { tag: cur?.tag ?? t, count: (cur?.count ?? 0) + 1 });

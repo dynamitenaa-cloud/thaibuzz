@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { trendsTH, newsTopicTH, nicheCandidates, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
+import { trendsTH, newsTopicTH, nicheCandidates, suggestions, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
 import { writeArticle, qualityCheck, normalize, FatalError, QuotaExhausted } from './lib/writer.mjs';
 import { makeThumb } from './lib/thumbs.mjs';
 
@@ -101,7 +101,10 @@ if (budget > 0) {
       if (DRY) { console.log(f.facts.slice(0, 800)); budget--; continue; }
 
       attempts++;
-      const raw = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title));
+      // 롱테일: 이 주제로 사람들이 실제 검색하는 말 (구글 자동완성)
+      const searchTerms = [...new Set([...(await suggestions(c.query || c.keyword)), ...(c.query && c.query !== c.keyword ? await suggestions(c.keyword) : [])])].slice(0, 12);
+      if (searchTerms.length) console.log(`  search terms: ${searchTerms.slice(0, 5).join(' | ')}`);
+      const raw = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title), searchTerms);
       const q = qualityCheck(raw);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
       const a = normalize(raw);
@@ -118,7 +121,9 @@ if (budget > 0) {
         sections: a.sections,
         timeline: a.timeline,
         faq: a.faq,
-        tags: a.tags,
+        // 허브 페이지는 태그 기준 → 핵심 인물/작품 이름을 태그 앞쪽에 합쳐 같은 대상끼리 묶이게
+        tags: [...new Set([...a.entities.map((e) => e.name.trim()), ...a.tags])].slice(0, 7),
+        entities: a.entities,
         category: a.category,
         thumb: t.thumb,
         thumbSm: t.thumbSm,

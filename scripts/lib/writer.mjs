@@ -18,8 +18,9 @@ const Article = z.object({
     .array(z.object({ heading: z.string(), paragraphs: z.array(z.string()) }))
     .describe('3-5 หัวข้อย่อย แต่ละหัวข้อ 1-3 ย่อหน้า ย่อหน้าละ 2-4 ประโยค'),
   timeline: z.array(z.object({ when: z.string(), what: z.string() })).describe('ลำดับเหตุการณ์ (ถ้ามีวันที่/ลำดับชัดเจนในแหล่งข่าว) ไม่มีให้เป็นอาร์เรย์ว่าง'),
-  faq: z.array(z.object({ q: z.string(), a: z.string() })).describe('0-3 คำถามที่ผู้อ่านน่าจะสงสัย ตอบจากข้อเท็จจริงเท่านั้น'),
-  tags: z.array(z.string()).describe('4-6 แท็ก: ชื่อบุคคล/ผลงาน/หัวข้อ ภาษาไทยหรือชื่อเฉพาะ'),
+  faq: z.array(z.object({ q: z.string(), a: z.string() })).describe('0-4 คำถามที่คนค้นหาจริง (ใช้ "คำค้นยอดนิยม" ที่ให้มาเป็นแนวทาง) ตอบจากข้อเท็จจริงในแหล่งข่าวเท่านั้น ถ้าแหล่งข่าวไม่มีคำตอบ ห้ามใส่คำถามนั้น'),
+  entities: z.array(z.object({ name: z.string(), type: z.enum(['person', 'work', 'group', 'other']) })).describe('1-4 บุคคล/ผลงาน(ซีรีส์ หนัง เพลง)/วง/ทีม ที่เป็นหัวใจของข่าว ใช้ชื่อที่คนไทยค้นหาบ่อยที่สุด'),
+  tags: z.array(z.string()).describe('4-6 แท็กแบบเจาะจง: ชื่อคนดัง ชื่อซีรีส์/ผลงาน ชื่อวง/ทีม ชื่องานหรือเหตุการณ์ (ตามที่คนค้นหา) ห้ามใช้แท็กกว้าง ๆ เช่น ข่าวบันเทิง ไวรัล ดารา ซีรีส์'),
   category: z.enum(CATEGORY_NAMES),
   imageAlt: z.string().describe('คำอธิบายภาพปกสั้น ๆ สำหรับ alt text'),
 });
@@ -95,7 +96,7 @@ export async function resolveModels() {
   return chain;
 }
 
-export async function writeArticle(c, facts, model, recentTitles = []) {
+export async function writeArticle(c, facts, model, recentTitles = [], searchTerms = []) {
   if (!model && !chain) await resolveModels();
   const getModel = () => model ?? google(chain[idx]);
   // 의미 기반 중복 방지: 최근 발행 제목을 보여주고 같은 사건이면 스스로 거부하게 함 (단어 비교로는 영/태 혼용 중복을 못 잡음)
@@ -103,13 +104,18 @@ export async function writeArticle(c, facts, model, recentTitles = []) {
     ? 'บทความล่าสุดของเรา (ห้ามเขียนซ้ำเหตุการณ์เดียวกัน แม้จะใช้คีย์เวิร์ดหรือภาษาต่างกัน เช่น ชื่อทีมภาษาอังกฤษกับภาษาไทย):\n' +
       recentTitles.map((t) => `- ${t}`).join('\n') + '\n\n'
     : '';
+  // 롱테일: 실제 검색어를 소제목/FAQ 방향으로만 제시. 출처에 없는 개인정보(나이·키·연애)는 절대 추측하지 않게 명시
+  const searchBlock = searchTerms.length
+    ? 'คำค้นยอดนิยมที่คนไทยพิมพ์ใน Google เกี่ยวกับเรื่องนี้ (ใช้เป็นแนวทางตั้งหัวข้อย่อยและ FAQ อย่างเป็นธรรมชาติ เฉพาะข้อที่แหล่งข่าวมีคำตอบ ห้ามเดาข้อมูลส่วนตัว เช่น อายุ ส่วนสูง แฟน ถ้าแหล่งข่าวไม่ได้ระบุ):\n' +
+      searchTerms.map((t) => `- ${t}`).join('\n') + '\n\n'
+    : '';
   const prompt = `คีย์เวิร์ดที่กำลังเป็นกระแสในไทย: "${c.keyword}"${c.traffic ? ` (ค้นหามากกว่า ${c.traffic.toLocaleString()} ครั้ง)` : ''}
 วันที่ปัจจุบัน: ${new Date().toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'long' })}
 
 ข้อมูลจากแหล่งข่าว:
 ${facts}
 
-${recentBlock}เขียนบทความตามกฎทั้งหมด (ถ้าซ้ำกับบทความข้างต้น → duplicateOf ใส่หัวข้อนั้น และ publishable=false)`;
+${searchBlock}${recentBlock}เขียนบทความตามกฎทั้งหมด (ถ้าซ้ำกับบทความข้างต้น → duplicateOf ใส่หัวข้อนั้น และ publishable=false)`;
   let lastErr, overload = 0;
   while (true) {
     try {
@@ -166,7 +172,8 @@ export function normalize(a) {
     summary: a.summary.slice(0, 3),
     sections: a.sections.slice(0, 6).map((s) => ({ heading: s.heading.trim(), paragraphs: s.paragraphs.map((p) => p.trim()).filter(Boolean) })),
     tags: [...new Set(a.tags.map((t) => t.replace(/^#/, '').trim()).filter(Boolean))].slice(0, 6),
-    faq: a.faq.slice(0, 3),
+    faq: a.faq.slice(0, 4),
+    entities: (a.entities || []).filter((e) => e.name?.trim()).slice(0, 4),
     timeline: a.timeline.slice(0, 8),
   };
 }

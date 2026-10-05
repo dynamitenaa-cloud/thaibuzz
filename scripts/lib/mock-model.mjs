@@ -19,6 +19,7 @@ export default new MockLanguageModelV4({
       timeline: [],
       faq: [{ q: 'นี่คือข่าวจริงไหม?', a: 'ไม่ใช่ เป็นข้อมูลทดสอบ' }],
       tags: [kw, 'ทดสอบ', 'ระบบอัตโนมัติ'],
+      entities: [{ name: kw.slice(0, 20), type: 'other' }],
       category: 'ข่าวทั่วไป',
       imageAlt: kw,
     };

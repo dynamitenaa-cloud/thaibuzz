@@ -95,6 +95,20 @@ export async function nicheCandidates(queries = NICHE_QUERIES, perQuery = 4) {
   return lists.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
 }
 
+// 롱테일: 구글 자동완성 = 태국 사람들이 실제로 치는 검색어 (예: "ไบร์ท วชิรวิชญ์ แฟน", "ลิซ่าอายุ")
+// 기사 FAQ/소제목에 반영해 경쟁이 약한 롱테일 검색을 노림. 실패하면 빈 배열 (기사 작성은 계속)
+export async function suggestions(q, limit = 10) {
+  try {
+    const r = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&hl=th&gl=th&q=${encodeURIComponent(q)}`, {
+      headers: { 'user-agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(8000),
+    });
+    const j = JSON.parse(await r.text());
+    return (j[1] || []).filter((s) => s && s.toLowerCase() !== q.toLowerCase()).slice(0, limit);
+  } catch {
+    return [];
+  }
+}
+
 // คีย์เวิร์ดเดียว → ข่าวที่เกี่ยวข้องภายใน 3 วัน (หลายแหล่ง = ข้อเท็จจริงแน่นขึ้น)
 export async function searchNews(q, limit = 8) {
   try {

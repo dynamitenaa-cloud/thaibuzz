@@ -11,7 +11,7 @@ export default function Footer() {
           </div>
           <div>
             <h3>หมวดหมู่</h3>
-            <ul>{CATEGORIES.map((c) => <li key={c.slug}><a href={`/category/${c.slug}/`}>{c.name}</a></li>)}</ul>
+            <ul>{CATEGORIES.map((c) => <li key={c.slug}><a href={`/category/${c.slug}/`}>{c.name}</a></li>)}<li><a href="/hub/">รวมคนดังและซีรีส์</a></li></ul>
           </div>
           <div>
             <h3>เกี่ยวกับเรา</h3>

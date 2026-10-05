@@ -13,8 +13,9 @@ export function Sidebar({ exclude }: { exclude?: string } = {}) {
       <AdSlot side />
       {tags.length > 0 && (
         <section className="box" aria-label="แท็กยอดนิยม">
-          <h2># แท็กยอดนิยม</h2>
+          <h2># คนดังและซีรีส์ที่ถูกพูดถึง</h2>
           <div className="tagcloud">{tags.map((t) => <a key={t.tag} href={tagUrl(t.tag)} className="chip">#{t.tag}</a>)}</div>
+          <a href="/hub/" style={{ display: 'block', marginTop: 12, fontSize: '.9rem', color: 'var(--brand-ink)' }}>ดูทั้งหมด ›</a>
         </section>
       )}
     </aside>
