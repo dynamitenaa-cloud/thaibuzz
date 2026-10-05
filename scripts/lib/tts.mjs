@@ -72,7 +72,9 @@ export async function durationOf(file) {
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const STYLE = 'อ่านแบบผู้ประกาศข่าวบันเทิง น้ำเสียงสดใส ชัดเจน กระชับ:\n\n';
+// 숏폼용: 빠르고 끊김 없이 (TTS 가 띄어쓰기마다 1초 넘게 쉬는 경향 → 프롬프트 + 후처리로 압축)
+const STYLE = 'อ่านแบบผู้ประกาศข่าวบันเทิงบน TikTok น้ำเสียงสดใส พูดเร็ว กระชับ และต่อเนื่อง ไม่เว้นช่วงหยุดยาว:\n\n';
+const SPEED = Number(process.env.REELS_VOICE_SPEED || 1.15);
 
 // 문단 하나 → 정리된 wav (앞뒤 무음 제거 + 음량 정규화). 분당 한도(429 + 짧은 대기)는 한 번 기다렸다가 재시도
 async function speakOne(model, text, file) {
@@ -81,7 +83,7 @@ async function speakOne(model, text, file) {
       const { pcm, rate } = await synth(model, STYLE + text);
       const raw = file + '.pcm', tmp = file + '.tmp.wav';
       fs.writeFileSync(raw, pcm);
-      await run(ffmpegPath, ['-y', '-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw, '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11', '-ar', '44100', '-ac', '2', tmp]);
+      await run(ffmpegPath, ['-y', '-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw, '-af', `silenceremove=stop_periods=-1:stop_duration=0.35:stop_threshold=-40dB:stop_silence=0.3,atempo=${SPEED},loudnorm=I=-16:TP=-1.5:LRA=11`, '-ar', '44100', '-ac', '2', tmp]);
       fs.rmSync(raw, { force: true });
       const len = await durationOf(tmp);
       const [a, b] = await speechBounds(tmp, 0, len);
