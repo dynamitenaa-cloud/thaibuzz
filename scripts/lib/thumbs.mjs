@@ -59,7 +59,7 @@ export async function makeThumb(slug, { text, category, color = '#e11d48', image
   for (const u of [...imageUrls, imageUrl].filter(Boolean)) if ((bg = await imageToDataUri(u))) { used = u; break; }
   const len = [...text].length;
   const size = len > 40 ? 58 : len > 26 ? 68 : 80;
-  const tree = h(
+  const photoTree = h(
     'div',
     { width: 1200, height: 630, display: 'flex', position: 'relative', fontFamily: 'Prompt', background: `linear-gradient(135deg, ${color}, #1e1b4b)` },
     [
@@ -76,6 +76,26 @@ export async function makeThumb(slug, { text, category, color = '#e11d48', image
       ]),
     ].filter(Boolean),
   );
+  // 사진이 없을 때: 아래가 검게 비는 대신 밝은 카테고리 색 + 큰 제목을 세로 가운데에 배치
+  const plainTree = h(
+    'div',
+    { width: 1200, height: 630, display: 'flex', position: 'relative', fontFamily: 'Prompt', backgroundImage: `linear-gradient(135deg, ${color} 0%, #4c1d95 100%)` },
+    [
+      h('div', { position: 'absolute', top: -160, right: -120, width: 560, height: 560, borderRadius: 999, background: 'rgba(255,255,255,0.13)', display: 'flex' }),
+      h('div', { position: 'absolute', bottom: -220, left: -140, width: 600, height: 600, borderRadius: 999, background: 'rgba(0,0,0,0.18)', display: 'flex' }),
+      h('div', { position: 'absolute', top: 96, right: 250, width: 90, height: 90, borderRadius: 999, background: 'rgba(255,255,255,0.16)', display: 'flex' }),
+      h('div', { position: 'absolute', top: 36, left: 44, display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(0,0,0,0.35)', color: '#fff', fontSize: 28, padding: '6px 18px', borderRadius: 999 }, [
+        h('div', { width: 14, height: 14, borderRadius: 99, background: '#fde047', display: 'flex' }),
+        brand,
+      ]),
+      h('div', { position: 'absolute', left: 64, right: 64, top: 120, bottom: 60, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 22 }, [
+        h('div', { display: 'flex' }, [h('div', { background: 'rgba(255,255,255,0.95)', color, fontSize: 30, padding: '4px 20px', borderRadius: 10 }, category)]),
+        h('div', { color: '#fff', fontSize: size + 6, lineHeight: 1.22, display: 'flex', flexWrap: 'wrap', textShadow: '0 4px 20px rgba(0,0,0,0.35)' }, thaiWrap(text)),
+        h('div', { width: 150, height: 9, borderRadius: 9, background: '#fde047', display: 'flex' }),
+      ]),
+    ],
+  );
+  const tree = bg ? photoTree : plainTree;
   const svg = await satori(tree, { width: 1200, height: 630, fonts: await fonts() });
   const png = new Resvg(svg, { fitTo: { mode: 'width', value: 1200 } }).render().asPng();
   // OG/Discover 용: 텍스트가 박힌 버전

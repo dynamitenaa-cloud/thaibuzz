@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { trendsTH, newsTopicTH, searchNews, fetchArticleText, similarity, jaccard } from './lib/sources.mjs';
+import { trendsTH, newsTopicTH, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
 import { writeArticle, qualityCheck, normalize, FatalError, QuotaExhausted } from './lib/writer.mjs';
 import { makeThumb } from './lib/thumbs.mjs';
 
@@ -55,14 +55,16 @@ async function buildFacts(c) {
   const more = await searchNews(c.query || c.keyword);
   const seen = new Set();
   const news = [...c.news, ...more].filter((n) => n.title && !seen.has(n.title) && seen.add(n.title)).slice(0, 8);
-  // 원문 URL(직접 링크)이 있는 상위 2개 기사 본문을 근거로 추가
-  const bodies = await Promise.all(news.filter((n) => n.url && !n.url.includes('news.google.com')).slice(0, 2).map((n) => fetchArticleText(n.url)));
+  // 구글 뉴스 래퍼 링크 → 실제 언론사 주소 (상위 4개). 본문·사진을 가져오고 출처 링크도 원문 주소로 표시됨
+  await Promise.all(news.slice(0, 4).map(async (n) => { n.url = await resolveGoogleNewsUrl(n.url); }));
+  // 원문 URL(직접 링크)이 있는 상위 3개 기사 본문을 근거로 추가
+  const bodies = await Promise.all(news.filter((n) => n.url && !n.url.includes('news.google.com')).slice(0, 3).map((n) => fetchArticleText(n.url)));
   const facts = [
     ...news.map((n, i) => `[${i + 1}] ${n.source || 'ไม่ระบุ'}: ${n.title}${n.snippet ? `\n${n.snippet}` : ''}`),
     ...bodies.filter((b) => b.text).map((b, i) => `\n[เนื้อหาจากแหล่งข่าว ${i + 1}]\n${b.text}`),
   ].join('\n');
   // og:image ของต้นฉบับมักคมชัดที่สุด → ลองก่อน แล้วค่อยภาพจาก Trends
-  const direct = news.filter((n) => n.url && !n.url.includes('news.google.com')).slice(0, 2);
+  const direct = news.filter((n) => n.url && !n.url.includes('news.google.com')).slice(0, 3);
   const images = [
     ...bodies.map((b, i) => ({ url: b.image, credit: direct[i]?.source })),
     { url: c.picture, credit: c.pictureSource },

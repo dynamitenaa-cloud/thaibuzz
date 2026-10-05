@@ -122,3 +122,23 @@ export function jaccard(a, b) {
   for (const t of A) if (B.has(t)) n++;
   return n / (A.size + B.size - n);
 }
+
+// Google News RSS 링크(news.google.com/rss/articles/...)는 리다이렉트 래퍼라 본문/사진을 못 가져온다.
+// 페이지의 서명값으로 batchexecute 를 호출해 실제 언론사 URL 을 얻는다. 비공식 방식이라 실패하면 원래 링크 유지.
+const GN_UA = { 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36' };
+export async function resolveGoogleNewsUrl(link) {
+  if (!link || !link.includes('news.google.com/rss/articles/')) return link;
+  try {
+    const id = new URL(link).pathname.split('/').pop();
+    const page = await (await fetch(`https://news.google.com/rss/articles/${id}?hl=th&gl=TH&ceid=TH:th`, { headers: GN_UA, signal: AbortSignal.timeout(12000) })).text();
+    const sg = page.match(/data-n-a-sg="([^"]+)"/)?.[1], ts = page.match(/data-n-a-ts="([^"]+)"/)?.[1];
+    if (!sg || !ts) return link;
+    const inner = JSON.stringify(['garturlreq', [['X', 'X', ['X', 'X'], null, null, 1, 1, 'US:en', null, 1, null, null, null, null, null, 0, 1], 'X', 'X', 1, [1, 1, 1], 1, 1, null, 0, 0, null, 0], id, ts, sg]);
+    const r = await fetch('https://news.google.com/_/DotsSplashUi/data/batchexecute', {
+      method: 'POST', headers: { ...GN_UA, 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: 'f.req=' + encodeURIComponent(JSON.stringify([[['Fbv4je', inner, null, 'generic']]])), signal: AbortSignal.timeout(12000),
+    });
+    const url = JSON.parse(JSON.parse((await r.text()).split('\n\n')[1])[0][2])[1];
+    return /^https?:\/\//.test(url) ? url : link;
+  } catch { return link; }
+}
