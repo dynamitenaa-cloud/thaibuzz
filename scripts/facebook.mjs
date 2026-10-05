@@ -7,7 +7,7 @@ const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const DRY = process.argv.includes('--dry');
-const API = 'https://graph.facebook.com/v23.0';
+const API = 'https://graph.facebook.com/v25.0';
 
 if (!DRY && (!PAGE_ID || !TOKEN)) { console.log('facebook: FB_PAGE_ID/FB_PAGE_TOKEN 없음 → 건너뜀'); process.exit(0); }
 if (!SITE) { console.log('facebook: SITE_URL 없음 → 건너뜀'); process.exit(0); }
@@ -32,16 +32,31 @@ let failed = 0;
 for (const slug of slugs) {
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;
-  const message = `${p.title}\n\n${p.excerpt}\n\n${p.tags.slice(0, 3).map(hashtag).join(' ')}`;
-  if (DRY) { console.log(`--- ${url}\n${message}\n`); continue; }
-  if (!(await waitLive(url))) { console.warn(`facebook: ${url} 아직 열리지 않음 → 건너뜀`); failed++; continue; }
-  const r = await fetch(`${API}/${PAGE_ID}/feed`, {
+  // 사진 게시물이 링크 게시물보다 도달률이 높음 → 썸네일을 사진으로 올리고 본문에 링크를 넣는다.
+  // 링크는 캡션 안에서도 클릭 가능. 썸네일이 없는(오래된/lite) 글만 링크 게시물로.
+  const image = p.thumb ? `${SITE}${p.thumb}` : '';
+  const message = `${p.title}
+
+${p.excerpt}
+
+👉 อ่านต่อ: ${url}
+
+${p.tags.slice(0, 3).map(hashtag).join(' ')}`;
+  if (DRY) { console.log(`--- ${image ? 'PHOTO' : 'LINK'} ${url}
+${message}
+`); continue; }
+  if (!(await waitLive(url)) || (image && !(await waitLive(image)))) { console.warn(`facebook: ${url} 아직 열리지 않음 → 건너뜀`); failed++; continue; }
+  const body = image
+    ? new URLSearchParams({ url: image, caption: message, access_token: TOKEN })
+    : new URLSearchParams({ message, link: url, access_token: TOKEN });
+  const r = await fetch(`${API}/${PAGE_ID}/${image ? 'photos' : 'feed'}`, {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({ message, link: url, access_token: TOKEN }),
+    body,
   });
   const j = await r.json().catch(() => ({}));
-  if (r.ok && j.id) console.log(`facebook: posted ${j.id} ← ${slug}`);
+  const id = j.post_id || j.id;
+  if (r.ok && id) console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`);
   else { failed++; console.error(`facebook: FAILED ${slug}:`, JSON.stringify(j.error ?? j).slice(0, 300)); }
   await sleep(3000); // 연속 게시 간격 (스팸 판정 방지)
 }

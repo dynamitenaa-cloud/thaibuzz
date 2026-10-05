@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { og } from '@/lib/og';
 import { SITE } from '@/lib/site';
 
-export const metadata: Metadata = { title: `เกี่ยวกับ ${SITE.name}`, alternates: { canonical: '/about/' } };
+export const metadata: Metadata = { title: `เกี่ยวกับ ${SITE.name}`, alternates: { canonical: '/about/' }, openGraph: og('/about/', `เกี่ยวกับ ${SITE.name}`) };
 
 export default function Page() {
   return (
@@ -16,7 +16,7 @@ export default function Page() {
         <li>ทุกบทความระบุแหล่งข่าวต้นทางพร้อมลิงก์ เพื่อให้ผู้อ่านตรวจสอบข้อมูลได้ด้วยตนเอง</li>
         <li>เราไม่เผยแพร่ข่าวลือเป็นข้อเท็จจริง และไม่เผยแพร่เนื้อหาที่อาจละเมิดสิทธิ์ของผู้เยาว์หรือบุคคลทั่วไป</li>
       </ul>
-      <p>อ่านรายละเอียดเพิ่มเติมได้ที่ <Link href="/editorial-policy/" style={{ textDecoration: 'underline' }}>นโยบายกองบรรณาธิการ</Link></p>
+      <p>อ่านรายละเอียดเพิ่มเติมได้ที่ <a href="/editorial-policy/" style={{ textDecoration: 'underline' }}>นโยบายกองบรรณาธิการ</a></p>
       <h2>ติดต่อ</h2>
       <p>ข้อเสนอแนะ แจ้งแก้ไขข้อมูล หรือติดต่อโฆษณา: <a href={`mailto:${SITE.email}`} style={{ textDecoration: 'underline' }}>{SITE.email}</a></p>
     </div>

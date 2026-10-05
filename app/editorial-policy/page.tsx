@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { og } from '@/lib/og';
 import { SITE } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'นโยบายกองบรรณาธิการ', alternates: { canonical: '/editorial-policy/' } };
+export const metadata: Metadata = { title: 'นโยบายกองบรรณาธิการ', alternates: { canonical: '/editorial-policy/' }, openGraph: og('/editorial-policy/', 'นโยบายกองบรรณาธิการ') };
 
 export default function Page() {
   return (

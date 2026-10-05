@@ -44,6 +44,7 @@ export class QuotaExhausted extends Error {}
 const AUTH = /API key not valid|API_KEY_INVALID|permission denied|unauthorized|forbidden|PERMISSION_DENIED/i;
 const QUOTA = /quota|RESOURCE_EXHAUSTED|\b429\b|rate.?limit|exceeded your current/i;
 const GONE = /no longer available|is not found|not supported for generateContent|model.*not found/i;
+const TRANSIENT = /high demand|overloaded|UNAVAILABLE|\b50[0234]\b|internal error|deadline|timed? ?out|ECONNRESET|ETIMEDOUT|fetch failed|socket hang up/i;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -54,9 +55,14 @@ let chain = null, idx = 0;
 // 한도 소진된 모델은 쿨다운 동안 건너뜀 (.cache 는 Actions 캐시로 실행 간 유지). 구글이 알려주는 "Please retry in 8h19m" 을 파싱
 const COOL = '.cache/model-cooldown.json';
 const readCool = () => { try { return JSON.parse(fs.readFileSync(COOL, 'utf8')); } catch { return {}; } };
+// "retry in 8h19m7.6s" / "retry in 37.5s" / "retry in 2m" → ms. 못 읽으면 null
+export function parseRetryMs(msg) {
+  const m = String(msg).match(/retry in\s*(?:(\d+)h)?\s*(?:(\d+)m(?!s))?\s*(?:([\d.]+)s)?/i);
+  if (!m || !(m[1] || m[2] || m[3])) return null;
+  return ((+m[1] || 0) * 3600 + (+m[2] || 0) * 60 + (parseFloat(m[3]) || 0)) * 1000;
+}
 function markCooldown(name, msg) {
-  const m = msg.match(/retry in (?:(\d+)h)?(?:(\d+)m)?/i);
-  const ms = m && (m[1] || m[2]) ? ((+m[1] || 0) * 60 + (+m[2] || 0) + 1) * 6e4 : 6 * 36e5;
+  const ms = (parseRetryMs(msg) ?? 6 * 36e5) + 60e3;
   const c = readCool(); c[name] = Date.now() + ms;
   fs.mkdirSync('.cache', { recursive: true }); fs.writeFileSync(COOL, JSON.stringify(c));
 }
@@ -113,15 +119,22 @@ ${recentBlock}เขียนบทความตามกฎทั้งหม
       lastErr = e;
       const msg = String(e?.message);
       if (AUTH.test(msg)) throw new FatalError(msg);
+      const retryMs = parseRetryMs(msg);
+      // 분당 한도(짧은 대기 안내) → 모델을 막지 않고 그만큼만 기다렸다가 같은 모델로 재시도
+      if (QUOTA.test(msg) && retryMs !== null && retryMs <= 90e3 && ++overload <= 2) {
+        console.warn(`  분당 한도 → ${Math.ceil(retryMs / 1000)}s 대기 후 재시도`);
+        await sleep(retryMs + 1000);
+        continue;
+      }
       if (!model && (QUOTA.test(msg) || GONE.test(msg))) {
-        // 한도 소진/단종 → 다음 모델로 전환 (이 글 요청은 처음부터 다시)
+        // 일일 한도 소진/단종 → 다음 모델로 전환 (이 글 요청은 처음부터 다시)
         console.warn(`  model ${chain[idx]} 사용 불가 (${QUOTA.test(msg) ? '한도 소진' : '단종'}) → 다음 모델`);
-        markCooldown(chain[idx], QUOTA.test(msg) ? msg : 'retry in 24h0m');
+        markCooldown(chain[idx], QUOTA.test(msg) ? msg : 'retry in 24h');
         if (++idx >= chain.length) throw new QuotaExhausted('모든 모델의 무료 한도가 소진됨');
         continue;
       }
-      // 일시 과부하("high demand") 등 → 짧게 대기 후 재시도 (요청마다 무료 한도를 쓰므로 최대 2회)
-      if (++overload > 2) throw lastErr;
+      // 재시도는 일시적 오류(과부하·5xx·네트워크)만. 안전 차단·스키마 불일치 등은 다시 해도 같은 결과라 한도만 낭비
+      if (!TRANSIENT.test(msg) || ++overload > 2) throw lastErr;
       const wait = 8000 * overload;
       console.warn(`  retry ${overload} in ${wait / 1000}s: ${msg.slice(0, 120)}`);
       await sleep(wait);

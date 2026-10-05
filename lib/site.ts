@@ -7,6 +7,9 @@ export const SITE = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@example.com',
   locale: 'th_TH',
   adsense: process.env.NEXT_PUBLIC_ADSENSE_ID || '',
+  // 디스플레이 광고 단위의 data-ad-slot 값 (본문/목록용, 사이드바용). 없으면 자동 광고만 사용
+  adsenseSlot: process.env.NEXT_PUBLIC_ADSENSE_SLOT || '',
+  adsenseSlotSide: process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDE || '',
   shopee: process.env.NEXT_PUBLIC_SHOPEE_AFFILIATE_ID || '',
   gaId: process.env.NEXT_PUBLIC_GA_ID || '',
   perPage: 24,

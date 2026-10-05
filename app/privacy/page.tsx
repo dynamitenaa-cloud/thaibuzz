@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { og } from '@/lib/og';
 import { SITE } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'นโยบายความเป็นส่วนตัว', alternates: { canonical: '/privacy/' } };
+export const metadata: Metadata = { title: 'นโยบายความเป็นส่วนตัว', alternates: { canonical: '/privacy/' }, openGraph: og('/privacy/', 'นโยบายความเป็นส่วนตัว') };
 
 export default function Page() {
   return (

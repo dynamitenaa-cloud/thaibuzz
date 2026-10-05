@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CATEGORIES, SITE } from '@/lib/site';
 
 export default function Footer() {
@@ -12,15 +11,15 @@ export default function Footer() {
           </div>
           <div>
             <h3>หมวดหมู่</h3>
-            <ul>{CATEGORIES.map((c) => <li key={c.slug}><Link href={`/category/${c.slug}/`}>{c.name}</Link></li>)}</ul>
+            <ul>{CATEGORIES.map((c) => <li key={c.slug}><a href={`/category/${c.slug}/`}>{c.name}</a></li>)}</ul>
           </div>
           <div>
             <h3>เกี่ยวกับเรา</h3>
             <ul>
-              <li><Link href="/about/">เกี่ยวกับ {SITE.name}</Link></li>
-              <li><Link href="/editorial-policy/">นโยบายกองบรรณาธิการ</Link></li>
-              <li><Link href="/privacy/">นโยบายความเป็นส่วนตัว</Link></li>
-              <li><Link href="/contact/">ติดต่อเรา / แจ้งแก้ไขข้อมูล</Link></li>
+              <li><a href="/about/">เกี่ยวกับ {SITE.name}</a></li>
+              <li><a href="/editorial-policy/">นโยบายกองบรรณาธิการ</a></li>
+              <li><a href="/privacy/">นโยบายความเป็นส่วนตัว</a></li>
+              <li><a href="/contact/">ติดต่อเรา / แจ้งแก้ไขข้อมูล</a></li>
               <li><a href="/feed.xml">RSS Feed</a></li>
             </ul>
           </div>

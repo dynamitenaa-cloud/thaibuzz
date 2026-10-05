@@ -2,7 +2,7 @@ name: publish
 
 on:
   schedule:
-    - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). public 저장소면 '*/30 * * * *' 도 무료
+    - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). GitHub 예약 실행은 수십 분 늦거나 건너뛰어질 수 있음
   workflow_dispatch:
     inputs:
       fb_test:
@@ -25,6 +25,8 @@ env:
   NEXT_PUBLIC_SITE_NAME: ${{ vars.SITE_NAME }}
   NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
   NEXT_PUBLIC_ADSENSE_ID: ${{ vars.ADSENSE_ID }}
+  NEXT_PUBLIC_ADSENSE_SLOT: ${{ vars.ADSENSE_SLOT }}
+  NEXT_PUBLIC_ADSENSE_SLOT_SIDE: ${{ vars.ADSENSE_SLOT_SIDE }}
   NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION || secrets.GOOGLE_SITE_VERIFICATION }}
   NEXT_PUBLIC_SHOPEE_AFFILIATE_ID: ${{ vars.SHOPEE_AFFILIATE_ID }}
@@ -34,19 +36,22 @@ env:
 
 jobs:
   run:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    runs-on: ubuntu-24.04 # 2026-10-19 부터 ubuntu-latest 가 26 으로 바뀜 → 네이티브 의존성(sharp/resvg) 안정성을 위해 고정
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # 재실행/대기열 실행도 항상 최신 main 기준 (예전 커밋으로 돌면 방금 올라간 글을 못 봐서 중복 발행)
+      - uses: actions/checkout@v7
+        with: { ref: main }
+      - uses: actions/setup-node@v7
         with: { node-version: 22, cache: npm }
       - run: npm ci
 
-      # 폰트/거절목록 캐시 유지 (무료 LLM 쿼터 절약)
-      - uses: actions/cache@v4
+      # 폰트/거절목록/모델 쿨다운 캐시. 저장은 아래에서 if: always() 로 (실패한 실행에서도 기록이 보존되도록)
+      - name: Restore pipeline cache
+        uses: actions/cache/restore@v6
         with:
           path: .cache
-          key: pipeline-${{ github.run_id }}
+          key: pipeline-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: pipeline-
 
       - name: Generate posts
@@ -58,6 +63,7 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           MAX_PER_RUN: ${{ vars.MAX_PER_RUN || '3' }}
           MAX_PER_DAY: ${{ vars.MAX_PER_DAY || '40' }}
+          MAX_ATTEMPTS: ${{ vars.MAX_ATTEMPTS }}
           USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
 
       # 오래된 글 단계적 보관 (Cloudflare 파일 한도/저장소 용량 관리). scripts/archive.mjs 참고
@@ -65,10 +71,11 @@ jobs:
         if: ${{ !cancelled() && github.event_name != 'push' }}
         run: node scripts/archive.mjs
         env:
-          LIVE_FULL: ${{ vars.LIVE_FULL || '3000' }}
-          LIVE_LITE: ${{ vars.LIVE_LITE || '6000' }}
+          LIVE_FULL: ${{ vars.LIVE_FULL || '2500' }}
+          LIVE_LITE: ${{ vars.LIVE_LITE || '4500' }}
 
       - name: Commit new posts
+        id: commit
         if: ${{ !cancelled() && steps.pipe.outputs.published > 0 }}
         run: |
           git config user.name "thaibuzz-bot"
@@ -77,24 +84,37 @@ jobs:
           git commit -m "content: ${{ steps.pipe.outputs.published }} new posts"
           git pull --rebase && git push
 
-      # 새 글이 있거나 코드 변경/수동 실행일 때만 빌드·배포 (불필요한 배포 방지)
+      # 예약 실행에서 새 글이 0건이어도, 마지막 배포 이후 코드가 바뀌었으면 배포 (대기열에서 밀려 취소된 push 실행 보완)
+      - name: Detect code change since last deploy
+        id: code
+        run: |
+          HASH=$(git ls-tree -r HEAD | grep -vE $'\t(content|public/thumbs)/' | sha1sum | cut -c1-40)
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+          if [ "$(cat .cache/deployed-code-hash 2>/dev/null)" != "$HASH" ]; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+
+      # 커밋이 실패했으면 배포/게시하지 않음 (배포만 되고 저장소엔 없는 글 → 다음 배포에서 사라져 페북 링크 404)
       - name: Build
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule') }}
+        id: build
+        if: ${{ !cancelled() && steps.commit.outcome != 'failure' && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule' || steps.code.outputs.changed == 'true') }}
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || github.event_name != 'schedule') }}
-        uses: cloudflare/wrangler-action@v3
+        id: deploy
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy out --project-name=${{ vars.CF_PROJECT || 'thaibuzz' }} --branch=main --commit-dirty=true
 
+      - name: Remember deployed code
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' }}
+        run: echo "${{ steps.code.outputs.hash }}" > .cache/deployed-code-hash
+
       - name: Ping IndexNow (Bing/Yandex/Naver/Seznam)
-        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != '' }}
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != '' }}
         run: node scripts/indexnow.mjs
 
-      # 배포가 끝난 뒤에 올려야 링크 미리보기(OG 이미지)가 정상 생성됨
       # 테스트 실행(fb_test): 가장 최근 글 1개를 게시 대상으로 지정
       - name: Pick latest post for Facebook test
         if: ${{ inputs.fb_test }}
@@ -102,6 +122,15 @@ jobs:
           mkdir -p .cache
           node -e "const fs=require('fs');const p=fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0];fs.writeFileSync('.cache/new-urls.txt','/post/'+p.slug+'/');console.log('test target:',p.slug)"
 
+      # 배포가 끝난 뒤에 올려야 링크/이미지가 정상 표시됨
       - name: Post to Facebook Page
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || inputs.fb_test) && env.FB_PAGE_TOKEN != '' }}
+        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
         run: node scripts/facebook.mjs
+
+      # 실패한 실행이어도 거절 목록·모델 쿨다운·배포 해시를 보존 (안 그러면 매시간 같은 실패에 무료 한도를 다시 씀)
+      - name: Save pipeline cache
+        if: ${{ always() }}
+        uses: actions/cache/save@v6
+        with:
+          path: .cache
+          key: pipeline-${{ github.run_id }}-${{ github.run_attempt }}

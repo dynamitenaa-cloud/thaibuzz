@@ -1,6 +1,5 @@
 import { catOf, displayImg, hasImg, postUrl, thaiDate, type Post } from '@/lib/posts';
 import TimeAgo from './TimeAgo';
-import ThaiText from './ThaiText';
 
 // 글 링크는 next/link 대신 일반 <a>: 전체 페이지 로드 → AdSense/GA 페이지뷰가 정확히 집계되고,
 // 정적 export 에서 글마다 생기던 RSC 페이로드 파일(6개)이 필요 없어 Cloudflare 파일 한도를 아낀다.
@@ -34,7 +33,7 @@ export function Card({ p, priority = false }: { p: Post; priority?: boolean }) {
         {isHot(p) && <span className="badge-hot">🔥 มาแรง</span>}
       </div>
       <Meta p={p} />
-      <h3 className="clamp-3"><a href={postUrl(p)}><ThaiText>{p.title}</ThaiText></a></h3>
+      <h3 className="clamp-3"><a href={postUrl(p)}>{p.title}</a></h3>
     </article>
   );
 }
@@ -52,7 +51,7 @@ export function Lead({ p }: { p: Post }) {
           {isHot(p) && <span className="badge-hot">🔥 มาแรง</span>}
         </div>
         <Meta p={p} />
-        <h2><a href={postUrl(p)}><ThaiText>{p.title}</ThaiText></a></h2>
+        <h2><a href={postUrl(p)}>{p.title}</a></h2>
         <p className="clamp-2">{p.excerpt}</p>
       </article>
     );
@@ -75,7 +74,7 @@ export function Row({ p }: { p: Post }) {
       <div className="media"><Thumb p={p} /></div>
       <div>
         <Meta p={p} />
-        <h3 className="clamp-3"><a href={postUrl(p)}><ThaiText>{p.title}</ThaiText></a></h3>
+        <h3 className="clamp-3"><a href={postUrl(p)}>{p.title}</a></h3>
         <p className="clamp-2">{p.excerpt}</p>
       </div>
     </article>
@@ -91,7 +90,7 @@ export function RankList({ posts, title }: { posts: Post[]; title: string }) {
         {posts.map((p) => (
           <li key={p.slug}>
             <div>
-              <a href={postUrl(p)} className="clamp-3"><ThaiText>{p.title}</ThaiText></a>
+              <a href={postUrl(p)} className="clamp-3">{p.title}</a>
               <Meta p={p} cat={false} />
             </div>
           </li>

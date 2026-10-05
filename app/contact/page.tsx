@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { og } from '@/lib/og';
 import { SITE } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'ติดต่อเรา', alternates: { canonical: '/contact/' } };
+export const metadata: Metadata = { title: 'ติดต่อเรา', alternates: { canonical: '/contact/' }, openGraph: og('/contact/', 'ติดต่อเรา') };
 
 export default function Page() {
   return (

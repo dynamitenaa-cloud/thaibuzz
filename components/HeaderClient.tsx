@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { MoonIcon, SunIcon } from './Icons';
@@ -12,9 +11,9 @@ export function NavLinks({ items }: { items: { href: string; label: string }[] }
       {items.map((i) => {
         const active = i.href === '/' ? path === '/' : norm(path).startsWith(i.href);
         return (
-          <Link key={i.href} href={i.href} aria-current={active ? 'page' : undefined}>
+          <a key={i.href} href={i.href} aria-current={active ? 'page' : undefined}>
             {i.label}
-          </Link>
+          </a>
         );
       })}
     </nav>

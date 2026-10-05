@@ -18,9 +18,10 @@ concurrency:
 jobs:
   compact:
     if: ${{ vars.COMPACT_HISTORY == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with: { ref: main }
       - name: Squash history into one commit
         run: |
           git config user.name "thaibuzz-bot"
@@ -28,4 +29,5 @@ jobs:
           git checkout --orphan compacted
           git add -A
           git commit -m "chore: compact history ($(date -u +%F))"
-          git push --force origin compacted:main
+          # 체크아웃 이후 누가 main 에 푸시했으면 덮어쓰지 않고 실패 (--force-with-lease)
+          git push --force-with-lease=main:$(git rev-parse origin/main) origin compacted:main

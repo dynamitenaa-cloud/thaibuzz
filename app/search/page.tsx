@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { og } from '@/lib/og';
 import SearchClient from './SearchClient';
 
-export const metadata: Metadata = { title: 'ค้นหาข่าว', robots: { index: false, follow: true }, alternates: { canonical: '/search/' } };
+export const metadata: Metadata = { title: 'ค้นหาข่าว', robots: { index: false, follow: true }, alternates: { canonical: '/search/' }, openGraph: og('/search/', 'ค้นหาข่าว') };
 
 export default function Page() {
   return (

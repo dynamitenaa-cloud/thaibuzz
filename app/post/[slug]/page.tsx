@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
+import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
@@ -9,7 +8,6 @@ import { ArticleChrome, Share } from '@/components/Share';
 import AdSlot from '@/components/AdSlot';
 import JsonLd from '@/components/JsonLd';
 import { ClockIcon } from '@/components/Icons';
-import ThaiText from '@/components/ThaiText';
 
 function ReadMore({ p }: { p: Post }) {
   return (
@@ -38,7 +36,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     keywords: [p.keyword, ...p.tags],
     alternates: { canonical: url },
     openGraph: {
-      type: 'article', url, title: p.title, description: p.excerpt,
+      type: 'article', siteName: SITE.name, locale: SITE.locale, url, title: p.title, description: p.excerpt,
       images: [{ url: ogImage(p), width: 1200, height: 630, alt: p.imageAlt }],
       publishedTime: p.createdAt, modifiedTime: p.updatedAt ?? p.createdAt, section: p.category, tags: p.tags,
     },
@@ -101,11 +99,11 @@ export default async function PostPage({ params }: P) {
           <header className="art-h">
             <nav className="crumbs" aria-label="breadcrumb">
               <ol>
-                <li><Link href="/">หน้าแรก</Link></li>
-                <li><Link href={`/category/${c.slug}/`}>{c.name}</Link></li>
+                <li><a href="/">หน้าแรก</a></li>
+                <li><a href={`/category/${c.slug}/`}>{c.name}</a></li>
               </ol>
             </nav>
-            <h1><ThaiText>{p.title}</ThaiText></h1>
+            <h1>{p.title}</h1>
             <p className="lede">{p.excerpt}</p>
             <div className="meta" style={{ marginBottom: 14 }}>
               <span>โดย กองบรรณาธิการ {SITE.name}</span>
@@ -132,9 +130,9 @@ export default async function PostPage({ params }: P) {
           <div className="prose">
             {p.sections.map((s, i) => (
               <section key={i}>
-                <h2><ThaiText>{s.heading}</ThaiText></h2>
+                <h2>{s.heading}</h2>
                 {s.paragraphs.map((t, j) => <p key={j}>{t}</p>)}
-                {i === mid - 1 && <AdSlot client={SITE.adsense} />}
+                {i === mid - 1 && <AdSlot />}
                 {i === 0 && rm && <ReadMore p={rm} />}
               </section>
             ))}
@@ -166,16 +164,17 @@ export default async function PostPage({ params }: P) {
             </a>
           )}
 
-          <div className="tags">{p.tags.map((t) => <Link key={t} href={tagUrl(t)} className="chip">#{t}</Link>)}</div>
+          {/* 글이 2개 이상인 태그만 페이지가 있으므로 링크, 나머지는 텍스트 */}
+          <div className="tags">{p.tags.map((t) => (tagHasPage(t) ? <a key={t} href={tagUrl(t)} className="chip">#{t}</a> : <span key={t} className="chip">#{t}</span>))}</div>
 
           <Share url={url} title={p.title} />
 
-          <AdSlot client={SITE.adsense} />
+          <AdSlot />
 
           <footer className="srcs">
             <b>แหล่งข้อมูลอ้างอิง</b>
             <ul>{p.sources.map((s, i) => <li key={i}><a href={s.url} rel="nofollow noopener" target="_blank">{s.title}</a>{s.source ? ` — ${s.source}` : ''}</li>)}</ul>
-            <p className="disc">บทความนี้เรียบเรียงด้วยความช่วยเหลือของ AI จากแหล่งข่าวข้างต้น และอาจมีการอัปเดตเมื่อมีข้อมูลใหม่ หากพบข้อผิดพลาด <Link href="/contact/" style={{ textDecoration: 'underline' }}>แจ้งแก้ไขได้ที่นี่</Link></p>
+            <p className="disc">บทความนี้เรียบเรียงด้วยความช่วยเหลือของ AI จากแหล่งข่าวข้างต้น และอาจมีการอัปเดตเมื่อมีข้อมูลใหม่ หากพบข้อผิดพลาด <a href="/contact/" style={{ textDecoration: 'underline' }}>แจ้งแก้ไขได้ที่นี่</a></p>
           </footer>
 
           {(newer || older) && (
@@ -196,7 +195,7 @@ export default async function PostPage({ params }: P) {
       )}
       {moreGrid.length > 0 && (
         <section className="sec" aria-labelledby="more">
-          <div className="sec-h"><h2 id="more">⚡ ข่าวล่าสุด</h2><Link href="/">ดูทั้งหมด ›</Link></div>
+          <div className="sec-h"><h2 id="more">⚡ ข่าวล่าสุด</h2><a href="/">ดูทั้งหมด ›</a></div>
           <div className="grid-4">{moreGrid.map((x) => <Card key={x.slug} p={x} />)}</div>
         </section>
       )}

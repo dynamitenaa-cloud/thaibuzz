@@ -37,7 +37,8 @@ export const getPosts = cache((): Post[] => {
   if (!fs.existsSync(DIR)) return [];
   return fs
     .readdirSync(DIR)
-    .filter((f) => f.endsWith('.json'))
+    // CI(실제 배포)에서는 데모 글을 절대 포함하지 않음. 로컬 미리보기에서만 사용
+    .filter((f) => f.endsWith('.json') && !(process.env.CI && f.startsWith('demo-')))
     .map((f) => JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')) as Post)
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 });
@@ -56,6 +57,10 @@ export const catOf = (p: Post): Category => categoryByName(p.category);
 // แท็กภาษาไทย → slug สั้นแบบ ASCII เพื่อให้ path ของ static export ปลอดภัยทุกโฮสต์
 export const tagSlug = (tag: string) => crypto.createHash('md5').update(tag.trim().toLowerCase()).digest('hex').slice(0, 8);
 export const tagUrl = (tag: string) => `/tag/${tagSlug(tag)}/`;
+
+// 태그 페이지는 글이 2개 이상인 태그만 생성 (1개짜리는 내용이 빈약하고, 페이지 수가 폭증해 Cloudflare 파일 한도를 잠식)
+export const MIN_TAG_POSTS = 2;
+export const tagHasPage = (tag: string) => (getTags().get(tagSlug(tag))?.count ?? 0) >= MIN_TAG_POSTS;
 
 export function getTags() {
   const map = new Map<string, { tag: string; count: number }>();
@@ -77,6 +82,15 @@ export const wordCount = (p: Post) =>
 export const readingMinutes = (p: Post) => Math.max(1, Math.round(wordCount(p) / 200));
 
 // คะแนน "มาแรง": ปริมาณค้นหา ลดทอนตามอายุ
+// 홈 첫 화면: 상단 헤드라인 3개 + 나머지 목록. /page/n/ 도 같은 목록을 이어서 보여줘야 겹치거나 빠지는 글이 없음
+export function homeFeed() {
+  const posts = getPosts();
+  const fresh = posts.filter((p) => Date.now() - Date.parse(p.createdAt) < 864e5);
+  const top = trending(fresh.length >= 3 ? fresh : posts, 3);
+  const used = new Set(top.map((p) => p.slug));
+  return { top, rest: posts.filter((p) => !used.has(p.slug)) };
+}
+
 export function trending(posts: Post[], n: number) {
   const now = Date.now();
   return [...posts]

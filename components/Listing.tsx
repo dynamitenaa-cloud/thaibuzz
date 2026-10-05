@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { getPosts, getTags, trending, tagUrl, type Post } from '@/lib/posts';
+import { getPosts, getTags, MIN_TAG_POSTS, trending, tagUrl, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { Row, RankList } from './PostCard';
 import Pager from './Pager';
@@ -7,24 +6,25 @@ import AdSlot from './AdSlot';
 
 export function Sidebar({ exclude }: { exclude?: string } = {}) {
   const posts = getPosts().filter((p) => p.slug !== exclude);
-  const tags = [...getTags().values()].sort((a, b) => b.count - a.count).slice(0, 16);
+  const tags = [...getTags().values()].filter((t) => t.count >= MIN_TAG_POSTS).sort((a, b) => b.count - a.count).slice(0, 16);
   return (
     <aside className="aside">
       <RankList title="มาแรงตอนนี้" posts={trending(posts, 10)} />
-      <AdSlot client={SITE.adsense} side />
+      <AdSlot side />
       {tags.length > 0 && (
         <section className="box" aria-label="แท็กยอดนิยม">
           <h2># แท็กยอดนิยม</h2>
-          <div className="tagcloud">{tags.map((t) => <Link key={t.tag} href={tagUrl(t.tag)} className="chip">#{t.tag}</Link>)}</div>
+          <div className="tagcloud">{tags.map((t) => <a key={t.tag} href={tagUrl(t.tag)} className="chip">#{t.tag}</a>)}</div>
         </section>
       )}
     </aside>
   );
 }
 
-export function Listing({ posts, base, page }: { posts: Post[]; base: string; page: number }) {
-  const total = Math.max(1, Math.ceil(posts.length / SITE.perPage));
-  const slice = posts.slice((page - 1) * SITE.perPage, page * SITE.perPage);
+// all: 페이지 나누지 않고 전부 표시 (태그 페이지처럼 /page/n/ 경로가 없는 목록)
+export function Listing({ posts, base, page, all = false }: { posts: Post[]; base: string; page: number; all?: boolean }) {
+  const total = all ? 1 : Math.max(1, Math.ceil(posts.length / SITE.perPage));
+  const slice = all ? posts : posts.slice((page - 1) * SITE.perPage, page * SITE.perPage);
   return (
     <div className="cols">
       <div>
@@ -33,11 +33,11 @@ export function Listing({ posts, base, page }: { posts: Post[]; base: string; pa
           slice.map((p, i) => (
             <div key={p.slug}>
               <Row p={p} />
-              {i === 5 && <AdSlot client={SITE.adsense} />}
+              {i === 5 && <AdSlot />}
             </div>
           ))
         ) : (
-          <div className="empty"><p>ยังไม่มีบทความในหน้านี้</p><Link className="btn" href="/">กลับหน้าแรก</Link></div>
+          <div className="empty"><p>ยังไม่มีบทความในหน้านี้</p><a className="btn" href="/">กลับหน้าแรก</a></div>
         )}
         <Pager base={base} page={page} total={total} />
       </div>

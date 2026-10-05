@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { trendsTH, newsTopicTH, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
+import { trendsTH, newsTopicTH, nicheCandidates, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
 import { writeArticle, qualityCheck, normalize, FatalError, QuotaExhausted } from './lib/writer.mjs';
 import { makeThumb } from './lib/thumbs.mjs';
 
@@ -25,27 +25,38 @@ const rejected = fs.existsSync(REJECT_FILE) ? JSON.parse(fs.readFileSync(REJECT_
 for (const [k, t] of Object.entries(rejected)) if (Date.now() - t > 864e5) delete rejected[k];
 const saveRejected = () => fs.writeFileSync(REJECT_FILE, JSON.stringify(rejected));
 
-const existing = fs.readdirSync(POSTS).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(fs.readFileSync(path.join(POSTS, f), 'utf8')))
-  .filter((p) => !p.slug.startsWith('demo-')); // 데모 글은 예산/중복 계산에서 제외
-const recent = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 3 * 864e5);
+// 깨진 JSON 하나 때문에 전체 실행이 죽지 않도록 개별 try/catch
+const existing = fs.readdirSync(POSTS).filter((f) => f.endsWith('.json') && !f.startsWith('demo-')) // 데모 글은 예산/중복 계산에서 제외
+  .flatMap((f) => { try { return [JSON.parse(fs.readFileSync(path.join(POSTS, f), 'utf8'))]; } catch { console.warn('skip corrupt post file:', f); return []; } });
+const recent = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 3 * 864e5)
+  .sort((a, b) => b.createdAt.localeCompare(a.createdAt)); // 최신순 (LLM 중복 확인에 최신 제목이 들어가도록)
 const publishedToday = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 864e5).length;
 let budget = Math.min(MAX_PER_RUN, MAX_PER_DAY - publishedToday);
+// 실행당 LLM 호출 상한: 거부가 이어져도 무료 한도를 한 번에 다 쓰지 않게
+const MAX_ATTEMPTS = Number(process.env.MAX_ATTEMPTS || MAX_PER_RUN * 3);
+let attempts = 0;
 
-const isDup = (kw) =>
-  rejected[kw.toLowerCase()] ||
-  recent.some((p) => p.keyword.toLowerCase() === kw.toLowerCase() || similarity(kw, p.keyword) >= 0.7 || jaccard(kw, p.title) >= 0.6);
+const reject = (kw) => { rejected[kw.toLowerCase()] = Date.now(); };
+const isDup = (kw) => {
+  const k = kw.toLowerCase();
+  return Object.keys(rejected).some((r) => r === k || similarity(r, k) >= 0.7) ||
+    recent.some((p) => p.keyword.toLowerCase() === k || similarity(kw, p.keyword) >= 0.7 || jaccard(kw, p.title) >= 0.6);
+};
+// 임시 파일에 쓰고 이름 변경 → 중간에 끊겨도 반쪽짜리 JSON 이 남지 않음
+const writeAtomic = (file, data) => { fs.writeFileSync(file + '.tmp', data); fs.renameSync(file + '.tmp', file); };
 
 async function gather() {
-  const results = await Promise.allSettled([trendsTH(), newsTopicTH('ENTERTAINMENT')]);
+  const results = await Promise.allSettled([trendsTH(), newsTopicTH('ENTERTAINMENT'), nicheCandidates()]);
   results.filter((r) => r.status === 'rejected').forEach((r) => console.warn('source failed:', r.reason?.message));
-  const [trends = [], ent = []] = results.map((r) => (r.status === 'fulfilled' ? r.value : []));
-  // 검색량 큰 트렌드 우선, 연예 헤드라인을 사이사이에 섞어 니치 커버
+  const [trends = [], ent = [], niche = []] = results.map((r) => (r.status === 'fulfilled' ? r.value : []));
+  // 검색량 큰 트렌드 우선, 연예 헤드라인을 사이사이에 섞어 니치 커버. 가십 키워드 검색 결과는 뒤에 보충
   trends.sort((a, b) => b.traffic - a.traffic);
   const merged = [];
   for (let i = 0; i < Math.max(trends.length, ent.length); i++) {
     if (trends[i]) merged.push(trends[i]);
     if (ent[i]) merged.push(ent[i]);
   }
+  merged.push(...niche);
   const out = [];
   for (const c of merged) if (!isDup(c.keyword) && !out.some((o) => similarity(o.keyword, c.keyword) >= 0.7)) out.push(c);
   return out;
@@ -82,17 +93,19 @@ if (budget > 0) {
   console.log(`candidates: ${candidates.length}`);
   for (const c of candidates) {
     if (budget <= 0) break;
+    if (attempts >= MAX_ATTEMPTS) { console.log(`\n⏸ 실행당 LLM 호출 상한(${MAX_ATTEMPTS}) 도달 → 다음 실행에서 계속`); break; }
     console.log(`\n▶ ${c.keyword} [${c.origin}] traffic=${c.traffic}`);
     try {
       const f = await buildFacts(c);
-      if (f.richness < 3) { console.log('  skip: not enough sources'); rejected[c.keyword.toLowerCase()] = Date.now(); continue; }
+      if (f.richness < 3) { console.log('  skip: not enough sources'); reject(c.keyword); continue; }
       if (DRY) { console.log(f.facts.slice(0, 800)); budget--; continue; }
 
+      attempts++;
       const raw = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title));
       const q = qualityCheck(raw);
-      if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); rejected[c.keyword.toLowerCase()] = Date.now(); continue; }
+      if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
       const a = normalize(raw);
-      if (recent.some((p) => jaccard(a.title, p.title) >= 0.6)) { console.log('  skip: duplicate story'); continue; }
+      if (recent.some((p) => jaccard(a.title, p.title) >= 0.6)) { console.log('  skip: duplicate story'); reject(c.keyword); continue; }
 
       const now = new Date();
       const slug = `${now.toISOString().slice(0, 10).replace(/-/g, '')}-${crypto.createHash('md5').update(c.keyword + now.toISOString()).digest('hex').slice(0, 8)}`;
@@ -118,7 +131,7 @@ if (budget > 0) {
         keyword: c.keyword,
         sources: f.news.slice(0, 6).map(({ title, url, source }) => ({ title, url, source })),
       };
-      fs.writeFileSync(path.join(POSTS, `${slug}.json`), JSON.stringify(post, null, 2));
+      writeAtomic(path.join(POSTS, `${slug}.json`), JSON.stringify(post, null, 2));
       recent.push(post);
       newUrls.push(`/post/${slug}/`);
       console.log(`  ✅ published (${q.words} words): ${a.title}`);
@@ -127,6 +140,7 @@ if (budget > 0) {
       console.error('  ❌ failed:', e.message);
       if (e instanceof FatalError) { fatal = e; break; }
       if (e instanceof QuotaExhausted) { console.log('  ⏸ ' + e.message + ' → 이번 실행 종료, 다음 실행에서 재시도'); break; }
+      reject(c.keyword); // 안전 차단·스키마 오류 등: 매시간 같은 주제에 한도를 다시 쓰지 않게 24시간 제외
     }
   }
 }

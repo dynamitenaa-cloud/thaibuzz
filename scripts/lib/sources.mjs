@@ -18,12 +18,15 @@ const parseTraffic = (s) => {
   return Math.round(Number(m[1]) * (m[2].toLowerCase() === 'k' ? 1e3 : m[2].toLowerCase() === 'm' ? 1e6 : 1));
 };
 
-const ENT = { nbsp: ' ', amp: '&', quot: '"', apos: "'", lt: '<', gt: '>' };
+const ENT = {
+  nbsp: ' ', amp: '&', quot: '"', apos: "'", lt: '<', gt: '>',
+  hellip: '…', ndash: '–', mdash: '—', lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”', laquo: '«', raquo: '»', bull: '•', middot: '·', copy: '©', reg: '®', trade: '™',
+};
 export const decode = (s) =>
   String(s || '')
     .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
     .replace(/&#x([\da-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&(nbsp|amp|quot|apos|lt|gt);/g, (_, k) => ENT[k]);
+    .replace(/&([a-z]+);/gi, (m, k) => ENT[k.toLowerCase()] ?? m);
 const stripTags = (s) => decode(String(s || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 export async function trendsTH() {
@@ -66,12 +69,30 @@ export async function newsTopicTH(topic = 'ENTERTAINMENT') {
 }
 
 // พาดหัวยาว → คำค้นสั้น (ตัดเครื่องหมาย/คำเชื่อม เอา ~6 คำแรก) เพื่อหาข่าวเดียวกันจากสำนักอื่น
-const STOP = new Set(['ที่', 'และ', 'ของ', 'ใน', 'กับ', 'ให้', 'ได้', 'เป็น', 'จะ', 'นี้', 'แล้ว', 'ว่า', 'การ', 'มี', 'ไม่', 'ก็', 'หลัง', 'ถึง', 'เผย', 'สุด']);
+// 태국어 제목은 구(phrase) 사이를 띄어쓰기로 구분 → 띄어쓰기 단위로 자르면 "ลิซ่า" 같은 이름이 쪼개지지 않음
+// (단어 분할기로 자르면 사전에 없는 이름이 "ลิ ซ่า" 로 깨져 검색 정확도가 떨어짐)
 export function shortQuery(title) {
-  const words = [...new Intl.Segmenter('th', { granularity: 'word' }).segment(title.replace(/["'“”‘’!?.,:;()[\]|]/g, ' '))]
-    .filter((x) => x.isWordLike && !STOP.has(x.segment))
-    .map((x) => x.segment);
-  return words.slice(0, 6).join(' ');
+  const chunks = title.replace(/["'“”‘’!?.,:;()[\]|]/g, ' ').split(/\s+/).filter(Boolean);
+  let q = '';
+  for (const c of chunks) {
+    if ([...(q + ' ' + c)].length > 45) break;
+    q = q ? `${q} ${c}` : c;
+  }
+  return q || chunks[0] || title;
+}
+
+// 후보 보충: 트렌드/연예 헤드라인만으로는 시간대에 따라 새 주제가 0~3개로 고갈됨 →
+// 연예·가십 키워드로 최근 24시간 뉴스 검색. 키워드당 상위 몇 건만 (같은 사건 중복은 이후 단계에서 걸러짐)
+export const NICHE_QUERIES = ['ดารา', 'ดราม่า', 'ซีรีส์', 'ศิลปิน', 'ไวรัล โซเชียล', 'นักแสดง'];
+export async function nicheCandidates(queries = NICHE_QUERIES, perQuery = 4) {
+  const lists = await Promise.allSettled(queries.map(async (q) => {
+    const xml = await getXml(`https://news.google.com/rss/search?q=${encodeURIComponent(q)}+when:1d&hl=th&gl=TH&ceid=TH:th`);
+    return arr(xml.rss?.channel?.item).slice(0, perQuery).map((it) => {
+      const { title, source } = splitTitle(decode(text(it.title)));
+      return { origin: `gnews:q=${q}`, keyword: title, query: shortQuery(title), traffic: 0, picture: '', pictureSource: '', news: [{ title, url: text(it.link), source: text(it.source) || source, snippet: '', picture: '' }] };
+    });
+  }));
+  return lists.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
 }
 
 // คีย์เวิร์ดเดียว → ข่าวที่เกี่ยวข้องภายใน 3 วัน (หลายแหล่ง = ข้อเท็จจริงแน่นขึ้น)
@@ -94,7 +115,16 @@ export async function fetchArticleText(url, max = 2500) {
     const r = await fetch(url, { headers: UA, signal: AbortSignal.timeout(12000), redirect: 'follow' });
     if (!r.ok || !(r.headers.get('content-type') || '').includes('html')) return { text: '', image: '' };
     const html = (await r.text()).replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, '');
-    const meta = (p) => html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${p}["'][^>]+content=["']([^"']+)`, 'i'))?.[1] ?? '';
+    // <meta> 속성 순서(property 먼저/content 먼저) 둘 다 지원, 값의 HTML 엔티티(&amp; 등) 복원
+    const meta = (p) => {
+      for (const tag of html.match(/<meta\b[^>]*>/gi) || []) {
+        const key = tag.match(/\b(?:property|name)\s*=\s*(["'])(.*?)\1/i)?.[2];
+        if (key?.toLowerCase() !== p) continue;
+        const val = tag.match(/\bcontent\s*=\s*(["'])([\s\S]*?)\1/i)?.[2];
+        if (val) return decode(val).trim();
+      }
+      return '';
+    };
     const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map((m) => stripTags(m[1])).filter((t) => t.length > 40);
     const body = [stripTags(meta('og:description') || meta('description')), ...paras].join('\n');
     return { text: body.slice(0, max), image: meta('og:image') };
@@ -111,6 +141,8 @@ export function similarity(a, b) {
   if (!A.size || !B.size) return 0;
   let n = 0;
   for (const t of A) if (B.has(t)) n++;
+  // 공통 단어가 1개뿐이면 무시: "หวย" 하나로 복권 관련 모든 헤드라인이 중복 처리되던 문제 방지
+  if (n < 2) return 0;
   return n / Math.min(A.size, B.size);
 }
 
