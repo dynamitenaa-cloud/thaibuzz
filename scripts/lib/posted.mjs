@@ -1,10 +1,10 @@
 // 소셜 채널별로 이미 올린 글 기록 → 재실행/테스트/재시도로 같은 글이 두 번 올라가는 것 방지
-// 채널: photo(페북 사진), reel(페북 Reels), ig(인스타 Reels), threads
+// 채널: photo(페북 사진), reel(페북 Reels), ig(인스타 Reels), threads, tg(텔레그램 → TikTok 수동 업로드용), yt(YouTube Shorts)
 // .cache 는 Actions 캐시로 실행 간 유지 (실패한 실행에서도 저장)
 import fs from 'node:fs';
 
 const FILE = '.cache/fb-posted.json';
-export const KINDS = ['photo', 'reel', 'ig', 'threads'];
+export const KINDS = ['photo', 'reel', 'ig', 'threads', 'tg', 'yt'];
 
 // 이미 발행된 글 목록 (이번 실행에서 막 발행된 pending 은 제외)
 function existingSlugs(pending) {

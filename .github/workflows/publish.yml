@@ -146,6 +146,15 @@ jobs:
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
           REELS_VOICE: ${{ vars.REELS_VOICE }}
+          # TikTok 반자동: 영상을 내 텔레그램으로 전송
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # YouTube Shorts: API 검수 승인 후 Variables 에 YT_UPLOAD=true
+          YT_UPLOAD: ${{ vars.YT_UPLOAD }}
+          YT_DAILY_MAX: ${{ vars.YT_DAILY_MAX }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 
       # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
       - name: Post to Threads

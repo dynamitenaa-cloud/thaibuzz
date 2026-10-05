@@ -6,6 +6,7 @@ import path from 'node:path';
 import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
+import { telegramReady, sendTelegramVideo, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
 import { loadLedger, saveLedger } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -97,7 +98,11 @@ for (const slug of slugs) {
   if (overLimit('reels')) break;
   const needFb = DRY || FORCE || !ledger.reel[slug];
   const needIg = !!igId && (FORCE || !ledger.ig[slug]);
-  if (!needFb && !needIg) { console.log(`reels: already posted → skip ${slug}`); continue; }
+  const needTg = !DRY && telegramReady() && (FORCE || !ledger.tg[slug]);
+  // YouTube 무료 한도: 최근 24시간 업로드 수가 YT_DAILY_MAX 미만일 때만
+  const ytToday = Object.values(ledger.yt).filter((t) => Date.now() - t < 864e5).length;
+  const needYt = !DRY && youtubeReady() && (FORCE || !ledger.yt[slug]) && ytToday < YT_DAILY_MAX;
+  if (!needFb && !needIg && !needTg && !needYt) { console.log(`reels: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   if (!p.summary?.length) continue;
   let reel;
@@ -128,6 +133,34 @@ for (const slug of slugs) {
       console.log(`reels: instagram posted ${id} ← ${slug}`);
       ledger.ig[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; console.error(`reels: instagram FAILED ${slug}:`, e.message); }
+  }
+  if (needTg) {
+    try {
+      // TikTok 에 그대로 붙여넣을 캡션 (TikTok 은 해시태그가 노출에 중요)
+      const tiktokCaption = `${p.title}
+
+${p.tags.slice(0, 5).map(hashtag).join(' ')} #ข่าววันนี้ #ข่าวบันเทิง #fyp #ฟีดดดシ`;
+      await sendTelegramVideo(reel.file, `📱 TikTok용 영상
+
+${tiktokCaption}`);
+      console.log(`reels: telegram sent ← ${slug}`);
+      ledger.tg[slug] = Date.now(); saveLedger(ledger);
+    } catch (e) { failed++; console.error(`reels: telegram FAILED ${slug}:`, e.message); }
+  }
+  if (needYt) {
+    try {
+      const id = await uploadShort(reel.file, {
+        title: p.title,
+        description: `${p.excerpt}
+
+อ่านฉบับเต็มพร้อมแหล่งอ้างอิง: ${SITE}/post/${slug}/
+
+${tags}`,
+        tags: p.tags,
+      });
+      console.log(`reels: youtube uploaded ${id} ← ${slug}`);
+      ledger.yt[slug] = Date.now(); saveLedger(ledger);
+    } catch (e) { failed++; console.error(`reels: youtube FAILED ${slug}:`, e.message); }
   }
   fs.rmSync(reel.file, { force: true });
 }
