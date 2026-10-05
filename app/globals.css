@@ -296,3 +296,9 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .hub-card b { font-weight: 600; }
 .hub-card small { color: var(--mut); }
 .ph .cat { display: inline-block; margin-bottom: 4px; }
+
+/* 푸터 공식 소셜 계정 */
+.social-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.soc { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--fg-2); font-size: .85rem; }
+.soc:hover { border-color: var(--brand); color: var(--fg); }
+.soc-facebook svg { color: #1877f2; } .soc-instagram svg { color: #e1306c; }

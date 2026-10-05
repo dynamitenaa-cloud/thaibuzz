@@ -24,6 +24,15 @@ export default function Page() {
       <p>{SITE.name} does not offer user accounts and does not directly collect personal data. Third-party services we use (Google AdSense, Google Analytics / Cloudflare Web Analytics) may use cookies or anonymous usage data as described in their own policies.</p>
       <p><b>Connected platforms:</b> we use the official APIs of Meta (Facebook, Instagram, Threads), TikTok and Google (YouTube) solely to publish our own content to the official {SITE.name} accounts. We do not access, collect, store or share any data about other users of those platforms. Access tokens for our own accounts are stored encrypted in our automation system and used only for publishing. To request deletion of any data or content, contact {SITE.email}.</p>
 
+      <h2 id="youtube">YouTube API Services</h2>
+      <p>{SITE.name} uses <b>YouTube API Services</b> to upload short videos created from our own articles to our own official YouTube channel. By watching our videos on YouTube you are also subject to the <a href="https://www.youtube.com/t/terms" style={{ textDecoration: 'underline' }}>YouTube Terms of Service</a>, and Google&apos;s handling of data is described in the <a href="https://policies.google.com/privacy" style={{ textDecoration: 'underline' }}>Google Privacy Policy</a>.</p>
+      <ul>
+        <li><b>Data we access:</b> only our own channel, with the single permission <code>youtube.upload</code> (upload videos). We do not read, collect or store any data about YouTube viewers or other channels.</li>
+        <li><b>Data we store:</b> only the IDs of videos we uploaded (to avoid duplicate uploads) and our own encrypted OAuth credentials. Nothing is shared with or sold to third parties.</li>
+        <li><b>Revoking access &amp; deletion:</b> the channel owner can revoke our app&apos;s access at any time on the <a href="https://security.google.com/settings/security/permissions" style={{ textDecoration: 'underline' }}>Google security settings page</a>. Stored upload records are deleted within 30 days after access is revoked, or immediately on request to {SITE.email}.</li>
+      </ul>
+      <p>ภาษาไทย: {SITE.name} ใช้ YouTube API Services เพื่ออัปโหลดวิดีโอสั้นของเราเองไปยังช่อง YouTube ทางการของเรา โดยไม่เก็บข้อมูลของผู้ชมหรือช่องอื่น การรับชมบน YouTube อยู่ภายใต้ <a href="https://www.youtube.com/t/terms" style={{ textDecoration: 'underline' }}>ข้อกำหนดการให้บริการของ YouTube</a> และ <a href="https://policies.google.com/privacy" style={{ textDecoration: 'underline' }}>นโยบายความเป็นส่วนตัวของ Google</a></p>
+
       <h2>ติดต่อ</h2>
       <p>สอบถามเกี่ยวกับนโยบายนี้: <a href={`mailto:${SITE.email}`} style={{ textDecoration: 'underline' }}>{SITE.email}</a></p>
     </div>

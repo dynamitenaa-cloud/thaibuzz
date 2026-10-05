@@ -40,6 +40,8 @@ export default function Page() {
       <p>Images and information from news sources remain the property of their owners and are credited. Copyright owners may request removal at {mail}.</p>
       <h3>5. Third-party platforms</h3>
       <p>When we publish to third-party platforms (Meta, TikTok, Google/YouTube) we only post our own content to our own accounts through their official APIs, and we follow each platform&apos;s terms of service and community guidelines. We do not access, collect or store any data of other users of those platforms.</p>
+      <h3>YouTube</h3>
+      <p>Our videos on YouTube are published using YouTube API Services. By viewing them you agree to be bound by the <a href="https://www.youtube.com/t/terms" style={{ textDecoration: 'underline' }}>YouTube Terms of Service</a>. See also the <a href="https://policies.google.com/privacy" style={{ textDecoration: 'underline' }}>Google Privacy Policy</a> and our <a href="/privacy/#youtube" style={{ textDecoration: 'underline' }}>Privacy Policy (YouTube section)</a>.</p>
       <h3>6. Changes</h3>
       <p>We may update these terms from time to time. The last updated date is shown above.</p>
       <h3>Contact</h3>

@@ -12,6 +12,14 @@ export const SITE = {
   adsenseSlotSide: process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDE || '',
   shopee: process.env.NEXT_PUBLIC_SHOPEE_AFFILIATE_ID || '',
   gaId: process.env.NEXT_PUBLIC_GA_ID || '',
+  // 공식 소셜 계정 (푸터 "ติดตามเรา"). 비어 있으면 표시 안 함 — GitHub Variables 로 설정
+  social: {
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || '',
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || '',
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || '',
+    threads: process.env.NEXT_PUBLIC_THREADS_URL || '',
+    tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || '',
+  },
   perPage: 24,
 };
 
