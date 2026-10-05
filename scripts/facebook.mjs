@@ -2,6 +2,7 @@
 // 필요: FB_PAGE_ID, FB_PAGE_TOKEN (시크릿이 없으면 조용히 건너뜀). `--dry` 는 게시 없이 문구만 출력
 import fs from 'node:fs';
 import path from 'node:path';
+import { loadLedger, saveLedger } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -29,7 +30,11 @@ async function waitLive(url) {
 }
 
 let failed = 0;
+// 이미 올린 글은 건너뜀 (재실행/테스트로 중복 게시 방지). FB_FORCE=true 면 다시 게시
+const ledger = loadLedger(slugs);
+const FORCE = process.env.FB_FORCE === 'true';
 for (const slug of slugs) {
+  if (!FORCE && ledger.photo[slug]) { console.log(`facebook: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;
   // 사진 게시물이 링크 게시물보다 도달률이 높음 → 썸네일을 사진으로 올리고 본문에 링크를 넣는다.
@@ -56,7 +61,7 @@ ${message}
   });
   const j = await r.json().catch(() => ({}));
   const id = j.post_id || j.id;
-  if (r.ok && id) console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`);
+  if (r.ok && id) { console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`); ledger.photo[slug] = Date.now(); saveLedger(ledger); }
   else { failed++; console.error(`facebook: FAILED ${slug}:`, JSON.stringify(j.error ?? j).slice(0, 300)); }
   await sleep(3000); // 연속 게시 간격 (스팸 판정 방지)
 }

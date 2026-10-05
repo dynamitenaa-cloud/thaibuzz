@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { makeReel } from './lib/video.mjs';
+import { loadLedger, saveLedger } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -52,7 +53,10 @@ if (!fs.existsSync(listFile)) process.exit(0);
 const slugs = fs.readFileSync(listFile, 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop());
 
 let failed = 0;
+const ledger = loadLedger(slugs);
+const FORCE = process.env.FB_FORCE === 'true';
 for (const slug of slugs) {
+  if (!DRY && !FORCE && ledger.reel[slug]) { console.log(`reels: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   if (!p.summary?.length) continue;
   try {
@@ -62,6 +66,7 @@ for (const slug of slugs) {
     const description = `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${p.tags.slice(0, 4).map(hashtag).join(' ')} #ข่าววันนี้`;
     const r = await publishReel(reel.file, description);
     console.log(`reels: posted ${r.video_id} [${r.status}] ← ${slug}`);
+    ledger.reel[slug] = Date.now(); saveLedger(ledger);
     fs.rmSync(reel.file, { force: true });
   } catch (e) {
     failed++;

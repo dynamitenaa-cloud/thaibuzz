@@ -6,7 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       fb_test:
-        description: '테스트: 글 생성 없이 가장 최근 글 1개를 페이스북에 다시 게시'
+        description: '테스트: 글 생성 없이 가장 최근 글 1개를 페이스북에 게시 (이미 올린 글이면 건너뜀)'
+        type: boolean
+        default: false
+      force:
+        description: '이미 올린 글이어도 다시 게시 (중복 게시물이 생김)'
         type: boolean
         default: false
   push:
@@ -33,6 +37,7 @@ env:
   INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
   FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
   FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+  FB_FORCE: ${{ inputs.force }}
 
 jobs:
   run:
