@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   formatDetection: { telephone: false },
+  // Search Console 소유권 확인 (HTML 태그 방식). GitHub Variables 의 GOOGLE_SITE_VERIFICATION 값
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : undefined,
 };
 
 export const viewport: Viewport = {
