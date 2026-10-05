@@ -53,28 +53,77 @@ const listFile = '.cache/new-urls.txt';
 if (!fs.existsSync(listFile)) process.exit(0);
 const slugs = fs.readFileSync(listFile, 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop());
 
+// ── 인스타그램 Reels (같은 영상 재사용) ──
+// 페이지에 연결된 인스타 프로페셔널 계정을 자동으로 찾음. 연결이 없거나 권한이 없으면 조용히 건너뜀
+async function findIgUser() {
+  if (process.env.IG_REELS === 'false' || DRY) return null;
+  try {
+    const j = await (await fetch(`${API}/${PAGE_ID}?fields=instagram_business_account&access_token=${TOKEN}`)).json();
+    return j.instagram_business_account?.id ?? null;
+  } catch { return null; }
+}
+
+// 업로드형(resumable) 게시: 영상 공개 URL 없이 바이너리를 직접 전송
+async function publishIgReel(igId, file, caption) {
+  const c = await graph(`${igId}/media`, { media_type: 'REELS', upload_type: 'resumable', caption, share_to_feed: 'true' });
+  const buf = fs.readFileSync(file);
+  const uploadUrl = c.uri || `https://rupload.facebook.com/ig-api-upload/v25.0/${c.id}`;
+  const up = await fetch(uploadUrl, { method: 'POST', headers: { Authorization: `OAuth ${TOKEN}`, offset: '0', file_size: String(buf.length) }, body: buf });
+  const uj = await up.json().catch(() => ({}));
+  if (!up.ok || uj.success === false) throw new Error('ig upload: ' + JSON.stringify(uj).slice(0, 300));
+  // 인스타 쪽 처리 완료(FINISHED)까지 대기 후 게시 (최대 약 4분)
+  for (let i = 0; i < 24; i++) {
+    await sleep(10000);
+    const s = await (await fetch(`${API}/${c.id}?fields=status_code,status&access_token=${TOKEN}`)).json().catch(() => ({}));
+    if (s.status_code === 'FINISHED') {
+      const pub = await graph(`${igId}/media_publish`, { creation_id: c.id });
+      return pub.id;
+    }
+    if (s.status_code === 'ERROR' || s.status_code === 'EXPIRED') throw new Error('ig processing: ' + JSON.stringify(s).slice(0, 300));
+  }
+  throw new Error('ig processing timeout');
+}
+
 let failed = 0;
 const ledger = loadLedger(slugs);
 const FORCE = process.env.FB_FORCE === 'true';
+const igId = await findIgUser();
+if (!DRY) console.log(igId ? `reels: 인스타그램 연결됨 (${igId})` : 'reels: 인스타그램 미연결 → 페이스북만');
 for (const slug of slugs) {
-  if (!DRY && !FORCE && ledger.reel[slug]) { console.log(`reels: already posted → skip ${slug}`); continue; }
+  const needFb = DRY || FORCE || !ledger.reel[slug];
+  const needIg = !!igId && (FORCE || !ledger.ig[slug]);
+  if (!needFb && !needIg) { console.log(`reels: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   if (!p.summary?.length) continue;
+  let reel;
   try {
     // 태국어 음성 낭독 (실패하면 null → 무음 영상으로 그대로 게시)
     const voice = await narrate(narrationSegments(p), path.join(REEL_DIR, `${slug}-voice`));
-    const reel = await makeReel(p, CAT_COLOR[p.category], voice);
+    reel = await makeReel(p, CAT_COLOR[p.category], voice);
     fs.rmSync(path.join(REEL_DIR, `${slug}-voice`), { recursive: true, force: true });
     console.log(`reels: rendered ${slug} (${(reel.size / 1e6).toFixed(1)}MB, ${reel.duration.toFixed(1)}s, ${reel.voiced ? '음성' : '무음'})`);
-    if (DRY) continue;
-    const description = `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${p.tags.slice(0, 4).map(hashtag).join(' ')} #ข่าววันนี้`;
-    const r = await publishReel(reel.file, description);
-    console.log(`reels: posted ${r.video_id} [${r.status}] ← ${slug}`);
-    ledger.reel[slug] = Date.now(); saveLedger(ledger);
-    fs.rmSync(reel.file, { force: true });
   } catch (e) {
     failed++;
-    console.error(`reels: FAILED ${slug}:`, e.message);
+    console.error(`reels: render FAILED ${slug}:`, e.message);
+    continue;
   }
+  if (DRY) continue;
+  const tags = `${p.tags.slice(0, 4).map(hashtag).join(' ')} #ข่าววันนี้`;
+  if (needFb) {
+    try {
+      const r = await publishReel(reel.file, `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${tags}`);
+      console.log(`reels: facebook posted ${r.video_id} [${r.status}] ← ${slug}`);
+      ledger.reel[slug] = Date.now(); saveLedger(ledger);
+    } catch (e) { failed++; console.error(`reels: facebook FAILED ${slug}:`, e.message); }
+  }
+  if (needIg) {
+    try {
+      // 인스타 캡션의 링크는 클릭이 안 됨 → 프로필 링크 안내 + 주소 텍스트
+      const id = await publishIgReel(igId, reel.file, `${p.title}\n\n${p.excerpt}\n\n🔗 อ่านฉบับเต็มที่ลิงก์ในโปรไฟล์ (${SITE.replace(/^https?:\/\//, '')})\n\n${tags}`);
+      console.log(`reels: instagram posted ${id} ← ${slug}`);
+      ledger.ig[slug] = Date.now(); saveLedger(ledger);
+    } catch (e) { failed++; console.error(`reels: instagram FAILED ${slug}:`, e.message); }
+  }
+  fs.rmSync(reel.file, { force: true });
 }
 if (failed) process.exitCode = 1;

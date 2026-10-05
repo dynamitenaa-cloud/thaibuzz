@@ -42,6 +42,7 @@ env:
   FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
   FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
   FB_FORCE: ${{ inputs.force }}
+  THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
 
 jobs:
   run:
@@ -145,6 +146,11 @@ jobs:
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
           REELS_VOICE: ${{ vars.REELS_VOICE }}
+
+      # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
+      - name: Post to Threads
+        if: ${{ !cancelled() && env.THREADS_TOKEN != '' && vars.THREADS != 'false' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
+        run: node scripts/threads.mjs
 
       # 미리보기: 가장 최근 글로 영상만 만들어 Actions 실행 화면의 Artifacts 에서 다운로드 (게시 안 함)
       - name: Render reel preview
