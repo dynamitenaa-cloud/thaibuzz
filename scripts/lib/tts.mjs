@@ -5,6 +5,17 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import ffmpegPath from 'ffmpeg-static';
+import { parseRetryMs } from './writer.mjs';
+
+// 음성 모델 무료 한도는 작음 → 소진된 모델은 안내된 대기 시간 동안 건너뜀 (글쓰기 모델과 같은 방식, .cache 로 실행 간 유지)
+const COOL = '.cache/tts-cooldown.json';
+const readCool = () => { try { return JSON.parse(fs.readFileSync(COOL, 'utf8')); } catch { return {}; } };
+function markCooldown(model, msg) {
+  const c = readCool();
+  c[model] = Date.now() + (parseRetryMs(msg) ?? 6 * 36e5) + 60e3;
+  fs.mkdirSync('.cache', { recursive: true });
+  fs.writeFileSync(COOL, JSON.stringify(c));
+}
 
 const run = promisify(execFile);
 const KEY = () => process.env.GOOGLE_GENERATIVE_AI_API_KEY || '';
@@ -29,7 +40,8 @@ async function ttsModels() {
       found = ids.sort((a, b) => rank(a) - rank(b) || ver(b) - ver(a));
     }
   } catch {}
-  models = [...new Set([...pinned, ...found])];
+  const cool = readCool();
+  models = [...new Set([...pinned, ...found])].filter((m) => !(cool[m] > Date.now()));
   return models;
 }
 
@@ -119,6 +131,7 @@ export async function narrate(segments, outDir) {
       return { parts, total: parts.reduce((a, p) => a + p.dur, 0) };
     } catch (e) {
       console.warn(`tts: ${model} 실패 → ${String(e.message).slice(0, 160)}`);
+      if (/429|quota|RESOURCE_EXHAUSTED/i.test(e.message)) markCooldown(model, e.message);
     }
   }
   console.warn('tts: 사용 가능한 음성 모델 없음 → 무음 영상');
