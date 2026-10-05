@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). public 저장소면 '*/30 * * * *' 도 무료
   workflow_dispatch:
+    inputs:
+      fb_test:
+        description: '테스트: 글 생성 없이 가장 최근 글 1개를 페이스북에 다시 게시'
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths-ignore: ['content/**', 'public/thumbs/**', '**.md']
@@ -46,7 +51,7 @@ jobs:
 
       - name: Generate posts
         id: pipe
-        if: github.event_name != 'push'
+        if: ${{ github.event_name != 'push' && !inputs.fb_test }}
         run: node scripts/run-pipeline.mjs
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
@@ -90,6 +95,13 @@ jobs:
         run: node scripts/indexnow.mjs
 
       # 배포가 끝난 뒤에 올려야 링크 미리보기(OG 이미지)가 정상 생성됨
+      # 테스트 실행(fb_test): 가장 최근 글 1개를 게시 대상으로 지정
+      - name: Pick latest post for Facebook test
+        if: ${{ inputs.fb_test }}
+        run: |
+          mkdir -p .cache
+          node -e "const fs=require('fs');const p=fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0];fs.writeFileSync('.cache/new-urls.txt','/post/'+p.slug+'/');console.log('test target:',p.slug)"
+
       - name: Post to Facebook Page
-        if: ${{ !cancelled() && steps.pipe.outputs.published > 0 && env.FB_PAGE_TOKEN != '' }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || inputs.fb_test) && env.FB_PAGE_TOKEN != '' }}
         run: node scripts/facebook.mjs
