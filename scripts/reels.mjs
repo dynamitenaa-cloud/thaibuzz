@@ -99,8 +99,10 @@ for (const slug of slugs) {
   const needFb = DRY || FORCE || !ledger.reel[slug];
   const needIg = !!igId && (FORCE || !ledger.ig[slug]);
   const needTg = !DRY && telegramReady() && (FORCE || !ledger.tg[slug]);
-  // YouTube 무료 한도: 최근 24시간 업로드 수가 YT_DAILY_MAX 미만일 때만
-  const ytToday = Object.values(ledger.yt).filter((t) => Date.now() - t < 864e5).length;
+  // YouTube 무료 한도: 최근 24시간 "실제 업로드" 수(ytLog)가 YT_DAILY_MAX 미만일 때만
+  // (게시 기록 ledger.yt 는 처음 만들 때 기존 글로 채워지므로 횟수 계산에 쓰면 안 됨)
+  ledger.ytLog = (ledger.ytLog || []).filter((t) => Date.now() - t < 864e5);
+  const ytToday = ledger.ytLog.length;
   const needYt = !DRY && youtubeReady() && (FORCE || !ledger.yt[slug]) && ytToday < YT_DAILY_MAX;
   if (!needFb && !needIg && !needTg && !needYt) { console.log(`reels: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
@@ -159,7 +161,7 @@ ${tags}`,
         tags: p.tags,
       });
       console.log(`reels: youtube uploaded ${id} ← ${slug}`);
-      ledger.yt[slug] = Date.now(); saveLedger(ledger);
+      ledger.yt[slug] = Date.now(); ledger.ytLog.push(Date.now()); saveLedger(ledger);
     } catch (e) { failed++; console.error(`reels: youtube FAILED ${slug}:`, e.message); }
   }
   fs.rmSync(reel.file, { force: true });

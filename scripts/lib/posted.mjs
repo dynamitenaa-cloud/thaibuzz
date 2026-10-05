@@ -9,7 +9,8 @@ export const KINDS = ['photo', 'reel', 'ig', 'threads', 'tg', 'yt'];
 // 이미 발행된 글 목록 (이번 실행에서 막 발행된 pending 은 제외)
 function existingSlugs(pending) {
   const out = {};
-  const now = Date.now();
+  // 기존 글은 "이틀 전에 게시됨"으로 기록 → 최근 24시간 기준 계산(일일 상한 등)에 섞이지 않음, 90일 정리 대상도 아님
+  const now = Date.now() - 2 * 864e5;
   for (const f of fs.readdirSync('content/posts')) {
     const slug = f.replace(/\.json$/, '');
     if (!f.endsWith('.json') || f.startsWith('demo-') || pending.includes(slug)) continue;
