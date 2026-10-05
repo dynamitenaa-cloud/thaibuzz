@@ -14,6 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...posts.map((p) => ({ url: `${SITE.url}${postUrl(p)}`, lastModified: p.updatedAt ?? p.createdAt, priority: 0.7, ...(p.thumb ? { images: [`${SITE.url}${p.thumb}`] } : {}) })),
     ...[...getTags()].filter(([, t]) => t.count >= MIN_HUB_INDEX).map(([s]) => ({ url: `${SITE.url}/tag/${s}/`, priority: 0.4 })),
     { url: `${SITE.url}/hub/`, changeFrequency: 'daily' as const, priority: 0.6 },
-    ...['about', 'editorial-policy', 'privacy', 'contact'].map((s) => ({ url: `${SITE.url}/${s}/`, priority: 0.2 })),
+    ...['about', 'editorial-policy', 'privacy', 'terms', 'contact'].map((s) => ({ url: `${SITE.url}/${s}/`, priority: 0.2 })),
   ];
 }

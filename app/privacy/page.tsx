@@ -17,6 +17,13 @@ export default function Page() {
       <p>เราอาจใช้ Google Analytics เพื่อวัดสถิติการเข้าชมแบบไม่ระบุตัวตน เพื่อปรับปรุงเนื้อหาและประสบการณ์การใช้งาน</p>
       <h2>ลิงก์พันธมิตร</h2>
       <p>บางบทความมีลิงก์พันธมิตร (เช่น Shopee) หากคุณซื้อสินค้าผ่านลิงก์ เราอาจได้รับค่าคอมมิชชันโดยไม่มีค่าใช้จ่ายเพิ่มเติมสำหรับคุณ</p>
+      <h2>แพลตฟอร์มโซเชียลมีเดียที่เชื่อมต่อ</h2>
+      <p>เราใช้ API ทางการของ Meta (Facebook, Instagram, Threads), TikTok และ Google (YouTube) เพื่อเผยแพร่เนื้อหาของเราเองไปยังบัญชีทางการของ {SITE.name} เท่านั้น เราไม่เข้าถึง ไม่เก็บ และไม่ประมวลผลข้อมูลของผู้ใช้รายอื่นบนแพลตฟอร์มเหล่านั้น โทเค็นการเข้าถึงของบัญชีเราถูกเก็บแบบเข้ารหัสในระบบอัตโนมัติและใช้เพื่อการเผยแพร่เท่านั้น</p>
+
+      <h2>English summary</h2>
+      <p>{SITE.name} does not offer user accounts and does not directly collect personal data. Third-party services we use (Google AdSense, Google Analytics / Cloudflare Web Analytics) may use cookies or anonymous usage data as described in their own policies.</p>
+      <p><b>Connected platforms:</b> we use the official APIs of Meta (Facebook, Instagram, Threads), TikTok and Google (YouTube) solely to publish our own content to the official {SITE.name} accounts. We do not access, collect, store or share any data about other users of those platforms. Access tokens for our own accounts are stored encrypted in our automation system and used only for publishing. To request deletion of any data or content, contact {SITE.email}.</p>
+
       <h2>ติดต่อ</h2>
       <p>สอบถามเกี่ยวกับนโยบายนี้: <a href={`mailto:${SITE.email}`} style={{ textDecoration: 'underline' }}>{SITE.email}</a></p>
     </div>

@@ -19,6 +19,7 @@ export default function Footer() {
               <li><a href="/about/">เกี่ยวกับ {SITE.name}</a></li>
               <li><a href="/editorial-policy/">นโยบายกองบรรณาธิการ</a></li>
               <li><a href="/privacy/">นโยบายความเป็นส่วนตัว</a></li>
+              <li><a href="/terms/">ข้อกำหนดการใช้งาน</a></li>
               <li><a href="/contact/">ติดต่อเรา / แจ้งแก้ไขข้อมูล</a></li>
               <li><a href="/feed.xml">RSS Feed</a></li>
             </ul>
