@@ -1,0 +1,16 @@
+name: telegram-setup
+
+# 텔레그램 채팅방 ID 확인용 (수동 실행). 봇에게 메시지를 보낸 뒤 실행하면 로그에 chat id 가 나옴
+on:
+  workflow_dispatch:
+
+jobs:
+  chat-id:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Find chat id from recent bot messages
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          curl -s "https://api.telegram.org/bot${TOKEN}/getUpdates" \
+            | node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{const j=JSON.parse(d);if(!j.ok){console.log('ERROR',d.slice(0,200));process.exit(1)}const seen=new Map();for(const u of j.result){const c=(u.message||u.my_chat_member||{}).chat;if(c)seen.set(c.id,c.type+' '+(c.username||c.first_name||''))}if(!seen.size)console.log('NO_MESSAGES: 봇에게 메시지를 먼저 보내세요');for(const[id,who]of seen)console.log('CHAT_ID',id,who)})"
