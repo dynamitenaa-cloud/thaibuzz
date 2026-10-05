@@ -14,7 +14,7 @@ fs.mkdirSync(OUT, { recursive: true });
 // ฟอนต์เต็ม (ไทย + ละติน) จาก Google Fonts repo
 const FONT_URL = 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/prompt/Prompt-Bold.ttf';
 let fontCache;
-async function fonts() {
+export async function fonts() {
   if (fontCache) return fontCache;
   const f = path.join(CACHE, 'Prompt-Bold.ttf');
   if (!fs.existsSync(f)) {

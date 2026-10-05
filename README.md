@@ -100,3 +100,15 @@ npm run assets          # 아이콘·기본 OG 이미지 재생성 (브랜드 �
 
 ### Git 이력 정리 (선택)
 지워진 썸네일도 git 이력에는 남아 저장소가 커집니다 (하루 30건 ≈ 연 1.5GB). `.github/workflows/compact.yml` 이 매월 1일 이력을 한 커밋으로 합쳐 용량을 되돌립니다. **main 을 force-push 하므로 기본은 꺼짐** — 켜려면 Variables 에 `COMPACT_HISTORY=true`. 로컬 클론은 이후 `git fetch && git reset --hard origin/main` 필요.
+
+## 숏폼 영상 → Facebook Reels (자동)
+
+새 글이 배포되면 `scripts/reels.mjs` 가 세로 영상(1080×1920, 약 16초)을 만들어 페이스북 Reels 로 올립니다.
+
+- 구성: 오프닝(사진 + 제목) → 요약 3장 → 마무리(사이트 안내). 장면마다 살짝 줌인 + 페이드, 무음 오디오 트랙
+- 렌더링: 썸네일과 같은 satori → resvg 로 장면 이미지 생성 후 `ffmpeg-static` 으로 MP4 합성 (무료, Actions 안에서 실행)
+- 영상은 저장소에 쌓지 않고 업로드 후 삭제
+- 권한은 페이스북 자동 게시와 같은 페이지 토큰 사용 (`pages_manage_posts` 등)
+- 끄기: GitHub Variables 에 `REELS=false`
+- 로컬 미리보기: `.cache/new-urls.txt` 에 `/post/<slug>/` 를 적고 `node scripts/reels.mjs --dry` → `.cache/reels/<slug>.mp4`
+- TikTok / YouTube Shorts 는 무료 API 가 앱 검수 전에는 비공개 업로드만 허용해서 아직 미지원

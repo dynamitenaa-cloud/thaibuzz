@@ -127,6 +127,11 @@ jobs:
         if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
         run: node scripts/facebook.mjs
 
+      # 새 글 → 세로 숏폼 영상 → Facebook Reels (영상은 저장소에 안 쌓고 올린 뒤 삭제). 끄려면 Variables 에 REELS=false
+      - name: Post Reels
+        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
+        run: node scripts/reels.mjs
+
       # 실패한 실행이어도 거절 목록·모델 쿨다운·배포 해시를 보존 (안 그러면 매시간 같은 실패에 무료 한도를 다시 씀)
       - name: Save pipeline cache
         if: ${{ always() }}
