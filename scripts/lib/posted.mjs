@@ -52,19 +52,23 @@ export function saveLedger(ledger) {
 // 게시 대상 = 이번 실행 새 글 + 최근 24시간 글 중 kinds 어느 채널에든 아직 안 올라간 글 (실패 3회까지).
 // (예전엔 .cache/new-urls.txt 만 봐서, 배포 직후 CDN 지연·일시 오류로 한 번 실패한 글은 그 채널에 영원히 안 올라갔음)
 const TRIES_MAX = 3;
+const RETRY_PER_RUN = 3; // 한 실행에 재시도는 최대 3건 (밀린 글이 한꺼번에 쏟아지지 않게, 영상은 TTS 한도도 아낌)
 const RETRY_WINDOW = 24 * 3.6e6;
 export function pendingSlugs(ledger, kinds, newSlugs = [], triesKey = kinds[0]) {
   const tries = ((ledger.tries ||= {})[triesKey] ||= {});
   const out = new Set(newSlugs);
   const recentDay = new Date(Date.now() - 2 * 864e5).toISOString().slice(0, 10).replace(/-/g, '');
-  for (const f of fs.readdirSync('content/posts')) {
+  const retry = [];
+  for (const f of fs.readdirSync('content/posts').sort().reverse()) { // 최신 글부터
     if (!f.endsWith('.json') || f.startsWith('demo-')) continue;
     const slug = f.slice(0, -5);
     if (out.has(slug) || slug.slice(0, 8) < recentDay || (tries[slug] || 0) >= TRIES_MAX) continue;
     if (kinds.every((k) => ledger[k]?.[slug])) continue;
     let createdAt; try { createdAt = JSON.parse(fs.readFileSync(`content/posts/${f}`, 'utf8')).createdAt; } catch { continue; }
-    if (Date.now() - Date.parse(createdAt) < RETRY_WINDOW) { out.add(slug); console.log(`${triesKey}: retry pending → ${slug}`); }
+    if (Date.now() - Date.parse(createdAt) < RETRY_WINDOW) retry.push(slug);
   }
+  for (const slug of retry.slice(0, RETRY_PER_RUN)) { out.add(slug); console.log(`${triesKey}: retry pending → ${slug}`); }
+  if (retry.length > RETRY_PER_RUN) console.log(`${triesKey}: ${retry.length - RETRY_PER_RUN} more pending → next run`);
   return [...out];
 }
 export function markFail(ledger, triesKey, slug) {
