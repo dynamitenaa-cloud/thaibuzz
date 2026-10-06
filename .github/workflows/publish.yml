@@ -17,6 +17,14 @@ on:
         description: '미리보기: 가장 최근 글로 숏폼 영상만 만들어 다운로드용 파일로 저장 (게시 안 함)'
         type: boolean
         default: false
+      kr_only:
+        description: 'K-บันเทิง 후보만으로 글 생성 (테스트용)'
+        type: boolean
+        default: false
+      max_per_day:
+        description: '이번 실행만 하루 한도 덮어쓰기 (예: 999 = 한도 무시)'
+        type: string
+        default: ''
   push:
     branches: [main]
     paths-ignore: ['content/**', 'public/thumbs/**', '**.md']
@@ -79,7 +87,9 @@ jobs:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           MAX_PER_RUN: ${{ vars.MAX_PER_RUN || '3' }}
-          MAX_PER_DAY: ${{ vars.MAX_PER_DAY || '40' }}
+          MAX_PER_DAY: ${{ inputs.max_per_day || vars.MAX_PER_DAY || '40' }}
+          KR_SHARE: ${{ vars.KR_SHARE }}
+          KR_ONLY: ${{ inputs.kr_only }}
           MAX_ATTEMPTS: ${{ vars.MAX_ATTEMPTS }}
           USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
 

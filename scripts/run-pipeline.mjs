@@ -73,7 +73,8 @@ async function gather() {
   const today = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 864e5);
   const kShare = today.length ? today.filter((p) => p.category === KR_CAT).length / today.length : 0;
   console.log(`korea: ${korea.length} candidates, share ${Math.round(kShare * 100)}% (target ${Math.round(KR_SHARE * 100)}%)`);
-  if (kShare < KR_SHARE) for (let i = 0; i < korea.length; i++) merged.splice(Math.min(i * 2, merged.length), 0, korea[i]);
+  if (process.env.KR_ONLY === 'true') merged.splice(0, merged.length, ...korea); // 수동 실행 테스트: K 후보만
+  else if (kShare < KR_SHARE) for (let i = 0; i < korea.length; i++) merged.splice(Math.min(i * 2, merged.length), 0, korea[i]);
   else merged.push(...korea);
   const out = [];
   for (const c of merged) if (!isDup(c.keyword) && !out.some((o) => similarity(o.keyword, c.keyword) >= 0.7)) out.push(c);
@@ -131,7 +132,8 @@ if (budget > 0) {
       const searchTerms = c.lang === 'ko' ? [] : [...new Set([...(await suggestions(c.query || c.keyword)), ...(c.query && c.query !== c.keyword ? await suggestions(c.keyword) : [])])].slice(0, 12);
       if (searchTerms.length) console.log(`  search terms: ${searchTerms.slice(0, 5).join(' | ')}`);
       // 검색량 큰 주제만 좋은 모델(하루 한도 작음) 우선 사용
-      const premium = (c.traffic || 0) >= PREMIUM_TRAFFIC;
+      // 한국어 원문 → 태국어는 이름 표기·맥락 설명이 까다로움 → 좋은 모델 우선
+      const premium = (c.traffic || 0) >= PREMIUM_TRAFFIC || c.lang === 'ko';
       const w = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title), searchTerms, { premium });
       // AI 티 자동 교정: 오타(자음 3연속), 교훈형 마무리 문단 제거
       const { article: raw, removedClosers } = polish(w.article);

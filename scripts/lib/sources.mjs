@@ -105,7 +105,7 @@ export async function nicheCandidates(queries = NICHE_QUERIES, perQuery = 4) {
 // kr: true → K-บันเทิง 카테고리, lang: 'ko' → 근거 검색도 한국 뉴스에서
 export const KR_QUERIES_KO = ['태국인 멤버', '블랙핑크 리사', '뱀뱀', '민니 아이들', '방콕 콘서트', '방콕 팬미팅', '아이돌 컴백', '넷플릭스 한국 드라마'];
 // 연예가 아닌 것/게시물형 소스 걸러냄 (LLM 호출 전에 버려 한도 절약)
-const KR_NOISE_TITLE = /운세|^\s*\[포토|\[화보\]|날씨|증시|주가|코스피|대통령|국회|의원|장관|부동산|몸매|힙라인|갈비뼈|각선미|노출;
+const KR_NOISE_TITLE = /운세|^\s*\[포토|\[화보\]|날씨|증시|주가|코스피|대통령|국회|의원|장관|부동산|몸매|힙라인|갈비뼈|각선미|노출/;
 const KR_NOISE_SOURCE = /facebook|weverse|instagram|youtube|x\.com|twitter|investing|vietnam\.vn|tiktok/i;
 // 한국어 제목 → 짧은 검색어: 긴 인용구(발언)는 빼고 짧은 따옴표(작품명)는 유지, 앞 4어절
 export function shortQueryKo(title) {

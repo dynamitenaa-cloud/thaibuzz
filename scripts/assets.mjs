@@ -8,9 +8,10 @@ await sharp(svg, { density: 600 }).resize(192).png().toFile('public/icon-192.png
 await sharp(svg, { density: 600 }).resize(512).png().toFile('public/icon-512.png');
 await sharp(svg, { density: 600 }).resize(180).flatten({ background: '#e11d48' }).png().toFile('app/apple-icon.png');
 
-const t = await makeThumb('_default', { text: 'ข่าวฮิต ดราม่า เทรนด์ล่าสุด อัปเดตทุกชั่วโมง', category: 'ThaiBuzz', color: '#e11d48' });
+const t = await makeThumb('_default', { text: 'ข่าวบันเทิงไทย-เกาหลี ทันกระแส อัปเดตทุกชั่วโมง', category: 'ThaiBuzz', color: '#e11d48' });
 fs.copyFileSync(`public${t.thumb}`, 'app/opengraph-image.jpg');
-fs.writeFileSync('app/opengraph-image.alt.txt', 'ThaiBuzz ข่าวฮิต ดราม่า เทรนด์ล่าสุด');
+fs.writeFileSync('app/opengraph-image.alt.txt', 'ThaiBuzz ข่าวบันเทิงไทย-เกาหลี ทันกระแส');
 fs.rmSync(`public${t.thumb}`);
 fs.rmSync(`public${t.thumbSm}`);
+if (t.thumbLg) fs.rmSync(`public${t.thumbLg}`, { force: true });
 console.log('assets ok');

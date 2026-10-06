@@ -30,7 +30,7 @@ const tree = h('div', { width: W, height: H, display: 'flex', position: 'relativ
       h('img', { width: 190, height: 190, borderRadius: 44, boxShadow: '0 12px 40px rgba(0,0,0,0.35)' }, undefined, { src: logo, width: 190, height: 190 }),
       h('div', { display: 'flex', flexDirection: 'column', gap: 8 }, [
         h('div', { color: '#fff', fontSize: 132, lineHeight: 1.05, display: 'flex', textShadow: '0 6px 24px rgba(0,0,0,0.30)' }, 'ThaiBuzz'),
-        h('div', { color: '#fff', fontSize: 58, lineHeight: 1.3, display: 'flex' }, 'ข่าวฮิต ดราม่า เทรนด์ไทย'),
+        h('div', { color: '#fff', fontSize: 58, lineHeight: 1.3, display: 'flex' }, 'ข่าวบันเทิงไทย × เกาหลี'),
         h('div', { display: 'flex', marginTop: 8 }, [
           h('div', { background: 'rgba(0,0,0,0.38)', color: '#fde047', fontSize: 30, padding: '6px 22px', borderRadius: 999, display: 'flex' }, 'อัปเดตทุกชั่วโมง · มีแหล่งอ้างอิงทุกข่าว'),
         ]),

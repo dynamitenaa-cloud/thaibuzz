@@ -1,5 +1,5 @@
 import { homeFeed, type Post } from '@/lib/posts';
-import { CATEGORIES } from '@/lib/site';
+import { CATEGORIES, SITE } from '@/lib/site';
 import { Card, Lead } from '@/components/PostCard';
 import { Listing } from '@/components/Listing';
 
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="sr-only">ThaiBuzz ข่าวฮิต ดราม่า เทรนด์ล่าสุด</h1>
+      <h1 className="sr-only">{SITE.name} {SITE.tagline}</h1>
       <section className="hero" aria-label="ข่าวเด่น">
         <Lead p={top[0]} />
         {top.length > 1 && <div className="hero-side">{top.slice(1).map((p: Post) => <Card key={p.slug} p={p} priority />)}</div>}
