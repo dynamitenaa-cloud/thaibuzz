@@ -10,9 +10,13 @@ const paths = fs.readFileSync(file, 'utf8').split('\n').filter(Boolean);
 if (!paths.length) process.exit(0);
 const urlList = [...paths, '/'].map((p) => site + p);
 
-const r = await fetch('https://api.indexnow.org/indexnow', {
-  method: 'POST',
-  headers: { 'content-type': 'application/json; charset=utf-8' },
-  body: JSON.stringify({ host: new URL(site).host, key, keyLocation: `${site}/${key}.txt`, urlList }),
-});
-console.log(`indexnow: ${r.status} (${urlList.length} urls)`);
+// 네트워크 오류로 워크플로가 실패 처리되지 않게 (알림은 보조 기능)
+try {
+  const r = await fetch('https://api.indexnow.org/indexnow', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json; charset=utf-8' },
+    body: JSON.stringify({ host: new URL(site).host, key, keyLocation: `${site}/${key}.txt`, urlList }),
+    signal: AbortSignal.timeout(15000),
+  });
+  console.log(`indexnow: ${r.status} (${urlList.length} urls)`);
+} catch (e) { console.warn('indexnow: 실패 (무시)', e.message); }

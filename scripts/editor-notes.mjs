@@ -21,14 +21,22 @@ const upd = await api('getUpdates', { offset, timeout: 0, allowed_updates: ['mes
 if (!upd.ok) { console.warn('notes: getUpdates 실패', JSON.stringify(upd).slice(0, 200)); process.exit(0); }
 
 const isThai = (s) => ((s.match(/[฀-๿]/g) || []).length / Math.max(1, s.replace(/\s/g, '').length)) > 0.5;
+// 한 모델이 단종/한도 소진이어도 번역이 죽지 않게 순서대로 시도
+const MODELS = [...new Set([process.env.NOTES_MODEL, 'gemini-2.5-flash-lite', 'gemini-3.8-flash-lite', ...(process.env.GEMINI_MODEL || '').split(','), 'gemini-3.8-flash'].map((s) => (s || '').trim()).filter(Boolean))];
 async function toThai(text) {
   if (isThai(text)) return text.trim();
-  const { text: out } = await generateText({
-    model: google(process.env.NOTES_MODEL || 'gemini-2.5-flash-lite'),
-    prompt: `แปลข้อความต่อไปนี้เป็นภาษาไทยที่เป็นธรรมชาติ สำหรับ "มุมมองจากบรรณาธิการชาวเกาหลี" ในเว็บข่าว (คงน้ำเสียงบุคคลที่หนึ่งของผู้เขียน) แปลเฉพาะความหมายเดิม ห้ามเพิ่มข้อมูลใหม่ ตอบเฉพาะคำแปล:\n\n${text}`,
-    maxRetries: 1,
-  });
-  return out.trim();
+  let lastErr;
+  for (const name of MODELS) {
+    try {
+      const { text: out } = await generateText({
+        model: google(name),
+        prompt: `แปลข้อความต่อไปนี้เป็นภาษาไทยที่เป็นธรรมชาติ สำหรับ "มุมมองจากบรรณาธิการชาวเกาหลี" ในเว็บข่าว (คงน้ำเสียงบุคคลที่หนึ่งของผู้เขียน) แปลเฉพาะความหมายเดิม ห้ามเพิ่มข้อมูลใหม่ ตอบเฉพาะคำแปล:\n\n${text}`,
+        maxRetries: 1,
+      });
+      if (out?.trim()) return out.trim();
+    } catch (e) { lastErr = e; console.warn(`notes: ${name} 실패 → 다음 모델:`, String(e.message).slice(0, 120)); }
+  }
+  throw lastErr || new Error('no model');
 }
 
 let changed = 0, last = offset;

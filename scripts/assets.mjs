@@ -10,6 +10,7 @@ await sharp(svg, { density: 600 }).resize(180).flatten({ background: '#e11d48' }
 
 const t = await makeThumb('_default', { text: 'ข่าวบันเทิงไทย-เกาหลี ทันกระแส อัปเดตทุกชั่วโมง', category: 'ThaiBuzz', color: '#e11d48' });
 fs.copyFileSync(`public${t.thumb}`, 'app/opengraph-image.jpg');
+fs.copyFileSync(`public${t.thumb}`, 'public/og-default.jpg'); // 썸네일 없는 글의 OG 기본 이미지
 fs.writeFileSync('app/opengraph-image.alt.txt', 'ThaiBuzz ข่าวบันเทิงไทย-เกาหลี ทันกระแส');
 fs.rmSync(`public${t.thumb}`);
 fs.rmSync(`public${t.thumbSm}`);

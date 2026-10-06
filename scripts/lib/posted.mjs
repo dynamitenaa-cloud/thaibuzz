@@ -42,5 +42,37 @@ export function saveLedger(ledger) {
   for (const kind of KINDS) {
     for (const [k, t] of Object.entries(ledger[kind] || {})) if (Date.now() - t > 90 * 864e5) delete ledger[kind][k];
   }
+  // 실패 횟수는 slug 날짜(YYYYMMDD) 기준 7일 지나면 정리
+  const cutoff = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10).replace(/-/g, '');
+  for (const m of Object.values(ledger.tries || {})) for (const slug of Object.keys(m)) if (slug.slice(0, 8) < cutoff) delete m[slug];
   fs.writeFileSync(FILE, JSON.stringify(ledger));
 }
+
+// ── 실패한 게시 재시도 ──
+// 게시 대상 = 이번 실행 새 글 + 최근 24시간 글 중 kinds 어느 채널에든 아직 안 올라간 글 (실패 3회까지).
+// (예전엔 .cache/new-urls.txt 만 봐서, 배포 직후 CDN 지연·일시 오류로 한 번 실패한 글은 그 채널에 영원히 안 올라갔음)
+const TRIES_MAX = 3;
+const RETRY_WINDOW = 24 * 3.6e6;
+export function pendingSlugs(ledger, kinds, newSlugs = [], triesKey = kinds[0]) {
+  const tries = ((ledger.tries ||= {})[triesKey] ||= {});
+  const out = new Set(newSlugs);
+  const recentDay = new Date(Date.now() - 2 * 864e5).toISOString().slice(0, 10).replace(/-/g, '');
+  for (const f of fs.readdirSync('content/posts')) {
+    if (!f.endsWith('.json') || f.startsWith('demo-')) continue;
+    const slug = f.slice(0, -5);
+    if (out.has(slug) || slug.slice(0, 8) < recentDay || (tries[slug] || 0) >= TRIES_MAX) continue;
+    if (kinds.every((k) => ledger[k]?.[slug])) continue;
+    let createdAt; try { createdAt = JSON.parse(fs.readFileSync(`content/posts/${f}`, 'utf8')).createdAt; } catch { continue; }
+    if (Date.now() - Date.parse(createdAt) < RETRY_WINDOW) { out.add(slug); console.log(`${triesKey}: retry pending → ${slug}`); }
+  }
+  return [...out];
+}
+export function markFail(ledger, triesKey, slug) {
+  const m = ((ledger.tries ||= {})[triesKey] ||= {});
+  m[slug] = (m[slug] || 0) + 1;
+  saveLedger(ledger);
+}
+// 이번 실행 새 글 목록 (run-pipeline 이 기록). 없으면 빈 배열
+export const newSlugs = () => {
+  try { return fs.readFileSync('.cache/new-urls.txt', 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop()); } catch { return []; }
+};

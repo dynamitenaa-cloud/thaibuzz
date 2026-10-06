@@ -190,7 +190,9 @@ export async function fetchArticleText(url, max = 2500) {
 
 // ความคล้ายของหัวข้อ (กันเขียนเรื่องซ้ำ)
 const seg = new Intl.Segmenter('th', { granularity: 'word' });
-export const tokens = (s) => new Set([...seg.segment(String(s).toLowerCase())].filter((x) => x.isWordLike && x.segment.length > 1).map((x) => x.segment));
+// 한국어 토큰은 조사를 떼어 "택시가"/"택시" 가 같은 단어로 잡히게 (중복 감지용)
+const KO_PARTICLE = /(?<=[가-힣]{2,})(에서는|으로는|에서|으로|에게|부터|까지|이다|은|는|이|가|을|를|의|에|로|와|과|도|만)$/;
+export const tokens = (s) => new Set([...seg.segment(String(s).toLowerCase())].filter((x) => x.isWordLike && x.segment.length > 1).map((x) => x.segment.replace(KO_PARTICLE, '')));
 export function similarity(a, b) {
   const A = tokens(a), B = tokens(b);
   if (!A.size || !B.size) return 0;

@@ -68,3 +68,5 @@ const fullN = Math.min(kept.length, LIVE_FULL), liteN = Math.max(0, kept.length 
 const est = fullN * 4 + liteN + tagPages + 150;
 console.log(`archive: total=${posts.length} → lite+${lite}, gone+${gone}, orphan thumbs=${orphans} | 예상 배포 파일 ${est} (full ${fullN}, lite ${liteN}, 태그 ${tagPages})`);
 if (est > 18500) console.warn('archive: ⚠ 파일 수가 한도(20,000)에 가까움 → LIVE_FULL/LIVE_LITE 를 줄이세요');
+// 보관 처리로 파일이 바뀌었으면 커밋 단계가 포함하도록
+if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${lite + gone + orphans > 0 ? 1 : 0}\n`);

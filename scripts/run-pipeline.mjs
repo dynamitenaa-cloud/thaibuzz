@@ -21,8 +21,10 @@ import { makeThumb } from './lib/thumbs.mjs';
 const ROOT = process.cwd();
 const POSTS = path.join(ROOT, 'content', 'posts');
 const CACHE = path.join(ROOT, '.cache');
-const MAX_PER_RUN = Number(process.env.MAX_PER_RUN || 3);
-const MAX_PER_DAY = Number(process.env.MAX_PER_DAY || 40);
+// 잘못된 값(빈 문자열·문자)이면 기본값 (NaN 이면 조용히 0건 발행되는 사고 방지)
+const num = (v, d) => { const n = Number(v); return v !== undefined && v !== '' && Number.isFinite(n) && n > 0 ? n : d; };
+const MAX_PER_RUN = num(process.env.MAX_PER_RUN, 3);
+const MAX_PER_DAY = num(process.env.MAX_PER_DAY, 40);
 const DRY = process.argv.includes('--dry'); // LLM 호출 없이 후보/근거만 출력
 const MODEL = process.argv.includes('--mock') ? (await import('./lib/mock-model.mjs')).default : undefined; // 키 없이 전체 흐름 시험
 fs.mkdirSync(POSTS, { recursive: true });
@@ -45,7 +47,7 @@ const recent = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 3 *
 const publishedToday = existing.filter((p) => Date.now() - Date.parse(p.createdAt) < 864e5).length;
 let budget = Math.min(MAX_PER_RUN, MAX_PER_DAY - publishedToday);
 // 실행당 LLM 호출 상한: 거부가 이어져도 무료 한도를 한 번에 다 쓰지 않게
-const MAX_ATTEMPTS = Number(process.env.MAX_ATTEMPTS || MAX_PER_RUN * 3);
+const MAX_ATTEMPTS = num(process.env.MAX_ATTEMPTS, MAX_PER_RUN * 3);
 let attempts = 0;
 
 const reject = (kw) => { rejected[kw.toLowerCase()] = Date.now(); };
@@ -141,7 +143,7 @@ if (budget > 0) {
       console.log(`  model: ${w.model}${premium ? ' (premium)' : ''} | format: ${w.format}${removedClosers ? ` | removed ${removedClosers} cliché closer` : ''}`);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
       const a = normalize(raw);
-      if (c.kr) a.category = KR_CAT;
+      if (c.lang === 'ko') a.category = KR_CAT; // 태국어 K 검색 후보는 LLM 판단(한국 연예가 아니면 다른 카테고리)
       if (recent.some((p) => jaccard(a.title, p.title) >= 0.6)) { console.log('  skip: duplicate story'); reject(c.keyword); continue; }
 
       const now = new Date();

@@ -7,7 +7,7 @@ import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 import { telegramReady, sendTelegramVideo, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
-import { loadLedger, saveLedger } from './lib/posted.mjs';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -53,9 +53,9 @@ async function publishReel(file, description) {
   return { video_id, status: 'processing' };
 }
 
-const listFile = '.cache/new-urls.txt';
-if (!fs.existsSync(listFile)) process.exit(0);
-const slugs = fs.readFileSync(listFile, 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop());
+const fresh = newSlugs();
+// 지난 실행에서 남은 영상/프레임이 캐시에 쌓이지 않게 (미리보기 mp4 는 이 실행에서 새로 만들어짐)
+fs.rmSync(REEL_DIR, { recursive: true, force: true });
 
 // ── 인스타그램 Reels (같은 영상 재사용) ──
 // 페이지에 연결된 인스타 프로페셔널 계정을 자동으로 찾음. 연결이 없거나 권한이 없으면 조용히 건너뜀
@@ -90,10 +90,14 @@ async function publishIgReel(igId, file, caption) {
 }
 
 let failed = 0;
-const ledger = loadLedger(slugs);
+const ledger = loadLedger(fresh);
 const FORCE = process.env.FB_FORCE === 'true';
 const igId = await findIgUser();
 if (!DRY) console.log(igId ? `reels: 인스타그램 연결됨 (${igId})` : 'reels: 인스타그램 미연결 → 페이스북만');
+// 재시도 대상은 "켜져 있는 채널" 기준으로만 (꺼진 채널 때문에 매시간 영상을 다시 만들지 않게)
+const kinds = ['reel', ...(igId ? ['ig'] : []), ...(telegramReady() ? ['tg'] : []), ...(youtubeReady() ? ['yt'] : [])];
+const slugs = DRY ? fresh : pendingSlugs(ledger, kinds, fresh, 'reel');
+if (!slugs.length) { console.log('reels: 게시할 글 없음'); process.exit(0); }
 for (const slug of slugs) {
   if (overLimit('reels')) break;
   const needFb = DRY || FORCE || !ledger.reel[slug];
@@ -116,6 +120,7 @@ for (const slug of slugs) {
     console.log(`reels: rendered ${slug} (${(reel.size / 1e6).toFixed(1)}MB, ${reel.duration.toFixed(1)}s, ${reel.voiced ? '음성' : '무음'})`);
   } catch (e) {
     failed++;
+    if (!DRY) markFail(ledger, 'reel', slug);
     console.error(`reels: render FAILED ${slug}:`, e.message);
     continue;
   }
@@ -127,7 +132,7 @@ for (const slug of slugs) {
       const r = await publishReel(reel.file, `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${tags}`);
       console.log(`reels: facebook posted ${r.video_id} [${r.status}] ← ${slug}`);
       ledger.reel[slug] = Date.now(); saveLedger(ledger);
-    } catch (e) { failed++; console.error(`reels: facebook FAILED ${slug}:`, e.message); }
+    } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: facebook FAILED ${slug}:`, e.message); }
   }
   if (needIg) {
     try {
@@ -135,7 +140,7 @@ for (const slug of slugs) {
       const id = await publishIgReel(igId, reel.file, `${p.title}\n\n${p.excerpt}\n\n🔗 อ่านฉบับเต็มที่ลิงก์ในโปรไฟล์ (${SITE.replace(/^https?:\/\//, '')})\n\n${tags}`);
       console.log(`reels: instagram posted ${id} ← ${slug}`);
       ledger.ig[slug] = Date.now(); saveLedger(ledger);
-    } catch (e) { failed++; console.error(`reels: instagram FAILED ${slug}:`, e.message); }
+    } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: instagram FAILED ${slug}:`, e.message); }
   }
   if (needTg) {
     try {
@@ -149,10 +154,10 @@ ${p.tags.slice(0, 5).map(hashtag).join(' ')} ${isK ? '#kpop #ซีรีส์�
 ${tiktokCaption}
 
 🆔 ${slug}
-💬 이 메시지에 답장하면 사이트 글에 '편집자 노트'로 붙습니다 (한국어 OK)`);
+💬 이 메시지에 답장하면 글에 '🇰🇷 한국인 편집자의 시선'으로 붙습니다 (한국어 OK, 사실만)`);
       console.log(`reels: telegram sent ← ${slug}`);
       ledger.tg[slug] = Date.now(); saveLedger(ledger);
-    } catch (e) { failed++; console.error(`reels: telegram FAILED ${slug}:`, e.message); }
+    } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: telegram FAILED ${slug}:`, e.message); }
   }
   if (needYt) {
     try {
@@ -167,7 +172,7 @@ ${tags}`,
       });
       console.log(`reels: youtube uploaded ${id} ← ${slug}`);
       ledger.yt[slug] = Date.now(); ledger.ytLog.push(Date.now()); saveLedger(ledger);
-    } catch (e) { failed++; console.error(`reels: youtube FAILED ${slug}:`, e.message); }
+    } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: youtube FAILED ${slug}:`, e.message); }
   }
   fs.rmSync(reel.file, { force: true });
 }

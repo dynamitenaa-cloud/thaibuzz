@@ -4,7 +4,8 @@
 //   ※ 60일 동안 갱신이 끊기면(캐시 유실 + 시크릿 만료) 영구 만료 → 실패 알림 메일 → 토큰 재발급 필요
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadLedger, saveLedger } from './lib/posted.mjs';
+import crypto from 'node:crypto';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const API = 'https://graph.threads.net/v1.0';
@@ -14,11 +15,14 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 if (process.env.THREADS === 'false') { console.log('threads: THREADS=false → 건너뜀'); process.exit(0); }
 
+// 시크릿의 토큰이 바뀌면(재발급) 캐시된 옛 토큰은 버림 → seed 로 구분
+const seed = crypto.createHash('sha256').update(process.env.THREADS_TOKEN || '').digest('hex').slice(0, 16);
 async function token() {
   let t = process.env.THREADS_TOKEN || '', refreshedAt = 0;
   try {
     const c = JSON.parse(fs.readFileSync(TOKEN_FILE, 'utf8'));
-    if (c.token) { t = c.token; refreshedAt = c.refreshedAt || 0; }
+    if (c.token && c.seed === seed) { t = c.token; refreshedAt = c.refreshedAt || 0; }
+    else if (c.token) console.log('threads: 시크릿 토큰이 바뀜 → 캐시된 토큰 무시');
   } catch {}
   if (!t) return '';
   // 발급 후 24시간이 지나야 갱신 가능. 7일마다 갱신하면 60일 만료에 걸릴 일이 없음
@@ -28,7 +32,7 @@ async function token() {
       if (r.access_token) {
         t = r.access_token;
         fs.mkdirSync('.cache', { recursive: true });
-        fs.writeFileSync(TOKEN_FILE, JSON.stringify({ token: t, refreshedAt: Date.now() }));
+        fs.writeFileSync(TOKEN_FILE, JSON.stringify({ token: t, refreshedAt: Date.now(), seed }));
         console.log(`threads: 토큰 갱신됨 (유효 ${Math.round((r.expires_in || 0) / 86400)}일)`);
       } else console.warn('threads: 토큰 갱신 실패', JSON.stringify(r.error ?? r).slice(0, 200));
     } catch (e) { console.warn('threads: 토큰 갱신 오류', e.message); }
@@ -53,17 +57,16 @@ function caption(p, url) {
   return body + tail;
 }
 
-const listFile = '.cache/new-urls.txt';
-if (!fs.existsSync(listFile)) process.exit(0);
-const slugs = fs.readFileSync(listFile, 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop());
-if (!slugs.length) process.exit(0);
+const fresh = newSlugs();
+const ledger = loadLedger(fresh);
+const slugs = DRY ? fresh : pendingSlugs(ledger, ['threads'], fresh);
+if (!slugs.length) { console.log('threads: 게시할 글 없음'); process.exit(0); }
 
 const t = DRY ? 'dry' : await token();
 if (!t) { console.log('threads: THREADS_TOKEN 없음 → 건너뜀'); process.exit(0); }
 const me = DRY ? { id: 'dry' } : await (await fetch(`${API}/me?fields=id,username&access_token=${t}`)).json();
-if (me.error) { console.error('threads: 토큰 오류 (만료되었으면 재발급 필요)', JSON.stringify(me.error).slice(0, 200)); process.exit(1); }
+if (me.error) { fs.rmSync(TOKEN_FILE, { force: true }); console.error('threads: 토큰 오류 (만료되었으면 재발급 필요)', JSON.stringify(me.error).slice(0, 200)); process.exit(1); }
 
-const ledger = loadLedger(slugs);
 const FORCE = process.env.FB_FORCE === 'true';
 let failed = 0;
 for (const slug of slugs) {
@@ -79,7 +82,7 @@ for (const slug of slugs) {
     const pub = await post(`${me.id}/threads_publish`, { creation_id: c.id }, t);
     console.log(`threads: posted ${pub.id} ← ${slug}`);
     ledger.threads[slug] = Date.now(); saveLedger(ledger);
-  } catch (e) { failed++; console.error(`threads: FAILED ${slug}:`, e.message); }
+  } catch (e) { failed++; markFail(ledger, 'threads', slug); console.error(`threads: FAILED ${slug}:`, e.message); }
   await sleep(3000);
 }
 if (failed) process.exitCode = 1;

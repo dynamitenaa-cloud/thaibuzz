@@ -2,7 +2,7 @@
 // 필요: FB_PAGE_ID, FB_PAGE_TOKEN (시크릿이 없으면 조용히 건너뜀). `--dry` 는 게시 없이 문구만 출력
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadLedger, saveLedger } from './lib/posted.mjs';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -14,9 +14,7 @@ const API = 'https://graph.facebook.com/v25.0';
 if (!DRY && (!PAGE_ID || !TOKEN)) { console.log('facebook: FB_PAGE_ID/FB_PAGE_TOKEN 없음 → 건너뜀'); process.exit(0); }
 if (!SITE) { console.log('facebook: SITE_URL 없음 → 건너뜀'); process.exit(0); }
 
-const file = '.cache/new-urls.txt';
-if (!fs.existsSync(file)) process.exit(0);
-const slugs = fs.readFileSync(file, 'utf8').split('\n').filter(Boolean).map((p) => p.split('/').filter(Boolean).pop());
+const fresh = newSlugs();
 
 const hashtag = (t) => '#' + t.replace(/[^\p{L}\p{M}\p{N}]/gu, '');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -32,8 +30,10 @@ async function waitLive(url) {
 
 let failed = 0;
 // 이미 올린 글은 건너뜀 (재실행/테스트로 중복 게시 방지). FB_FORCE=true 면 다시 게시
-const ledger = loadLedger(slugs);
+const ledger = loadLedger(fresh);
 const FORCE = process.env.FB_FORCE === 'true';
+const slugs = DRY ? fresh : pendingSlugs(ledger, ['photo'], fresh);
+if (!slugs.length) { console.log('facebook: 게시할 글 없음'); process.exit(0); }
 for (const slug of slugs) {
   if (overLimit('facebook')) break;
   if (!FORCE && ledger.photo[slug]) { console.log(`facebook: already posted → skip ${slug}`); continue; }
@@ -52,7 +52,7 @@ ${p.tags.slice(0, 3).map(hashtag).join(' ')}`;
   if (DRY) { console.log(`--- ${image ? 'PHOTO' : 'LINK'} ${url}
 ${message}
 `); continue; }
-  if (!(await waitLive(url)) || (image && !(await waitLive(image)))) { console.warn(`facebook: ${url} 아직 열리지 않음 → 건너뜀`); failed++; continue; }
+  if (!(await waitLive(url)) || (image && !(await waitLive(image)))) { console.warn(`facebook: ${url} 아직 열리지 않음 → 다음 실행에서 재시도`); failed++; markFail(ledger, 'photo', slug); continue; }
   const body = image
     ? new URLSearchParams({ url: image, caption: message, access_token: TOKEN })
     : new URLSearchParams({ message, link: url, access_token: TOKEN });
@@ -65,7 +65,7 @@ ${message}
   const j = await r.json().catch(() => ({}));
   const id = j.post_id || j.id;
   if (r.ok && id) { console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`); ledger.photo[slug] = Date.now(); saveLedger(ledger); }
-  else { failed++; console.error(`facebook: FAILED ${slug}:`, JSON.stringify(j.error ?? j).slice(0, 300)); }
+  else { failed++; markFail(ledger, 'photo', slug); console.error(`facebook: FAILED ${slug}:`, JSON.stringify(j.error ?? j).slice(0, 300)); }
   await sleep(3000); // 연속 게시 간격 (스팸 판정 방지)
 }
 // 토큰 만료(190)/권한 오류는 실패로 표시 → GitHub 알림. 단 사이트 배포 자체는 이미 끝난 뒤라 영향 없음

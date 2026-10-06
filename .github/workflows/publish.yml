@@ -62,7 +62,7 @@ env:
 jobs:
   run:
     runs-on: ubuntu-24.04 # 2026-10-19 부터 ubuntu-latest 가 26 으로 바뀜 → 네이티브 의존성(sharp/resvg) 안정성을 위해 고정
-    timeout-minutes: 25
+    timeout-minutes: 55 # 영상 렌더+TTS+FB/IG 처리 대기가 글당 몇 분씩 걸릴 수 있음
     steps:
       # 재실행/대기열 실행도 항상 최신 main 기준 (예전 커밋으로 돌면 방금 올라간 글을 못 봐서 중복 발행)
       - uses: actions/checkout@v7
@@ -70,6 +70,9 @@ jobs:
       - uses: actions/setup-node@v7
         with: { node-version: 22, cache: npm }
       - run: npm ci
+      # 스크립트 문법 오류를 글 생성 전에 잡음 (import 된 모듈까지 로드 확인)
+      - name: Check scripts
+        run: for f in scripts/*.mjs scripts/lib/*.mjs; do node --check "$f" || exit 1; done
 
       # 폰트/거절목록/모델 쿨다운 캐시. 저장은 아래에서 if: always() 로 (실패한 실행에서도 기록이 보존되도록)
       - name: Restore pipeline cache
@@ -92,9 +95,11 @@ jobs:
           KR_ONLY: ${{ inputs.kr_only }}
           MAX_ATTEMPTS: ${{ vars.MAX_ATTEMPTS }}
           USE_SOURCE_IMAGES: ${{ vars.USE_SOURCE_IMAGES }}
+          PREMIUM_TRAFFIC: ${{ vars.PREMIUM_TRAFFIC }}
 
       # 오래된 글 단계적 보관 (Cloudflare 파일 한도/저장소 용량 관리). scripts/archive.mjs 참고
       - name: Archive old posts
+        id: archive
         if: ${{ !cancelled() && github.event_name != 'push' }}
         run: node scripts/archive.mjs
         env:
@@ -108,17 +113,25 @@ jobs:
         run: node scripts/editor-notes.mjs
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          NOTES_MODEL: ${{ vars.NOTES_MODEL }}
 
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content public/thumbs
           git diff --cached --quiet && exit 0
           git commit -m "content: ${{ steps.pipe.outputs.published || 0 }} new posts, ${{ steps.notes.outputs.changed || 0 }} editor notes"
-          git pull --rebase && git push
+          # 동시에 다른 커밋(웹에서 글 수정 등)이 들어오면 몇 번 다시 시도. 충돌이면 중단 → 배포/게시 건너뜀
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          exit 1
 
       # 예약 실행에서 새 글이 0건이어도, 마지막 배포 이후 코드가 바뀌었으면 배포 (대기열에서 밀려 취소된 push 실행 보완)
       - name: Detect code change since last deploy
@@ -146,7 +159,7 @@ jobs:
 
       - name: Remember deployed code
         if: ${{ !cancelled() && steps.deploy.outcome == 'success' }}
-        run: echo "${{ steps.code.outputs.hash }}" > .cache/deployed-code-hash
+        run: mkdir -p .cache && echo "${{ steps.code.outputs.hash }}" > .cache/deployed-code-hash
 
       - name: Ping IndexNow (Bing/Yandex/Naver/Seznam)
         if: ${{ !cancelled() && steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0 && env.INDEXNOW_KEY != '' }}
@@ -160,19 +173,31 @@ jobs:
           node -e "const fs=require('fs');const p=fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0];fs.writeFileSync('.cache/new-urls.txt','/post/'+p.slug+'/');console.log('test target:',p.slug)"
 
       # 배포가 끝난 뒤에 올려야 링크/이미지가 정상 표시됨
+      # 새 글이 없어도 실행: 스크립트가 지난 24시간 안에 게시 실패한 글을 찾아 재시도 (없으면 바로 종료)
       - name: Post to Facebook Page
-        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
+        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
         run: node scripts/facebook.mjs
+        env:
+          META_USAGE_LIMIT: ${{ vars.META_USAGE_LIMIT }}
+
+      # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
+      - name: Post to Threads
+        if: ${{ !cancelled() && env.THREADS_TOKEN != '' && vars.THREADS != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
+        run: node scripts/threads.mjs
 
       # 새 글 → 세로 숏폼 영상 → Facebook Reels (영상은 저장소에 안 쌓고 올린 뒤 삭제). 끄려면 Variables 에 REELS=false
       - name: Post Reels
-        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
+        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
         run: node scripts/reels.mjs
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
           REELS_VOICE: ${{ vars.REELS_VOICE }}
+          REELS_VOICE_SPEED: ${{ vars.REELS_VOICE_SPEED }}
+          IG_REELS: ${{ vars.IG_REELS }}
+          TELEGRAM: ${{ vars.TELEGRAM }}
+          META_USAGE_LIMIT: ${{ vars.META_USAGE_LIMIT }}
           # TikTok 반자동: 영상을 내 텔레그램으로 전송
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -182,11 +207,6 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-
-      # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
-      - name: Post to Threads
-        if: ${{ !cancelled() && env.THREADS_TOKEN != '' && vars.THREADS != 'false' && ((steps.deploy.outcome == 'success' && steps.pipe.outputs.published > 0) || inputs.fb_test) }}
-        run: node scripts/threads.mjs
 
       # 미리보기: 가장 최근 글로 영상만 만들어 Actions 실행 화면의 Artifacts 에서 다운로드 (게시 안 함)
       - name: Render reel preview
@@ -199,6 +219,8 @@ jobs:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
+          REELS_VOICE: ${{ vars.REELS_VOICE }}
+          REELS_VOICE_SPEED: ${{ vars.REELS_VOICE_SPEED }}
 
       - name: Upload reel preview
         if: ${{ inputs.reel_preview }}
