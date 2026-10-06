@@ -4,7 +4,7 @@ import { generateText, Output } from 'ai';
 import { google } from '@ai-sdk/google';
 import { z } from 'zod';
 
-export const CATEGORY_NAMES = ['บันเทิง', 'ซีรีส์/หนัง', 'โซเชียล/ไวรัล', 'ข่าวทั่วไป', 'กีฬา', 'ไลฟ์สไตล์'];
+export const CATEGORY_NAMES = ['บันเทิง', 'ซีรีส์/หนัง', 'โซเชียล/ไวรัล', 'ข่าวทั่วไป', 'กีฬา', 'ไลฟ์สไตล์', 'K-บันเทิง'];
 
 const Article = z.object({
   publishable: z.boolean().describe('true เฉพาะเมื่อข้อมูลเพียงพอ ถูกต้อง และปลอดภัยตามกฎ'),
@@ -60,6 +60,16 @@ export function pickFormat(c) {
 // 오류 분류
 //  - FatalError: API 키/권한 문제 → 즉시 중단, 워크플로 실패 처리(알림 메일)
 //  - QuotaExhausted: 사용 가능한 모든 모델의 무료 한도 소진 → 정상 종료, 다음 실행에서 재시도
+// K-연예 글 추가 지침 (한국 원문 출처일 때 특히 중요)
+const KOREA_RULES = `ข่าวนี้เป็นข่าววงการบันเทิงเกาหลี (หมวด K-บันเทิง) ผู้อ่านคือแฟนชาวไทย:
+- แหล่งข่าวอาจเป็นภาษาเกาหลี: อ่านและเรียบเรียงเป็นภาษาไทย ห้ามแปลตรงทีละประโยค
+- ชื่อศิลปิน/วง/ซีรีส์: ใช้ชื่อที่แฟนไทยใช้จริง ถ้าไม่แน่ใจให้ใช้ชื่อภาษาอังกฤษอย่างเป็นทางการ (เช่น BLACKPINK, Jennie, Queen of Tears) ห้ามถอดเสียงภาษาเกาหลีเป็นอักษรไทยเองแบบเดา
+- อ้างสื่อเกาหลีด้วยชื่อ เช่น "สื่อเกาหลี Dispatch รายงานว่า" "ต้นสังกัด YG Entertainment ออกแถลงการณ์ว่า"
+- อธิบายบริบทที่คนไทยอาจไม่รู้สั้น ๆ (รายการนี้คืออะไร สื่อนี้คือใคร ทำไมเรื่องนี้ใหญ่ในเกาหลี)
+- ถ้าแหล่งข่าวระบุความเกี่ยวข้องกับไทย (สมาชิกชาวไทย คอนเสิร์ต/แฟนมีตในไทย ผลงานที่ฉายในไทย) ให้เน้นมุมนั้นเป็นหลัก แต่ห้ามแต่งความเกี่ยวข้องกับไทยขึ้นเอง
+- ตั้ง publishable=false ถ้าเป็นเรื่องที่รู้จักเฉพาะในเกาหลีและแฟนไทยแทบไม่สนใจ (เช่น นักร้องทรอตท้องถิ่น การเมือง เรตติ้งรายการในประเทศของคนที่ไม่มีชื่อเสียงในไทย)
+- category ต้องเป็น "K-บันเทิง"`;
+
 export class FatalError extends Error {}
 export class QuotaExhausted extends Error {}
 const AUTH = /API key not valid|API_KEY_INVALID|permission denied|unauthorized|forbidden|PERMISSION_DENIED/i;
@@ -142,7 +152,7 @@ export async function writeArticle(c, facts, model, recentTitles = [], searchTer
     ? 'คำค้นยอดนิยมที่คนไทยพิมพ์ใน Google เกี่ยวกับเรื่องนี้ (ใช้เป็นแนวทางตั้งหัวข้อย่อยและ FAQ อย่างเป็นธรรมชาติ เฉพาะข้อที่แหล่งข่าวมีคำตอบ ห้ามเดาข้อมูลส่วนตัว เช่น อายุ ส่วนสูง แฟน ถ้าแหล่งข่าวไม่ได้ระบุ):\n' +
       searchTerms.map((t) => `- ${t}`).join('\n') + '\n\n'
     : '';
-  const prompt = `คีย์เวิร์ดที่กำลังเป็นกระแสในไทย: "${c.keyword}"${c.traffic ? ` (ค้นหามากกว่า ${c.traffic.toLocaleString()} ครั้ง)` : ''}
+  const prompt = `${c.kr ? KOREA_RULES + '\n\n' : ''}${c.lang === 'ko' ? 'หัวข่าวจากสื่อเกาหลี' : 'คีย์เวิร์ดที่กำลังเป็นกระแสในไทย'}: "${c.keyword}"${c.traffic ? ` (ค้นหามากกว่า ${c.traffic.toLocaleString()} ครั้ง)` : ''}
 วันที่ปัจจุบัน: ${new Date().toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'long' })}
 รูปแบบบทความ: ${FORMATS[format].prompt}
 

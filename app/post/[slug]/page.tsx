@@ -129,8 +129,8 @@ export default async function PostPage({ params }: P) {
 
           {/* 편집자 노트: 사람이 직접 남긴 코멘트 (텔레그램 답장 → scripts/editor-notes.mjs) */}
           {p.editorNote && (
-            <aside className="ed-note" aria-label="หมายเหตุจากบรรณาธิการ">
-              <b>📝 หมายเหตุจากบรรณาธิการ</b>
+            <aside className="ed-note" aria-label="มุมมองจากบรรณาธิการชาวเกาหลี">
+              <b>🇰🇷 มุมมองจากบรรณาธิการชาวเกาหลี</b>
               <p>{p.editorNote}</p>
               {p.editorNoteAt && <small>{thaiDate(p.editorNoteAt)}</small>}
             </aside>

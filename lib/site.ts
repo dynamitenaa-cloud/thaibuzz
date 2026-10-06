@@ -1,8 +1,8 @@
 export const SITE = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'ThaiBuzz',
-  tagline: 'ข่าวฮิต ดราม่า เทรนด์ล่าสุด',
+  tagline: 'ข่าวบันเทิงไทย-เกาหลี ทันกระแส',
   description:
-    'ThaiBuzz รวมประเด็นร้อน ข่าวบันเทิง ซีรีส์ เทรนด์ TikTok และ X ที่คนไทยกำลังพูดถึง สรุปกระชับ อ่านง่าย พร้อมอ้างอิงแหล่งข่าวต้นทาง อัปเดตตลอด 24 ชั่วโมง',
+    'ThaiBuzz รวมประเด็นร้อน ข่าวบันเทิงไทย และข่าว K-pop ซีรีส์เกาหลีส่งตรงจากสื่อเกาหลี ดูแลโดยบรรณาธิการชาวเกาหลี สรุปกระชับ อ่านง่าย พร้อมอ้างอิงแหล่งข่าวต้นทาง อัปเดตตลอด 24 ชั่วโมง',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, ''),
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@example.com',
   locale: 'th_TH',
@@ -26,6 +26,7 @@ export const SITE = {
 // slug ↔ ชื่อหมวด (ต้องตรงกับ enum ใน scripts/run-pipeline.mjs)
 export const CATEGORIES = [
   { slug: 'entertainment', name: 'บันเทิง', emoji: '🎤', color: '#e11d48' },
+  { slug: 'korea', name: 'K-บันเทิง', emoji: '🇰🇷', color: '#0047a0' },
   { slug: 'series', name: 'ซีรีส์/หนัง', emoji: '🎬', color: '#7c3aed' },
   { slug: 'viral', name: 'โซเชียล/ไวรัล', emoji: '📱', color: '#0ea5e9' },
   { slug: 'news', name: 'ข่าวทั่วไป', emoji: '📰', color: '#475569' },

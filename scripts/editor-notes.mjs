@@ -25,7 +25,7 @@ async function toThai(text) {
   if (isThai(text)) return text.trim();
   const { text: out } = await generateText({
     model: google(process.env.NOTES_MODEL || 'gemini-2.5-flash-lite'),
-    prompt: `แปลข้อความต่อไปนี้เป็นภาษาไทยที่เป็นธรรมชาติ สำหรับ "หมายเหตุจากบรรณาธิการ" ในเว็บข่าว แปลเฉพาะความหมายเดิม ห้ามเพิ่มข้อมูลใหม่ ตอบเฉพาะคำแปล:\n\n${text}`,
+    prompt: `แปลข้อความต่อไปนี้เป็นภาษาไทยที่เป็นธรรมชาติ สำหรับ "มุมมองจากบรรณาธิการชาวเกาหลี" ในเว็บข่าว (คงน้ำเสียงบุคคลที่หนึ่งของผู้เขียน) แปลเฉพาะความหมายเดิม ห้ามเพิ่มข้อมูลใหม่ ตอบเฉพาะคำแปล:\n\n${text}`,
     maxRetries: 1,
   });
   return out.trim();

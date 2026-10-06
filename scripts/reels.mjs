@@ -19,7 +19,7 @@ if (process.env.REELS === 'false') { console.log('reels: REELS=false → 건너�
 if (!DRY && (!PAGE_ID || !TOKEN)) { console.log('reels: FB_PAGE_ID/FB_PAGE_TOKEN 없음 → 건너뜀'); process.exit(0); }
 
 // lib/site.ts 의 CATEGORIES 색과 동일
-const CAT_COLOR = { 'บันเทิง': '#e11d48', 'ซีรีส์/หนัง': '#7c3aed', 'โซเชียล/ไวรัล': '#0ea5e9', 'ข่าวทั่วไป': '#475569', 'กีฬา': '#16a34a', 'ไลฟ์สไตล์': '#f59e0b' };
+const CAT_COLOR = { 'บันเทิง': '#e11d48', 'ซีรีส์/หนัง': '#7c3aed', 'โซเชียล/ไวรัล': '#0ea5e9', 'ข่าวทั่วไป': '#475569', 'กีฬา': '#16a34a', 'ไลฟ์สไตล์': '#f59e0b', 'K-บันเทิง': '#0047a0' };
 const hashtag = (t) => '#' + t.replace(/[^\p{L}\p{M}\p{N}]/gu, '');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -120,7 +120,8 @@ for (const slug of slugs) {
     continue;
   }
   if (DRY) continue;
-  const tags = `${p.tags.slice(0, 4).map(hashtag).join(' ')} #ข่าววันนี้`;
+  const isK = p.category === 'K-บันเทิง';
+  const tags = `${p.tags.slice(0, 4).map(hashtag).join(' ')} ${isK ? '#ข่าวเกาหลี #kpop' : '#ข่าววันนี้'}`;
   if (needFb) {
     try {
       const r = await publishReel(reel.file, `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${tags}`);
@@ -141,7 +142,7 @@ for (const slug of slugs) {
       // TikTok 에 그대로 붙여넣을 캡션 (TikTok 은 해시태그가 노출에 중요)
       const tiktokCaption = `${p.title}
 
-${p.tags.slice(0, 5).map(hashtag).join(' ')} #ข่าววันนี้ #ข่าวบันเทิง #fyp #ฟีดดดシ`;
+${p.tags.slice(0, 5).map(hashtag).join(' ')} ${isK ? '#kpop #ซีรีส์เกาหลี #ข่าวเกาหลี' : '#ข่าววันนี้ #ข่าวบันเทิง'} #fyp #ฟีดดดシ`;
       // 🆔 줄: 이 메시지에 답장하면 editor-notes.mjs 가 해당 글에 편집자 노트로 붙임
       await sendTelegramVideo(reel.file, `📱 TikTok용 영상
 

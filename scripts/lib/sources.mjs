@@ -47,6 +47,9 @@ export async function trendsTH() {
   }));
 }
 
+// Google News 지역/언어 파라미터
+const GN = { th: 'hl=th&gl=TH&ceid=TH:th', ko: 'hl=ko&gl=KR&ceid=KR:ko' };
+
 // Google News: "หัวข้อ - สำนักข่าว"
 const splitTitle = (t) => {
   const i = t.lastIndexOf(' - ');
@@ -95,6 +98,44 @@ export async function nicheCandidates(queries = NICHE_QUERIES, perQuery = 4) {
   return lists.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
 }
 
+// ── 한국 × 태국: K-연예 후보 ──
+// 1) 한국 원문(구글 뉴스 한국판): 태국 매체가 영어 기사를 거쳐 번역하기 전에 먼저 다룰 수 있음 (속도 우위)
+//    - 태국 관련(태국인 멤버·방콕 공연) 검색을 앞에, 한국 연예 헤드라인은 뒤에
+// 2) 태국어로 이미 화제인 K-연예 (태국 팬 관심이 검증된 주제)
+// kr: true → K-บันเทิง 카테고리, lang: 'ko' → 근거 검색도 한국 뉴스에서
+export const KR_QUERIES_KO = ['태국인 멤버', '블랙핑크 리사', '뱀뱀', '민니 아이들', '방콕 콘서트', '방콕 팬미팅', '아이돌 컴백', '넷플릭스 한국 드라마'];
+// 연예가 아닌 것/게시물형 소스 걸러냄 (LLM 호출 전에 버려 한도 절약)
+const KR_NOISE_TITLE = /운세|^\s*\[포토|\[화보\]|날씨|증시|주가|코스피|대통령|국회|의원|장관|부동산|몸매|힙라인|갈비뼈|각선미|노출;
+const KR_NOISE_SOURCE = /facebook|weverse|instagram|youtube|x\.com|twitter|investing|vietnam\.vn|tiktok/i;
+// 한국어 제목 → 짧은 검색어: 긴 인용구(발언)는 빼고 짧은 따옴표(작품명)는 유지, 앞 4어절
+export function shortQueryKo(title) {
+  const t = title
+    .replace(/\[[^\]]*\]/g, ' ')
+    .replace(/(['"‘“])([^'"’”]{13,})(['"’”])/g, ' ')
+    .replace(/[‘’“”'"]/g, '')
+    .replace(/\.{2,}|…|[!?,·|()]/g, ' ');
+  const w = t.split(/\s+/).filter(Boolean);
+  return w.slice(0, 4).join(' ') || shortQuery(title);
+}
+export const KR_QUERIES_TH = ['ไอดอลเกาหลี', 'ซีรีส์เกาหลี', 'คอนเสิร์ต เกาหลี กรุงเทพ', 'แฟนมีตติ้ง เกาหลี'];
+const recentItems = (xml, n) => arr(xml.rss?.channel?.item).filter((it) => Date.now() - Date.parse(text(it.pubDate)) < 36 * 3.6e6).slice(0, n);
+const toCand = (it, origin, lang) => {
+  const { title, source } = splitTitle(decode(text(it.title)));
+  const src = text(it.source) || source;
+  if (KR_NOISE_SOURCE.test(src) || [...title].length > 140 || (lang === 'ko' && KR_NOISE_TITLE.test(title))) return null;
+  return { origin, kr: true, lang, keyword: title, query: lang === 'ko' ? shortQueryKo(title) : shortQuery(title), traffic: 0, picture: '', pictureSource: '', news: [{ title, url: text(it.link), source: text(it.source) || source, snippet: '', picture: '' }] };
+};
+export async function koreaCandidates(perQuery = 3) {
+  const jobs = [
+    ...KR_QUERIES_KO.map((q) => getXml(`https://news.google.com/rss/search?q=${encodeURIComponent(q)}+when:1d&${GN.ko}`).then((x) => recentItems(x, perQuery).map((it) => toCand(it, `kr:q=${q}`, 'ko')))),
+    getXml(`https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?${GN.ko}`).then((x) => recentItems(x, 8).map((it) => toCand(it, 'kr:ENT', 'ko'))),
+    ...KR_QUERIES_TH.map((q) => getXml(`https://news.google.com/rss/search?q=${encodeURIComponent(q)}+when:1d&${GN.th}`).then((x) => recentItems(x, perQuery).map((it) => toCand(it, `kr:th=${q}`, 'th')))),
+  ];
+  const lists = await Promise.allSettled(jobs);
+  lists.filter((r) => r.status === 'rejected').forEach((r) => console.warn('korea source failed:', r.reason?.message));
+  return lists.flatMap((r) => (r.status === 'fulfilled' ? r.value : [])).filter(Boolean);
+}
+
 // 롱테일: 구글 자동완성 = 태국 사람들이 실제로 치는 검색어 (예: "ไบร์ท วชิรวิชญ์ แฟน", "ลิซ่าอายุ")
 // 기사 FAQ/소제목에 반영해 경쟁이 약한 롱테일 검색을 노림. 실패하면 빈 배열 (기사 작성은 계속)
 export async function suggestions(q, limit = 10) {
@@ -110,9 +151,9 @@ export async function suggestions(q, limit = 10) {
 }
 
 // คีย์เวิร์ดเดียว → ข่าวที่เกี่ยวข้องภายใน 3 วัน (หลายแหล่ง = ข้อเท็จจริงแน่นขึ้น)
-export async function searchNews(q, limit = 8) {
+export async function searchNews(q, limit = 8, lang = 'th') {
   try {
-    const xml = await getXml(`https://news.google.com/rss/search?q=${encodeURIComponent(q)}+when:3d&hl=th&gl=TH&ceid=TH:th`);
+    const xml = await getXml(`https://news.google.com/rss/search?q=${encodeURIComponent(q)}+when:3d&${GN[lang] || GN.th}`);
     return arr(xml.rss?.channel?.item).slice(0, limit).map((it) => {
       const { title, source } = splitTitle(text(it.title));
       return { title, url: text(it.link), source: text(it.source) || source, snippet: '', picture: '', pubDate: text(it.pubDate) };
