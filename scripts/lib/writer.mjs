@@ -64,6 +64,7 @@ export function pickFormat(c) {
 const KOREA_RULES = `ข่าวนี้เป็นข่าววงการบันเทิงเกาหลี (หมวด K-บันเทิง) ผู้อ่านคือแฟนชาวไทย:
 - แหล่งข่าวอาจเป็นภาษาเกาหลี: อ่านและเรียบเรียงเป็นภาษาไทย ห้ามแปลตรงทีละประโยค
 - ชื่อศิลปิน/วง/ซีรีส์: ใช้ชื่อที่แฟนไทยใช้จริง ถ้าไม่แน่ใจให้ใช้ชื่อภาษาอังกฤษอย่างเป็นทางการ (เช่น BLACKPINK, Jennie, Queen of Tears) ห้ามถอดเสียงภาษาเกาหลีเป็นอักษรไทยเองแบบเดา
+- ห้ามมีตัวอักษรเกาหลี (ฮันกึล) ในข้อความใด ๆ ทั้งสิ้น: ชื่อคน ชื่อสื่อ ชื่อสถานที่ ชื่อเพลง/รายการ ให้เขียนเป็นภาษาไทยหรือภาษาอังกฤษ เช่น 도경수 → โดคยองซู (D.O.), 스포츠동아 → Sports DongA, 킨텍스 → KINTEX
 - อ้างสื่อเกาหลีด้วยชื่อ เช่น "สื่อเกาหลี Dispatch รายงานว่า" "ต้นสังกัด YG Entertainment ออกแถลงการณ์ว่า"
 - อธิบายบริบทที่คนไทยอาจไม่รู้สั้น ๆ (รายการนี้คืออะไร สื่อนี้คือใคร ทำไมเรื่องนี้ใหญ่ในเกาหลี)
 - ถ้าแหล่งข่าวระบุความเกี่ยวข้องกับไทย (สมาชิกชาวไทย คอนเสิร์ต/แฟนมีตในไทย ผลงานที่ฉายในไทย) ให้เน้นมุมนั้นเป็นหลัก แต่ห้ามแต่งความเกี่ยวข้องกับไทยขึ้นเอง
@@ -216,6 +217,10 @@ export function qualityCheck(a, format = 'standard') {
   const total = words([...a.summary, ...a.sections.flatMap((s) => [s.heading, ...s.paragraphs]), ...(format === 'qa' ? a.faq.flatMap((q) => [q.q, q.a]) : [])].join(' '));
   if (total < f.minWords) problems.push(`too short: ${total} words (${format})`);
   if (a.tags.length < 3) problems.push('tags < 3');
+  // 한글이 섞인 태국어 글 (한국 원문을 베낀 흔적, 독자가 못 읽음) → 발행 안 함
+  const visible = [a.title, a.excerpt, a.thumbText, ...a.summary, ...a.sections.flatMap((s) => [s.heading, ...s.paragraphs]), ...a.faq.flatMap((q) => [q.q, q.a]), ...a.tags, ...a.timeline.map((t) => t.what)].join(' ');
+  const hangul = visible.match(/[^\s]*[가-힣][^\s]*/g);
+  if (hangul) problems.push(`korean characters: ${[...new Set(hangul)].slice(0, 3).join(' ')}`);
   return { ok: problems.length === 0, problems, words: total };
 }
 

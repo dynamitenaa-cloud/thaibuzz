@@ -84,7 +84,12 @@ async function gather() {
 }
 
 async function buildFacts(c) {
-  const more = await searchNews(c.query || c.keyword, 8, c.lang || 'th');
+  let more = await searchNews(c.query || c.keyword, 8, c.lang || 'th');
+  // 한국어 헤드라인은 검색어가 길면 같은 매체만 나옴 → 앞 2어절(보통 인물명+핵심어)로 한 번 더
+  if (c.lang === 'ko' && new Set(more.map((n) => n.source)).size < 2) {
+    const short = (c.query || c.keyword).split(' ').slice(0, 2).join(' ');
+    if (short && short !== c.query) more = [...more, ...(await searchNews(short, 8, 'ko'))];
+  }
   const seen = new Set();
   const news = [...c.news, ...more].filter((n) => n.title && !seen.has(n.title) && seen.add(n.title)).slice(0, 8);
   // 구글 뉴스 래퍼 링크 → 실제 언론사 주소 (상위 4개). 본문·사진을 가져오고 출처 링크도 원문 주소로 표시됨
