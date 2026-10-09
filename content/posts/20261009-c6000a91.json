@@ -1,0 +1,68 @@
+{
+  "slug": "20261009-c6000a91",
+  "title": "เช็กสภาพอากาศสุดสัปดาห์นี้ พายุดีเปรสชัน Gabriela หอบลมฝนถล่มเยอรมนี",
+  "excerpt": "กรมอุตุนิยมวิทยาเยอรมนีเตือนสุดสัปดาห์นี้เตรียมรับมือสภาพอากาศแปรปรวนจากอิทธิพลพายุดีเปรสชัน Gabriela พัดพาฝนฟ้าคะนองและลมแรง ก่อนที่อุณหภูมิจะทยอยอุ่นขึ้นในสัปดาห์หน้า",
+  "summary": [
+    "พายุดีเปรสชัน Gabriela ส่งผลให้เยอรมนีเผชิญสภาพอากาศแปรปรวน ลมแรง และฝนตกหนักในช่วงสุดสัปดาห์นี้",
+    "บรรยากาศช่วงต้นสัปดาห์หน้าอุณหภูมิจะเริ่มปรับตัวสูงขึ้นแตะระดับ 20 องศาเซลเซียสพร้อมแสงแดดที่มากขึ้น"
+  ],
+  "sections": [
+    {
+      "heading": "พายุ Gabriela ซัดสุดสัปดาห์นี้ลมแรงฝนฟ้าคะนอง",
+      "paragraphs": [
+        "คนรักฤดูใบไม้ร่วงเตรียมหยิบเสื้อผ้าหนา ๆ มาสวมใส่กันได้เลย หลังสำนักงานอุตุนิยมวิทยาเยอรมนีออกมาเปิดเผยว่าสภาพอากาศช่วงสุดสัปดาห์นี้จะมีความแปรปรวนสูงมากจากอิทธิพลของพายุดีเปรสชัน Gabriela ที่เคลื่อนตัวเข้ามา",
+        "ทางด้านนักอุตุนิยมวิทยาอย่าง Sonja Hansen ออกมาเตือนว่ากระแสลมฝ่ายตะวันตกเฉียงใต้จะพัดค่อนข้างแรงจนอาจทำให้ทรงผมเสียทรงได้ แนะนำให้ประชาชนระมัดระวังตัวในการเดินทาง ขณะที่พื้นที่ทางตอนเหนือและชายฝั่งต้องเผชิญกับกลุ่มฝนและพายุฟ้าคะนองประปราย"
+      ]
+    },
+    {
+      "heading": "แนวโน้มอุณหภูมิสัปดาห์หน้าและพยากรณ์ 7 วันข้างหน้า",
+      "paragraphs": [
+        "แม้ช่วงวันหยุดสุดสัปดาห์ท้องฟ้าจะค่อนข้างปิดและมีฝนตกยาวนานในแถบภาคใต้ รวมถึงมีลมกระโชกแรงในเขตภูเขาและชายทะเล แต่สถานการณ์โดยรวมจะค่อย ๆ คลี่คลายลงเมื่อเข้าสู่ช่วงต้นสัปดาห์ใหม่",
+        "บรรยากาศทั่วไปจะเริ่มกลับมาอบอุ่นขึ้นอีกครั้งโดยมีอุณหภูมิสูงสุดแตะระดับราว 20 องศาเซลเซียส พร้อมกับแสงแดดที่จะส่องสว่างมากขึ้นในหลายพื้นที่ทั่วประเทศ"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "Sonja Hansen",
+    "Wetter",
+    "Deutschland",
+    "Gabriela"
+  ],
+  "entities": [
+    {
+      "name": "Sonja Hansen",
+      "type": "person"
+    }
+  ],
+  "category": "ข่าวทั่วไป",
+  "thumb": "/thumbs/20261009-c6000a91.jpg",
+  "thumbSm": "/thumbs/20261009-c6000a91-sm.webp",
+  "thumbClean": "/thumbs/20261009-c6000a91-clean.webp",
+  "thumbLg": "/thumbs/20261009-c6000a91-clean.webp",
+  "imageAlt": "บรรยากาศใบไม้เปลี่ยนสีในเยอรมนีช่วงฤดูใบไม้ร่วง",
+  "imageCredit": "Spiegel",
+  "createdAt": "2026-10-09T15:21:37.335Z",
+  "traffic": 200,
+  "keyword": "wetter morgen",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Wetter am Wochenende: Tief »Gabriela« bringt Wind, Regen und Sonne",
+      "url": "https://www.spiegel.de/panorama/wetter-am-wochenende-tief-gabriela-bringt-wind-regen-und-sonne-a-75d21989-e98a-40bd-b3bf-6658738da871",
+      "source": "Spiegel"
+    },
+    {
+      "title": "7-Tage-Trend: Wechselhaft, mild und teils windig bis stürmisch",
+      "url": "https://www.agrarzeitung.de/pflanzenbautipps/agrarwetter/7-tage-trend-wechselhaft-mild-und-teils-windig-bis-stuermisch-159546",
+      "source": "www.agrarzeitung.de"
+    },
+    {
+      "title": "Wetter morgen am Samstag: Schauer und Gewitter im Norden",
+      "url": "https://www.wetter.com/news/wetterbericht-fuer-morgen-am-samstag-10-oktober-schauer-und-gewitter-im-norden_aid_6ac89027be495a7daa0f2e1b.html",
+      "source": "wetter.com"
+    }
+  ]
+}
