@@ -1,0 +1,95 @@
+{
+  "slug": "20261009-acb96033",
+  "title": "ฮาลันด์ ปลุกใจ แมนซิตี้ ลุยศึกพรีเมียร์ลีกดวลลิเวอร์พูลท่ามกลางคดีการเงิน",
+  "excerpt": "เออร์ลิง ฮาลันด์ กระตุ้นแข้งแมนฯ ซิตี้ รวมพลังสามัคคีก่อนบุกเยือนลิเวอร์พูล ด้านเอ็นโซ มาเรสกา มั่นใจเจ้าของสโมสรชนะอุทธรณ์คดีผิดกฎการเงิน",
+  "summary": [
+    "เออร์ลิง ฮาลันด์ ออกโรงกระตุ้นทุกคนในทีมแมนฯ ซิตี้ ให้รวมพลังและรักษาทัศนคติเชิงบวกก่อนเกมบุกเยือนลิเวอร์พูล",
+    "เอ็นโซ มาเรสกา กุนซือเรือใบสีฟ้า เผยว่าเจ้าของทีมการันตีจะชนะการอุทธรณ์ข้อกล่าวหาผิดกฎการเงินพรีเมียร์ลีก"
+  ],
+  "sections": [
+    {
+      "heading": "ฮาลันด์ปลุกใจเรือใบสีฟ้า",
+      "paragraphs": [
+        "เออร์ลิง ฮาลันด์ กองหน้าตัวเก่งของแมนเชสเตอร์ ซิตี้ ออกโรงปลุกใจเพื่อนร่วมทีม ทีมงาน และแฟนบอลให้ยืนหยัดไปด้วยกัน ก่อนกลับมาลงสนามในช่วงเวลาที่สโมสรกำลังเผชิญสถานการณ์กดดันจากคดีละเมิดกฎการเงินของพรีเมียร์ลีก",
+        "ทัพเรือใบสีฟ้าเตรียมกลับมาลงเล่นหลังช่วงพักเบรกทีมชาติ ด้วยเกมสำคัญบุกเยือนลิเวอร์พูลที่สนามแอนฟิลด์ในวันอาทิตย์ที่ 11 ตุลาคมนี้ โดยดาวยิงทีมชาตินอร์เวย์เน้นย้ำให้ทุกคนรักษาความเป็นหนึ่งเดียวกันและมองไปข้างหน้าเพื่อคว้าชัยชนะ"
+      ]
+    },
+    {
+      "heading": "มาเรสก้าเชื่อมั่นสโมสร",
+      "paragraphs": [
+        "ด้านเอ็นโซ มาเรสกา ผู้จัดการทีมแมนเชสเตอร์ ซิตี ได้นั่งโต๊ะแถลงข่าวครั้งแรกนับตั้งแต่มีการประกาศความผิด โดยเปิดเผยว่าทางเจ้าของสโมสรได้การันตีความเชื่อมั่นว่าจะสามารถชนะการอุทธรณ์ข้อกล่าวหาของคณะกรรมการอิสระ กรณีทำผิดกฎการเงินพรีเมียร์ลีกได้อย่างแน่นอน"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เออร์ลิง ฮาลันด์",
+    "แมนเชสเตอร์ ซิตี้",
+    "ลิเวอร์พูล",
+    "เอ็นโซ มาเรสกา",
+    "พรีเมียร์ลีก"
+  ],
+  "entities": [
+    {
+      "name": "เออร์ลิง ฮาลันด์",
+      "type": "person"
+    },
+    {
+      "name": "แมนเชสเตอร์ ซิตี้",
+      "type": "group"
+    },
+    {
+      "name": "ลิเวอร์พูล",
+      "type": "group"
+    },
+    {
+      "name": "เอ็นโซ มาเรสกา",
+      "type": "person"
+    }
+  ],
+  "category": "บันเทิง",
+  "thumb": "/thumbs/20261009-acb96033.jpg",
+  "thumbSm": "/thumbs/20261009-acb96033-sm.webp",
+  "thumbClean": "/thumbs/20261009-acb96033-clean.webp",
+  "thumbLg": "/thumbs/20261009-acb96033-clean.webp",
+  "imageAlt": "เออร์ลิง ฮาลันด์ กองหน้าแมนเชสเตอร์ ซิตี้",
+  "imageCredit": "Siamsport",
+  "createdAt": "2026-10-09T12:25:32.352Z",
+  "traffic": 500,
+  "keyword": "พรีเมียร์ลีก",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "ฮาลันด์ ปลุกใจ แมนซิตี้ รวมพลังฝ่าวิกฤต ก่อนบุกดวล ลิเวอร์พูล",
+      "url": "https://www.siamsport.co.th/football-international/premierleague/110468/",
+      "source": "Siamsport"
+    },
+    {
+      "title": "\"มาเรสกา\" เชื่อมั่นเจ้าของทีม ชนะอุทธรณ์ผิดกฎการเงิน",
+      "url": "https://mgronline.com/sport/detail/9690000098377",
+      "source": "ผู้จัดการออนไลน์"
+    },
+    {
+      "title": "ทำไม? “กัลลาเกอร์” ถึงคิดว่า “แมนซิตี้” คือ “ผู้เสียสละ” ทีมใหญ่ทีมอื่น “โกง-คอร์รัปชัน” ยิ่งกว่า",
+      "url": "https://www.thairath.co.th/sport/eurofootball/premierleague/2965159",
+      "source": "thairath.co.th"
+    },
+    {
+      "title": "ตารางพรีเมียร์ลีก 2026-2027 นัดที่ 6 เช็กโปรแกรมแข่งขัน วันเวลาเตะครบทุกคู่",
+      "url": "https://readthecloud.co/%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%87%E0%B8%9E%E0%B8%A3%E0%B8%B5%E0%B9%80%E0%B8%A1%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B9%8C%E0%B8%A5%E0%B8%B5%E0%B8%81/",
+      "source": "คลาวด์ปัง"
+    },
+    {
+      "title": "เปิดโปรแกรมพรีเมียร์ลีก 5 นัดถัดไป! ลิเวอร์พูลเจองานหนักสุด ส่วนฟูแลมงานสบายที่สุด",
+      "url": "https://news.google.com/rss/articles/CBMi8gdBVV95cUxNaUFrWHlmUm5DdWFOelUtdDVEQnJtckc0d3F6MTBwQ283cnRtVU9DdWFwZWl1NzdXcS1zTVA3b25UT1NkS0ljR2MzbVJlZG9TVk5TX1RDOTZHRzFRLThlZEZhRm05dFVaZk5QSmQ5U2kxRzlBUEZZX09rMFF3QnVJUmF2cnhsM1l5VDRnanZCRkNEcGZsNFFYZF92Skx2VnlUQ3JhVk41VDVWTXdiWnB6RzBBVVlsaDA2VlpRM01Gdk42amFvOWxsam9yQldaOEZDcXNpdWpTMm5iTmtuX1JsMTNzdURBTHZ3czRMNk01SW9JRVNZNlExTVFLMW9GVDhjb2lRMEhoVWtqU2RRYWVuQ3Y3OFlHajItTGpucTFZdkswVzdNT19fenk5TkEzeV9pYy02VWJwanJNX2J5YmNBY0NucmFvZDVlU2ZEZGY5dFpOSkVmb05POHFKUU1adTRYT1JpRzcxNEtzQWFaNnlkZmFYMmlWdTBjOGE3WFYwVXRkaXF2dHV3VzVObnRSTmh6SkJZdmwyYkdUb1puWTdDT2NhbkRwQkdYZjZpeHZZc2NFMERNdThnbEFJRnV0X0RQYk1Bd2ZDREJMRko0ZVdMajlYRFd2OGNMQy1jNTdBMV9fclh4NDVmUVFDUTR6cG0xN0dmZGR4SVlfQTBKT0NmTm4ta2lYaV9rTHhwb2Y5VnBrdy1WMXRqckg2eXhKSXcwblZCSG0wYnNlQl96MXNSSzEyOEtGWmlpSHJNYWRGRndQVEk1U0F3TV8zcmtXb1pyNlp3aEczUS1IUlkwSjdEU0pIaGdLRDhKQkhwWGRZU3gxaThrVVJoSFBwRHRnLVlXTVQ0a1JDeHlOYm9OdzBEMEEzeGpURElKVTN1dWo3REZleWk2SWhNZGVrMmlqTGV6QjhpVVRrSXVoQ0R5Q2RhbEV6anlITElEajl1ZjBhcVJzZHJmVWpOVWJKNmx3Wkcyb3k4cVBudjZmTm9HU3hTNnNZOUtMRlpGX2VZQlBtcTRMM3RxalNfa3hPYXBRaDVjNkVrZlBNN21DRDFYSDVuTjlLYkFaQ19ENVZYU0VyYTBocXRuUnVrVmpoaXpKejhKY0RUUFFOVWVUeVVKWW5YdkRtQU0ySnlQTUxvbWVUOVZpU0JBVFNtMmJJZ0F2b3NzOW9qeDhsQy0yMERKQTVqNkd0ZFljUUZ4SmxrMnhRMnB4OF9RdC12U0RRQUdaX2d1QWNvaXlhMHN3d0R3RFdLOXlPbVR3WXlsVVBDSWNqRklGNHBEUmhYalZ1VmdRa2VKVmQ2ME1odGc5RF9IQThSOGctSDdCeXhUY2NBNHNBalVGdw?oc=5",
+      "source": "FanPiece"
+    },
+    {
+      "title": "ใครหนักสุด วิเคราะห์ผลกระทบ 4 ทีมดังมีนักเตะเจ็บจากทีมชาติ ก่อนเกมพรีเมียร์ลีกสัปดาห์นี้",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBtcjNWNm1MWGlQVzVLLTlHSTB6SVR3MERxdWo1MlIxME5USHRYaXVyamNmRnA0WFdxSU9MY1hOazFReUxKcl9USkxhRk4taXl0QzVpck9IWFVqb25Lc0xsdy1FRDIzdW1sc1lJcTlWTnRFN0VvcUE?oc=5",
+      "source": "thairath.co.th"
+    }
+  ]
+}
