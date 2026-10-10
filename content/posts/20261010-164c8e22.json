@@ -1,0 +1,92 @@
+{
+  "slug": "20261010-164c8e22",
+  "title": "ลูกาโน่ ลุยเปิดบ้านรับมือ ลูเซิร์น ศึกสวิสซูเปอร์ลีก ส่องความพร้อมจ่าฝูง",
+  "excerpt": "ฟุตบอลสวิสซูเปอร์ลีกกลับมาฟาดแข้งอีกครั้งหลังพักเบรกทีมชาติ จ่าฝูง ลูกาโน่ เตรียมเปิดรังเหย้าต้อนรับการมาเยือนของ ลูเซิร์น ในเกมแมตช์เดย์ที่ 10",
+  "summary": [
+    "ลูกาโน่รั้งตำแหน่งจ่าฝูงของศึกสวิสซูเปอร์ลีกด้วยผลงานยอดเยี่ยมก่อนพักเบรกทีมชาติ",
+    "ลูเซิร์นผู้มาเยือนพกความมั่นใจเต็มร้อยหลังโชว์ฟอร์มถล่มคู่แข่งมาในนัดก่อนหน้า"
+  ],
+  "sections": [
+    {
+      "heading": "ลูกาโน่ สวิส กับความพร้อมก่อนเปิดบ้าน",
+      "paragraphs": [
+        "เกมการแข่งขันฟุตบอลสวิสซูเปอร์ลีกกลับมาระเบิดความมันอีกครั้งหลังผ่านช่วงเบรกโปรแกรมทีมชาติยาวนานสามสัปดาห์ โดยทีมจ่าฝูงอย่าง ลูกาโน่ มีคิวลงสนามนัดที่ 10 ด้วยการเปิดสนามรังเหย้าต้อนรับการมาเยือนของ ลูเซิร์น",
+        "มัตเตีย ครอชี-ตอร์ตี กุนซือของทีม ออกมาเปิดเผยถึงความพร้อมในช่วงการเตรียมทีมที่ผ่านมา พร้อมทั้งดึงตัว อัลเบียน อาเยติ เข้ามาเสริมความแข็งแกร่งในแนวรุกเพื่อลุยศึกหนักในช่วงนี้"
+      ]
+    },
+    {
+      "heading": "สถานการณ์ก่อนเกม ลูกาโน่ลูเซิร์น",
+      "paragraphs": [
+        "สำหรับทัพเจ้าถิ่นทำผลงานได้อย่างแข็งแกร่งในฤดูกาลนี้ สะสมแต้มขึ้นไปนำเป็นเบอร์หนึ่งของตารางคะแนน ขณะที่ฝั่งผู้มาเยือนอย่าง ลูเซิร์น รั้งอันดับอยู่ในโซนกลางตาราง แต่ก็มีความอันตรายในเกมรุกที่เพิ่งโชว์ฟอร์มดุไล่อัดคู่แข่งมาขาดลอย ทำให้การดวลกันครั้งนี้มีความน่าสนใจเป็นอย่างยิ่ง"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "ลูกาโน่",
+    "ลูเซิร์น",
+    "มัตเตีย ครอชี-ตอร์ตี",
+    "สวิสซูเปอร์ลีก",
+    "ลูกาโน่ลูเซิร์น",
+    "ลูกาโน่ สวิส"
+  ],
+  "entities": [
+    {
+      "name": "ลูกาโน่",
+      "type": "group"
+    },
+    {
+      "name": "ลูเซิร์น",
+      "type": "group"
+    },
+    {
+      "name": "มัตเตีย ครอชี-ตอร์ตี",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261010-164c8e22.jpg",
+  "thumbSm": "/thumbs/20261010-164c8e22-sm.webp",
+  "thumbClean": "/thumbs/20261010-164c8e22-clean.webp",
+  "thumbLg": "/thumbs/20261010-164c8e22-clean.webp",
+  "imageAlt": "นักฟุตบอลทีมลูกาโน่ลงสนามแข่งขันในศึกสวิสซูเปอร์ลีก",
+  "imageCredit": "BBC",
+  "createdAt": "2026-10-10T17:18:21.277Z",
+  "traffic": 200,
+  "keyword": "ลูกาโน่",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Lugano vs Luzern: Swiss Super League stats & head-to-head",
+      "url": "https://www.bbc.com/sport/football/live/cw7vp33dj9det",
+      "source": "BBC"
+    },
+    {
+      "title": "Croci-Torti: 'Let’s get off to a strong start straight away'",
+      "url": "https://fclugano.com/en/news/croci-torti-ripartire-subito-forte",
+      "source": "FC Lugano"
+    },
+    {
+      "title": "The champions are on the road at FCZ, while Lugano hosts Lucerne",
+      "url": "https://www.bluewin.ch/en/sport/football/the-champions-are-on-the-road-at-fcz-while-lugano-hosts-lucerne-li.3630881",
+      "source": "bluewin.ch"
+    },
+    {
+      "title": "โปรแกรมถ่ายทอดสดฟุตบอลวันนี้! . - LaLiga 2026/27 ราโย บาเยกาโน พบ แอธ. บิลเบา เวลา 19.00 ทางช่อง beIN 2 (608) อลาเบส พบ แอต. มาดริด เวลา 21.15 ทางช่อง beIN 2 (608) บาร์เซโลนา พบ เคตาเฟ เวลา 23.30 ทางช่อง beIN 1 (607) เรอัล มาดริด พบ บียาร์เรอัล เวลา 02.00",
+      "url": "https://www.facebook.com/Truevisions/posts/%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%AA%E0%B8%94%E0%B8%9F%E0%B8%B8%E0%B8%95%E0%B8%9A%E0%B8%AD%E0%B8%A5%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B8%B5%E0%B9%89-laliga-202627%E0%B8%A3%E0%B8%B2%E0%B9%82%E0%B8%A2-%E0%B8%9A%E0%B8%B2%E0%B9%80%E0%B8%A2%E0%B8%81%E0%B8%B2%E0%B9%82%E0%B8%99-%E0%B8%9E%E0%B8%9A-%E0%B9%81%E0%B8%AD%E0%B8%98-%E0%B8%9A%E0%B8%B4%E0%B8%A5%E0%B9%80%E0%B8%9A%E0%B8%B2-%E0%B9%80%E0%B8%A7%E0%B8%A5%E0%B8%B2-1900-/1563794145793924/",
+      "source": "Facebook"
+    },
+    {
+      "title": "ฟุตบอลโลก 2026 รอบรองชนะเลิศ ฝรั่งเศสพบสเปน แมตซ์แห่งเจ้าฟุตบอล",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04QlA2RmRWRXUwNnkxWG5zS2RSTU5MOWZVc0IxeFBJajNoR1hQdFpXcmRhbENjWUdOMmN3Q2NpSE10T2lSUnZBdktWdVFXS3BpWmVvY3BxYw?oc=5",
+      "source": "Thai PBS"
+    },
+    {
+      "title": "โปรแกรมถ่ายทอดสดประจำวันเสาร์ที่ 10 ตุลาคม 69",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBvSUJPem5vVjFWcHZoMlhkNVFPU2U3TzN6dXFjUUhweFluaVBlY0ZUTzJMb24yNV8zaEF0aVFXaFlKZnM0clNPdThzUjZMbElH?oc=5",
+      "source": "TrueVisions"
+    }
+  ]
+}
