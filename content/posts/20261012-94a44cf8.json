@@ -1,0 +1,89 @@
+{
+  "slug": "20261012-94a44cf8",
+  "title": "ทำเนียบขาวสะเทือน! ทรัมป์แต่งตั้ง Katie Zacharia นั่งเก้าอี้โฆษกคนใหม่",
+  "excerpt": "โดนัลด์ ทรัมป์ ประกาศเลือก Katie Zacharia อดีตโฆษกกระทรวงความมั่นคงแห่งมาตุภูมิ นั่งแท่นโฆษกประจำทำเนียบขาวคนใหม่ แทนที่ Karoline Leavitt",
+  "summary": [
+    "โดนัลด์ ทรัมป์ เลือก Katie Zacharia เป็นโฆษกประจำทำเนียบขาวคนใหม่",
+    "เธอเป็นที่รู้จักในฐานะคอมเมนต์เตเตอร์สายอนุรักษ์นิยมและอดีตเจ้าหน้าที่กระทรวงความมั่นคงแห่งมาตุภูมิ"
+  ],
+  "sections": [
+    {
+      "heading": "เปิดประวัติคร่าว ๆ โฆษกทำเนียบขาวป้ายแดง",
+      "paragraphs": [
+        "สำนักข่าวต่างประเทศรายงานว่า โดนัลด์ ทรัมป์ ได้ตัดสินใจเลือก Katie Zacharia เข้ามาทำหน้าที่เป็นกระบอกเสียงคนใหม่ในทำเนียบขาว โดยเธอนั้นเคยผ่านงานด้านความมั่นคงมาแล้วช่วงสั้น ๆ ที่กระทรวงความมั่นคงแห่งมาตุภูมิ และเป็นที่คุ้นหน้าคุ้นตาดีในแวดวงสื่อสายอนุรักษ์นิยม",
+        "นอกจากนี้เธอยังเป็นที่รู้จักจากการปรากฏตัวบนสื่อข่าวชื่อดังอย่าง Fox News รวมทั้งเคยเขียนบทความแสดงทัศนคติลงในสื่อสิ่งพิมพ์อยู่บ่อยครั้ง"
+      ]
+    },
+    {
+      "heading": "เสียงชื่นชมจากประธานาธิบดีสหรัฐฯ",
+      "paragraphs": [
+        "ระหว่างการประกาศข่าวสำคัญนี้ ผู้นำสหรัฐฯ ได้กล่าวถึงผู้มารับตำแหน่งใหม่ด้วยความประทับใจ โดยระบุว่าเธอเป็นผู้สนับสนุนที่จงรักภักดีและมีความสามารถโดดเด่น ทั้งยังเป็นคนที่เข้ากับผู้คนรอบข้างได้ดี ซึ่งการเข้ามาทำหน้าที่ในครั้งนี้คาดว่าจะเข้ามาเสริมทีมงานชุดปัจจุบันให้มีความแข็งแกร่งมากยิ่งขึ้น"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "ใครคือสามีของ Katie Zacharia?",
+      "a": "สามีของเธอคือ Tyler Zacharia ซึ่งเป็นโปรดิวเซอร์ภาพยนตร์และผู้บริหารฝ่ายบันเทิงที่เคยมีผลงานระดับฮอลลีวูดอย่าง The Irishman และ Silence"
+    }
+  ],
+  "tags": [
+    "Katie Zacharia",
+    "Donald Trump",
+    "Tyler Zacharia"
+  ],
+  "entities": [
+    {
+      "name": "Katie Zacharia",
+      "type": "person"
+    },
+    {
+      "name": "Donald Trump",
+      "type": "person"
+    },
+    {
+      "name": "Tyler Zacharia",
+      "type": "person"
+    }
+  ],
+  "category": "ข่าวทั่วไป",
+  "thumb": "/thumbs/20261012-94a44cf8.jpg",
+  "thumbSm": "/thumbs/20261012-94a44cf8-sm.webp",
+  "thumbClean": "/thumbs/20261012-94a44cf8-clean.webp",
+  "thumbLg": "/thumbs/20261012-94a44cf8-clean.webp",
+  "imageAlt": "Katie Zacharia โฆษกประจำทำเนียบขาวคนใหม่",
+  "imageCredit": "CNN",
+  "createdAt": "2026-10-12T18:25:10.657Z",
+  "traffic": 200,
+  "keyword": "katie zacharia",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Trump selects Katie Zacharia as next White House press secretary",
+      "url": "https://www.cnn.com/2026/10/09/politics/katie-zacharia-white-house-press-secretary",
+      "source": "CNN"
+    },
+    {
+      "title": "Who Is Tyler Zacharia? What to Know About Katie Zacharia’s Husband",
+      "url": "https://www.newsweek.com/who-is-tyler-zacharia-what-to-know-about-katie-zacharias-husband-12549550",
+      "source": "Newsweek"
+    },
+    {
+      "title": "Trump confirms Katie Zacharia will replace Karoline Leavitt as White House press secretary",
+      "url": "https://nypost.com/2026/10/09/us-news/white-house-wants-katie-zacharia-to-replace-karoline-leavitt-as-press-secretary/",
+      "source": "New York Post"
+    },
+    {
+      "title": "ทำเนียบขาว ทาบทาม “ที่ปรึกษา Trump Media” นั่งโฆษกคนใหม่",
+      "url": "https://moneyandbanking.co.th/2026/277257/",
+      "source": "วารสารการเงินธนาคาร"
+    },
+    {
+      "title": "มีการเปิดเผยชื่อโฆษกประจำทำเนียบขาวคนใหม่แล้ว ซึ่งประธานาธิบดีทรัมป์เป็นผู้เลือก",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOWDZLeWxRTFVTSWlxRXFvTExwdHNpdEN1Zzc2X1FwZmhXSVl4SWNnOWoxbVFyNGFjNWJtZlhDMXo1MTB4LVZZZEJIeWFmYW1lbFd1QkRzZG1EOGNJV2RSY3JDQ2duLWtjd2VKU05tWWp0YVh3MkpvZkVjM2Z4Y0xucUptMGZUcXlMdmoteXJad2JuSThNenhSc2Jzbm1RVFNNYlBmYg?oc=5",
+      "source": "Vietnam.vn"
+    }
+  ]
+}
