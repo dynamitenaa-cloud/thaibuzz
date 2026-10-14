@@ -7,7 +7,7 @@ import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 import { telegramReady, sendTelegramVideo, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
-import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -96,12 +96,13 @@ const igId = await findIgUser();
 if (!DRY) console.log(igId ? `reels: 인스타그램 연결됨 (${igId})` : 'reels: 인스타그램 미연결 → 페이스북만');
 // 재시도 대상은 "켜져 있는 채널" 기준으로만 (꺼진 채널 때문에 매시간 영상을 다시 만들지 않게)
 const kinds = ['reel', ...(igId ? ['ig'] : []), ...(telegramReady() ? ['tg'] : []), ...(youtubeReady() ? ['yt'] : [])];
-const slugs = DRY ? fresh : pendingSlugs(ledger, kinds, fresh, 'reel');
+const slugs = DRY ? fresh : byTraffic(pendingSlugs(ledger, kinds, fresh, 'reel'));
 if (!slugs.length) { console.log('reels: 게시할 글 없음'); process.exit(0); }
 for (const slug of slugs) {
   if (overLimit('reels')) break;
-  const needFb = DRY || FORCE || !ledger.reel[slug];
-  const needIg = !!igId && (FORCE || !ledger.ig[slug]);
+  // 채널별 하루 상한 (영상은 글보다 더 적게: 새 계정이 Reels 를 하루 20개씩 올리면 자동화로 보임)
+  const needFb = DRY || FORCE || (!ledger.reel[slug] && underDailyMax(ledger, 'reel'));
+  const needIg = !!igId && (FORCE || (!ledger.ig[slug] && underDailyMax(ledger, 'ig')));
   const needTg = !DRY && telegramReady() && (FORCE || !ledger.tg[slug]);
   // YouTube 무료 한도: 최근 24시간 "실제 업로드" 수(ytLog)가 YT_DAILY_MAX 미만일 때만
   // (게시 기록 ledger.yt 는 처음 만들 때 기존 글로 채워지므로 횟수 계산에 쓰면 안 됨)

@@ -179,11 +179,14 @@ jobs:
         run: node scripts/facebook.mjs
         env:
           META_USAGE_LIMIT: ${{ vars.META_USAGE_LIMIT }}
+          FB_DAILY_MAX: ${{ vars.FB_DAILY_MAX }}
 
       # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
       - name: Post to Threads
         if: ${{ !cancelled() && env.THREADS_TOKEN != '' && vars.THREADS != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
         run: node scripts/threads.mjs
+        env:
+          THREADS_DAILY_MAX: ${{ vars.THREADS_DAILY_MAX }}
 
       # 새 글 → 세로 숏폼 영상 → Facebook Reels (영상은 저장소에 안 쌓고 올린 뒤 삭제). 끄려면 Variables 에 REELS=false
       - name: Post Reels
@@ -198,6 +201,8 @@ jobs:
           IG_REELS: ${{ vars.IG_REELS }}
           TELEGRAM: ${{ vars.TELEGRAM }}
           META_USAGE_LIMIT: ${{ vars.META_USAGE_LIMIT }}
+          REEL_DAILY_MAX: ${{ vars.REEL_DAILY_MAX }}
+          IG_DAILY_MAX: ${{ vars.IG_DAILY_MAX }}
           # TikTok 반자동: 영상을 내 텔레그램으로 전송
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

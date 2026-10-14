@@ -2,7 +2,7 @@
 // 필요: FB_PAGE_ID, FB_PAGE_TOKEN (시크릿이 없으면 조용히 건너뜀). `--dry` 는 게시 없이 문구만 출력
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -32,10 +32,12 @@ let failed = 0;
 // 이미 올린 글은 건너뜀 (재실행/테스트로 중복 게시 방지). FB_FORCE=true 면 다시 게시
 const ledger = loadLedger(fresh);
 const FORCE = process.env.FB_FORCE === 'true';
-const slugs = DRY ? fresh : pendingSlugs(ledger, ['photo'], fresh);
+const slugs = DRY ? fresh : byTraffic(pendingSlugs(ledger, ['photo'], fresh));
 if (!slugs.length) { console.log('facebook: 게시할 글 없음'); process.exit(0); }
 for (const slug of slugs) {
   if (overLimit('facebook')) break;
+  // 하루 상한: 나머지는 24시간 창이 비면 다음 실행에서 (재시도 목록에 남아 있음)
+  if (!DRY && !FORCE && !underDailyMax(ledger, 'photo')) { console.log(`facebook: 하루 상한 ${DAILY_MAX.photo}건 도달 (${postedToday(ledger, 'photo')}) → 나머지는 나중에`); break; }
   if (!FORCE && ledger.photo[slug]) { console.log(`facebook: already posted → skip ${slug}`); continue; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;

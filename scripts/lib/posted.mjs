@@ -71,6 +71,24 @@ export function pendingSlugs(ledger, kinds, newSlugs = [], triesKey = kinds[0]) 
   if (retry.length > RETRY_PER_RUN) console.log(`${triesKey}: ${retry.length - RETRY_PER_RUN} more pending → next run`);
   return [...out];
 }
+// ── 채널별 하루 게시 상한 ──
+// 사이트엔 하루 20편이 올라가도 SNS 에 그대로 다 올리면 새 계정은 스팸/자동화 계정으로 보여 도달이 깎임.
+// 최근 24시간 실제 게시 수(처음 만들 때 채워 넣은 기존 글은 2일 전으로 기록돼 안 셈)가 상한 이상이면 이번 실행은 건너뜀
+export const DAILY_MAX = {
+  photo: Number(process.env.FB_DAILY_MAX || 10),
+  reel: Number(process.env.REEL_DAILY_MAX || 5),
+  ig: Number(process.env.IG_DAILY_MAX || 4),
+  threads: Number(process.env.THREADS_DAILY_MAX || 10),
+};
+export const postedToday = (ledger, kind) => Object.values(ledger[kind] || {}).filter((t) => Date.now() - t < 864e5).length;
+export const underDailyMax = (ledger, kind) => postedToday(ledger, kind) < (DAILY_MAX[kind] ?? Infinity);
+
+// 상한에 걸릴 때 검색량 큰 글부터 올라가도록 정렬
+export function byTraffic(slugs) {
+  const t = (s) => { try { return JSON.parse(fs.readFileSync(`content/posts/${s}.json`, 'utf8')).traffic || 0; } catch { return 0; } };
+  return [...slugs].sort((a, b) => t(b) - t(a));
+}
+
 export function markFail(ledger, triesKey, slug) {
   const m = ((ledger.tries ||= {})[triesKey] ||= {});
   m[slug] = (m[slug] || 0) + 1;

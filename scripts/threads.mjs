@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs } from './lib/posted.mjs';
+import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const API = 'https://graph.threads.net/v1.0';
@@ -59,7 +59,7 @@ function caption(p, url) {
 
 const fresh = newSlugs();
 const ledger = loadLedger(fresh);
-const slugs = DRY ? fresh : pendingSlugs(ledger, ['threads'], fresh);
+const slugs = DRY ? fresh : byTraffic(pendingSlugs(ledger, ['threads'], fresh));
 if (!slugs.length) { console.log('threads: 게시할 글 없음'); process.exit(0); }
 
 const t = DRY ? 'dry' : await token();
@@ -71,6 +71,7 @@ const FORCE = process.env.FB_FORCE === 'true';
 let failed = 0;
 for (const slug of slugs) {
   if (!DRY && !FORCE && ledger.threads[slug]) { console.log(`threads: already posted → skip ${slug}`); continue; }
+  if (!DRY && !FORCE && !underDailyMax(ledger, 'threads')) { console.log(`threads: 하루 상한 ${DAILY_MAX.threads}건 도달 → 나머지는 나중에`); break; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;
   const text = caption(p, url);
