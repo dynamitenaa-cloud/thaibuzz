@@ -1,0 +1,96 @@
+{
+  "slug": "20261015-26780cdd",
+  "title": "แทร็บซอนสปอร์ บุกถล่ม คูพีเอส 4-1 ศึกยูฟ่า คอนเฟอเรนซ์ ลีก",
+  "excerpt": "เกาะติดผลการแข่งขันฟุตบอลยูฟ่า คอนเฟอเรนซ์ ลีก รอบลีก เฟส นัดแรก แทร็บซอนสปอร์ บุกควกชัยเหนือ คูพีเอส ขาดลอย 4-1 ท่ามกลางกระแสความสนใจรายชื่อผู้เล่น",
+  "summary": [
+    "แทร็บซอนสปอร์ บุกเอาชนะ คูพีเอส ไปด้วยสกอร์ 4-1 ในศึกยูฟ่า คอนเฟอเรนซ์ ลีก รอบลีก เฟส",
+    "โมฮาเหม็ด ซาลาห์ มีชื่อลงสนามและทำประตูได้ในเกมนี้ แม้จะมีประเด็นเรื่องสนามหญ้าเทียมก่อนหน้านี้"
+  ],
+  "sections": [
+    {
+      "heading": "ความพร้อมก่อนเกมและการจัดทัพ",
+      "paragraphs": [
+        "ศึกฟุตบอลยูฟ่า คอนเฟอเรนซ์ ลีก รอบลีก เฟส นัดแรก สโมสรแทร็บซอนสปอร์จากตุรกี ยกพลบุกไปเยือนทีมคูพีเอสจากฟินแลนด์ ณ สนามแทมเมลัน สเตเดียม โดยเกมนี้แฟนบอลต่างจับตาดูรายชื่อผู้เล่นตัวจริงอย่างใกล้ชิด",
+        "ก่อนหน้านี้มีประเด็นข้อถกเถียงเรื่องสภาพสนามหญ้าเทียม จนทำให้ชื่อของโมฮาเหม็ด ซาลาห์ ตกเป็นกระแสข่าวใหญ่กับทางสมาคมฟุตบอลอียิปต์ แต่สุดท้ายเจ้าตัวก็เดินทางมากับทีมและมีชื่อลงสนามในนัดนี้ตามรายงานของสื่อต่างประเทศ"
+      ]
+    },
+    {
+      "heading": "สรุปผลการแข่งขัน",
+      "paragraphs": [
+        "เกมการแข่งขันดุเดือดตั้งแต่ช่วงต้น เมื่อ พอล โอนูอาชู ซัดประตูให้ทีมเยือนขึ้นนำอย่างรวดเร็วตั้งแต่นาทีที่ 3 ก่อนที่โมฮาเหม็ด ซาลาห์ จะบวกประตูเพิ่มในช่วงท้ายครึ่งแรก ทำให้แทร็บซอนสปอร์กุมความได้เปรียบด้วยสกอร์ 2-0 ใน 45 นาทีแรก",
+        "ครึ่งหลังเจ้าบ้านคูพีเอสพยายามสู้และได้ประตูตีไข่แตกจาก พี. เพนนาเนน นาทีที่ 54 แต่สุดท้ายต้านความแข็งแกร่งไม่ไหว โดน ฟรันคูลิโน จู บวกสกอร์เพิ่มอีกสองลูกในเกมนี้ ส่งผลให้จบเกมแทร็บซอนสปอร์บุกมาคว้าชัยชนะไปอย่างเด็ดขาด 4-1"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "คูพีเอส พบ แทร็บซอนสปอร์ แข่งขันรายการอะไร",
+      "a": "การแข่งขันฟุตบอลยูฟ่า คอนเฟอเรนซ์ ลีก รอบลีก เฟส นัดแรก"
+    }
+  ],
+  "tags": [
+    "แทร็บซอนสปอร์",
+    "คูพีเอส",
+    "โมฮาเหม็ด ซาลาห์",
+    "ยูฟ่าคอนเฟอเรนซ์ลีก"
+  ],
+  "entities": [
+    {
+      "name": "แทร็บซอนสปอร์",
+      "type": "group"
+    },
+    {
+      "name": "คูพีเอส",
+      "type": "group"
+    },
+    {
+      "name": "โมฮาเหม็ด ซาลาห์",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261015-26780cdd.jpg",
+  "thumbSm": "/thumbs/20261015-26780cdd-sm.webp",
+  "thumbClean": "/thumbs/20261015-26780cdd-clean.webp",
+  "thumbLg": "/thumbs/20261015-26780cdd-clean.webp",
+  "imageAlt": "นักฟุตบอลทีมแทร็บซอนสปอร์ลงสนามแข่งขัน",
+  "imageCredit": "BBC",
+  "createdAt": "2026-10-15T18:36:10.847Z",
+  "traffic": 500,
+  "keyword": "คูพีเอส พบ แทร็บซอนสปอร์",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "KuPS vs Trabzonspor: UEFA Conference League stats & head-to-head",
+      "url": "https://www.bbc.com/sport/football/live/c32l4j1ken29t",
+      "source": "BBC"
+    },
+    {
+      "title": "KuPS vs. Trabzonspor Lineups: Is Mohamed Salah Playing?",
+      "url": "https://sports.yahoo.com/articles/kups-vs-trabzonspor-lineups-mohamed-145628495.html",
+      "source": "Yahoo Sports"
+    },
+    {
+      "title": "Mohamed Salah embarrasses Hossam Hassan and the Football Association with a surprise official move",
+      "url": "https://www.goal.com/en/news/salah-embarrasses-hossam-hassan-and-the-football-association-with-a-surprise-official-move/blt4835dd92183fac95",
+      "source": "Goal.com"
+    },
+    {
+      "title": "\"เต้ยเป๋าตุง\" ฟันธง (15 ต.ค.69) ชี้ 7 คู่เด่น ทีมลุ้นเข้าวิน เน้นๆ 3 บอลเต็ง",
+      "url": "https://siamrath.co.th/sports/328974",
+      "source": "สยามรัฐ"
+    },
+    {
+      "title": "การทำนายผลการแข่งขันระหว่าง KuPS กับ Trabzonspor: จุดสนใจสำคัญในการแข่งขันระดับสูงสุด",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPeUg1ZnFDRHFrZnFFQzNfQlJCUEMwMkZmejYzdkhqOUdqRFRzU2Nxanl3YmN3VzNHMnVydG5DMFZ5MmM1VjRiUTdhbl9wVlpZYS1OeERFMU80RmYzdzBCZ1RwcnJmQnBlRWNCRnBLZFNVaElnNGdxSTBucmQyZWFpTU9GbEppamVlakE?oc=5",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "โปรแกรมบอลวันนี้ 15 ต.ค. 69 ดูบอลสด ดูไทยลีก2 ดูยูโรปา ลียง พบ พาเลซ, เบนฟิก้า พบ เซลติก พร้อมช่องถ่ายทอดสด",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5RWVdlcllxMllMb3o3M0dNZzNWRUlLb2NaX0tlcldtQWZFODFqbHZOdFRkSDNubmQzdkNST3pNQVBBQ1didnhmamhCaFNSOENibm5vMVp0UVoyZFhmUk1hc3VlTnNmUGM2RGVKVDh4Y1ZVTVJoeWpxZENOQ1g?oc=5",
+      "source": "Siamsport"
+    }
+  ]
+}
