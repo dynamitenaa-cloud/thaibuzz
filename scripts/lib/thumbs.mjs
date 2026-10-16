@@ -12,18 +12,25 @@ fs.mkdirSync(CACHE, { recursive: true });
 fs.mkdirSync(OUT, { recursive: true });
 
 // ฟอนต์เต็ม (ไทย + ละติน) จาก Google Fonts repo
-const FONT_URL = 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/prompt/Prompt-Bold.ttf';
-let fontCache;
-export async function fonts() {
-  if (fontCache) return fontCache;
-  const f = path.join(CACHE, 'Prompt-Bold.ttf');
+const FONT_BASE = 'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/prompt/';
+const fontCache = {};
+async function fontFile(name) {
+  const f = path.join(CACHE, name);
   if (!fs.existsSync(f)) {
-    const r = await fetch(FONT_URL);
+    const r = await fetch(FONT_BASE + name);
     if (!r.ok) throw new Error(`font ${r.status}`);
     fs.writeFileSync(f, Buffer.from(await r.arrayBuffer()));
   }
-  fontCache = [{ name: 'Prompt', data: fs.readFileSync(f), weight: 700, style: 'normal' }];
-  return fontCache;
+  return fs.readFileSync(f);
+}
+// 기본은 Bold 하나 (썸네일). withMedium=true 면 본문용 Medium(500) 추가 — 영상에서 fontWeight 를 명시해 사용
+export async function fonts(withMedium = false) {
+  const key = withMedium ? 'bm' : 'b';
+  if (fontCache[key]) return fontCache[key];
+  const list = [{ name: 'Prompt', data: await fontFile('Prompt-Bold.ttf'), weight: 700, style: 'normal' }];
+  if (withMedium) list.push({ name: 'Prompt', data: await fontFile('Prompt-Medium.ttf'), weight: 500, style: 'normal' });
+  fontCache[key] = list;
+  return list;
 }
 
 // ภาษาไทยไม่มีช่องว่างระหว่างคำ → แทรก zero-width space ตามขอบเขตคำให้ satori ตัดบรรทัดได้ถูก
