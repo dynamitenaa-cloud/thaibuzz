@@ -1,11 +1,15 @@
-// 태국어 음성 낭독 (Gemini TTS, 무료 티어). 실패하면 null → 호출 쪽에서 무음 영상으로 대체
-//  영상 1개당 API 호출 1회: 제목 + 요약 3줄을 한 번에 읽히고, 무음 구간으로 장면 경계를 찾는다
+// 태국어 음성 낭독. 실패하면 null → 호출 쪽에서 무음 영상으로 대체
+//  엔진 순서(REELS_VOICE_ENGINE, 기본 "edge,gemini"):
+//   1) edge  — Microsoft Edge 읽어주기 음성(th-TH-PremwadeeNeural 등). 무료·한도 없음. 비공식 API 라 막히면 자동으로 다음 엔진
+//   2) gemini — Gemini TTS 무료 티어 (한도가 작아 하루 몇 개면 소진)
+//  문단마다 따로 합성해 장면과 1:1 싱크
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import ffmpegPath from 'ffmpeg-static';
 import { parseRetryMs } from './writer.mjs';
+import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
 // 음성 모델 무료 한도는 작음 → 소진된 모델은 안내된 대기 시간 동안 건너뜀 (글쓰기 모델과 같은 방식, .cache 로 실행 간 유지)
 const COOL = '.cache/tts-cooldown.json';
@@ -43,6 +47,33 @@ async function ttsModels() {
   const cool = readCool();
   models = [...new Set([...pinned, ...found])].filter((m) => !(cool[m] > Date.now()));
   return models;
+}
+
+// ── Microsoft Edge 음성 ──
+const EDGE_VOICE = process.env.EDGE_TTS_VOICE || 'th-TH-PremwadeeNeural'; // 여성 아나운서 톤. 남성: th-TH-NiwatNeural
+async function synthEdge(text, file) {
+  const tts = new MsEdgeTTS();
+  try {
+    await tts.setMetadata(EDGE_VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    // 속도는 엔진 자체 prosody 로 (atempo 보다 자연스러움)
+    const { audioStream } = tts.toStream(text, { rate: SPEED });
+    const chunks = [];
+    const timer = setTimeout(() => audioStream.destroy(new Error('edge tts timeout')), 60000);
+    try { for await (const c of audioStream) chunks.push(c); } finally { clearTimeout(timer); }
+    const buf = Buffer.concat(chunks);
+    if (buf.length < 2000) throw new Error('edge tts: empty audio');
+    const mp3 = file + '.mp3';
+    fs.writeFileSync(mp3, buf);
+    return { input: ['-i', mp3], tmp: mp3, tempo: 1 };
+  } finally { tts.close(); }
+}
+
+// ── Gemini TTS ──
+async function synthGemini(model, text, file) {
+  const { pcm, rate } = await synth(model, STYLE + text);
+  const raw = file + '.pcm';
+  fs.writeFileSync(raw, pcm);
+  return { input: ['-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw], tmp: raw, tempo: SPEED };
 }
 
 async function synth(model, text) {
@@ -89,14 +120,14 @@ const STYLE = 'อ่านแบบผู้ประกาศข่าวบ�
 const SPEED = Number(process.env.REELS_VOICE_SPEED || 1.15);
 
 // 문단 하나 → 정리된 wav (앞뒤 무음 제거 + 음량 정규화). 분당 한도(429 + 짧은 대기)는 한 번 기다렸다가 재시도
+//  model: 'edge' 또는 Gemini 모델명
 async function speakOne(model, text, file) {
   for (let attempt = 0; ; attempt++) {
     try {
-      const { pcm, rate } = await synth(model, STYLE + text);
-      const raw = file + '.pcm', tmp = file + '.tmp.wav';
-      fs.writeFileSync(raw, pcm);
-      await run(ffmpegPath, ['-y', '-f', 's16le', '-ar', String(rate), '-ac', '1', '-i', raw, '-af', `silenceremove=stop_periods=-1:stop_duration=0.35:stop_threshold=-40dB:stop_silence=0.3,atempo=${SPEED},loudnorm=I=-16:TP=-1.5:LRA=11`, '-ar', '44100', '-ac', '2', tmp]);
-      fs.rmSync(raw, { force: true });
+      const src = model === 'edge' ? await synthEdge(text, file) : await synthGemini(model, text, file);
+      const tmp = file + '.tmp.wav';
+      await run(ffmpegPath, ['-y', ...src.input, '-af', `silenceremove=stop_periods=-1:stop_duration=0.35:stop_threshold=-40dB:stop_silence=0.3,atempo=${src.tempo},loudnorm=I=-16:TP=-1.5:LRA=11`, '-ar', '44100', '-ac', '2', tmp]);
+      fs.rmSync(src.tmp, { force: true });
       const len = await durationOf(tmp);
       const [a, b] = await speechBounds(tmp, 0, len);
       await run(ffmpegPath, ['-y', '-i', tmp, '-ss', a.toFixed(3), '-to', b.toFixed(3), file]);
@@ -116,9 +147,15 @@ async function speakOne(model, text, file) {
  * 반환: { parts: [{ wav, dur }], total } / 실패(키 없음·한도·오류) 시 null → 무음 영상
  */
 export async function narrate(segments, outDir) {
-  if (!KEY() || process.env.REELS_VOICE === 'false') return null;
+  if (process.env.REELS_VOICE === 'false') return null;
   fs.mkdirSync(outDir, { recursive: true });
-  for (const model of await ttsModels()) {
+  const engines = (process.env.REELS_VOICE_ENGINE || 'edge,gemini').split(',').map((s) => s.trim()).filter(Boolean);
+  const chain = [];
+  for (const e of engines) {
+    if (e === 'edge') chain.push('edge');
+    else if (e === 'gemini' && KEY()) chain.push(...(await ttsModels()));
+  }
+  for (const model of chain) {
     try {
       const parts = [];
       for (let i = 0; i < segments.length; i++) {
@@ -131,7 +168,7 @@ export async function narrate(segments, outDir) {
       return { parts, total: parts.reduce((a, p) => a + p.dur, 0) };
     } catch (e) {
       console.warn(`tts: ${model} 실패 → ${String(e.message).slice(0, 160)}`);
-      if (/429|quota|RESOURCE_EXHAUSTED/i.test(e.message)) markCooldown(model, e.message);
+      if (model !== 'edge' && /429|quota|RESOURCE_EXHAUSTED/i.test(e.message)) markCooldown(model, e.message);
     }
   }
   console.warn('tts: 사용 가능한 음성 모델 없음 → 무음 영상');

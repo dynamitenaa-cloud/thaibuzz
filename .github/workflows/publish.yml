@@ -198,6 +198,9 @@ jobs:
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
           REELS_VOICE: ${{ vars.REELS_VOICE }}
           REELS_VOICE_SPEED: ${{ vars.REELS_VOICE_SPEED }}
+          # 음성 엔진 순서 (기본 edge,gemini) / Edge 음성 이름 (기본 th-TH-PremwadeeNeural, 남성 th-TH-NiwatNeural)
+          REELS_VOICE_ENGINE: ${{ vars.REELS_VOICE_ENGINE }}
+          EDGE_TTS_VOICE: ${{ vars.EDGE_TTS_VOICE }}
           IG_REELS: ${{ vars.IG_REELS }}
           TELEGRAM: ${{ vars.TELEGRAM }}
           META_USAGE_LIMIT: ${{ vars.META_USAGE_LIMIT }}
@@ -226,6 +229,9 @@ jobs:
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
           REELS_VOICE: ${{ vars.REELS_VOICE }}
           REELS_VOICE_SPEED: ${{ vars.REELS_VOICE_SPEED }}
+          # 음성 엔진 순서 (기본 edge,gemini) / Edge 음성 이름 (기본 th-TH-PremwadeeNeural, 남성 th-TH-NiwatNeural)
+          REELS_VOICE_ENGINE: ${{ vars.REELS_VOICE_ENGINE }}
+          EDGE_TTS_VOICE: ${{ vars.EDGE_TTS_VOICE }}
 
       - name: Upload reel preview
         if: ${{ inputs.reel_preview }}
