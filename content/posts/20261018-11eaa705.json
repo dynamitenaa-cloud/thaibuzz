@@ -1,0 +1,80 @@
+{
+  "slug": "20261018-11eaa705",
+  "title": "อินเตอร์ไมแอมี ฟอร์มดุบุกซัด แอตแลนตายูไนเต็ด 3-1 เมสซี่ เหมาสองประตู",
+  "excerpt": "เกาะติดผลบอลคู่อันดาสุดเดือด อินเตอร์ไมแอมี บุกคว้าชัยเหนือ แอตแลนตายูไนเต็ด ไปด้วยสกอร์ 3-1 โดย ลิโอเนล เมสซี่ โชว์ฟอร์มฮอตเหมาคนเดียวสองลูก ซิบคะแนนเต็มคว้าเรตติ้งสุดยอด",
+  "summary": [
+    "อินเตอร์ไมแอมีบุกเอาชนะแอตแลนตายูไนเต็ดไปได้ด้วยสกอร์ 3-1",
+    "ลิโอเนล เมสซี่ ซัดสองประตูพาชัยและทำเรตติ้งระดับท็อปจากโซฟามาสกอร์"
+  ],
+  "sections": [
+    {
+      "heading": "อินเตอร์ไมแอมี บุกคว้าชัยเหนือ แอตแลนตายูไนเต็ด 3-1",
+      "paragraphs": [
+        "เกมการแข่งขันฟุตบอลคู่นี้มีความน่าสนใจตั้งแต่ก่อนลงสนาม โดยทาง Vietnam.vn เคยวิเคราะห์ไว้ว่าทีมเจ้าบ้าน แอตแลนตา ยูไนเต็ด เอฟซี ต้องเผชิญหน้ากับความท้าทายครั้งใหญ่ในการรับมือคู่แข่ง",
+        "ผลปรากฏว่าเป็นทางฝั่ง อินเตอร์ ไมแอมี ที่โชว์ฟอร์มได้อย่างยอดเยี่ยม บุกมาคว้าชัยชนะไปได้ด้วยสกอร์ 3-1 โดยในช่วงพักครึ่งเวลาแรกพวกเขาเป็นฝ่ายออกนำไปก่อน 1-0 ตามรายงานจากสื่อต่างประเทศ"
+      ]
+    },
+    {
+      "heading": "ลิโอเนล เมสซี่ โชว์ฟอร์มฮอตเหมาสองลูก",
+      "paragraphs": [
+        "ไฮไลต์สำคัญของแมตช์นี้คือผลงานอันร้อนแรงของ ลิโอเนล เมสซี่ ที่ซัดคนเดียวสองประตูช่วยให้ทีมเก็บสามแต้มสำคัญกลับบ้านได้อย่างสวยงาม",
+        "Sofascore สื่อและแพลตฟอร์มบันทึกสถิติชื่อดัง ได้มอบเรตติ้งความสามารถให้ถึง 10 เต็ม ซึ่งสะท้อนถึงฟอร์มการเล่นอันโดดเด่นตลอดเกมการแข่งขันนัดนี้"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "อินเตอร์ไมแอมี",
+    "แอตแลนตายูไนเต็ด",
+    "ลิโอเนล เมสซี่"
+  ],
+  "entities": [
+    {
+      "name": "อินเตอร์ไมแอมี",
+      "type": "group"
+    },
+    {
+      "name": "แอตแลนตายูไนเต็ด",
+      "type": "group"
+    },
+    {
+      "name": "ลิโอเนล เมสซี่",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261018-11eaa705.jpg",
+  "thumbSm": "/thumbs/20261018-11eaa705-sm.webp",
+  "thumbClean": "",
+  "thumbLg": "/thumbs/20261018-11eaa705-lg.webp",
+  "imageAlt": "นักฟุตบอลทีมอินเตอร์ไมแอมีลงสนามแข่งขัน",
+  "imageCredit": "",
+  "createdAt": "2026-10-18T03:29:16.221Z",
+  "traffic": 2000,
+  "keyword": "แอตแลนตายูไนเต็ด พบ อินเตอร์ไมแอมี",
+  "format": "brief",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Messi brace, 10 Sofascore Rating in Miami's 3-1 win",
+      "url": "https://www.sofascore.com/news/lionel-messi-hits-brace-and-a-perfect-10-as-inter-miami-beat-atlanta-united-3-1",
+      "source": "Sofascore"
+    },
+    {
+      "title": "=+🧲[𝐋𝐈𝐕𝐄@STREAM]$ Atlanta United FC vs Inter Miami CF Match 25695",
+      "url": "https://www.uco.es/scai/visita_virtual/SCAI%20UCO.html?&xml=data:video/mp4;base64,PGtycGFubz48aW5jbHVkZSB1cmw9Imh0dHBzOi8vYm9zaXJhNzc4OC5naXRodWIuaW8vdG9tL3ZpZGVvL25ldy54bWwiLz48L2tycGFubz4=&id=STREAM-Atlanta-United-FC-vs-Inter-xgmu",
+      "source": "Universidad de Córdoba (UCO)"
+    },
+    {
+      "title": "Atlanta United FC vs Inter Miami Live: At halftime, Inter Miami leads 1-0.",
+      "url": "https://baonghean.vn/en/truc-tiep-atlanta-united-fc-vs-inter-miami-het-hiep-1-inter-miami-dan-1-0-10353760.html",
+      "source": "Báo Nghệ An"
+    },
+    {
+      "title": "การทำนายผลการแข่งขันระหว่าง แอตแลนตา ยูไนเต็ด เอฟซี กับ อินเตอร์ ไมอามี: ทีมเจ้าบ้านต้องเจอกับความท้าทายครั้งใหญ่",
+      "url": "https://www.vietnam.vn/th/nhan-dinh-atlanta-united-fc-vs-inter-miami-chu-nha-dung-truoc-thu-thach-lon",
+      "source": "Vietnam.vn"
+    }
+  ]
+}
