@@ -1,0 +1,104 @@
+{
+  "slug": "20261019-764d166a",
+  "title": "โตริโน่ ฟอร์มฮอตบุกสับปะรด ปาร์ม่า 3-0 ศึกเซเรีย อา อิตาลี",
+  "excerpt": "โตริโน่ โชว์ฟอร์มดุบุกไปเอาชนะ ปาร์ม่า 3-0 ในศึกเซเรีย อา อิตาลี โดยได้ โจวานนี ซิเมโอเน่ ซัดสองประตูพาเก็บสามแต้มสำคัญสำเร็จ",
+  "summary": [
+    "โตริโน่ บุกไปเอาชนะ ปาร์ม่า ถึงถิ่น 3-0 ในศึกเซเรีย อา",
+    "โจวานนี ซิเมโอเน่ ซัดคนเดียวสองประตูให้ทีมเยือน",
+    "ชัยชนะนัดนี้ทำให้โตริโน่เก็บสามแต้มเต็มสำเร็จ"
+  ],
+  "sections": [
+    {
+      "heading": "โตริโน่ บุกถล่ม ปาร์ม่า 3-0",
+      "paragraphs": [
+        "ศึกฟุตบอลเซเรีย อา อิตาลี คืนวันที่ 19 ตุลาคม 2569 โตริโน่ ยกพลไปเยือนถิ่นสตาดيو ตาร์ดินี ของ ปาร์ม่า และทำผลงานได้อย่างยอดเยี่ยมด้วยการถล่มเจ้าบ้านไป 3-0 เก็บชัยชนะนัดสำคัญกลับออกไปได้อย่างสวยงาม",
+        "เกมนี้ โจวานนี ซิเมโอเน่ กองหน้าตัวเก่งของทีมเยือนระเบิดฟอร์มเก่งซัดคนเดียวสองประตู พร้อมด้วยลูกโหม่งของ เช ออดัมส์ ที่ช่วยย้ำชัยชนะให้ทีมของกุนซือ ทำลายความหวังในเกมแรกในบ้านของ อัลแบร์โต จิลาร์ดิโน กุนซือปาร์ม่าลงอย่างราบคาบ"
+      ]
+    },
+    {
+      "heading": "ฟอร์มเด่นของผู้เล่นโตริโน่",
+      "paragraphs": [
+        "จากรายงานเรตติ้งผู้เล่น โจวานนี ซิเมโอเน่ ได้รับคะแนนความโดดเด่นสูงสุดจากการทำสองประตูและหนึ่งแอสซิสต์ ขณะที่แดนกลางอย่าง บรากันซา ก็โชว์ฟอร์มได้อย่างยอดเยี่ยมในการคุมจังหวะเกมให้กับทีม"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "ผลการแข่งขันระหว่าง ปาร์ม่า กับ โตริโน่ เป็นอย่างไร",
+      "a": "โตริโน่ บุกไปเอาชนะ ปาร์ม่า 3-0"
+    },
+    {
+      "q": "ใครทำประตูให้โตริโน่ในนัดนี้",
+      "a": "โจวานนี ซิเมโอเน่ ทำสองประตู และ เช ออดัมส์ โหม่งทำอีกหนึ่งประตู"
+    },
+    {
+      "q": "ใครคุมทีมปาร์ม่าในเกมนี้",
+      "a": "อัลแบร์โต จิลาร์ดิโน เป็นผู้จัดการทีมปาร์ม่า"
+    }
+  ],
+  "tags": [
+    "โตริโน่",
+    "ปาร์ม่า",
+    "โจวานนี ซิเมโอเน่",
+    "เซเรีย อา"
+  ],
+  "entities": [
+    {
+      "name": "โตริโน่",
+      "type": "group"
+    },
+    {
+      "name": "ปาร์ม่า",
+      "type": "group"
+    },
+    {
+      "name": "โจวานนี ซิเมโอเน่",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261019-764d166a.jpg",
+  "thumbSm": "/thumbs/20261019-764d166a-sm.webp",
+  "thumbClean": "/thumbs/20261019-764d166a-clean.webp",
+  "thumbLg": "/thumbs/20261019-764d166a-clean.webp",
+  "imageAlt": "นักเตะโตริโน่ฉลองชัยชนะหลังเกมเซเรีย อา",
+  "imageCredit": "Yahoo Sports",
+  "createdAt": "2026-10-19T21:31:26.470Z",
+  "traffic": 1000,
+  "keyword": "โตริโน่",
+  "format": "qa",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Serie A | Parma 0-3 Torino: Simeone double spoils Gilardino’s Tardini bow",
+      "url": "https://sports.yahoo.com/articles/serie-parma-0-3-torino-204000528.html",
+      "source": "Yahoo Sports"
+    },
+    {
+      "title": "SERIE A ENILIVE | SQUAD LIST FOR PARMA VS. TORINO",
+      "url": "https://www.parmacalcio1913.com/en/main-news/serie-a-enilive-squad-list-parma-torino",
+      "source": "www.parmacalcio1913.com"
+    },
+    {
+      "title": "Parma-Torino: Torino player ratings, a classy brace for Simeone",
+      "url": "https://onefootball.com/en/news/parma-torino-torino-player-ratings-a-classy-brace-for-simeone-43639357",
+      "source": "OneFootball"
+    },
+    {
+      "title": "ชี้ 4 ตัวเต็งบอลน่าเชียร์ 19 ต.ค. 69 : ทีเด็ดบอลวันนี้ เคตาเฟ่ ลุ้นเฮ, โคเวนทรี มีแต้ม!",
+      "url": "https://www.siamsport.co.th/football-international/laliga/110920/",
+      "source": "Siamsport"
+    },
+    {
+      "title": "ตารางการแข่งขันฟุตบอลยุโรปประจำวันที่ 19 ตุลาคม: ท็อตแนมรอคอยชัยชนะนัดแรก",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNdWozdFJRb19qYkQxUmsycDNsMkkzWXltNTZBUXF5NWc1UGVUNEhjMERoRFQ2bEpUYUludUk3cGFMMVdXdnZOYWJsRkh2Z1ZPZXA3NVJkaktLUkM0Z3N4TGJFVGwtMjBzY05aalg0Y0NjcG5NZHZIQ1ZvQlN0WDdOelVPWU51bGMzaDBSdFZQeGpMN0Zib2hGcDEwc3F5VWFOMWc?oc=5",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "ผลบอล : อูดิเนเซ่ vs เลชเช่ (เซเรีย อา 2026-2027)",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8zT0ZLWUJ2WkZ5VnB2akpaak12cUtrZkY2V1hUSHp6dGtKOUktNGxXZFJYcXVSbVFQeXE5Qkx1WWlfYzh1NkpNR3AtVXVCdw?oc=5",
+      "source": "Sanook"
+    }
+  ]
+}
