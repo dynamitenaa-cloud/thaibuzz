@@ -1,0 +1,99 @@
+{
+  "slug": "20261020-bc916127",
+  "title": "วิกฤตแนวรับบาร์เซโลนา เจ็บระนาวก่อนบุกดวล เปแอ็สเฌ ศึกยูฟ่า แชมเปียนส์ลีก",
+  "excerpt": "บาร์เซโลนาเจอข่าวร้ายแนวรับพังยับเยิน หลัง เอริก การ์เซีย และ  جولส์ กุนเด บาดเจ็บพร้อมกัน เหลือเซ็นเตอร์แบ็กธรรมชาติฟิตพร้อมลงสนามแค่ 2 คนเท่านั้น ก่อนเกมเยือน เปแอ็สเฌ",
+  "summary": [
+    "บาร์เซโลนามีกองหลังธรรมชาติที่ฟิตสมบูรณ์เหลือเพียง 2 คนเท่านั้นก่อนเกมสำคัญ",
+    "เอริก การ์เซีย และ ฌูลส์ กุนเด บาดเจ็บจากเกมถล่ม เรอัล เบติส 5-2"
+  ],
+  "sections": [
+    {
+      "heading": "แนวรับบาร์ซาวิกฤตหนักก่อนบุกรัง เปแอ็สเฌ",
+      "paragraphs": [
+        "บาร์เซโลนาเพิ่งโชว์ฟอร์มดุไล่อัด เรอัล เบติส ไป 5-2 ในเกมล่าสุดซึ่งเป็นชัยชนะนัดที่ 11 ติดต่อกัน ทว่าชัยชนะครั้งนี้แลกมาด้วยมรสุมอาการบาดเจ็บของนักเตะในแนวรับ",
+        "ตามรายงานจาก อีเอสพีเอ็น ระบุว่า เอริก การ์เซีย และ ฌูลส์ กุนเด สองกองหลังตัวหลักได้รับบาดเจ็บจากแมตช์ดังกล่าว ทำให้สภาพทีมเหลือกองหลังธรรมชาติที่ฟิตสมบูรณ์เพียงแค่ เปา คูบาร์ซี และ เคราร์ด มาร์ติน เท่านั้นที่จะต้องรับมือเกมรุกสุดอันตรายในศึกยูฟ่า แชมเปียนส์ลีก"
+      ]
+    },
+    {
+      "heading": "สถานการณ์อาการเจ็บนักเตะตัวหลัก",
+      "paragraphs": [
+        "เฮนรี ฟลิก ต้องปวดหัวอย่างหนักเมื่อ เอริก การ์เซีย มีปัญหาบาดเจ็บกล้ามเนื้อต้นขาด้านหลังต้องพักรักษาตัวราว 3 ถึง 4 semanas พลาดลงช่วยทีมทั้งเกมปะทะ เปแอ็สเฌ และศึกเอลกลาซิโก",
+        "ในรายของ ฌูลส์ กุนเด มีอาการข้อเท้าพลิกจากแมตช์เดียวกัน ชัวร์ว่าจะพลาดเกมยูฟ่า แชมเปียนส์ลีกกลางสัปดาห์นี้แน่นอน ส่วนอาการของ เคราร์ด มาร์ติน ทีมกำลังเชิ้ตสถานการณ์วันต่อวัน"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เปแอ็สเฌ",
+    "บาร์เซโลนา",
+    "เอริก การ์เซีย",
+    "ฌูลส์ กุนเด",
+    "เปแอ็สเฌพบบาร์ซา",
+    "ยูฟ่าแชมเปียนส์ลีก"
+  ],
+  "entities": [
+    {
+      "name": "เปแอ็สเฌ",
+      "type": "group"
+    },
+    {
+      "name": "บาร์เซโลนา",
+      "type": "group"
+    },
+    {
+      "name": "เอริก การ์เซีย",
+      "type": "person"
+    },
+    {
+      "name": "ฌูลส์ กุนเด",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261020-bc916127.jpg",
+  "thumbSm": "/thumbs/20261020-bc916127-sm.webp",
+  "thumbClean": "/thumbs/20261020-bc916127-clean.webp",
+  "thumbLg": "/thumbs/20261020-bc916127-clean.webp",
+  "imageAlt": "นักฟุตบอลบาร์เซโลนาลงสนามฝึกซ้อม",
+  "imageCredit": "Heavy.com",
+  "createdAt": "2026-10-20T18:36:37.127Z",
+  "traffic": 2000,
+  "keyword": "เปแอ็สเฌ พบ บาร์ซา",
+  "format": "brief",
+  "hook": "แนวรับบาร์ซาพังยับก่อนดวลเปแอสเช",
+  "question": "สภาพทีมแบบนี้บาร์ซาจะรอดไหม",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Flick clarifies Barcelona backline options before PSG and Real Madrid showdowns",
+      "url": "https://www.reuters.com/sports/soccer/flick-clarifies-barcelona-backline-options-before-psg-real-madrid-showdowns-2026-10-19/",
+      "source": "Reuters"
+    },
+    {
+      "title": "Barcelona's Eric García, Jules Koundé ruled out of PSG clash with injury",
+      "url": "https://www.espn.com/soccer/story/_/id/50211229/barcelona-eric-garcia-jules-kounde-ruled-psg-injury",
+      "source": "ESPN"
+    },
+    {
+      "title": "Barcelona’s Defense Just Collapsed to Two Fit Centre-Backs",
+      "url": "https://heavy.com/sports/soccer/barcelona-defense-collapsed-two-centre-backs-psg-clasico/",
+      "source": "Heavy.com"
+    },
+    {
+      "title": "เปแอสเชปะทะบาร์ซ่าสุดเดือด เจ้าบ้านมีลุ้นเฉือนชนะได้",
+      "url": "https://truevisions.co.th/sports/31409/",
+      "source": "TrueVisions"
+    },
+    {
+      "title": "ซูเปอร์คอมพิวเตอร์ทำนายผลการแข่งขันระหว่าง PSG กับบาร์เซโลนา",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOQU9BcXlDOWp2Qm1mNU1DTmlkdVhScGptR3BFQkhyclVqay1VNmVSNFBsLWh2MjFkY3RsdEJCRFlPWFBCS19oWHJqckc2TzhiSkVGc2FVdnRiS2F6SF90bG1heHhiYi1wWkpOS3U0Uy1udDMtSWJvMENQb2hSeFgtbEZ3?oc=5",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "ถ่ายทอดสด ‘เปแอสเช พบ บาร์เซโลน่า’ เกมเดือดยูฟ่า แชมเปี้ยนส์ ลีก",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE91VzFnYWpVUkVWbkFYMFZzRW53UmF2c2ZTSEhmOXAtODVsV1B2LWRUbi11eE9yTTZSNzdveDdMUk5rWnRiYnZyNU00TVROTHZUQm1iWUlkTkJHLVVoYXc?oc=5",
+      "source": "bangkokbiznews"
+    }
+  ]
+}
