@@ -1,0 +1,24 @@
+name: stats
+
+# 페이스북/인스타 통계를 로그로 출력 (수동 실행). 비용 없음
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '집계 기간(일)'
+        type: string
+        default: '14'
+
+jobs:
+  stats:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - run: node scripts/stats.mjs
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          STATS_DAYS: ${{ inputs.days }}
