@@ -8,6 +8,7 @@ import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
 import { telegramReady, sendTelegramVideo, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
+import { caption } from './lib/social.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -126,11 +127,9 @@ for (const slug of slugs) {
     continue;
   }
   if (DRY) continue;
-  const isK = p.category === 'K-บันเทิง';
-  const tags = `${p.tags.slice(0, 4).map(hashtag).join(' ')} ${isK ? '#ข่าวเกาหลี #kpop' : '#ข่าววันนี้'}`;
   if (needFb) {
     try {
-      const r = await publishReel(reel.file, `${p.title}\n\n👉 อ่านต่อ: ${SITE}/post/${slug}/\n\n${tags}`);
+      const r = await publishReel(reel.file, caption(p, 'reel', `${SITE}/post/${slug}/`));
       console.log(`reels: facebook posted ${r.video_id} [${r.status}] ← ${slug}`);
       ledger.reel[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: facebook FAILED ${slug}:`, e.message); }
@@ -138,7 +137,7 @@ for (const slug of slugs) {
   if (needIg) {
     try {
       // 인스타 캡션의 링크는 클릭이 안 됨 → 프로필 링크 안내 + 주소 텍스트
-      const id = await publishIgReel(igId, reel.file, `${p.title}\n\n${p.excerpt}\n\n🔗 อ่านฉบับเต็มที่ลิงก์ในโปรไฟล์ (${SITE.replace(/^https?:\/\//, '')})\n\n${tags}`);
+      const id = await publishIgReel(igId, reel.file, caption(p, 'instagram', `${SITE}/post/${slug}/`));
       console.log(`reels: instagram posted ${id} ← ${slug}`);
       ledger.ig[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: instagram FAILED ${slug}:`, e.message); }
@@ -146,9 +145,7 @@ for (const slug of slugs) {
   if (needTg) {
     try {
       // TikTok 에 그대로 붙여넣을 캡션 (TikTok 은 해시태그가 노출에 중요)
-      const tiktokCaption = `${p.title}
-
-${p.tags.slice(0, 5).map(hashtag).join(' ')} ${isK ? '#kpop #ซีรีส์เกาหลี #ข่าวเกาหลี' : '#ข่าววันนี้ #ข่าวบันเทิง'} #fyp #ฟีดดดシ`;
+      const tiktokCaption = caption(p, 'tiktok');
       // 🆔 줄: 이 메시지에 답장하면 editor-notes.mjs 가 해당 글에 편집자 노트로 붙임
       await sendTelegramVideo(reel.file, `📱 TikTok용 영상
 
@@ -164,11 +161,7 @@ ${tiktokCaption}
     try {
       const id = await uploadShort(reel.file, {
         title: p.title,
-        description: `${p.excerpt}
-
-อ่านฉบับเต็มพร้อมแหล่งอ้างอิง: ${SITE}/post/${slug}/
-
-${tags}`,
+        description: caption(p, 'youtube', `${SITE}/post/${slug}/`),
         tags: p.tags,
       });
       console.log(`reels: youtube uploaded ${id} ← ${slug}`);

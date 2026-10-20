@@ -24,24 +24,23 @@ try {
   console.log(`페이지: ${page.name} | 좋아요 ${page.fan_count} | 팔로워 ${page.followers_count}`);
 } catch (e) { console.log('page:', e.message); }
 try {
-  const ins = await get(`${PAGE_ID}/insights`, { metric: 'page_impressions_unique,page_post_engagements,page_views_total,page_fan_adds', period: 'day', since, until: Math.floor(Date.now() / 1000) });
-  for (const m of ins.data) {
-    const vals = m.values.map((v) => Number(v.value) || 0);
-    console.log(`${m.name}: 합계 ${sum(vals)} | 일별 ${vals.join(',')}`);
+  for (const metric of ['page_post_engagements', 'page_impressions', 'page_impressions_unique', 'page_views_total', 'page_daily_follows', 'page_fan_adds', 'page_video_views']) {
+    try {
+      const ins = await get(`${PAGE_ID}/insights`, { metric, period: 'day', since, until: Math.floor(Date.now() / 1000) });
+      for (const m of ins.data) { const vals = m.values.map((v) => Number(v.value) || 0); console.log(`${m.name}: 합계 ${sum(vals)} | 일별 ${vals.join(',')}`); }
+    } catch (e) { console.log(`${metric}: 사용 불가`); }
   }
 } catch (e) { console.log('insights:', e.message); }
 
 console.log(`\n=== 최근 게시물 (반응 기준 상위) ===`);
 try {
-  const posts = await get(`${PAGE_ID}/posts`, { fields: 'message,created_time,permalink_url,insights.metric(post_impressions_unique,post_clicks,post_reactions_by_type_total,post_engaged_users),shares,comments.summary(true).limit(0)', limit: 50, since });
+  const posts = await get(`${PAGE_ID}/posts`, { fields: 'message,created_time,permalink_url,reactions.summary(true).limit(0),shares,comments.summary(true).limit(0)', limit: 50, since });
   const rows = posts.data.map((p) => {
-    const m = Object.fromEntries((p.insights?.data || []).map((x) => [x.name, x.values?.[0]?.value]));
-    const reactions = typeof m.post_reactions_by_type_total === 'object' ? sum(Object.values(m.post_reactions_by_type_total).map(Number)) : Number(m.post_reactions_by_type_total) || 0;
-    return { when: p.created_time.slice(5, 16), reach: m.post_impressions_unique || 0, clicks: m.post_clicks || 0, reactions, comments: p.comments?.summary?.total_count || 0, shares: p.shares?.count || 0, text: short(p.message) };
+    return { when: p.created_time.slice(5, 16), reach: 0, clicks: 0, reactions: p.reactions?.summary?.total_count || 0, comments: p.comments?.summary?.total_count || 0, shares: p.shares?.count || 0, text: short(p.message) };
   });
   const tot = { reach: sum(rows.map((r) => r.reach)), reactions: sum(rows.map((r) => r.reactions)), clicks: sum(rows.map((r) => r.clicks)), comments: sum(rows.map((r) => r.comments)), shares: sum(rows.map((r) => r.shares)) };
   console.log(`게시물 ${rows.length}개 | 도달 합계 ${tot.reach} | 반응 ${tot.reactions} | 클릭 ${tot.clicks} | 댓글 ${tot.comments} | 공유 ${tot.shares}`);
-  rows.sort((a, b) => b.reach - a.reach).slice(0, 12).forEach((r) => console.log(`  ${r.when} 도달 ${r.reach} 클릭 ${r.clicks} 반응 ${r.reactions} 댓글 ${r.comments} 공유 ${r.shares} | ${r.text}`));
+  rows.sort((a, b) => (b.reactions + b.comments * 2 + b.shares * 3) - (a.reactions + a.comments * 2 + a.shares * 3)).slice(0, 12).forEach((r) => console.log(`  ${r.when} 도달 ${r.reach} 클릭 ${r.clicks} 반응 ${r.reactions} 댓글 ${r.comments} 공유 ${r.shares} | ${r.text}`));
 } catch (e) { console.log('posts:', e.message); }
 
 console.log(`\n=== Facebook Reels ===`);

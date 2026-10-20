@@ -176,6 +176,8 @@ if (budget > 0) {
         traffic: c.traffic,
         keyword: c.keyword,
         format: w.format,
+        hook: a.socialHook?.trim() || undefined,
+        question: a.socialQuestion?.trim() || undefined,
         ...(c.lang === 'ko' ? { origin: 'kr' } : {}),
         model: w.model,
         sources: f.news.slice(0, 6).map(({ title, url, source }) => ({ title, url, source })),

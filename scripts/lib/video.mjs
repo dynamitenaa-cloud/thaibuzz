@@ -10,10 +10,15 @@ import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 import ffmpegPath from 'ffmpeg-static';
 import { fonts, thaiWrap } from './thumbs.mjs';
+import { questionOf } from './social.mjs';
+import crypto from 'node:crypto';
 
 const run = promisify(execFile);
 const W = 1080, H = 1920, FPS = 30;
-const YELLOW = '#fde047';
+// 액센트 색을 글마다 돌려 써서 매번 같은 템플릿처럼 보이지 않게
+const ACCENTS = ['#fde047', '#5eead4', '#f9a8d4', '#fdba74'];
+let YELLOW = ACCENTS[0];
+const pickAccent = (slug) => ACCENTS[parseInt(crypto.createHash('md5').update(String(slug)).digest('hex').slice(0, 6), 16) % ACCENTS.length];
 const XFADE = 0.4; // 장면 사이 디졸브(초)
 export const REEL_DIR = path.join('.cache', 'reels');
 
@@ -72,6 +77,7 @@ function hookTitle(title, size) {
 const thaiDate = (iso) => new Date(iso).toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok', day: 'numeric', month: 'short', year: '2-digit' });
 
 function scenes(post, v, color) {
+  YELLOW = pickAccent(post.slug);
   const sum = post.summary.slice(0, 3);
   const steps = sum.length + 2;
   const isK = post.category === 'K-บันเทิง';
@@ -111,15 +117,19 @@ function scenes(post, v, color) {
   // 폰트(Prompt)에 없는 문자(한글 등)로 된 매체명은 네모로 깨짐 → 태국어/라틴 이름만 표시
   const srcs = [...new Set((post.sources || []).map((x) => x.source).filter((n) => n && /^[ -~฀-๿·–-]+$/.test(n)))].slice(0, 3).join(' · ');
   out.push({ dur: 2.8, tree: frame({ ...base(steps - 1), category: '' }, [
-    h('div', { position: 'absolute', left: 70, right: 70, top: 560, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26 }, [
+    h('div', { position: 'absolute', left: 70, right: 70, top: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }, [
       h('div', { display: 'flex', alignItems: 'center', gap: 22 }, [
         h('div', { width: 44, height: 44, borderRadius: 99, background: YELLOW, display: 'flex' }),
         h('div', { fontSize: 120, lineHeight: 1, display: 'flex' }, 'ThaiBuzz'),
       ]),
-      h('div', { fontSize: 44, opacity: 0.9, display: 'flex', fontWeight: 500 }, isK ? 'ข่าวบันเทิงไทย × เกาหลี' : 'ข่าวฮิต ทันกระแส ทุกชั่วโมง'),
-      h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 50, padding: '18px 48px', borderRadius: 999, marginTop: 26 }, 'อ่านฉบับเต็ม → ลิงก์ในโพสต์'),
-      h('div', { fontSize: 36, opacity: 0.85, display: 'flex', marginTop: 10, fontWeight: 500 }, 'thaibuzz.pages.dev'),
-      srcs && h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginTop: 70 }, [
+      // 독자 질문 → 댓글 유도 (반응이 있어야 노출이 늘어남)
+      h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 30, background: 'rgba(8,8,24,0.55)', border: '2px solid rgba(255,255,255,0.14)', borderRadius: 36, padding: '34px 44px', width: 940 }, [
+        h('div', { fontSize: 34, opacity: 0.75, display: 'flex', fontWeight: 500 }, 'คุณคิดว่าไง?'),
+        text(questionOf(post).replace(/\s*[👇🙋👉]\s*$/u, ''), 54, { justifyContent: 'center', textAlign: 'center', textShadow: 'none' }),
+        h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 40, padding: '12px 34px', borderRadius: 999, marginTop: 10 }, 'คอมเมนต์บอกหน่อย'),
+      ]),
+      h('div', { fontSize: 34, opacity: 0.8, display: 'flex', marginTop: 24, fontWeight: 500 }, isK ? 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ข่าวบันเทิงไทย × เกาหลี' : 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · thaibuzz.pages.dev'),
+      srcs && h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginTop: 40 }, [
         h('div', { fontSize: 28, opacity: 0.6, display: 'flex', fontWeight: 500 }, 'ที่มา'),
         h('div', { fontSize: 32, opacity: 0.85, display: 'flex', fontWeight: 500, textAlign: 'center', justifyContent: 'center' }, srcs),
       ]),

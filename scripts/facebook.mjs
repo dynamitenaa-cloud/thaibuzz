@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
+import { caption } from './lib/social.mjs';
 
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
@@ -44,13 +45,7 @@ for (const slug of slugs) {
   // 사진 게시물이 링크 게시물보다 도달률이 높음 → 썸네일을 사진으로 올리고 본문에 링크를 넣는다.
   // 링크는 캡션 안에서도 클릭 가능. 썸네일이 없는(오래된/lite) 글만 링크 게시물로.
   const image = p.thumb ? `${SITE}${p.thumb}` : '';
-  const message = `${p.title}
-
-${p.excerpt}
-
-👉 อ่านต่อ: ${url}
-
-${p.tags.slice(0, 3).map(hashtag).join(' ')}`;
+  const message = caption(p, 'facebook', url);
   if (DRY) { console.log(`--- ${image ? 'PHOTO' : 'LINK'} ${url}
 ${message}
 `); continue; }

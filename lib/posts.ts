@@ -21,6 +21,8 @@ export type Post = {
   editorNote?: string; // 편집자(사람)가 남긴 코멘트 (태국어)
   editorNoteAt?: string;
   format?: string; // 글 형식 (standard/brief/explainer/qa)
+  hook?: string; // SNS 캡션 한 줄 (scripts/lib/social.mjs)
+  question?: string; // SNS 독자 질문
   model?: string; // 작성 모델
   lite?: boolean; // true = 썸네일 삭제된 오래된 글 (thumb* 가 빈 문자열)
   thumb: string; // 1200x630 jpg (OG / hero)

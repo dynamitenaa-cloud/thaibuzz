@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
+import { caption } from './lib/social.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const API = 'https://graph.threads.net/v1.0';
@@ -49,13 +50,6 @@ async function post(pathname, params, t) {
 
 const hashtag = (s) => '#' + s.replace(/[^\p{L}\p{M}\p{N}]/gu, '');
 // Threads 본문은 500자 제한. URL 은 본문에 넣으면 자동으로 링크가 됨
-function caption(p, url) {
-  const tail = `\n\n👉 ${url}\n${hashtag(p.tags[0] || 'ข่าววันนี้')}`;
-  let body = `${p.title}\n\n${p.excerpt}`;
-  const max = 500 - [...tail].length;
-  if ([...body].length > max) body = [...body].slice(0, max - 1).join('') + '…';
-  return body + tail;
-}
 
 const fresh = newSlugs();
 const ledger = loadLedger(fresh);
@@ -74,7 +68,7 @@ for (const slug of slugs) {
   if (!DRY && !FORCE && !underDailyMax(ledger, 'threads')) { console.log(`threads: 하루 상한 ${DAILY_MAX.threads}건 도달 → 나머지는 나중에`); break; }
   const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
   const url = `${SITE}/post/${slug}/`;
-  const text = caption(p, url);
+  const text = caption(p, 'threads', url);
   const image = p.thumb ? `${SITE}${p.thumb}` : '';
   if (DRY) { console.log(`--- ${image ? 'IMAGE' : 'TEXT'} (${[...text].length}자)\n${text}\n`); continue; }
   try {

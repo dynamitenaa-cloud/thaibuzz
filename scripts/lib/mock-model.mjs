@@ -22,6 +22,8 @@ export default new MockLanguageModelV4({
       entities: [{ name: kw.slice(0, 20), type: 'other' }],
       category: 'ข่าวทั่วไป',
       imageAlt: kw,
+      socialHook: 'งานนี้แฟน ๆ กรี๊ดสนั่น',
+      socialQuestion: 'คิดว่ายังไงกันบ้าง?',
     };
     return {
       content: [{ type: 'text', text: JSON.stringify(article) }],
