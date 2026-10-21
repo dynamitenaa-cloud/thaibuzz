@@ -1,0 +1,74 @@
+{
+  "slug": "20261021-9b4bc530",
+  "title": "ดาวรุ่งบาร์เซโลนา Xavi Espart ซัดประตูแรก ยูฟ่า แชมเปียนส์ลีก",
+  "excerpt": "แบ็กขวาวัยกระเตาะ Xavi Espart จารึกชื่อลงประวัติศาสตร์สโมสรบาร์เซโลนา หลังซัดประตูตีเสมอสุดสำคัญใส่ปารีส แซงต์-แชร์กแมง ในศึกยูฟ่า แชมเปียนส์ลีก",
+  "summary": [
+    "บาร์เซโลนาบุกไปแบ่งแต้มจากปารีส แซงต์-แชร์กแมง 1-1 ในศึกยูฟ่า แชมเปียนส์ลีก รอบลีกเฟส นัดที่สาม",
+    "Xavi Espart แบ็กขวาตัวเก่งซัดประตูตีเสมอในนาทีที่ 55 จากการแอสซิสต์ของ เฟร์มิน โลเปซ"
+  ],
+  "sections": [
+    {
+      "heading": "ฟอร์มเดือดซัดตีเสมอ",
+      "paragraphs": [
+        "เกมยูฟ่า แชมเปียนส์ลีก รอบลีกเฟส นัดที่สาม บาร์เซโลนาต้องตกเป็นฝ่ายตามหลังเจ้าบ้านปารีส แซงต์-แชร์กแมง ไปก่อน 0-1 จากการยิงของ เดซีเร ดูเอ ในนาทีที่ 38 ก่อนจะจบครึ่งแรกด้วยสกอร์ดังกล่าว",
+        "ทว่าทัพอาซูลกรานาไม่ยอมแพ้ง่าย ๆ เร่งเครื่องบุกอย่างหนักในช่วงครึ่งหลังจนกระทั่งมาได้ประตูตีเสมอ 1-1 สำเร็จในนาทีที่ 55 จากจังหวะที่ เฟร์มิน โลเปซ จ่ายบอลทะลุช่องให้ Xavi Espart วิ่งสอดขึ้นมาซัดด้วยความเฉียบคมตุงตาข่าย ช่วยให้ทีมเก็บหนึ่งแต้มกลับบ้านได้สำเร็จ"
+      ]
+    },
+    {
+      "heading": "จารึกสถิติสโมสร",
+      "paragraphs": [
+        "ประตูสำคัญลูกนี้ส่งผลให้แข้งดาวรุ่งรายนี้ก้าวขึ้นไปทำสถิติชิ้นโบว์แดงกับต้นสังกัดทันที",
+        "บัญชีสถิติชื่อดังอย่าง Statsdufoot เปิดเผยผ่านแพลตฟอร์ม X ว่า Xavi Espart กลายเป็นนักเตะคนที่ 15 ในประวัติศาสตร์ของบาร์เซโลนาที่สามารถทำประตูในรายการยูฟ่า แชมเปียนส์ลีกได้ ก่อนที่จะมีอายุครบ 20 ปีบริบูรณ์"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "Xavi Espart",
+    "Barcelona",
+    "UEFA Champions League",
+    "Paris Saint-Germain"
+  ],
+  "entities": [
+    {
+      "name": "Xavi Espart",
+      "type": "person"
+    },
+    {
+      "name": "Barcelona",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261021-9b4bc530.jpg",
+  "thumbSm": "/thumbs/20261021-9b4bc530-sm.webp",
+  "thumbClean": "/thumbs/20261021-9b4bc530-clean.webp",
+  "thumbLg": "/thumbs/20261021-9b4bc530-clean.webp",
+  "imageAlt": "Xavi Espart นักเตะบาร์เซโลนา",
+  "imageCredit": "Goal.com",
+  "createdAt": "2026-10-21T01:38:28.256Z",
+  "traffic": 500,
+  "keyword": "xavi espart",
+  "format": "brief",
+  "hook": "แข้งดาวรุ่งบาร์ซ่าสร้างประวัติศาสตร์",
+  "question": "คิดว่าฟอร์มของน้องคนนี้เป็นไงบ้าง?",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Video: Espart scores against Saint-Germain and enters a historic Barcelona list",
+      "url": "https://www.goal.com/en/news/video-espart-scores-against-saint-germain-and-enters-a-historic-barcelona-list/blt34e583a3b1c63a27",
+      "source": "Goal.com"
+    },
+    {
+      "title": "🔴 LIVE: Espart levels for Barca; Liverpool bounce back to lead Villarreal",
+      "url": "https://onefootball.com/en/news/live-espart-levels-for-barca-liverpool-bounce-back-to-lead-villarreal-43643277",
+      "source": "OneFootball"
+    },
+    {
+      "title": "🔴 LIVE: Espart levels for Barca; Liverpool hit back against Villarreal",
+      "url": "https://onefootball.com/en/news/live-espart-levels-for-barca-liverpool-hit-back-against-villarreal-43643277",
+      "source": "OneFootball"
+    }
+  ]
+}
