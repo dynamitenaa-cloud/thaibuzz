@@ -1,6 +1,46 @@
 {
-  "intro-hello": { "file": "brand/voice/intro-hello.m4a", "dur": 3.20 },
-  "intro-korea": { "file": "brand/voice/intro-korea.m4a", "dur": 3.40 },
-  "outro-question": { "file": "brand/voice/outro-question.m4a", "dur": 4.00 },
-  "outro-brand": { "file": "brand/voice/outro-brand.m4a", "dur": 2.12 }
+  "intro-hello": {
+    "file": "brand/voice/intro-hello.m4a",
+    "dur": 3.2
+  },
+  "intro-korea": {
+    "file": "brand/voice/intro-korea.m4a",
+    "dur": 3.4
+  },
+  "outro-question": {
+    "file": "brand/voice/outro-question.m4a",
+    "dur": 4
+  },
+  "outro-brand": {
+    "file": "brand/voice/outro-brand.m4a",
+    "dur": 2.12
+  },
+  "intro-hello2": {
+    "file": "brand/voice/intro-hello2.m4a",
+    "dur": 2.95
+  },
+  "intro-story": {
+    "file": "brand/voice/intro-story.m4a",
+    "dur": 2.41
+  },
+  "react-surprised": {
+    "file": "brand/voice/react-surprised.m4a",
+    "dur": 2.5
+  },
+  "react-fans": {
+    "file": "brand/voice/react-fans.m4a",
+    "dur": 2.62
+  },
+  "react-korea": {
+    "file": "brand/voice/react-korea.m4a",
+    "dur": 3.3
+  },
+  "react-cheer": {
+    "file": "brand/voice/react-cheer.m4a",
+    "dur": 2.05
+  },
+  "outro-thanks": {
+    "file": "brand/voice/outro-thanks.m4a",
+    "dur": 2.81
+  }
 }

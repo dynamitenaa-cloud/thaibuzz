@@ -23,6 +23,17 @@ const editorVoice = (() => {
     return Object.fromEntries(Object.entries(m).filter(([, v]) => fs.existsSync(v.file)).map(([k, v]) => [k, { file: path.resolve(v.file), dur: Number(v.dur) }]));
   } catch { return {}; }
 })();
+// 편집자 셀카 영상 (brand/video/*.mp4 1080x1920 30fps, manifest.json): 첫 장면·질문 장면을 실제 얼굴 영상으로
+//   selfie-hello "สวัสดีครับ ผมยุนมิน" · selfie-korea "ข่าวนี้คนเกาหลีก็พูดถึงครับ" · selfie-story "วันนี้มีข่าวน่าสนใจครับ" · selfie-question "คุณคิดว่าไงครับ คอมเมนต์บอกหน่อย"
+const selfie = (() => {
+  if (process.env.REELS_EDITOR_VOICE === 'false' || process.env.REELS_SELFIE === 'false') return {};
+  try {
+    const m = JSON.parse(fs.readFileSync(path.join('brand', 'video', 'manifest.json'), 'utf8'));
+    return Object.fromEntries(Object.entries(m).filter(([, v]) => fs.existsSync(v.file)).map(([k, v]) => [k, { file: path.resolve(v.file), dur: Number(v.dur) }]));
+  } catch { return {}; }
+})();
+const SELFIE_CAPTION = { 'selfie-hello': 'สวัสดีครับ ผมยุนมิน', 'selfie-korea': 'ข่าวนี้คนเกาหลีก็พูดถึงครับ', 'selfie-story': 'วันนี้มีข่าวน่าสนใจครับ', 'selfie-question': 'คุณคิดว่าไงครับ?' };
+const hashN = (slug, salt, n) => parseInt(crypto.createHash('md5').update(`${slug}:${salt}`).digest('hex').slice(0, 6), 16) % n;
 const SITE_HOST = (() => { try { return new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').host; } catch { return 'thaibuzz.net'; } })();
 
 const run = promisify(execFile);
@@ -74,6 +85,32 @@ function frame({ bg, color, step, steps, category, watermark }, children) {
   ].filter(Boolean));
 }
 
+// 셀카 영상 위에 얹는 투명 오버레이: 진행 바 + 브랜드 + 이름표 + 자막 (+ 버튼)
+function selfieOverlay({ step, steps, category, color }, caption, { sub = '', pill = '' } = {}) {
+  return h('div', { width: W, height: H, display: 'flex', position: 'relative', fontFamily: 'Prompt', fontWeight: 700, color: '#fff' }, [
+    h('div', { position: 'absolute', top: 0, left: 0, width: W, height: 420, display: 'flex', backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%)' }),
+    h('div', { position: 'absolute', top: 1080, left: 0, width: W, height: 840, display: 'flex', backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 45%, rgba(0,0,0,0.92) 100%)' }),
+    h('div', { position: 'absolute', top: 118, left: 60, right: 60, display: 'flex', gap: 10 }, Array.from({ length: steps }, (_, i) =>
+      h('div', { flex: 1, height: 8, borderRadius: 8, background: i <= step ? YELLOW : 'rgba(255,255,255,0.35)', display: 'flex' }))),
+    h('div', { position: 'absolute', top: 150, left: 60, right: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }, [
+      h('div', { display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(0,0,0,0.5)', padding: '10px 26px', borderRadius: 999, fontSize: 38 }, [
+        h('div', { width: 18, height: 18, borderRadius: 99, background: YELLOW, display: 'flex' }),
+        'ThaiBuzz',
+      ]),
+      category && h('div', { display: 'flex', background: '#fff', color, fontSize: 34, padding: '8px 24px', borderRadius: 999 }, category),
+    ].filter(Boolean)),
+    h('div', { position: 'absolute', left: 70, right: 70, top: 1300, display: 'flex', flexDirection: 'column', gap: 22 }, [
+      h('div', { display: 'flex', alignItems: 'center', gap: 16 }, [
+        h('div', { display: 'flex', background: '#0047a0', color: '#fff', fontSize: 28, padding: '6px 16px', borderRadius: 10, letterSpacing: 2 }, 'KR'),
+        h('div', { display: 'flex', fontSize: 36, fontWeight: 500, opacity: 0.95 }, 'ยุนมิน · บรรณาธิการชาวเกาหลี'),
+      ]),
+      text(caption, 66, { textShadow: '0 4px 24px rgba(0,0,0,0.6)' }),
+      sub && text(sub, 46, { fontWeight: 500, opacity: 0.92 }),
+      pill && h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 40, padding: '12px 34px', borderRadius: 999, alignSelf: 'flex-start', marginTop: 6 }, pill),
+    ].filter(Boolean)),
+  ]);
+}
+
 const text = (s, size, extra = {}) => h('div', { fontSize: size, lineHeight: 1.28, display: 'flex', flexWrap: 'wrap', textShadow: '0 4px 20px rgba(0,0,0,0.5)', ...extra }, thaiWrap(s));
 
 // 제목의 첫 구절(느낌표/공백 앞, 4~26자)을 형광펜으로: "สยามแทบแตก!" 같은 훅이 먼저 눈에 들어오게
@@ -91,15 +128,22 @@ const thaiDate = (iso) => new Date(iso).toLocaleDateString('th-TH', { timeZone: 
 function scenes(post, v, color) {
   YELLOW = pickAccent(post.slug);
   const sum = post.summary.slice(0, 3);
-  const steps = sum.length + 2;
   const isK = post.category === 'K-บันเทิง';
+  // 셀카 장면: 인사(K-연예는 한국 멘트, 그 외는 인사/오늘 뉴스 번갈아) + 마무리 질문
+  const introKey = isK && selfie['selfie-korea'] ? 'selfie-korea' : hashN(post.slug, 'intro', 2) === 0 && selfie['selfie-story'] ? 'selfie-story' : selfie['selfie-hello'] ? 'selfie-hello' : null;
+  const askKey = selfie['selfie-question'] ? 'selfie-question' : null;
+  const steps = sum.length + 2 + (introKey ? 1 : 0) + (askKey ? 1 : 0);
+  let step = 0;
   const watermark = isK ? 'K-POP' : post.category;
-  const base = (step) => ({ bg: v.bg, color, step, steps, category: post.category, watermark });
+  const base = (st) => ({ bg: v.bg, color, step: st, steps, category: post.category, watermark });
   const out = [];
+
+  // 0) 셀카 인사 (영상 자체 소리 사용)
+  if (introKey) out.push({ dur: selfie[introKey].dur, video: selfie[introKey].file, tree: selfieOverlay({ step: step++, steps, category: post.category, color }, SELFIE_CAPTION[introKey]) });
 
   // 1) 훅: 사진 카드 + 날짜 + 제목(첫 구절 형광펜)
   const long = post.title.length > 70;
-  out.push({ dur: 3.6, tree: frame(base(0), [
+  out.push({ dur: 3.6, tree: frame(base(step++), [
     v.card && img(v.card, { position: 'absolute', top: 250, left: 40, width: 1000, height: 700, borderRadius: 36, boxShadow: '0 24px 70px rgba(0,0,0,0.55)', border: '3px solid rgba(255,255,255,0.25)' }, 1000, 700),
     h('div', { position: 'absolute', left: 70, right: 110, top: v.card ? 1000 : 620, display: 'flex', flexDirection: 'column', gap: 18 }, [
       h('div', { fontSize: 34, opacity: 0.85, display: 'flex', fontWeight: 500 }, thaiDate(post.createdAt)),
@@ -109,7 +153,7 @@ function scenes(post, v, color) {
 
   // 2) 요약: 사진은 상단에 그대로(화면이 비지 않게), 아래 유리 카드에 번호 + 문장
   sum.forEach((s, i) => {
-    out.push({ dur: 3.4, tree: frame(base(i + 1), [
+    out.push({ dur: 3.4, tree: frame(base(step++), [
       v.top && img(v.top, { position: 'absolute', top: 0, left: 0, width: W, height: 820 }, W, 820),
       v.top && h('div', { position: 'absolute', top: 0, left: 0, width: W, height: 820, display: 'flex', backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 60%, rgba(10,10,30,0.95) 100%)' }),
       h('div', { position: 'absolute', left: 50, right: 50, top: v.top ? 790 : 680, display: 'flex', flexDirection: 'column', gap: 22, background: 'rgba(8,8,24,0.62)', border: '2px solid rgba(255,255,255,0.14)', borderRadius: 40, padding: '42px 46px 50px' }, [
@@ -125,22 +169,25 @@ function scenes(post, v, color) {
     ]) });
   });
 
-  // 3) 마무리: CTA + 출처 (신뢰) + 주소
+  // 3) 셀카 질문 (댓글 유도) — 영상 자체 소리
+  const q = questionOf(post).replace(/\s*[👇🙋👉]\s*$/u, '');
+  if (askKey) out.push({ dur: selfie[askKey].dur, video: selfie[askKey].file, tree: selfieOverlay({ step: step++, steps, category: post.category, color }, SELFIE_CAPTION[askKey], { sub: q, pill: 'คอมเมนต์บอกหน่อย' }) });
+
+  // 4) 브랜드 카드: 로고 + (셀카 없을 때만 질문) + 주소 + 출처
   // 폰트(Prompt)에 없는 문자(한글 등)로 된 매체명은 네모로 깨짐 → 태국어/라틴 이름만 표시
   const srcs = [...new Set((post.sources || []).map((x) => x.source).filter((n) => n && /^[ -~฀-๿·–-]+$/.test(n)))].slice(0, 3).join(' · ');
   out.push({ dur: 2.8, tree: frame({ ...base(steps - 1), category: '' }, [
-    h('div', { position: 'absolute', left: 70, right: 70, top: 480, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }, [
+    h('div', { position: 'absolute', left: 70, right: 70, top: askKey ? 640 : 480, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22 }, [
       h('div', { display: 'flex', alignItems: 'center', gap: 22 }, [
         h('div', { width: 44, height: 44, borderRadius: 99, background: YELLOW, display: 'flex' }),
         h('div', { fontSize: 120, lineHeight: 1, display: 'flex' }, 'ThaiBuzz'),
       ]),
-      // 독자 질문 → 댓글 유도 (반응이 있어야 노출이 늘어남)
-      h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 30, background: 'rgba(8,8,24,0.55)', border: '2px solid rgba(255,255,255,0.14)', borderRadius: 36, padding: '34px 44px', width: 940 }, [
+      !askKey && h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 30, background: 'rgba(8,8,24,0.55)', border: '2px solid rgba(255,255,255,0.14)', borderRadius: 36, padding: '34px 44px', width: 940 }, [
         h('div', { fontSize: 34, opacity: 0.75, display: 'flex', fontWeight: 500 }, 'คุณคิดว่าไง?'),
-        text(questionOf(post).replace(/\s*[👇🙋👉]\s*$/u, ''), 54, { justifyContent: 'center', textAlign: 'center', textShadow: 'none' }),
+        text(q, 54, { justifyContent: 'center', textAlign: 'center', textShadow: 'none' }),
         h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 40, padding: '12px 34px', borderRadius: 999, marginTop: 10 }, 'คอมเมนต์บอกหน่อย'),
       ]),
-      h('div', { fontSize: 34, opacity: 0.8, display: 'flex', marginTop: 24, fontWeight: 500 }, isK ? 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ข่าวบันเทิงไทย × เกาหลี' : `อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ${SITE_HOST}`),
+      h('div', { fontSize: 36, opacity: 0.85, display: 'flex', marginTop: 24, fontWeight: 500 }, `อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ${SITE_HOST}`),
       srcs && h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginTop: 40 }, [
         h('div', { fontSize: 28, opacity: 0.6, display: 'flex', fontWeight: 500 }, 'ที่มา'),
         h('div', { fontSize: 32, opacity: 0.85, display: 'flex', fontWeight: 500, textAlign: 'center', justifyContent: 'center' }, srcs),
@@ -169,33 +216,50 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   fs.mkdirSync(REEL_DIR, { recursive: true });
   const work = fs.mkdtempSync(path.join(REEL_DIR, `${post.slug}-`));
   const list = scenes(post, await visuals(post), color);
-  const voiced = voice && voice.parts?.length === list.length - 1 ? voice : null; // TTS 는 훅 + 요약 장면만
   const n = list.length;
-  const GAP = 0.25; // 한 장면 안에서 클립 사이 쉼
-  // 장면별 오디오 클립(순서대로): 훅 = 편집자 인사 + 제목 낭독, 요약 = 낭독, 마무리 = 편집자 질문 + 브랜드
-  const clips = list.map(() => []);
-  const intro = editorVoice[post.category === 'K-บันเทิง' ? 'intro-korea' : 'intro-hello'] || editorVoice['intro-hello'];
-  if (intro) clips[0].push(intro);
-  if (voiced) voiced.parts.forEach((p, i) => clips[i].push({ file: p.wav, dur: p.dur }));
-  for (const k of ['outro-question', 'outro-brand']) if (editorVoice[k]) clips[n - 1].push(editorVoice[k]);
-  // 음성이 있는 장면은 클립 길이에 맞춤 (없으면 기본 길이)
-  list.forEach((sc, i) => { const c = clips[i]; if (c.length) sc.dur = Math.max(2.6, LEAD + c.reduce((a, x) => a + x.dur, 0) + GAP * (c.length - 1) + 0.4); });
+  const isVideo = (sc) => !!sc.video;
+  // TTS 는 정지 장면(훅 + 요약)에 1:1. 셀카/브랜드 카드 제외
+  const ttsScenes = list.map((sc, i) => (!isVideo(sc) && i < n - 1 ? i : -1)).filter((i) => i >= 0);
+  const voiced = voice && voice.parts?.length === ttsScenes.length ? voice : null;
+  const GAP = 0.25;
+  // 장면별 오디오 클립(순서대로). 셀카 장면은 영상 자체 소리
+  const clips = list.map((sc, i) => (isVideo(sc) ? [{ own: true, dur: sc.dur }] : []));
+  const hasSelfieIntro = isVideo(list[0]);
+  const hasSelfieAsk = n >= 2 && isVideo(list[n - 2]);
+  // 셀카 영상이 없을 때만 인사 음성 (옛 방식)
+  if (!hasSelfieIntro) { const intro = editorVoice[post.category === 'K-บันเทิง' ? 'intro-korea' : 'intro-hello'] || editorVoice['intro-hello']; if (intro) clips[ttsScenes[0] ?? 0].push(intro); }
+  if (voiced) voiced.parts.forEach((p, k) => clips[ttsScenes[k]].push({ file: p.wav, dur: p.dur }));
+  // 편집자 한 마디: 첫 요약 앞 (K-연예 → 한국에서도 화제 / 스포츠 → 응원 / 그 외 절반 → 저도 놀랐어요)
+  const reactKey = post.category === 'K-บันเทิง' ? 'react-korea' : post.category === 'กีฬา' ? 'react-cheer' : hashN(post.slug, 'react', 2) === 0 ? 'react-surprised' : null;
+  if (reactKey && editorVoice[reactKey] && ttsScenes.length >= 2) clips[ttsScenes[1]].unshift(editorVoice[reactKey]);
+  // 마무리: 셀카 질문이 있으면 브랜드 카드에 "ThaiBuzz ครับ"/"ขอบคุณครับ", 없으면 질문 음성 + 브랜드
+  const outroKeys = hasSelfieAsk ? [hashN(post.slug, 'outro', 2) === 0 && editorVoice['outro-thanks'] ? 'outro-thanks' : 'outro-brand'] : ['outro-question', 'outro-brand'];
+  for (const k of outroKeys) if (editorVoice[k]) clips[n - 1].push(editorVoice[k]);
+  // 정지 장면 길이 = 클립 길이에 맞춤 (셀카 장면은 영상 길이 그대로)
+  list.forEach((sc, i) => { if (isVideo(sc)) return; const c = clips[i]; if (c.length) sc.dur = Math.max(2.6, LEAD + c.reduce((a, x) => a + x.dur, 0) + GAP * (c.length - 1) + 0.4); });
   for (let i = 0; i < n; i++) await renderPng(list[i].tree, path.join(work, `s${i}.png`));
 
   const total = list.reduce((a, sc) => a + sc.dur, 0) - XFADE * (n - 1);
   const args = ['-y'];
-  list.forEach((_, i) => args.push('-i', path.join(work, `s${i}.png`)));
-  let idx = n; // 다음 오디오 입력 번호
-  const aIdx = clips.map((c) => c.map((clip) => { args.push('-i', clip.file); return idx++; }));
+  let idx = 0;
+  const vIdx = [], oIdx = [];
+  list.forEach((sc, i) => {
+    if (isVideo(sc)) { args.push('-i', sc.video); vIdx[i] = idx++; args.push('-i', path.join(work, `s${i}.png`)); oIdx[i] = idx++; }
+    else { args.push('-i', path.join(work, `s${i}.png`)); vIdx[i] = idx++; }
+  });
+  const aIdx = clips.map((c, i) => c.map((clip) => { if (clip.own) return vIdx[i]; args.push('-i', clip.file); return idx++; }));
   const anyAudio = aIdx.some((c) => c.length);
-  if (!anyAudio) args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=44100:cl=stereo'); // 무음 트랙(Reels 호환)
-  // 장면마다 켄 번스: 짝수는 줌인, 홀수는 줌아웃 → 단조롭지 않게
+  if (!anyAudio) { args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=44100:cl=stereo'); } // 무음 트랙(Reels 호환)
+  const silentIdx = idx;
   const chains = list.map((sc, i) => {
+    const D = sc.dur.toFixed(3);
+    if (isVideo(sc)) return `[${vIdx[i]}:v]trim=duration=${D},setpts=PTS-STARTPTS,fps=${FPS},scale=${W}:${H},setsar=1[vb${i}];[vb${i}][${oIdx[i]}:v]overlay=0:0:format=auto,format=yuv420p[v${i}]`;
+    // 정지 장면: 켄 번스 (짝수 줌인, 홀수 줌아웃)
     const frames = Math.round(sc.dur * FPS);
     const z = i % 2 === 0 ? `min(zoom+0.0006,1.06)` : `if(lte(on,1),1.06,max(zoom-0.0006,1.0))`;
-    return `[${i}:v]scale=1620:2880,zoompan=z='${z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${frames}:s=${W}x${H}:fps=${FPS},setsar=1[v${i}]`;
+    return `[${vIdx[i]}:v]scale=1620:2880,zoompan=z='${z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${frames}:s=${W}x${H}:fps=${FPS},format=yuv420p,setsar=1[v${i}]`;
   });
-  // 디졸브로 이어 붙이기 (검은 화면으로 꺼졌다 켜지지 않게)
+  // 디졸브로 이어 붙이기
   let prev = '[v0]', off = 0;
   for (let i = 1; i < n; i++) {
     off += list[i - 1].dur - XFADE;
@@ -205,14 +269,13 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   }
   if (n === 1) chains.push('[v0]copy[vx]');
   chains.push(`[vx]fade=t=in:st=0:d=0.3,fade=t=out:st=${(total - 0.4).toFixed(2)}:d=0.4[v]`);
-  let audioOut = `${n}:a`;
+  let audioOut = `${silentIdx}:a`;
   if (anyAudio) {
-    // 장면 i: 클립들을 LEAD 뒤부터 차례로 두고(사이 GAP) 장면 길이까지 무음 → 장면끼리 크로스페이드
     for (let i = 0; i < n; i++) {
       const c = clips[i];
       const D = list[i].dur.toFixed(3);
       if (!c.length) { chains.push(`anullsrc=r=44100:cl=stereo,atrim=duration=${D}[a${i}]`); continue; }
-      let at = LEAD;
+      let at = isVideo(list[i]) ? 0 : LEAD;
       const names = c.map((clip, j) => {
         chains.push(`[${aIdx[i][j]}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay=${Math.round(at * 1000)}:all=1,apad=whole_dur=${D},atrim=duration=${D}[c${i}_${j}]`);
         at += clip.dur + GAP;
@@ -234,5 +297,5 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
     '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', out);
   await run(ffmpegPath, args, { maxBuffer: 64 * 1024 * 1024 });
   fs.rmSync(work, { recursive: true, force: true });
-  return { file: out, duration: total, size: fs.statSync(out).size, voiced: !!voiced, editorVoice: !!intro };
+  return { file: out, duration: total, size: fs.statSync(out).size, voiced: !!voiced, selfie: hasSelfieIntro, editorVoice: hasSelfieIntro || Object.keys(editorVoice).length > 0 };
 }

@@ -1,0 +1,18 @@
+{
+  "selfie-hello": {
+    "file": "brand/video/selfie-hello.mp4",
+    "dur": 3.3
+  },
+  "selfie-korea": {
+    "file": "brand/video/selfie-korea.mp4",
+    "dur": 4.3
+  },
+  "selfie-story": {
+    "file": "brand/video/selfie-story.mp4",
+    "dur": 3.6
+  },
+  "selfie-question": {
+    "file": "brand/video/selfie-question.mp4",
+    "dur": 4.8
+  }
+}
