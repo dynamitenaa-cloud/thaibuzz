@@ -32,8 +32,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <img src={EDITOR.photo} alt={EDITOR.name} width={160} height={160} />
           <div>
             <h1>{EDITOR.name}</h1>
-            <p className="author-sub">{EDITOR.nameEn} · {EDITOR.jobTitle}และผู้ก่อตั้ง {SITE.name}</p>
+            <p className="author-sub">{EDITOR.nameEn} ({EDITOR.nameKo}) · {EDITOR.jobTitle}และผู้ก่อตั้ง {SITE.name} · {EDITOR.job2}</p>
             <p className="author-sub">🇰🇷 จาก{EDITOR.hometown} · 🇹🇭 อยู่ไทย {EDITOR.yearsInThailand} ปี</p>
+            {EDITOR.sameAs.map((u) => <p key={u} className="author-sub"><a href={u} target="_blank" rel="me noopener" style={{ textDecoration: 'underline' }}>Instagram @{u.replace(/\/$/, '').split('/').pop()}</a></p>)}
           </div>
         </header>
         {EDITOR.bio.map((t, i) => <p key={i}>{t}</p>)}
