@@ -13,6 +13,18 @@ import { fonts, thaiWrap } from './thumbs.mjs';
 import { questionOf } from './social.mjs';
 import crypto from 'node:crypto';
 
+// 편집자 육성 (brand/voice/*.m4a, manifest.json): 릴스 앞뒤에 사람 목소리 → AI 낭독만 있는 영상과 구분
+//   intro-hello "สวัสดีครับ ผมยุนมิน" · intro-korea "ข่าวนี้คนเกาหลีก็พูดถึงครับ" · outro-question "คุณคิดว่าไงครับ คอมเมนต์บอกหน่อย" · outro-brand "ThaiBuzz ครับ"
+// REELS_EDITOR_VOICE=false 로 끌 수 있음
+const editorVoice = (() => {
+  if (process.env.REELS_EDITOR_VOICE === 'false') return {};
+  try {
+    const m = JSON.parse(fs.readFileSync(path.join('brand', 'voice', 'manifest.json'), 'utf8'));
+    return Object.fromEntries(Object.entries(m).filter(([, v]) => fs.existsSync(v.file)).map(([k, v]) => [k, { file: path.resolve(v.file), dur: Number(v.dur) }]));
+  } catch { return {}; }
+})();
+const SITE_HOST = (() => { try { return new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').host; } catch { return 'thaibuzz.net'; } })();
+
 const run = promisify(execFile);
 const W = 1080, H = 1920, FPS = 30;
 // 액센트 색을 글마다 돌려 써서 매번 같은 템플릿처럼 보이지 않게
@@ -128,7 +140,7 @@ function scenes(post, v, color) {
         text(questionOf(post).replace(/\s*[👇🙋👉]\s*$/u, ''), 54, { justifyContent: 'center', textAlign: 'center', textShadow: 'none' }),
         h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 40, padding: '12px 34px', borderRadius: 999, marginTop: 10 }, 'คอมเมนต์บอกหน่อย'),
       ]),
-      h('div', { fontSize: 34, opacity: 0.8, display: 'flex', marginTop: 24, fontWeight: 500 }, isK ? 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ข่าวบันเทิงไทย × เกาหลี' : 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · thaibuzz.pages.dev'),
+      h('div', { fontSize: 34, opacity: 0.8, display: 'flex', marginTop: 24, fontWeight: 500 }, isK ? 'อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ข่าวบันเทิงไทย × เกาหลี' : `อ่านฉบับเต็ม → ลิงก์ในโพสต์ · ${SITE_HOST}`),
       srcs && h('div', { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginTop: 40 }, [
         h('div', { fontSize: 28, opacity: 0.6, display: 'flex', fontWeight: 500 }, 'ที่มา'),
         h('div', { fontSize: 32, opacity: 0.85, display: 'flex', fontWeight: 500, textAlign: 'center', justifyContent: 'center' }, srcs),
@@ -157,20 +169,29 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   fs.mkdirSync(REEL_DIR, { recursive: true });
   const work = fs.mkdtempSync(path.join(REEL_DIR, `${post.slug}-`));
   const list = scenes(post, await visuals(post), color);
-  const voiced = voice && voice.parts?.length === list.length - 1 ? voice : null; // 마무리 장면은 음성 없음
-  if (voiced) voiced.parts.forEach((p, i) => { list[i].dur = Math.max(2.6, p.dur + LEAD + 0.4); });
-  for (let i = 0; i < list.length; i++) await renderPng(list[i].tree, path.join(work, `s${i}.png`));
-
+  const voiced = voice && voice.parts?.length === list.length - 1 ? voice : null; // TTS 는 훅 + 요약 장면만
   const n = list.length;
-  const total = list.reduce((a, s) => a + s.dur, 0) - XFADE * (n - 1);
+  const GAP = 0.25; // 한 장면 안에서 클립 사이 쉼
+  // 장면별 오디오 클립(순서대로): 훅 = 편집자 인사 + 제목 낭독, 요약 = 낭독, 마무리 = 편집자 질문 + 브랜드
+  const clips = list.map(() => []);
+  const intro = editorVoice[post.category === 'K-บันเทิง' ? 'intro-korea' : 'intro-hello'] || editorVoice['intro-hello'];
+  if (intro) clips[0].push(intro);
+  if (voiced) voiced.parts.forEach((p, i) => clips[i].push({ file: p.wav, dur: p.dur }));
+  for (const k of ['outro-question', 'outro-brand']) if (editorVoice[k]) clips[n - 1].push(editorVoice[k]);
+  // 음성이 있는 장면은 클립 길이에 맞춤 (없으면 기본 길이)
+  list.forEach((sc, i) => { const c = clips[i]; if (c.length) sc.dur = Math.max(2.6, LEAD + c.reduce((a, x) => a + x.dur, 0) + GAP * (c.length - 1) + 0.4); });
+  for (let i = 0; i < n; i++) await renderPng(list[i].tree, path.join(work, `s${i}.png`));
+
+  const total = list.reduce((a, sc) => a + sc.dur, 0) - XFADE * (n - 1);
   const args = ['-y'];
   list.forEach((_, i) => args.push('-i', path.join(work, `s${i}.png`)));
-  const A = n; // 첫 오디오 입력 번호
-  if (voiced) voiced.parts.forEach((p) => args.push('-i', p.wav));
-  else args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=44100:cl=stereo'); // 무음 트랙(Reels 호환)
+  let idx = n; // 다음 오디오 입력 번호
+  const aIdx = clips.map((c) => c.map((clip) => { args.push('-i', clip.file); return idx++; }));
+  const anyAudio = aIdx.some((c) => c.length);
+  if (!anyAudio) args.push('-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=r=44100:cl=stereo'); // 무음 트랙(Reels 호환)
   // 장면마다 켄 번스: 짝수는 줌인, 홀수는 줌아웃 → 단조롭지 않게
-  const chains = list.map((s, i) => {
-    const frames = Math.round(s.dur * FPS);
+  const chains = list.map((sc, i) => {
+    const frames = Math.round(sc.dur * FPS);
     const z = i % 2 === 0 ? `min(zoom+0.0006,1.06)` : `if(lte(on,1),1.06,max(zoom-0.0006,1.0))`;
     return `[${i}:v]scale=1620:2880,zoompan=z='${z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${frames}:s=${W}x${H}:fps=${FPS},setsar=1[v${i}]`;
   });
@@ -184,13 +205,21 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   }
   if (n === 1) chains.push('[v0]copy[vx]');
   chains.push(`[vx]fade=t=in:st=0:d=0.3,fade=t=out:st=${(total - 0.4).toFixed(2)}:d=0.4[v]`);
-  let audioOut = `${A}:a`;
-  if (voiced) {
-    // 문단 음성을 장면 시작 LEAD 뒤에 두고 장면 길이까지 무음 → 영상과 같은 길이로 크로스페이드
-    const segs = voiced.parts.map((_, i) =>
-      `[${A + i}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay=${Math.round(LEAD * 1000)}:all=1,apad=whole_dur=${list[i].dur.toFixed(3)},atrim=duration=${list[i].dur.toFixed(3)}[a${i}]`);
-    segs.push(`anullsrc=r=44100:cl=stereo,atrim=duration=${list[n - 1].dur.toFixed(3)}[a${n - 1}]`);
-    chains.push(...segs);
+  let audioOut = `${n}:a`;
+  if (anyAudio) {
+    // 장면 i: 클립들을 LEAD 뒤부터 차례로 두고(사이 GAP) 장면 길이까지 무음 → 장면끼리 크로스페이드
+    for (let i = 0; i < n; i++) {
+      const c = clips[i];
+      const D = list[i].dur.toFixed(3);
+      if (!c.length) { chains.push(`anullsrc=r=44100:cl=stereo,atrim=duration=${D}[a${i}]`); continue; }
+      let at = LEAD;
+      const names = c.map((clip, j) => {
+        chains.push(`[${aIdx[i][j]}:a]aformat=sample_rates=44100:channel_layouts=stereo,adelay=${Math.round(at * 1000)}:all=1,apad=whole_dur=${D},atrim=duration=${D}[c${i}_${j}]`);
+        at += clip.dur + GAP;
+        return `[c${i}_${j}]`;
+      });
+      chains.push(names.length === 1 ? `${names[0]}acopy[a${i}]` : `${names.join('')}amix=inputs=${names.length}:normalize=0:duration=longest[a${i}]`);
+    }
     let ap = '[a0]';
     for (let i = 1; i < n; i++) {
       const outName = i === n - 1 ? '[aout]' : `[ax${i}]`;
@@ -205,5 +234,5 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
     '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', out);
   await run(ffmpegPath, args, { maxBuffer: 64 * 1024 * 1024 });
   fs.rmSync(work, { recursive: true, force: true });
-  return { file: out, duration: total, size: fs.statSync(out).size, voiced: !!voiced };
+  return { file: out, duration: total, size: fs.statSync(out).size, voiced: !!voiced, editorVoice: !!intro };
 }

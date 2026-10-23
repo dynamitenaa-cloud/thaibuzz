@@ -1,0 +1,6 @@
+{
+  "intro-hello": { "file": "brand/voice/intro-hello.m4a", "dur": 3.20 },
+  "intro-korea": { "file": "brand/voice/intro-korea.m4a", "dur": 3.40 },
+  "outro-question": { "file": "brand/voice/outro-question.m4a", "dur": 4.00 },
+  "outro-brand": { "file": "brand/voice/outro-brand.m4a", "dur": 2.12 }
+}
