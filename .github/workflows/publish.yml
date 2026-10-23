@@ -116,9 +116,15 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           NOTES_MODEL: ${{ vars.NOTES_MODEL }}
 
+      - name: Update live data (lottery, gold)
+        id: live
+        if: ${{ !cancelled() && !inputs.reel_preview }}
+        continue-on-error: true
+        run: node scripts/live-data.mjs
+
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
