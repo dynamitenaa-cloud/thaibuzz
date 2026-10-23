@@ -405,5 +405,6 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .cta-cmt p { margin: 0 0 12px; color: var(--fg-2); font-size: .95rem; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .cta-row a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 99px; font-weight: 600; font-size: .95rem; }
+.cta-row a svg { width: 18px; height: 18px; flex: none; }
 .btn-fb { background: #1877f2; color: #fff; } .btn-fb:hover { background: #0f5fcc; color: #fff; }
 .btn-th { background: var(--fg); color: var(--bg); } .btn-th:hover { opacity: .85; }
