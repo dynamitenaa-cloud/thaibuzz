@@ -61,7 +61,7 @@ ${message}
   trackUsage(r);
   const j = await r.json().catch(() => ({}));
   const id = j.post_id || j.id;
-  if (r.ok && id) { console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`); ledger.photo[slug] = Date.now(); saveLedger(ledger); }
+  if (r.ok && id) { console.log(`facebook: posted ${image ? 'photo' : 'link'} ${id} ← ${slug}`); ledger.photo[slug] = Date.now(); ((ledger.ids ??= {}).photo ??= {})[slug] = String(id); saveLedger(ledger); } // ids.photo → 사이트의 "คอมเมนต์บน Facebook" 버튼 (lib/fb-links.ts)
   else { failed++; markFail(ledger, 'photo', slug); console.error(`facebook: FAILED ${slug}:`, JSON.stringify(j.error ?? j).slice(0, 300)); }
   await sleep(3000); // 연속 게시 간격 (스팸 판정 방지)
 }

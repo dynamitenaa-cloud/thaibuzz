@@ -399,8 +399,11 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .gold-table th:first-child, .gold-table td:first-child { text-align: left; }
 @media (max-width: 640px) { .live-strip, .lot-top, .gold-cards { grid-template-columns: 1fr; } .lot-big.wide .lot-nums b { font-size: 2.2rem; } }
 
-/* 페이스북 댓글 */
-.fb-cmt { margin: 28px 0; }
-.fb-cmt h2 { font-size: 1.2rem; margin: 0 0 4px; }
-.fb-cmt-hint { color: var(--mut); font-size: .9rem; margin: 0 0 12px; }
-.fb-cmt-ph { color: var(--mut); font-size: .9rem; border: 1px dashed var(--line); border-radius: var(--radius-sm); padding: 18px; text-align: center; min-height: 120px; }
+/* 댓글 유도 상자 (페이스북 게시물로) */
+.cta-cmt { border: 2px solid var(--brand); border-radius: var(--radius); padding: 18px 20px; margin: 28px 0; background: var(--brand-soft); }
+.cta-cmt h2 { font-size: 1.25rem; margin: 0 0 6px; color: var(--brand-ink); }
+.cta-cmt p { margin: 0 0 12px; color: var(--fg-2); font-size: .95rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.cta-row a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 99px; font-weight: 600; font-size: .95rem; }
+.btn-fb { background: #1877f2; color: #fff; } .btn-fb:hover { background: #0f5fcc; color: #fff; }
+.btn-th { background: var(--fg); color: var(--bg); } .btn-th:hover { opacity: .85; }
