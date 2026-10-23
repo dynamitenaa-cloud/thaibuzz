@@ -67,7 +67,8 @@ if (fs.existsSync(OUT)) {
 const CANONICAL = ${JSON.stringify(site)};
 export const onRequest = async ({ request, next }) => {
   const url = new URL(request.url);
-  if (/^[a-z0-9-]+\\.pages\\.dev$/.test(url.host)) return Response.redirect(CANONICAL + url.pathname + url.search, 301);
+  // 옛 주소(pages.dev)와 www. 는 공식 주소로 301
+  if (/^[a-z0-9-]+\\.pages\\.dev$/.test(url.host) || url.host === 'www.' + new URL(CANONICAL).host) return Response.redirect(CANONICAL + url.pathname + url.search, 301);
   return next();
 };
 `);
