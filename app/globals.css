@@ -398,3 +398,9 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .gold-table th, .gold-table td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; }
 .gold-table th:first-child, .gold-table td:first-child { text-align: left; }
 @media (max-width: 640px) { .live-strip, .lot-top, .gold-cards { grid-template-columns: 1fr; } .lot-big.wide .lot-nums b { font-size: 2.2rem; } }
+
+/* 페이스북 댓글 */
+.fb-cmt { margin: 28px 0; }
+.fb-cmt h2 { font-size: 1.2rem; margin: 0 0 4px; }
+.fb-cmt-hint { color: var(--mut); font-size: .9rem; margin: 0 0 12px; }
+.fb-cmt-ph { color: var(--mut); font-size: .9rem; border: 1px dashed var(--line); border-radius: var(--radius-sm); padding: 18px; text-align: center; min-height: 120px; }

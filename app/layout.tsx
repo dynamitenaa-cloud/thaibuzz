@@ -44,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="th" className={`${body.variable} ${head.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        {SITE.fbAppId && <meta property="fb:app_id" content={SITE.fbAppId} />}
         {SITE.adsense && (
           <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsense}`} crossOrigin="anonymous" />
         )}

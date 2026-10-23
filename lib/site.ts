@@ -12,6 +12,8 @@ export const SITE = {
   adsenseSlotSide: process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDE || '',
   shopee: process.env.NEXT_PUBLIC_SHOPEE_AFFILIATE_ID || '',
   gaId: process.env.NEXT_PUBLIC_GA_ID || '',
+  // Meta 앱 ID (공개 값): 글 하단 페이스북 댓글 플러그인. 비어 있으면 댓글창 표시 안 함
+  fbAppId: process.env.NEXT_PUBLIC_FB_APP_ID || '',
   // 공식 소셜 계정 (푸터 "ติดตามเรา"). 비어 있으면 표시 안 함 — GitHub Variables 로 설정
   social: {
     youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || '',

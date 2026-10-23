@@ -4,6 +4,7 @@ import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, reading
 import { SITE } from '@/lib/site';
 import { EDITOR, editorId, editorUrl } from '@/lib/editor';
 import { layoutOf } from '@/lib/article-layout';
+import { FbComments } from '@/components/FbComments';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
 import { ArticleChrome, Share } from '@/components/Share';
@@ -230,6 +231,8 @@ export default async function PostPage({ params }: P) {
           <div className="tags">{p.tags.map((t) => (tagHasPage(t) ? <a key={t} href={tagUrl(t)} className="chip">#{t}</a> : <span key={t} className="chip">#{t}</span>))}</div>
 
           <Share url={url} title={p.title} />
+
+          <FbComments url={url} appId={SITE.fbAppId} />
 
           <AdSlot />
 
