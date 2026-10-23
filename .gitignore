@@ -14,3 +14,5 @@ preview/
 yt-client.json
 client_secret*.json
 review-evidence/
+# Pages Functions 미들웨어는 postbuild 가 생성
+functions/
