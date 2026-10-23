@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Ticker from '@/components/Ticker';
 import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
+import { editorPerson } from '@/lib/editor';
 
 const body = Noto_Sans_Thai({ subsets: ['thai', 'latin'], weight: ['400', '600'], variable: '--font-body', display: 'optional' });
 const head = Prompt({ subsets: ['thai', 'latin'], weight: ['600', '700'], variable: '--font-head', display: 'optional' });
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             '@context': 'https://schema.org',
             '@graph': [
               { '@type': 'NewsMediaOrganization', '@id': `${SITE.url}/#org`, name: SITE.name, url: SITE.url, logo: `${SITE.url}/icon-512.png`, publishingPrinciples: `${SITE.url}/editorial-policy/`, correctionsPolicy: `${SITE.url}/editorial-policy/#corrections` },
+              editorPerson(),
               { '@type': 'WebSite', '@id': `${SITE.url}/#web`, url: SITE.url, name: SITE.name, inLanguage: 'th', publisher: { '@id': `${SITE.url}/#org` }, potentialAction: { '@type': 'SearchAction', target: `${SITE.url}/search/?q={q}`, 'query-input': 'required name=q' } },
             ],
           }}

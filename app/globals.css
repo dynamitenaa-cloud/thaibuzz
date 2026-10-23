@@ -310,3 +310,16 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .ed-note b { display: block; font-size: .95rem; margin-bottom: 4px; }
 .ed-note p { margin: 0 0 4px; font-size: 1.02rem; }
 .ed-note small { color: var(--mut); font-size: .8rem; }
+
+/* 편집자 프로필 */
+.author-h { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+.author-h img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: var(--shadow, 0 2px 12px rgba(0,0,0,.12)); }
+.author .author-h img { width: 160px; height: 160px; }
+.author-h h1 { margin: 0 0 6px; }
+.author-sub { margin: 0 0 4px; color: var(--mut); font-size: .95rem; }
+.author-box { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--line, #e5e7eb); border-radius: var(--radius-sm); padding: 14px 16px; margin: 24px 0; background: var(--bg-soft); }
+.author-box img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+.author-box b { display: block; margin-bottom: 4px; font-size: .95rem; }
+.author-box b a { text-decoration: underline; }
+.author-box p { margin: 0; font-size: .9rem; color: var(--fg-2); line-height: 1.5; }
+@media (max-width: 600px) { .author-h { flex-direction: column; align-items: flex-start; } }

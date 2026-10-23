@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
+import { EDITOR, editorId, editorUrl } from '@/lib/editor';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
 import { ArticleChrome, Share } from '@/components/Share';
@@ -78,7 +79,7 @@ export default async function PostPage({ params }: P) {
               keywords: p.tags.join(', '),
               inLanguage: 'th',
               wordCount: wordCount(p),
-              author: { '@type': 'Organization', name: `กองบรรณาธิการ ${SITE.name}`, url: `${SITE.url}/about/` },
+              author: { '@id': editorId() },
               publisher: { '@id': `${SITE.url}/#org` },
               isBasedOn: p.sources.map((s) => s.url),
             },
@@ -106,7 +107,7 @@ export default async function PostPage({ params }: P) {
             <h1>{p.title}</h1>
             <p className="lede">{p.excerpt}</p>
             <div className="meta" style={{ marginBottom: 14 }}>
-              <span>โดย กองบรรณาธิการ {SITE.name}</span>
+              <span>โดย <a href={editorUrl()} rel="author" style={{ fontWeight: 600 }}>{EDITOR.name}</a></span>
               <span className="dot" />
               <time dateTime={p.createdAt}>{thaiDate(p.createdAt)}</time>
               <span className="dot" />
@@ -130,7 +131,7 @@ export default async function PostPage({ params }: P) {
           {/* 편집자 노트: 사람이 직접 남긴 코멘트 (텔레그램 답장 → scripts/editor-notes.mjs) */}
           {p.editorNote && (
             <aside className="ed-note" aria-label="มุมมองจากบรรณาธิการชาวเกาหลี">
-              <b>🇰🇷 มุมมองจากบรรณาธิการชาวเกาหลี</b>
+              <b>🇰🇷 มุมมองจาก <a href={editorUrl()}>{EDITOR.name}</a> บรรณาธิการชาวเกาหลี</b>
               <p>{p.editorNote}</p>
               {p.editorNoteAt && <small>{thaiDate(p.editorNoteAt)}</small>}
             </aside>
@@ -179,6 +180,14 @@ export default async function PostPage({ params }: P) {
           <Share url={url} title={p.title} />
 
           <AdSlot />
+
+          <aside className="author-box" aria-label="เกี่ยวกับผู้เขียน">
+            <img src={EDITOR.photo} alt={EDITOR.name} width={64} height={64} loading="lazy" />
+            <div>
+              <b><a href={editorUrl()} rel="author">{EDITOR.name}</a> · {EDITOR.jobTitle} {SITE.name}</b>
+              <p>{EDITOR.bio[0]}</p>
+            </div>
+          </aside>
 
           <footer className="srcs">
             <b>แหล่งข้อมูลอ้างอิง</b>

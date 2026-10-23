@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { og } from '@/lib/og';
 import { SITE } from '@/lib/site';
+import { EDITOR, editorUrl } from '@/lib/editor';
 
 export const metadata: Metadata = { title: `เกี่ยวกับ ${SITE.name}`, alternates: { canonical: '/about/' }, openGraph: og('/about/', `เกี่ยวกับ ${SITE.name}`) };
 
@@ -9,6 +10,14 @@ export default function Page() {
     <div className="doc">
       <h1>เกี่ยวกับ {SITE.name}</h1>
       <p>{SITE.name} คือเว็บไซต์สรุปประเด็นร้อนและเทรนด์ที่คนไทยกำลังพูดถึงบนโลกออนไลน์ ทั้งข่าวบันเทิง ซีรีส์ ไวรัลบนโซเชียล กีฬา และไลฟ์สไตล์ เราตั้งใจช่วยให้ผู้อ่าน “ตามทันกระแส” ได้ในไม่กี่นาที</p>
+      <h2>บรรณาธิการ</h2>
+      <div className="author-h">
+        <img src={EDITOR.photo} alt={EDITOR.name} width={120} height={120} loading="lazy" />
+        <div>
+          <p style={{ margin: 0 }}><a href={editorUrl()} style={{ fontWeight: 700, textDecoration: 'underline' }}>{EDITOR.name}</a> ({EDITOR.nameEn})</p>
+          <p style={{ margin: '4px 0 0' }}>{EDITOR.bio[0]}</p>
+        </div>
+      </div>
       <h2>ไทย × เกาหลี</h2>
       <p>{SITE.name} ก่อตั้งและดูแลโดยบรรณาธิการชาวเกาหลี ข่าว K-pop และซีรีส์เกาหลีในหมวด <a href="/category/korea/" style={{ textDecoration: 'underline' }}>K-บันเทิง</a> เราเรียบเรียงจากสื่อเกาหลีต้นฉบับโดยตรง ไม่ผ่านการแปลต่อจากสื่อภาษาอังกฤษ จึงมักได้ข่าวเร็วกว่า และให้ความสำคัญกับเรื่องที่เกี่ยวข้องกับไทย เช่น ศิลปินชาวไทยในวง K-pop และคอนเสิร์ตหรือแฟนมีตติ้งในไทย</p>
       <p>ในบางบทความ คุณจะเห็นกล่อง “🇰🇷 มุมมองจากบรรณาธิการชาวเกาหลี” ซึ่งเป็นความเห็นที่บรรณาธิการเขียนเอง (แปลเป็นภาษาไทย) ไม่ใช่ข้อความที่ AI สร้าง</p>
