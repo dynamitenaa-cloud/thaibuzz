@@ -26,6 +26,7 @@ export type Layout = {
   faq: 'none' | 'accordion' | 'headings';
   faqHeading: string;
   pullQuote: { section: number; para: number } | null;
+  krAfter: number; // 한국 시각 박스를 몇 번째 섹션 뒤에 (-1 = 본문 끝)
 };
 
 export function layoutOf(p: Post): Layout {
@@ -43,7 +44,7 @@ export function layoutOf(p: Post): Layout {
     }
   }
 
-  const base = { tldrHeading: pick(TLDR, h, 1), timelineHeading: pick(TL, h, 2), faqHeading: pick(FAQ, h, 3), adAfter: mid, pullQuote };
+  const base = { tldrHeading: pick(TLDR, h, 1), timelineHeading: pick(TL, h, 2), faqHeading: pick(FAQ, h, 3), adAfter: mid, pullQuote, krAfter: n >= 3 ? (h % 3 === 0 ? 0 : 1) : -1 };
   switch (fmt) {
     case 'brief':
       return { ...base, fmt, summary: 'none', runin: true, numbered: false, readMoreAfter: -1, timelineTop: false, faq: p.faq.length ? 'headings' : 'none', pullQuote: null };

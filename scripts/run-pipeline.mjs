@@ -145,7 +145,7 @@ if (budget > 0) {
       // AI 티 자동 교정: 오타(자음 3연속), 교훈형 마무리 문단 제거
       const { article: raw, removedClosers } = polish(w.article);
       const q = qualityCheck(raw, w.format);
-      console.log(`  model: ${w.model}${premium ? ' (premium)' : ''} | format: ${w.format}${removedClosers ? ` | removed ${removedClosers} cliché closer` : ''}`);
+      console.log(`  model: ${w.model}${premium ? ' (premium)' : ''} | format: ${w.format} | lede: ${w.lede?.slice(0, 18)}…${removedClosers ? ` | removed ${removedClosers} cliché closer` : ''}`);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
       const a = normalize(raw);
       if (c.lang === 'ko') a.category = KR_CAT; // 태국어 K 검색 후보는 LLM 판단(한국 연예가 아니면 다른 카테고리)
@@ -178,6 +178,8 @@ if (budget > 0) {
         format: w.format,
         hook: a.socialHook?.trim() || undefined,
         question: a.socialQuestion?.trim() || undefined,
+        // 한국 시각 코너 (K-연예 글만, 한국 출처 기반). 편집자 노트(사람)와는 별개 표기
+        koreaAngle: a.category === KR_CAT && a.koreaAngle?.trim() ? a.koreaAngle.trim() : undefined,
         ...(c.lang === 'ko' ? { origin: 'kr' } : {}),
         model: w.model,
         sources: f.news.slice(0, 6).map(({ title, url, source }) => ({ title, url, source })),

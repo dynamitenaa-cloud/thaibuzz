@@ -20,6 +20,17 @@ function ReadMore({ p }: { p: Post }) {
   );
 }
 
+// 한국 시각 코너: AI 가 한국 출처에서 뽑은 맥락. 편집자 노트(사람)와 구분해 표기
+function KoreaAngle({ text }: { text: string }) {
+  return (
+    <aside className="kr-angle" aria-label="ในเกาหลีมองเรื่องนี้ยังไง">
+      <b>🇰🇷 ในเกาหลีมองเรื่องนี้ยังไง</b>
+      <p>{text}</p>
+      <small>เรียบเรียงจากสื่อเกาหลีที่อ้างอิงท้ายบทความ</small>
+    </aside>
+  );
+}
+
 type P = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
@@ -173,8 +184,10 @@ export default async function PostPage({ params }: P) {
                   )}
                 {i === L.adAfter && <AdSlot />}
                 {i === L.readMoreAfter && rm && <ReadMore p={rm} />}
+                {i === L.krAfter && p.koreaAngle && <KoreaAngle text={p.koreaAngle} />}
               </section>
             ))}
+            {L.krAfter === -1 && p.koreaAngle && <KoreaAngle text={p.koreaAngle} />}
 
             {!L.timelineTop && p.timeline.length > 0 && (
               <section>

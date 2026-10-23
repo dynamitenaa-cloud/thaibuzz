@@ -18,6 +18,7 @@ export type Post = {
   tags: string[];
   entities?: { name: string; type: 'person' | 'work' | 'group' | 'other' }[]; // 핵심 인물/작품 (허브 페이지 분류)
   category: string;
+  koreaAngle?: string; // 한국 시각 코너 (AI, 한국 출처 기반 — K-연예 글만)
   editorNote?: string; // 편집자(사람)가 남긴 코멘트 (태국어)
   editorNoteAt?: string;
   format?: string; // 글 형식 (standard/brief/explainer/qa)
