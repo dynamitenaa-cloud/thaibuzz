@@ -323,3 +323,22 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .author-box b a { text-decoration: underline; }
 .author-box p { margin: 0; font-size: .9rem; color: var(--fg-2); line-height: 1.5; }
 @media (max-width: 600px) { .author-h { flex-direction: column; align-items: flex-start; } }
+
+/* 글 형식별 틀 */
+.tldr.know { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--brand); }
+.tldr.know ol { margin: 0; padding-left: 22px; }
+.tldr.know li { margin: 6px 0; font-weight: 500; }
+.inline-sum { font-size: 1.08rem; color: var(--fg-2); margin: 0 0 24px; }
+.inline-sum b { color: var(--brand-ink); }
+.runin { color: var(--fg); }
+.prose.fmt-brief p { margin-bottom: 20px; }
+.prose.numbered { counter-reset: item; }
+.prose.numbered h2 { counter-increment: item; border-left: 0; padding-left: 0; display: flex; gap: 12px; align-items: baseline; }
+.prose.numbered h2::before { content: counter(item); flex: none; width: 34px; height: 34px; border-radius: 99px; background: var(--brand); color: #fff; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; }
+.pullquote { margin: 26px 0; padding: 4px 0 4px 20px; border-left: 4px solid var(--brand); font-size: 1.22rem; line-height: 1.55; font-family: var(--font-head), var(--font-body), sans-serif; color: var(--fg); }
+.pullquote p { margin: 0; }
+.tl-top { margin: 0 0 24px; }
+.tl-top h2 { font-size: 1.1rem; margin: 0 0 10px; color: var(--brand-ink); }
+.qa h2 { font-size: 1.25rem; border-left: 0; padding-left: 0; margin-top: 30px; }
+.qa h2::before { content: 'Q'; display: inline-block; margin-right: 10px; color: var(--brand); font-weight: 800; }
+.qa p { color: var(--fg-2); }

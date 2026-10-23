@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { EDITOR, editorId, editorUrl } from '@/lib/editor';
+import { layoutOf } from '@/lib/article-layout';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
 import { ArticleChrome, Share } from '@/components/Share';
@@ -56,7 +57,7 @@ export default async function PostPage({ params }: P) {
   const older = all[idx + 1];
   const rel = related(p, 6);
   const more = all.filter((x) => x.slug !== p.slug && !rel.includes(x)).slice(0, 4);
-  const mid = Math.ceil(p.sections.length / 2);
+  const L = layoutOf(p);
   const rm = rel[0] ?? more[0]; // กล่อง "อ่านเพิ่มเติม" กลางบทความ
   const relGrid = rel.filter((x) => x !== rm).slice(0, 4);
   const moreGrid = more.filter((x) => x !== rm);
@@ -123,10 +124,19 @@ export default async function PostPage({ params }: P) {
           </figure>
           )}
 
-          <section className="tldr" aria-label="สรุปประเด็น">
-            <h2>⚡ สรุปประเด็นสั้น ๆ</h2>
-            <ul>{p.summary.map((s, i) => <li key={i}>{s}</li>)}</ul>
-          </section>
+          {L.summary === 'box' && (
+            <section className="tldr" aria-label="สรุปประเด็น">
+              <h2>⚡ {L.tldrHeading}</h2>
+              <ul>{p.summary.map((s, i) => <li key={i}>{s}</li>)}</ul>
+            </section>
+          )}
+          {L.summary === 'numbered' && (
+            <section className="tldr know" aria-label="สรุปประเด็น">
+              <h2>{L.tldrHeading}</h2>
+              <ol>{p.summary.map((s, i) => <li key={i}>{s}</li>)}</ol>
+            </section>
+          )}
+          {L.summary === 'inline' && <p className="inline-sum"><b>สั้น ๆ:</b> {p.summary.join(' ')}</p>}
 
           {/* 편집자 노트: 사람이 직접 남긴 코멘트 (텔레그램 답장 → scripts/editor-notes.mjs) */}
           {p.editorNote && (
@@ -137,31 +147,60 @@ export default async function PostPage({ params }: P) {
             </aside>
           )}
 
-          <div className="prose">
+          {L.timelineTop && p.timeline.length > 0 && (
+            <section className="tl-top">
+              <h2>{L.timelineHeading}</h2>
+              <ol className="timeline">{p.timeline.map((t, i) => <li key={i}><b>{t.when}</b>{t.what}</li>)}</ol>
+            </section>
+          )}
+
+          <div className={`prose fmt-${L.fmt}${L.numbered ? ' numbered' : ''}`}>
             {p.sections.map((s, i) => (
               <section key={i}>
-                <h2>{s.heading}</h2>
-                {s.paragraphs.map((t, j) => <p key={j}>{t}</p>)}
-                {i === mid - 1 && <AdSlot />}
-                {i === 0 && rm && <ReadMore p={rm} />}
+                {L.runin
+                  ? s.paragraphs.map((t, j) => (
+                      <p key={j}>{j === 0 && <strong className="runin">{s.heading} — </strong>}{t}</p>
+                    ))
+                  : (
+                    <>
+                      <h2>{s.heading}</h2>
+                      {s.paragraphs.map((t, j) =>
+                        L.pullQuote && L.pullQuote.section === i && L.pullQuote.para === j
+                          ? <blockquote key={j} className="pullquote"><p>{t}</p></blockquote>
+                          : <p key={j}>{t}</p>,
+                      )}
+                    </>
+                  )}
+                {i === L.adAfter && <AdSlot />}
+                {i === L.readMoreAfter && rm && <ReadMore p={rm} />}
               </section>
             ))}
 
-            {p.timeline.length > 0 && (
+            {!L.timelineTop && p.timeline.length > 0 && (
               <section>
-                <h2>ไทม์ไลน์เหตุการณ์</h2>
+                <h2>{L.timelineHeading}</h2>
                 <ol className="timeline">{p.timeline.map((t, i) => <li key={i}><b>{t.when}</b>{t.what}</li>)}</ol>
               </section>
             )}
 
-            {p.faq.length > 0 && (
+            {L.faq === 'accordion' && (
               <section className="faq">
-                <h2>คำถามที่หลายคนสงสัย</h2>
+                <h2>{L.faqHeading}</h2>
                 {p.faq.map((f, i) => (
                   <details key={i} open={i === 0}>
                     <summary>{f.q}</summary>
                     <p>{f.a}</p>
                   </details>
+                ))}
+              </section>
+            )}
+            {L.faq === 'headings' && (
+              <section className="qa">
+                {p.faq.map((f, i) => (
+                  <div key={i}>
+                    <h2>{f.q}</h2>
+                    <p>{f.a}</p>
+                  </div>
                 ))}
               </section>
             )}
