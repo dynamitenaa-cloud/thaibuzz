@@ -5,6 +5,10 @@ on:
     - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). GitHub 예약 실행은 수십 분 늦거나 건너뛰어질 수 있음
   workflow_dispatch:
     inputs:
+      roundup:
+        description: '아침 정리 글을 지금 바로 1개 생성 (시각 무관)'
+        type: boolean
+        default: false
       fb_test:
         description: '테스트: 글 생성 없이 가장 최근 글 1개를 페이스북에 게시 (이미 올린 글이면 건너뜀)'
         type: boolean
@@ -117,6 +121,14 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           NOTES_MODEL: ${{ vars.NOTES_MODEL }}
 
+      - name: Morning roundup (08:00 Bangkok)
+        id: roundup
+        if: ${{ !cancelled() && !inputs.reel_preview && !inputs.fb_test && github.event_name != 'push' }}
+        continue-on-error: true
+        env:
+          FORCE_ROUNDUP: ${{ inputs.roundup && 'true' || '' }}
+        run: node scripts/roundup.mjs
+
       - name: Update live data (lottery, gold)
         id: live
         if: ${{ !cancelled() && !inputs.reel_preview }}
@@ -125,7 +137,7 @@ jobs:
 
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

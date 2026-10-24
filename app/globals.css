@@ -408,3 +408,15 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .cta-row a svg { width: 18px; height: 18px; flex: none; }
 .btn-fb { background: #1877f2; color: #fff; } .btn-fb:hover { background: #0f5fcc; color: #fff; }
 .btn-th { background: var(--fg); color: var(--bg); } .btn-th:hover { opacity: .85; }
+
+/* 아침 정리 코너 */
+.roundup ol { list-style: none; margin: 8px 0 28px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.roundup a { display: flex; gap: 14px; align-items: center; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--surface); }
+.roundup a:hover { border-color: var(--brand); }
+.ru-n { flex: none; width: 36px; height: 36px; border-radius: 99px; background: var(--brand); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; }
+.roundup img { width: 120px; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 8px; flex: none; }
+.ru-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ru-body small { color: var(--brand-ink); font-weight: 600; font-size: .78rem; }
+.ru-body b { font-size: 1.02rem; line-height: 1.35; }
+.ru-body > span { color: var(--fg-2); font-size: .92rem; }
+@media (max-width: 600px) { .roundup img { display: none; } }

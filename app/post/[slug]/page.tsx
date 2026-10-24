@@ -190,6 +190,22 @@ export default async function PostPage({ params }: P) {
             ))}
             {L.krAfter === -1 && p.koreaAngle && <KoreaAngle text={p.koreaAngle} />}
 
+            {p.roundup && p.roundup.length > 0 && (
+              <section className="roundup" aria-label="ข่าวเช้านี้">
+                <ol>
+                  {p.roundup.map((r, i) => (
+                    <li key={r.slug}>
+                      <a href={`/post/${r.slug}/`}>
+                        <span className="ru-n">{i + 1}</span>
+                        {r.thumbSm && <img src={r.thumbSm} alt="" width={160} height={84} loading="lazy" />}
+                        <span className="ru-body"><small>{r.category}</small><b>{r.title}</b><span>{r.line}</span></span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
             {!L.timelineTop && p.timeline.length > 0 && (
               <section>
                 <h2>{L.timelineHeading}</h2>

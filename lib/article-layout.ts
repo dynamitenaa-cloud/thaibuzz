@@ -45,6 +45,8 @@ export function layoutOf(p: Post): Layout {
   }
 
   const base = { tldrHeading: pick(TLDR, h, 1), timelineHeading: pick(TL, h, 2), faqHeading: pick(FAQ, h, 3), adAfter: mid, pullQuote, krAfter: n >= 3 ? (h % 3 === 0 ? 0 : 1) : -1 };
+  // 아침 정리 글: 본문 자체가 글 목록이라 '읽을거리' 추천 상자는 생략
+  if (p.format === 'roundup') return { ...base, fmt: 'standard', summary: 'box', runin: false, numbered: false, readMoreAfter: -1, adAfter: -1, timelineTop: false, faq: 'none', pullQuote: null, krAfter: -1 };
   switch (fmt) {
     case 'brief':
       return { ...base, fmt, summary: 'none', runin: true, numbered: false, readMoreAfter: -1, timelineTop: false, faq: p.faq.length ? 'headings' : 'none', pullQuote: null };

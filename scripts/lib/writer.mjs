@@ -229,6 +229,38 @@ ${searchBlock}${recentBlock}เขียนบทความตามกฎท�
   throw new QuotaExhausted('모든 모델의 무료 한도가 소진됨');
 }
 
+/**
+ * 임의 프롬프트 → 구조화 JSON (writeArticle 과 같은 모델 체인·한도·재시도 규칙). roundup 등 보조 생성용
+ * opts.model: 테스트용 모의 모델 / opts.premium: 좋은 모델 우선
+ */
+export async function generateJSON(prompt, schema, opts = {}) {
+  if (!opts.model && !chain) await resolveModels();
+  const order = opts.model ? ['mock'] : modelOrder(!!opts.premium);
+  if (!order.length) throw new QuotaExhausted('모든 모델의 무료 한도가 소진됨');
+  let lastErr;
+  for (const name of order) {
+    let overload = 0;
+    while (true) {
+      try {
+        const { output } = await generateText({ model: opts.model ?? google(name), system: opts.system, prompt, output: Output.object({ schema }), temperature: opts.temperature ?? 0.7, maxRetries: 0 });
+        return output;
+      } catch (e) {
+        lastErr = e;
+        const msg = String(e?.message);
+        if (AUTH.test(msg)) throw new FatalError(msg);
+        const retryMs = parseRetryMs(msg);
+        if (QUOTA.test(msg) && retryMs !== null && retryMs <= 90e3 && ++overload <= 2) { await sleep(retryMs + 1000); continue; }
+        if (!opts.model && (QUOTA.test(msg) || GONE.test(msg))) { exhausted.add(name); markCooldown(name, QUOTA.test(msg) ? msg : 'retry in 24h'); break; }
+        if (!TRANSIENT.test(msg)) throw lastErr;
+        if (++overload > 2) break;
+        await sleep(8000 * overload);
+      }
+    }
+  }
+  if (lastErr && !QUOTA.test(String(lastErr.message)) && !TRANSIENT.test(String(lastErr.message))) throw lastErr;
+  throw new QuotaExhausted('모든 모델의 무료 한도가 소진됨');
+}
+
 const len = (s) => [...(s || '')].length;
 const seg = new Intl.Segmenter('th', { granularity: 'word' });
 const words = (s) => [...seg.segment(s)].filter((x) => x.isWordLike).length;

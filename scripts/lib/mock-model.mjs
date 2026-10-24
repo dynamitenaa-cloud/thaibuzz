@@ -34,3 +34,21 @@ export default new MockLanguageModelV4({
     };
   },
 });
+
+// roundup.mjs --mock 용: 아침 정리 스키마에 맞는 응답
+export const roundupMock = new MockLanguageModelV4({
+  doGenerate: async () => ({
+    content: [{ type: 'text', text: JSON.stringify({
+      title: 'สรุปข่าวเช้า (ทดสอบ): ลิซ่าปล่อย EP ใหม่, แมนยูยังไม่ฟื้น, ราคาทองร่วง',
+      excerpt: 'ตื่นมาเช้านี้มีเรื่องต้องรู้หลายอย่าง ตั้งแต่วงการ K-pop ไปจนถึงราคาทองที่ขยับแรง อ่านสั้น ๆ ก่อนออกจากบ้าน',
+      intro: 'อรุณสวัสดิ์ครับ เช้านี้ขอเริ่มที่ข่าวบันเทิงก่อนเลย แล้วค่อยไปดูเรื่องเงิน ๆ ทอง ๆ ที่หลายคนจับตา มี 5 เรื่องที่ควรรู้ก่อนเริ่มวัน',
+      headlines: ['ข้อ 1 ทดสอบ', 'ข้อ 2 ทดสอบ', 'ข้อ 3 ทดสอบ', 'ข้อ 4 ทดสอบ', 'ข้อ 5 ทดสอบ'],
+      thumbText: 'สรุปข่าวเช้า (ทดสอบ)',
+      socialHook: 'ตื่นมาเจอข่าวนี้ก่อนเลย',
+      socialQuestion: 'เช้านี้เรื่องไหนที่คุณสนใจที่สุด?',
+    }) }],
+    finishReason: { unified: 'stop', raw: undefined },
+    usage: { inputTokens: 0, outputTokens: 0, totalTokens: 0 },
+    warnings: [],
+  }),
+});

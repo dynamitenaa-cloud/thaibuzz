@@ -52,6 +52,12 @@ export function caption(p, kind, url = '') {
   const first = hook ? `${e} ${hook}` : `${e} ${p.title}`;
   const second = hook ? p.title : p.excerpt;
   const closer = pick(CLOSERS, p.slug, 'c');
+  // 아침 정리: 헤드라인 3개를 캡션에 번호로 (훅 → 목록 → 질문 → 링크)
+  const ru = p.format === 'roundup' && p.roundup?.length ? p.roundup.slice(0, 3).map((r, i) => `${i + 1}. ${r.title}`).join('\n') : '';
+  if (ru && (kind === 'facebook' || kind === 'threads' || kind === 'reel' || kind === 'instagram')) {
+    const tail = kind === 'instagram' || kind === 'reel' ? '' : `\n\n${closer} ${url}`;
+    return `${first}\n\n${ru}\n…และอีก ${Math.max(0, p.roundup.length - 3)} เรื่อง\n\n${q}${tail}\n\n${tagsOf(p, 3)} ${extraTags}`;
+  }
   switch (kind) {
     case 'facebook':
       return `${first}\n\n${second}\n\n${q}\n\n${closer} ${url}\n\n${tagsOf(p, 3)} ${extraTags}`;
