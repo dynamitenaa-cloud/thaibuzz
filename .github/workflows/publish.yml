@@ -127,6 +127,8 @@ jobs:
         continue-on-error: true
         env:
           FORCE_ROUNDUP: ${{ inputs.roundup && 'true' || '' }}
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
         run: node scripts/roundup.mjs
 
       - name: Update live data (lottery, gold)
