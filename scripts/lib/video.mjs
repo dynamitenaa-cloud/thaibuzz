@@ -130,7 +130,9 @@ function scenes(post, v, color) {
   const sum = post.summary.slice(0, 3);
   const isK = post.category === 'K-บันเทิง';
   // 셀카 장면: 인사(K-연예는 한국 멘트, 그 외는 인사/오늘 뉴스 번갈아) + 마무리 질문
-  const introKey = isK && selfie['selfie-korea'] ? 'selfie-korea' : hashN(post.slug, 'intro', 2) === 0 && selfie['selfie-story'] ? 'selfie-story' : selfie['selfie-hello'] ? 'selfie-hello' : null;
+  // 인사 셀카는 기본 꺼짐 (첫 1~2초에 뉴스가 보여야 안 넘김). REELS_SELFIE_INTRO=true 로 켜서 A/B 가능
+  const introOn = process.env.REELS_SELFIE_INTRO === 'true';
+  const introKey = !introOn ? null : isK && selfie['selfie-korea'] ? 'selfie-korea' : hashN(post.slug, 'intro', 2) === 0 && selfie['selfie-story'] ? 'selfie-story' : selfie['selfie-hello'] ? 'selfie-hello' : null;
   const askKey = selfie['selfie-question'] ? 'selfie-question' : null;
   const steps = sum.length + 2 + (introKey ? 1 : 0) + (askKey ? 1 : 0);
   let step = 0;
@@ -227,7 +229,8 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   const hasSelfieIntro = isVideo(list[0]);
   const hasSelfieAsk = n >= 2 && isVideo(list[n - 2]);
   // 셀카 영상이 없을 때만 인사 음성 (옛 방식)
-  if (!hasSelfieIntro) { const intro = editorVoice[post.category === 'K-บันเทิง' ? 'intro-korea' : 'intro-hello'] || editorVoice['intro-hello']; if (intro) clips[ttsScenes[0] ?? 0].push(intro); }
+  // 인사 음성도 기본 꺼짐 (REELS_VOICE_INTRO=true 로 켬) — 제목 낭독이 바로 시작되게
+  if (!hasSelfieIntro && process.env.REELS_VOICE_INTRO === 'true') { const intro = editorVoice[post.category === 'K-บันเทิง' ? 'intro-korea' : 'intro-hello'] || editorVoice['intro-hello']; if (intro) clips[ttsScenes[0] ?? 0].push(intro); }
   if (voiced) voiced.parts.forEach((p, k) => clips[ttsScenes[k]].push({ file: p.wav, dur: p.dur }));
   // 편집자 한 마디: 첫 요약 앞 (K-연예 → 한국에서도 화제 / 스포츠 → 응원 / 그 외 절반 → 저도 놀랐어요)
   const reactKey = post.category === 'K-บันเทิง' ? 'react-korea' : post.category === 'กีฬา' ? 'react-cheer' : hashN(post.slug, 'react', 2) === 0 ? 'react-surprised' : null;
