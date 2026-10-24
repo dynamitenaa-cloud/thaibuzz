@@ -9,6 +9,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // ── Telegram ──
 export const telegramReady = () => !!(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) && process.env.TELEGRAM !== 'false';
 
+export async function sendTelegramText(text) {
+  const r = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text: [...text].slice(0, 4000).join(''), disable_web_page_preview: false }) });
+  const j = await r.json().catch(() => ({}));
+  if (!j.ok) throw new Error('telegram: ' + JSON.stringify(j).slice(0, 200));
+  return j.result?.message_id;
+}
+
 export async function sendTelegramVideo(file, caption) {
   const form = new FormData();
   form.append('chat_id', process.env.TELEGRAM_CHAT_ID);

@@ -6,7 +6,7 @@ import path from 'node:path';
 import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
-import { telegramReady, sendTelegramVideo, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
+import { telegramReady, sendTelegramVideo, sendTelegramText, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 import { caption } from './lib/social.mjs';
 
@@ -144,15 +144,19 @@ for (const slug of slugs) {
   }
   if (needTg) {
     try {
-      // TikTok 에 그대로 붙여넣을 캡션 (TikTok 은 해시태그가 노출에 중요)
-      const tiktokCaption = caption(p, 'tiktok');
+      // 기본: 글 알림만 (제목·링크·🆔). 영상은 하루 한 번 조회수 상위만 tiktok-picks.mjs 가 보냄 (TELEGRAM_ALL_REELS=true 면 예전처럼 전부 전송)
       // 🆔 줄: 이 메시지에 답장하면 editor-notes.mjs 가 해당 글에 편집자 노트로 붙임
-      await sendTelegramVideo(reel.file, `📱 TikTok용 영상
+      const note = `🆔 ${slug}
+💬 이 메시지에 답장하면 글에 '🇰🇷 한국인 편집자의 시선'으로 붙습니다 (한국어 OK, 사실만)`;
+      if (process.env.TELEGRAM_ALL_REELS === 'true') await sendTelegramVideo(reel.file, `📱 TikTok용 영상
 
-${tiktokCaption}
+${caption(p, 'tiktok')}
 
-🆔 ${slug}
-💬 이 메시지에 답장하면 글에 '🇰🇷 한국인 편집자의 시선'으로 붙습니다 (한국어 OK, 사실만)`);
+${note}`);
+      else await sendTelegramText(`📰 ${p.title}
+${SITE}/post/${slug}/
+
+${note}`);
       console.log(`reels: telegram sent ← ${slug}`);
       ledger.tg[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: telegram FAILED ${slug}:`, e.message); }

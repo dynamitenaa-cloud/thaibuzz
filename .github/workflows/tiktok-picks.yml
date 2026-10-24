@@ -1,0 +1,44 @@
+name: tiktok-picks
+
+# 하루 한 번: 페이스북 조회수 상위 릴스를 틱톡용으로 텔레그램 전송 (비용 없음)
+on:
+  schedule:
+    - cron: '0 5 * * *' # 05:00 UTC = 12:00 방콕
+  workflow_dispatch:
+    inputs:
+      picks:
+        description: '추천 개수'
+        type: string
+        default: '2'
+      dry:
+        description: '전송 없이 목록만 확인'
+        type: boolean
+        default: false
+
+concurrency: { group: tiktok-picks, cancel-in-progress: false }
+
+jobs:
+  picks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - uses: actions/cache/restore@v6
+        with:
+          path: .cache/tiktok-picks.json
+          key: tiktok-picks-${{ github.run_id }}
+          restore-keys: tiktok-picks-
+      - run: node scripts/tiktok-picks.mjs ${{ inputs.dry && '--dry' || '' }}
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TIKTOK_PICKS: ${{ inputs.picks || '2' }}
+      - uses: actions/cache/save@v6
+        if: ${{ always() }}
+        with:
+          path: .cache/tiktok-picks.json
+          key: tiktok-picks-${{ github.run_id }}
