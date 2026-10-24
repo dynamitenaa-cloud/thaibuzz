@@ -66,8 +66,11 @@ export function caption(p, kind, url = '') {
       return `${first}\n\n${q}\n\n${closer} ${url}\n\n${tagsOf(p, 4)} ${extraTags}`;
     case 'instagram':
       return `${first}\n\n${second}\n\n${q}\n\n🔗 อ่านฉบับเต็มที่ลิงก์ในโปรไฟล์ (${url.replace(/^https?:\/\//, '').replace(/\/post\/.*$/, '')})\n\n${tagsOf(p, 5)} ${extraTags} #ไทยบัซ`;
-    case 'tiktok':
-      return `${first}\n\n${q}\n\n${tagsOf(p, 5)} ${isK ? '#kpop #ซีรีส์เกาหลี #ข่าวเกาหลี' : '#ข่าววันนี้ #ข่าวบันเทิง'} #fyp #ฟีดดดシ`;
+    case 'tiktok': {
+      // 틱톡: 첫 줄 훅(없으면 제목) → 제목 → 질문 → 링크 안내(틱톡은 본문 링크 불가) → 태그 10개 안팎 (고유 4 + 카테고리 + 트렌드)
+      const catTags = isK ? '#kpop #เกาหลี #ข่าวเกาหลี #ซีรีส์เกาหลี' : p.category === 'กีฬา' ? '#ข่าวกีฬา #ฟุตบอล #บอลไทย' : '#ข่าวบันเทิง #ดารา #ข่าววันนี้';
+      return `${first}\n${hook ? p.title + '\n' : ''}\n${q} 👇\n\n📍 อ่านเต็ม ๆ ที่ thaibuzz.net (ลิงก์ในไบโอ)\n\n${tagsOf(p, 4)} ${catTags} #ThaiBuzz #เทรนด์วันนี้ #fyp #foryoupage #ฟีดดดシ #tiktokข่าว`;
+    }
     case 'youtube':
       return `${p.excerpt}\n\n${q}\n\nอ่านฉบับเต็มพร้อมแหล่งอ้างอิง: ${url}\n\n${tagsOf(p, 4)} ${extraTags}`;
     default:

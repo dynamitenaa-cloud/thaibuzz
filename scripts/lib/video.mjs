@@ -134,13 +134,26 @@ function scenes(post, v, color) {
   const introOn = process.env.REELS_SELFIE_INTRO === 'true';
   const introKey = !introOn ? null : isK && selfie['selfie-korea'] ? 'selfie-korea' : hashN(post.slug, 'intro', 2) === 0 && selfie['selfie-story'] ? 'selfie-story' : selfie['selfie-hello'] ? 'selfie-hello' : null;
   const askKey = selfie['selfie-question'] ? 'selfie-question' : null;
-  const steps = sum.length + 2 + (introKey ? 1 : 0) + (askKey ? 1 : 0);
+  const steps = sum.length + 3 + (introKey ? 1 : 0) + (askKey ? 1 : 0); // 커버 + 훅 + 요약 + (셀카) + 브랜드
   let step = 0;
   const watermark = isK ? 'K-POP' : post.category;
   const base = (st) => ({ bg: v.bg, color, step: st, steps, category: post.category, watermark });
   const out = [];
 
-  // 0) 셀카 인사 (영상 자체 소리 사용)
+  // 0) 커버 (첫 프레임 = 틱톡/릴스 썸네일): 사진 + 큰 훅 문장 + 카테고리. 낭독 없음, 1초
+  const coverText = (post.hook && post.hook.length <= 48 ? post.hook : post.title.length <= 60 ? post.title : post.title.slice(0, 58) + '…');
+  out.push({ dur: 1.0, noVoice: true, tree: frame({ ...base(0), watermark: '' }, [
+    v.card && img(v.card, { position: 'absolute', top: 300, left: 40, width: 1000, height: 700, borderRadius: 36, boxShadow: '0 24px 70px rgba(0,0,0,0.6)', border: '3px solid rgba(255,255,255,0.3)' }, 1000, 700),
+    h('div', { position: 'absolute', left: 60, right: 60, top: v.card ? 1060 : 560, display: 'flex', flexDirection: 'column', gap: 24 }, [
+      h('div', { display: 'flex', alignItems: 'center', gap: 14 }, [
+        h('div', { display: 'flex', background: YELLOW, color: '#111', fontSize: 34, padding: '8px 22px', borderRadius: 12 }, post.category === 'K-บันเทิง' ? 'K-ข่าวด่วน' : 'ข่าวด่วน'),
+        h('div', { display: 'flex', fontSize: 32, opacity: 0.85, fontWeight: 500 }, thaiDate(post.createdAt)),
+      ]),
+      text(coverText, coverText.length > 40 ? 78 : 92, { fontWeight: 700, lineHeight: 1.2, textShadow: '0 6px 30px rgba(0,0,0,0.7)' }),
+    ]),
+  ]) });
+
+  // 0b) 셀카 인사 (영상 자체 소리 사용)
   if (introKey) out.push({ dur: selfie[introKey].dur, video: selfie[introKey].file, tree: selfieOverlay({ step: step++, steps, category: post.category, color }, SELFIE_CAPTION[introKey]) });
 
   // 1) 훅: 사진 카드 + 날짜 + 제목(첫 구절 형광펜)
@@ -221,7 +234,7 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
   const n = list.length;
   const isVideo = (sc) => !!sc.video;
   // TTS 는 정지 장면(훅 + 요약)에 1:1. 셀카/브랜드 카드 제외
-  const ttsScenes = list.map((sc, i) => (!isVideo(sc) && i < n - 1 ? i : -1)).filter((i) => i >= 0);
+  const ttsScenes = list.map((sc, i) => (!isVideo(sc) && !sc.noVoice && i < n - 1 ? i : -1)).filter((i) => i >= 0);
   const voiced = voice && voice.parts?.length === ttsScenes.length ? voice : null;
   const GAP = 0.25;
   // 장면별 오디오 클립(순서대로). 셀카 장면은 영상 자체 소리
@@ -271,7 +284,7 @@ export async function makeReel(post, color = '#e11d48', voice = null) {
     prev = outName;
   }
   if (n === 1) chains.push('[v0]copy[vx]');
-  chains.push(`[vx]fade=t=in:st=0:d=0.3,fade=t=out:st=${(total - 0.4).toFixed(2)}:d=0.4[v]`);
+  chains.push(`[vx]fade=t=out:st=${(total - 0.4).toFixed(2)}:d=0.4[v]`); // 페이드인 없음: 첫 프레임이 곧 썸네일
   let audioOut = `${silentIdx}:a`;
   if (anyAudio) {
     for (let i = 0; i < n; i++) {
