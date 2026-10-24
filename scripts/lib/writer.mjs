@@ -94,6 +94,7 @@ const KOREA_RULES = `ข่าวนี้เป็นข่าววงกา�
 - koreaAngle: เขียน 2-4 ประโยคว่าในเกาหลีมองเรื่องนี้อย่างไร จากสิ่งที่สื่อเกาหลีรายงาน (บริบทที่แฟนไทยไม่รู้ ปฏิกิริยาในเกาหลี อันดับ/สถิติในเกาหลี) ห้ามแต่งปฏิกิริยาชาวเน็ตเอง ถ้าแหล่งข่าวไม่มี ให้ว่างไว้
 - category: ถ้าเป็นวงการบันเทิงเกาหลี (K-pop ไอดอลเกาหลี ซีรีส์/หนังเกาหลี นักแสดงเกาหลี) ต้องเป็น "K-บันเทิง" ถ้าไม่ใช่ (เช่น ศิลปินไทย/ญี่ปุ่น หนังฮอลลีวูด) ให้เลือกหมวดอื่นตามปกติ`;
 
+export const isTransient = (msg) => TRANSIENT.test(String(msg));
 export class FatalError extends Error {}
 export class QuotaExhausted extends Error {}
 const AUTH = /API key not valid|API_KEY_INVALID|permission denied|unauthorized|forbidden|PERMISSION_DENIED/i;
@@ -217,7 +218,8 @@ ${searchBlock}${recentBlock}เขียนบทความตามกฎท�
           break;
         }
         // 재시도는 일시적 오류(과부하·5xx·네트워크)만. 안전 차단·스키마 불일치 등은 다시 해도 같은 결과
-        if (!TRANSIENT.test(msg) || ++overload > 2) throw lastErr;
+        if (!TRANSIENT.test(msg)) throw lastErr;
+        if (++overload > 2) { console.warn(`  model ${name} 과부하 지속 → 다음 모델`); break; }
         const wait = 8000 * overload;
         console.warn(`  retry ${overload} in ${wait / 1000}s: ${msg.slice(0, 120)}`);
         await sleep(wait);
@@ -249,6 +251,37 @@ export function qualityCheck(a, format = 'standard') {
   const hangul = visible.match(/[^\s]*[가-힣][^\s]*/g);
   if (hangul) problems.push(`korean characters: ${[...new Set(hangul)].slice(0, 3).join(' ')}`);
   return { ok: problems.length === 0, problems, words: total };
+}
+
+// ── 한글 섞임 복구: 한국 원문 기사에서 이름·매체명이 한글로 남는 경우(거부 사유 1위) → 토큰만 모아 한 번 더 물어 교체 ──
+const HANGUL_TOKEN = /[^\s"“”'‘’()\[\]:,]*[가-힣]+[^\s"“”'‘’()\[\]:,]*/g;
+const VISIBLE = (a) => [a.title, a.excerpt, a.thumbText, ...(a.summary || []), ...(a.sections || []).flatMap((s) => [s.heading, ...s.paragraphs]), ...(a.faq || []).flatMap((q) => [q.q, q.a]), ...(a.tags || []), ...(a.timeline || []).map((t) => t.what), a.koreaAngle || '', a.imageAlt || '', a.socialHook || '', a.socialQuestion || ''];
+export const hangulTokens = (a) => [...new Set(VISIBLE(a).join(' ').match(HANGUL_TOKEN) || [])];
+const mapStrings = (v, fn) => (typeof v === 'string' ? fn(v) : Array.isArray(v) ? v.map((x) => mapStrings(x, fn)) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, mapStrings(x, fn)])) : v);
+export async function fixHangul(a, model) {
+  const tokens = hangulTokens(a);
+  if (!tokens.length) return { article: a, fixed: 0 };
+  const Fix = z.object({ map: z.array(z.object({ from: z.string(), to: z.string().describe('คำแทนที่ ห้ามมีอักษรเกาหลี') })) });
+  const prompt = `คำต่อไปนี้มีอักษรเกาหลีปนอยู่ในบทความข่าวบันเทิงภาษาไทย ให้แทนที่ "ทั้งคำ" ด้วยรูปที่แฟนไทยใช้จริง:
+- ชื่อศิลปิน/วง/ซีรีส์ → ชื่อไทยที่ใช้กันทั่วไป หรือชื่ออังกฤษอย่างเป็นทางการ (เช่น 마크 → Mark, 아이들 → (G)I-DLE)
+- ชื่อสื่อ/บริษัท/สถานที่ → ชื่ออังกฤษ (เช่น 톱스타뉴스 → TopStarNews, 큐브 → Cube Entertainment, 킨텍스 → KINTEX)
+- คำทั่วไป → แปลเป็นไทย
+ผลลัพธ์ต้องไม่มีอักษรเกาหลีเหลืออยู่เลย
+${tokens.map((t) => `- ${t}`).join('\n')}`;
+  const order = model ? ['mock'] : modelOrder(false);
+  for (const name of order) {
+    try {
+      const { output } = await generateText({ model: model ?? google(name), prompt, output: Output.object({ schema: Fix }), temperature: 0.2, maxRetries: 0 });
+      const map = (output.map || []).filter((m) => m.from && m.to && !/[가-힣]/.test(m.to));
+      if (!map.length) return { article: a, fixed: 0 };
+      const fixed = mapStrings(a, (s) => map.reduce((t, m) => t.split(m.from).join(m.to), s));
+      return { article: fixed, fixed: map.length };
+    } catch (e) {
+      if (AUTH.test(String(e?.message))) throw new FatalError(e.message);
+      if (name === 'mock') break;
+    }
+  }
+  return { article: a, fixed: 0 };
 }
 
 // ── AI 티 자동 교정 (결정적 규칙만: 의미를 바꾸지 않는 범위) ──

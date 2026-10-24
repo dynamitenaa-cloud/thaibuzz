@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { trendsTH, newsTopicTH, nicheCandidates, koreaCandidates, suggestions, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
-import { writeArticle, qualityCheck, normalize, polish, FatalError, QuotaExhausted } from './lib/writer.mjs';
+import { writeArticle, qualityCheck, normalize, polish, FatalError, QuotaExhausted, hangulTokens, fixHangul, isTransient } from './lib/writer.mjs';
 
 // 좋은 모델을 쓸 검색량 기준 (Google Trends approx_traffic)
 const PREMIUM_TRAFFIC = Number(process.env.PREMIUM_TRAFFIC || 10000);
@@ -14,7 +14,7 @@ const SENSITIVE = /เลิกรา|เลิกกัน|หย่า|นอ�
 // 한국어 헤드라인용 민감 주제
 const SENSITIVE_KO = /열애|결별|이혼|불륜|임신|사망|별세|숨진|투병|백혈병|암 진단|건강이상|폭로|학폭|음주운전|마약|고소|소송|구속|체포|성추행|성폭|사생활|탈세|갑질/;
 // K-연예 목표 비중 (최근 24시간 발행 글 중). 미달이면 K 후보를 앞에 배치
-const KR_SHARE = Number(process.env.KR_SHARE || 0.35);
+const KR_SHARE = Number(process.env.KR_SHARE || 0.5); // K-연예 목표 비중 (1단계 목표: K-연예 태국어 뉴스 1위)
 const KR_CAT = 'K-บันเทิง';
 import { makeThumb } from './lib/thumbs.mjs';
 
@@ -143,7 +143,10 @@ if (budget > 0) {
       const premium = (c.traffic || 0) >= PREMIUM_TRAFFIC || c.lang === 'ko';
       const w = await writeArticle(c, f.facts, MODEL, recent.filter((p) => Date.now() - Date.parse(p.createdAt) < 2 * 864e5).slice(0, 40).map((p) => p.title), searchTerms, { premium });
       // AI 티 자동 교정: 오타(자음 3연속), 교훈형 마무리 문단 제거
-      const { article: raw, removedClosers } = polish(w.article);
+      let { article: raw, removedClosers } = polish(w.article);
+      // 한글 섞임(한국 원문 기사에서 흔함) → 거부 대신 토큰만 교체 시도 (추가 호출 1회)
+      const hk = hangulTokens(raw);
+      if (hk.length) { const r = await fixHangul(raw, MODEL); raw = r.article; console.log(`  hangul: ${hk.length} token(s) → ${r.fixed} fixed`); }
       const q = qualityCheck(raw, w.format);
       console.log(`  model: ${w.model}${premium ? ' (premium)' : ''} | format: ${w.format} | lede: ${w.lede?.slice(0, 18)}…${removedClosers ? ` | removed ${removedClosers} cliché closer` : ''}`);
       if (!q.ok) { console.log('  rejected:', q.problems.join('; ')); reject(c.keyword); continue; }
@@ -193,6 +196,7 @@ if (budget > 0) {
       console.error('  ❌ failed:', e.message);
       if (e instanceof FatalError) { fatal = e; break; }
       if (e instanceof QuotaExhausted) { console.log('  ⏸ ' + e.message + ' → 이번 실행 종료, 다음 실행에서 재시도'); break; }
+      if (isTransient(e.message)) { console.log('  ⏳ 일시적 오류 → 24시간 제외하지 않고 다음 실행에서 재시도'); continue; }
       reject(c.keyword); // 안전 차단·스키마 오류 등: 매시간 같은 주제에 한도를 다시 쓰지 않게 24시간 제외
     }
   }
