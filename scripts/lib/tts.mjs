@@ -1,6 +1,7 @@
 // 태국어 음성 낭독. 실패하면 null → 호출 쪽에서 무음 영상으로 대체
 //  엔진 순서(REELS_VOICE_ENGINE, 기본 "edge,gemini"):
-//   1) edge  — Microsoft Edge 읽어주기 음성(th-TH-PremwadeeNeural 등). 무료·한도 없음. 비공식 API 라 막히면 자동으로 다음 엔진
+//   1) edge  — Microsoft Edge 읽어주기 음성(th-TH-PremwadeeNeural 등). 무료·한도 없음. 비공식 API 라 막히면 자동으로 다음 엔진 (2026-10-24 부터 서버 변경으로 실패 중)
+//   3) gtts  — Google 번역 읽어주기 (비공식, 무료). Edge·Gemini 둘 다 안 될 때의 최후 예비 → 무음 영상이 나가지 않게
 //   2) gemini — Gemini TTS 무료 티어 (한도가 작아 하루 몇 개면 소진)
 //  문단마다 따로 합성해 장면과 1:1 싱크
 import fs from 'node:fs';
@@ -68,6 +69,40 @@ async function synthEdge(text, file) {
   } finally { tts.close(); }
 }
 
+// ── Google 번역 읽어주기 (비공식, 무료, 한도 없음에 가까움) ── Edge 가 막혔을 때(2026-10-24~)와 Gemini 한도 소진 시 예비
+//  요청당 약 200자 제한 → 문장을 쪼개 여러 번 받아 이어 붙임. 음색은 표준 안내 음성(Edge 보다 단조롭지만 명확)
+const GTTS_MAX = 190;
+function gttsChunks(text) {
+  const out = [];
+  let cur = '';
+  for (const piece of String(text).split(/(?<=[\s,.!?…])/)) {
+    if ([...cur + piece].length > GTTS_MAX && cur) { out.push(cur.trim()); cur = ''; }
+    cur += piece;
+  }
+  if (cur.trim()) out.push(cur.trim());
+  // 띄어쓰기 없는 긴 태국어 문장은 글자 수로 강제 분할
+  return out.flatMap((c) => { const a = [...c]; const r = []; for (let i = 0; i < a.length; i += GTTS_MAX) r.push(a.slice(i, i + GTTS_MAX).join('')); return r; });
+}
+async function synthGtts(text, file) {
+  const parts = [];
+  for (const chunk of gttsChunks(text)) {
+    const u = `https://translate.google.com/translate_tts?ie=UTF-8&tl=th&client=tw-ob&ttsspeed=1&q=${encodeURIComponent(chunk)}`;
+    let r;
+    for (let i = 0; i < 2; i++) {
+      r = await fetch(u, { headers: { 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36', referer: 'https://translate.google.com/' }, signal: AbortSignal.timeout(20000) });
+      if (r.ok) break;
+      await sleep(3000);
+    }
+    if (!r.ok) throw new Error(`gtts ${r.status}`);
+    const b = Buffer.from(await r.arrayBuffer());
+    if (b.length < 1000) throw new Error('gtts: empty audio');
+    parts.push(b);
+  }
+  const mp3 = file + '.mp3';
+  fs.writeFileSync(mp3, Buffer.concat(parts));
+  return { input: ['-i', mp3], tmp: mp3, tempo: SPEED };
+}
+
 // ── Gemini TTS ──
 async function synthGemini(model, text, file) {
   const { pcm, rate } = await synth(model, STYLE + text);
@@ -124,7 +159,7 @@ const SPEED = Number(process.env.REELS_VOICE_SPEED || 1.15);
 async function speakOne(model, text, file) {
   for (let attempt = 0; ; attempt++) {
     try {
-      const src = model === 'edge' ? await synthEdge(text, file) : await synthGemini(model, text, file);
+      const src = model === 'edge' ? await synthEdge(text, file) : model === 'gtts' ? await synthGtts(text, file) : await synthGemini(model, text, file);
       const tmp = file + '.tmp.wav';
       await run(ffmpegPath, ['-y', ...src.input, '-af', `silenceremove=stop_periods=-1:stop_duration=0.35:stop_threshold=-40dB:stop_silence=0.3,atempo=${src.tempo},loudnorm=I=-16:TP=-1.5:LRA=11`, '-ar', '44100', '-ac', '2', tmp]);
       fs.rmSync(src.tmp, { force: true });
@@ -149,10 +184,11 @@ async function speakOne(model, text, file) {
 export async function narrate(segments, outDir) {
   if (process.env.REELS_VOICE === 'false') return null;
   fs.mkdirSync(outDir, { recursive: true });
-  const engines = (process.env.REELS_VOICE_ENGINE || 'edge,gemini').split(',').map((s) => s.trim()).filter(Boolean);
+  const engines = (process.env.REELS_VOICE_ENGINE || 'edge,gemini,gtts').split(',').map((s) => s.trim()).filter(Boolean);
   const chain = [];
   for (const e of engines) {
     if (e === 'edge') chain.push('edge');
+    else if (e === 'gtts') chain.push('gtts');
     else if (e === 'gemini' && KEY()) chain.push(...(await ttsModels()));
   }
   for (const model of chain) {
@@ -168,7 +204,7 @@ export async function narrate(segments, outDir) {
       return { parts, total: parts.reduce((a, p) => a + p.dur, 0) };
     } catch (e) {
       console.warn(`tts: ${model} 실패 → ${String(e.message).slice(0, 160)}`);
-      if (model !== 'edge' && /429|quota|RESOURCE_EXHAUSTED/i.test(e.message)) markCooldown(model, e.message);
+      if (model !== 'edge' && model !== 'gtts' && /429|quota|RESOURCE_EXHAUSTED/i.test(e.message)) markCooldown(model, e.message);
     }
   }
   console.warn('tts: 사용 가능한 음성 모델 없음 → 무음 영상');

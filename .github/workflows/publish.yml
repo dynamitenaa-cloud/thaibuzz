@@ -210,6 +210,12 @@ jobs:
           THREADS_DAILY_MAX: ${{ vars.THREADS_DAILY_MAX }}
 
       # 새 글 → 세로 숏폼 영상 → Facebook Reels (영상은 저장소에 안 쌓고 올린 뒤 삭제). 끄려면 Variables 에 REELS=false
+      # Edge 음성 라이브러리는 매 실행 최신판으로 (마이크로소프트가 막으면 라이브러리가 며칠 내 고침 → 자동 복귀). 실패해도 진행
+      - name: Refresh Edge TTS library
+        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' }}
+        continue-on-error: true
+        run: npm install --no-save --no-audit --no-fund msedge-tts@latest
+
       - name: Post Reels
         if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && vars.REELS != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
         run: node scripts/reels.mjs
