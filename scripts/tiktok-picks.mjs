@@ -41,7 +41,7 @@ console.log(`picks: 최근 ${WINDOW_H}h 릴스 ${rows.length}개 (게시 ${MIN_A
 rows.sort((a, b) => b.views - a.views).forEach((r) => console.log(`  ${r.views.toString().padStart(6)} views  ${r.slug}${ledger[r.slug] ? '  (이미 추천)' : ''}`));
 
 // 틱톡 커뮤니티 가이드라인: 복권·도박 관련 영상은 삭제/제재 대상 → 추천에서 제외 (페이스북에는 그대로 올라감)
-const GAMBLE = /หวย|สลาก|ลอตเตอรี่|เลขเด็ด|เลขดัง|ออกรางวัล|พนัน|คาสิโน|บาคาร่า|สล็อต|แทงบอล|lottery|lotto|casino|gambling/i;
+const GAMBLE = /หวย|สลาก|ลอตเตอรี่|เลขเด็ด|เลขดัง|ออกรางวัล|พนัน|คาสิโน|บาคาร่า|(?<!อาร์เน่อ ?)สล็อต|แทงบอล|lottery|lotto|casino|gambling/i; // สล็อต = 슬롯머신, 단 '아르네 슬롯'(리버풀 감독)은 제외
 const isGamble = (slug) => { try { const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8')); return GAMBLE.test([p.title, p.keyword, ...(p.tags || [])].join(' ')); } catch { return false; } };
 const picks = rows.filter((r) => !ledger[r.slug]).filter((r) => { if (isGamble(r.slug)) { console.log(`  skip (복권/도박 → 틱톡 금지): ${r.slug}`); ledger[r.slug] = now; return false; } return true; }).slice(0, N);
 if (!picks.length) { console.log('picks: 새로 추천할 릴스 없음'); process.exit(0); }
