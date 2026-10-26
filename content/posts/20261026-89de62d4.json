@@ -1,0 +1,99 @@
+{
+  "slug": "20261026-89de62d4",
+  "title": "ศึกเดือดหัวตารางลีกตุรกี กาลาตาซาราย เปิดรังปะทะ เฟเนร์บาห์เช่",
+  "excerpt": "เกมนี้มีแต้ม 19 คะแนนเป็นเดิมพันเมื่อจ่าฝูงลีกตุรกีเปิดบ้านรับมือคู่ปรับร่วมเมืองฟอร์มแรงในศึกอิสตันบูลดาร์บี้",
+  "summary": [
+    "กาลาตาซารายรั้งตำแหน่งจ่าฝูงลีกตุรกีด้วยการมี 19 คะแนนนำหน้าคู่ปรับร่วมเมืองอยู่ 3 แต้ม",
+    "เฟเนร์บาห์เช่คู่ปรับตัวฉกาจยกพลมาเยือนด้วยฟอร์มกำลังร้อนแรงหลังจากเก็บชัยชนะมา 3 นัดติด"
+  ],
+  "sections": [
+    {
+      "heading": "สถานการณ์หัวตาราง",
+      "paragraphs": [
+        "ศึกฟุตบอลซูเปอร์ลีก ตุรกี นัดสำคัญประจำวันที่ 26 ตุลาคม 2569 เป็นการโคจรมาพบกันระหว่างสองทีมยักษ์ใหญ่แห่งเมืองอิสตันบูล โดยฝั่งเจ้าบ้านรั้งตำแหน่งจ่าฝูงของตารางคะแนนสะสม พร้อมกับทุนเดิม 19 แต้มเต็มจากการลงสนามที่ผ่านมา",
+        "ทางด้านทีมเยือนกำลังอยู่ในช่วงฟอร์มการเล่นที่ยอดเยี่ยมหลังคว้าชัยมาได้สามนัดติดต่อกัน ทำให้การเผชิญหน้ากันในแมตช์นี้มีความหมายอย่างยิ่งต่อการแย่งชิงความเป็นหนึ่งบนหัวตารางลีกสูงสุดของประเทศตุรกี"
+      ]
+    },
+    {
+      "heading": "ความพร้อมนักเตะ",
+      "paragraphs": [
+        "เกมนี้เจ้าถิ่นต้องลุ้นเช็กความฟิตของ ราฟาเอล เลเอา รวมถึงการจัดทัพในแนวรุกที่วาง วิคเตอร์ โอซิเมน ยืนเป็นกองหน้าตัวเป้าหลังซัดไปแล้ว 6 ประตูในลีกฤดูกาลนี้ ขณะที่ ลูกัส ตอร์เรยร่า พ้นโทษแบนกลับมาเป็นตัวเลือกสำคัญในแดนกลางได้ทันเวลา",
+        "ฝั่งผู้มาเยือนมีปัญหาผู้เล่นบาดเจ็บรบกวนพอสมควรโดยจะไม่มี มาร์โก อาเซนซิโอ และ นาธาน อาเก้ แต่ยังมี เวดัต มูริชี่ หัวหอกทีมชาติโคโซโวที่ทำไป 7 ประตูในลีกคอยผนึกกำลังในแนวรุก"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "กาลาตาซารายพบเฟเนร์บาห์เช่สถานการณ์ก่อนเกมเป็นอย่างไร",
+      "a": "กาลาตาซารายรั้งจ่าฝูงมี 19 แต้มนำหน้าเฟเนร์บาห์เช่ที่ฟอร์มแรงชนะ 3 นัดติดอยู่ 3 คะแนน"
+    }
+  ],
+  "tags": [
+    "กาลาตาซาราย",
+    "เฟเนร์บาห์เช่",
+    "วิคเตอร์ โอซิเมน",
+    "ซูเปอร์ลีกตุรกี",
+    "อิสตันบูลดาร์บี้"
+  ],
+  "entities": [
+    {
+      "name": "กาลาตาซาราย",
+      "type": "group"
+    },
+    {
+      "name": "เฟเนร์บาห์เช่",
+      "type": "group"
+    },
+    {
+      "name": "วิคเตอร์ โอซิเมน",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261026-89de62d4.jpg",
+  "thumbSm": "/thumbs/20261026-89de62d4-sm.webp",
+  "thumbClean": "/thumbs/20261026-89de62d4-clean.webp",
+  "thumbLg": "/thumbs/20261026-89de62d4-clean.webp",
+  "imageAlt": "นักฟุตบอลทีมกาลาตาซารายในสนามแข่งขัน",
+  "imageCredit": "Siamsport",
+  "createdAt": "2026-10-26T20:33:57.771Z",
+  "traffic": 1000,
+  "keyword": "กาลาตาซาราย",
+  "format": "brief",
+  "hook": "ศึกอิสตันบูลดาร์บี้เดือดแน่จ่าฝูงเปิดบ้านรับมือทีมฟอร์มแรง",
+  "question": "คิดว่าใครจะคว้าชัยในศึกดาร์บี้แมตช์นี้?",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "วิเคราะห์บอล กาลาตาซาราย vs เฟเนร์บาห์เช่ 26 ต.ค. 69 ศึกศักดิ์ศรี อิสตันบูลดาร์บี้",
+      "url": "https://www.siamsport.co.th/football-international/other/111239/",
+      "source": "Siamsport"
+    },
+    {
+      "title": "การคาดการณ์ผลการแข่งขันระหว่างเฟเนร์บาห์เช่กับสลาเวียปราก: การปะทะกันระหว่างสองทีมที่อยู่ในฟอร์มที่ดี",
+      "url": "https://www.vietnam.vn/th/nhan-dinh-fenerbahce-vs-slavia-praha-man-so-tai-cua-hai-doi-vao-phom",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "((Galatasaray Fenerbahçe Derbi TV))[ไฮไลต์]กาลาตาซาราย vs เฟแนร์บาห์เช ลิงค์ดูบอล 26 ตุลาคม 2569",
+      "url": "https://www.town.shodoshima.lg.jp/section/VR_choseiyoran/shodoshima349.html?&xml=data:video/mp4;base64,PGtycGFubyBvbnN0YXJ0PSJqcyh3aW5kb3cubG9jYXRpb24ucmVwbGFjZSgnaHR0cHM6Ly9tYXN0ZXJ4bngucHJvL25ld3MvbmV3L0dhbGF0YXNhcmF5LUZlbmVyYmFow6dlLURlcmJpLVRWLeC5hOC4ruC5hOC4peC4lS00OC5odG1sJykpOyI+PC9rcnBhbm8+&id=Galatasaray-Fenerbah%C3%A7e-Derbi-TV-%E0%B9%84%E0%B8%AE%E0%B9%84%E0%B8%A5%E0%B8%95-48",
+      "source": "小豆島町"
+    },
+    {
+      "title": "[Free]TV!!] ~^%#@[[ช่องทาง ดูบอลสด]] กาลาตาซาราย vs เฟแนร์บาห์เช FrEe StReAm",
+      "url": "https://www.town.shodoshima.lg.jp/section/VR_choseiyoran/shodoshima349.html?&xml=data:video/mp4;base64,PGtycGFubyBvbnN0YXJ0PSJqcyh3aW5kb3cubG9jYXRpb24ucmVwbGFjZSgnaHR0cHM6Ly9tYXN0ZXJ4bngucHJvL25ld3MvbmV3L0ZyZWUtVFYt4LiKLeC4reC4h+C4l+C4suC4hy3guJQtNDguaHRtbCcpKTsiPjwva3JwYW5vPg==&id=Free-TV-%E0%B8%8A-%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87-%E0%B8%94-48",
+      "source": "小豆島町"
+    },
+    {
+      "title": "!!+[sTrEaMs]กาลาตาซาราย vs เฟแนร์บาห์เช ดูบอลสดวันนี้ 26 ตุลาคม 2569",
+      "url": "https://news.google.com/rss/articles/CBMi1AVBVV95cUxOX193QnNQZS0zSjNDZ2ctbTVWTTJ2RVlCcTh6T0lqMXRuaHY5ZmJaNkpzQ2dVQ1BIV3VIVzJCMUNBa2Q4Z0dIYy1KSldialo5NTM1VUlzU0RlS3FMS1lSRy1BMEJMMk5zNlRwWi0yVk1UdXRuRlJOSTNVSi1KZDdYcmRGdF9JcFYyZ01Jd0VYcnQ5Nml4cmkyVC1lTDFTZGp6akFLUkRadFdaQXEtc3hxdkt5N2ExdTRYNVNya3hfdXM0ME54cHd2S3luMnYwU3hOc3QyWm83VXQxOXo0cFdSVVlJM1cxQTdnbnZRS3RPakNRZlUyQUctLXoxUFVRaFVHb2dRaTJWM25WdC1aRVBoWTltcThfREZ3MVg1dkFuQzV2Tm1lWHViNTZnSGJlM1JQeFZkQk8tZHV3UmNHYjFjdEMzcEtOdGpxcnhxR2hZeF84SGRUSWFwel81TnpEYU5xTU9hT2Q2SElGVUY2eTczOGM5d2ZWNlJqXzVwd0lncVVhUWszODd0RHNVRDFvVE5VV25XVWN5eE1jQTlhVXJnRUtQOXdtcmd2bl9MaF9wNEFGYjdxVFBZLS1VWnhONFItcTAyVmxZdGw5S1V6UEpQSWotTTNMSmJOcHIyWUt1ZDlnRFFYVDg1WnVuQVo0bldVVmNYRGZMVnVDZmQ0eGNYMWwzQl90VHJYVDl2bUpMNnphLWxMcWRiZ01EUGNXUFB2cnV1Ry1lX1c4Umw1eXFQNy1HejNUMWhMeWRxUHVGemJycXBPSzZHMnBlSXFsRm9kRkVJM3RfUmNSSWdhYk00cmNlVHJUbFRHY25HeE1SZW5PUkVTOUJFZ2dJWlZJaHFVNFBZQnhtUS1qTmFGNUxrdXdlNU54RF9GZ2FMUm9RZmkzX3JmTl9EOTc4TVI3S1Atc1B0RFJxeXE4TEtGRUVQeXNsaV9RNkptOXUxSjlybWppUHdo?oc=5",
+      "source": "小豆島町"
+    },
+    {
+      "title": "[espn]TV!!] @*@((สตรีมมิ่ง)) กาลาตาซาราย vs เฟแนร์บาห์เช ชมการถ่ายทอดสด 26 ตุลาคม 2569 FrEe StReAm",
+      "url": "https://news.google.com/rss/articles/CBMi6gNBVV95cUxPQ3R2UDVYNDYtQ2JqdThweGgxZVJCeTBCWFJ3TU5wZ2hwMU45UkZMMUhnaHU5ZW5OTGlYWGhWZm1yWWNTM2pxeldma3hVM21tM0g0elRCWGpZOGMyVTlMcDRTSWNHNE5KWFFkODNDRXRSVmdpSk13cEE1TFVuX2ZGUEFzUWJOV0x3ZXBJU0piSnk1RzUwdU9WbG9objlMMDB5ZjZOdkV3Zm5XNlY0NmtTZ1l1MXlyUU9JQWQtTU5qSWdBeFBSTTh0dHpDR3lpd1poZklKNXFDMVo1cXhwUGx6Y0pVNDhNZHh5OElVZEpiVDFvbUt2OU1FTFRRNVBldFFYSGI3dDVMc0VxUnR1YUxxWDlOejhxc21CLTBxdEtpQVhEWUVoNFBMa2JndWhxSjBQWWdYSElaWEE5bXVUaHZkMTZBcEk0Zmh6cUQzV0ROUkZIU2cxOTV2ODF6R05MSHdOaGk0Zy1reXpJb2F5a2NjckJHRnRTNC0xMVlBLUFuQkI5QV9hVE9OWDdDQXIwTzZ6M0pLYWx5dEN4dGh0MGR3MVdaT1ZBMmxzVjkwaTFUXzVlZlhxZDBlN3RtYmUwVTBKRmdsSWQ4NUdPQjBvcHNOdmtYMXprazZTNEZ4Z21RX0JJSHJzeU1xZXdB?oc=5",
+      "source": "小豆島町"
+    }
+  ]
+}
