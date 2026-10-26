@@ -1,0 +1,92 @@
+{
+  "slug": "20261026-bcc314c2",
+  "title": "แทร็บซอนสปอร์รัวสามลูกแซงดับริเซสปอร์สุดมันส์",
+  "excerpt": "เกมดาร์บี้แมตช์ตุรกีซูเปอร์ลีกเดือดพล่าน แทร็บซอนสปอร์โชว์ฟอร์มโหดไล่ตามตีเสมอสองประตูก่อนซัดประตูชัยช่วงท้ายเกมบุกเชือดริเซสปอร์ 4-3",
+  "summary": [
+    "แทร็บซอนสปอร์พลิกสถานการณ์จากตามหลังสองประตูในครึ่งแรกกลับมาเก็บชัยชนะเหนือริเซสปอร์ 4-3",
+    "ฟรังคูลิโน่ ดีจู ซัดคนเดียวสองประตูรวมถึงลูกยิงช่วงท้ายเกมพา_{ทีม}_คว้าสามแต้มสำคัญ"
+  ],
+  "sections": [
+    {
+      "heading": "ครึ่งแรกเจ้าบ้านนำ",
+      "paragraphs": [
+        "เสียงนกหวีดเริ่มเกมดังขึ้นในศึกฟุตบอลตุรกีซูเปอร์ลีก ริเซสปอร์เปิดบ้านรับมือการมาเยือนของแทร็บซอนสปอร์ท่ามกลางบรรยากาศสุดคึกคัก เจ้าถิ่นเดินหน้าบุกใส่ทันทีและได้ประตูขึ้นนำอย่างรวดเร็วในนาทีที่ 12 จากจังหวะที่ เจนนาโร บอร์เรลลี ซัดจ่อ ๆ ไม่เหลือซาก ก่อนที่กองหน้าชาวอิตาเลียนรายนี้จะบวกประตูที่สองให้ทีมหนีห่างเป็นสองประตูในนาทีที่ 32 ส่งผลให้จบครึ่งแรกเจ้าบ้านกุมความได้เปรียบไว้ได้ทั้งหมด"
+      ]
+    },
+    {
+      "heading": "ทีมเยือนรัวแซง",
+      "paragraphs": [
+        "เกมพลิกโฉมหน้าอย่างสิ้นเชิงหลังพักครึ่งเพียงไม่กี่อึดใจ ทีมเยือนแก้เกมมาดีและยิงคืนสามประตูรวดภายในเวลาเพียงเก้านาที เริ่มจาก เมลิห์ คาบาซากาล ซัดตีไข่แตกในนาทีที่ 49 ก่อนที่ อารัล ซิมชีร์ จะตามตีเสมออย่างรวดเร็วในนาทีถัดมา และเป็น ฟรังคูลิโน่ ดีจู ที่ยิงแซงนำให้ทีมเยือนในนาทีที่ 58 แม้ว่าเจ้าถิ่นจะฮึดสู้ตามตีเสมอ 3-3 ได้จากลูกยิงไกลสุดสวยของ กาซิม ลาชี แต่ในช่วงท้ายเกมนาทีที่ 84 ฟรังคูลิโน่ ดีจู คนเดิมมารับบอลยาวก่อนซัดประตูชัยให้ทีมคว้าสามแต้มเต็มสำเร็จ"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "แทร็บซอนสปอร์",
+    "ริเซสปอร์",
+    "ฟรังคูลิโน่ ดีจู",
+    "ตุรกีซูเปอร์ลีก",
+    "ผลบอลสด"
+  ],
+  "entities": [
+    {
+      "name": "แทร็บซอนสปอร์",
+      "type": "group"
+    },
+    {
+      "name": "ริเซสปอร์",
+      "type": "group"
+    },
+    {
+      "name": "ฟรังคูลิโน่ ดีจู",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261026-bcc314c2.jpg",
+  "thumbSm": "/thumbs/20261026-bcc314c2-sm.webp",
+  "thumbClean": "/thumbs/20261026-bcc314c2-clean.webp",
+  "thumbLg": "/thumbs/20261026-bcc314c2-clean.webp",
+  "imageAlt": "นักฟุตบอลทีมแทร็บซอนสปอร์ในสนามแข่งขัน",
+  "imageCredit": "BBC",
+  "createdAt": "2026-10-26T18:45:46.345Z",
+  "traffic": 2000,
+  "keyword": "ริเซสปอร์ พบ แทร็บซอนสปอร์",
+  "format": "brief",
+  "hook": "เกมพลิกนรกแทร็บซอนสปอร์รัวแซงคว้าชัยสุดระทึก",
+  "question": "คิดว่าฟอร์มแบบนี้ทีมไหนจะลุ้นแชมป์ไหว?",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Rizespor vs Trabzonspor: Turkish Süper Lig stats & head-to-head",
+      "url": "https://www.bbc.com/sport/football/live/cm2l4p7lvvyxt",
+      "source": "BBC"
+    },
+    {
+      "title": "Trabzonspor complete 2-goal comeback against Rizespor as Besiktas beat Basaksehir in Turkish Super Lig",
+      "url": "https://www.aa.com.tr/en/sports/trabzonspor-complete-2-goal-comeback-against-rizespor-as-besiktas-beat-basaksehir-in-turkish-super-lig/4101688",
+      "source": "Anadolu Ajansı"
+    },
+    {
+      "title": "Live score: Trabzonspor v Rizespo (Turkish Super Lig) - Talents Abroad - Sports",
+      "url": "https://english.ahram.org.eg/News/580915.aspx",
+      "source": "Ahram Online"
+    },
+    {
+      "title": "โปรแกรมถ่ายทอดสดประจำวันจันทร์ที่ 26 ตุลาคม 69",
+      "url": "https://truevisions.co.th/sports/31465/",
+      "source": "TrueVisions"
+    },
+    {
+      "title": "บอลวันนี้ โปรแกรมบอล ดูบอลสด ถ่ายทอดสด วันจันทร์ที่ 26 ต.ค. 69",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1seWxlYk5vVDA5em9TVlFMdzV1X0FpVUF1RnpobC00ZVRsbWdqVzJmMmdzcVUya0RfUVdpdkgwS29vTW1VRTd3S19hVkY2Q05DSlFjQg?oc=5",
+      "source": "posttoday"
+    },
+    {
+      "title": "วันนี้มีอะไรดูบ้าง? เช็กโปรแกรมถ่ายทอดสดกีฬาทางทรูวิชั่นส์ ประจำวันที่ 26 ตุลาคม 2569 -เทนนิส WTA PAN PACIFIC OPEN TENNIS โทเรย์ แพน แปซิฟิก โอเพ่น เทนนิส 2026 รายการเทนนิสหญิงระดับดับเบิลยูทีเอ 500 รวบรวมนักหวดชั้นนำจากทั่วโลกพบกับการแข่งขันบนคอร์ตฮาร์ดกล",
+      "url": "https://news.google.com/rss/articles/CBMi4wdBVV95cUxONkhaQWRudUotVmFXZ3RiLTVaanplR290R0dkazJ0aUluVTdzS0dIaUdadG05ckZTdkstOFdkYU53ZnBRVEszOXIxdnVWUlhPeDZyR3FHSmdtSEhhRzVLMXZNckx6OGZ4NTFXY3Bvc05mRHBmUnRtMjRJN2tMSmk1eDVEVXVrTzNZWjJ3UURDTld3b2VyaUtYc2RfQkZfUDRsQUt5UkZDR296ckZfakpQbHhjZExyNXcwd3cxUVByZ3MwOHYyQkN5TXVVQ1FfN0E5c3I0ME9fTHVwel9EdWk3MnBCb0VNaGZOMEtLVk1abG9FSjFzU2tzZVBNNjU4OTZQTXNKVTBvaDNoOFZZdE5hNnAzbE40WlQ2dVlBVnpZbE4zY2E3V004UFdkNk9HRjdveDUxTkQyTWFKYnBadHNJYjc4bUd1Ym40RkRCU2JaVnFoZUV1cVVRbEE1M1VhWW1sSEx0Nml0YkJacWl4TVBKc1dXOGdkd0pzV1dFZE9QQVdKZUNfMTl3QThURDJ1OGxJeFZmRE9NSm83bmdzM1BmOFFOZDIycWlOQnpGOUZkb0JUUUZpTXVqel8xcXVwMmxXaFRMc3A5cmE0aXB6dUszTEEyR0FFaWc1Y1F4VENpSzZCbVR5emdlOE40XzRXekZNSlk4eGdYM2lhRXdnY3RMdkRsNHRtTW1sUjV3RHFTb1hFX1BCYmdmN1lELUZhUXNLcXdNXy00REFkRHFmVnZ3TkN4UjVwR2hZZFlBajZDdkRXVENFTWloQ3VsVmhwU2ZQTXE4RGk2RlgtTEZLQjYzcGlPR2NjcmtFMlo0ZGVuQ0tBWUQ5OVE5R2lzcXR3TXJsYTBMM3hVYndKQVVLTThoQkw2SUw3MklxYzNtS3daN3pSczJUNFVOek04SHdheHRGbDdZdkZfMF9ON0FwcThWWGs2RzI1cXI3RzZZa252LVFGX2NSaDNHY1Fqd1g5TWZUVktrcWtGd3BTMk5lcG1KeUdOSHdDZExXbUxFSGdocDd5bHNlRHUtVmkzenVXcGkwV2toQzZDdzExbG9CMmVnVmNsdkNBdl9ucm9DMGlPQm50WVVEUXd3TjdOVmNnYS14VWZCRDM3ekE3aUdHYk0xNjJDdTk3WjcwaGRHWXVEZ0FfX1dZSW4xTlV1Wi0wc3Q3NE9vbGRtVkZYZFZpM0hNcWt0UWRSVEZHaFo3QnlOcXNXMFN5Q3pIaUtSeXB3c0FtWTVBUHBaV3QzRUFGNWxQMmhjUkVkYTVZRkN1OVFkMWhRemJCWGVxQ21vbWh3WTdvdTJOajNidTcxajZSbV9HMDJSdw?oc=5",
+      "source": "Facebook"
+    }
+  ]
+}
