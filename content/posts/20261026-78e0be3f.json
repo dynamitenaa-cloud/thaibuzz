@@ -1,0 +1,95 @@
+{
+  "slug": "20261026-78e0be3f",
+  "title": "เซบิยา เปิดรังอัด โอซาซูนา 2-0 ศึกลาลีกา",
+  "excerpt": "เกมลาลีกาเมื่อวันที่ 26 ตุลาคม 2569 เซบิยาโชว์ฟอร์มเยี่ยมเปิดบ้านสยบโอซาซูนาไป 2-0 โดยได้ประตูจาก ไอแซค โรเมโร และ เฟลิกซ์ คอร์เรีย คว้าสามแต้มสำคัญสำเร็จ",
+  "summary": [
+    "เซบิยาเปิดบ้านเอาชนะโอซาซูนาไปได้ 2-0 ในศึกสแปนิช ลาลีกา",
+    "ไอแซค โรเมโร และ เฟลิกซ์ คอร์เรีย ช่วยกันยิงคนละประตูให้ทีมคว้าชัย"
+  ],
+  "sections": [
+    {
+      "heading": "เปิดบ้านคว้าชัย",
+      "paragraphs": [
+        "ศึกฟุตบอลสแปนิช ลาลีกา เมื่อวันที่ 26 ตุลาคม 2569 ที่ผ่านมา ที่สนามเอสตาดิโอ รามอน ซันเชซ ปิซฆวน ทีมเจ้าถิ่นเซบิยาลงสนามพบกับโอซาซูนา ท่ามกลางแฟนบอลที่เข้ามาชมเกมในสนากว่าสามหมื่นคน",
+        "เกมนี้เจ้าบ้านโชว์ฟอร์มได้อย่างเฉียบคมและจบสกอร์ได้ดีกว่า จนกระทั่งคว้าสามคะแนนเต็มมาครองได้สำเร็จตามเป้าหมาย"
+      ]
+    },
+    {
+      "heading": "สองแข้งซัดชัย",
+      "paragraphs": [
+        "สถานการณ์ในเกมเริ่มตื่นเต้นตั้งแต่นาทีที่ 24 เมื่อ ไอแซค โรเมโร ซัดประตูแรกให้เจ้าถิ่นขึ้นนำไปก่อน 1-0 จากการแอสซิสต์ของ ยุสซูฟ โฟฟาน่า",
+        "ช่วงท้ายเกมนาทีที่ 82 เฟลิกซ์ คอร์เรีย มาบวกประตูย้ำชัยชนะจากการจ่ายบอลของ ยุสซูฟ โฟฟาน่า คนเดิม ช่วยให้เซบิยาปิดเกมชนะโอซาซูนาไป 2-0"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "ผลการแข่งขันระหว่าง เซบิยา พบ โอซาซูนา เป็นอย่างไร?",
+      "a": "เซบิยา เปิดบ้านเอาชนะ โอซาซูนา ไปด้วยสกอร์ 2-0"
+    }
+  ],
+  "tags": [
+    "เซบิยา",
+    "โอซาซูนา",
+    "ลาลีกา",
+    "ผลบอลสด",
+    "ฟุตบอลสเปน"
+  ],
+  "entities": [
+    {
+      "name": "เซบิยา",
+      "type": "group"
+    },
+    {
+      "name": "โอซาซูนา",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261026-78e0be3f.jpg",
+  "thumbSm": "/thumbs/20261026-78e0be3f-sm.webp",
+  "thumbClean": "/thumbs/20261026-78e0be3f-clean.webp",
+  "thumbLg": "/thumbs/20261026-78e0be3f-clean.webp",
+  "imageAlt": "นักฟุตบอลทีมเซบิยาในสนามแข่ง",
+  "imageCredit": "BBC",
+  "createdAt": "2026-10-26T23:34:51.557Z",
+  "traffic": 500,
+  "keyword": "เซบิยา พบ โอซาซูนา",
+  "format": "brief",
+  "hook": "เซบิยาเปิดรังเชือดโอซาซูนา 2-0 คว้าสามแต้มในลาลีกา",
+  "question": "คิดว่าฟอร์มเซบิยาตอนนี้มีลุ้นติดท็อปโฟร์ไหมซูนาพ่ายนอกบ้านอีกแล้วแฟนบอลว่าไงกันบ้างส나ทีมรักใครอยู่บ้างมารายงานตัวหน่อยจ้าเพื่อนๆ คิดว่าใครคือแมนนอบอะแมตช์นี้มาคุยกันหน่อยจ้าฟอร์มแบบนี้พาน้อง ๆ คว้าชัยได้สบายบอลสเปนคู่นี้สนุกดีนะใครได้ดูบ้างจ้า",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Sevilla vs Osasuna: Spanish La Liga stats & head-to-head",
+      "url": "https://www.bbc.com/sport/football/live/ck1wvl8w944yt",
+      "source": "BBC"
+    },
+    {
+      "title": "Sevilla vs. Osasuna - Game Highlights",
+      "url": "https://www.espn.com/video/clip/_/id/50291020/sevilla-vs-osasuna-game-highlights",
+      "source": "ESPN"
+    },
+    {
+      "title": "Sevilla - Osasuna LIVE. LALIGA EA Sports latest updates",
+      "url": "https://www.marca.com/en/soccer/laliga-ea-sports/sevilla-osasuna/2026/10/26/01_0101_20261026_179_450-live.html",
+      "source": "MARCA"
+    },
+    {
+      "title": "ถ่ายทอดสด เซบีย่า vs โอซาซูน่า: โอซาซูน่าครองบอลได้มากกว่า แต่ยังไม่มีประตูเกิดขึ้น",
+      "url": "https://www.vietnam.vn/th/truc-tieptruc-tiep-sevilla-vs-osasuna-osasuna-chu-dong-kiem-soat-bong-chua-co-ban-thang",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "ชี้ 4 ตัวเต็งบอลน่าเชียร์ 26 ต.ค. 69 : ทีเด็ดบอลวันนี้ ลุ้น เบนฟิก้า-เปแอสเช มีเฮ!",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1BczdaX0dTRkdDNngwWERQS3RPMFYwUjhmcUJuYnBSUngxMUxndEFnUkRwcDZYUWFFVjJ0d25TSDMwbk5BeGM2VmNZYUZnYmNjcHltY2tUYzZvS0p5NFd6TkJ1OE1NT3VVbGpDV2lUYUR3QQ?oc=5",
+      "source": "Siamsport"
+    },
+    {
+      "title": "โปรแกรมถ่ายทอดสดประจำวันจันทร์ที่ 26 ตุลาคม 69",
+      "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9HU1NVZng1UGltcm1LcHZtMzVBRmFmc1lSTVhLdzRhYUdHMlhkckI4TDF6b2g4VXRyS0daSWkwa0Y0M0RJclB0MGQtSloyV3lp?oc=5",
+      "source": "TrueVisions"
+    }
+  ]
+}
