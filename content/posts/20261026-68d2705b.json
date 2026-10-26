@@ -1,0 +1,89 @@
+{
+  "slug": "20261026-68d2705b",
+  "title": "ดีแซนจับมือไดเร็คทีฟ ถ่ายทอดสดบาสเกตบอลเอ็นบีเอ",
+  "excerpt": "แพลตฟอร์มสตรีมมิ่งกีฬาชื่อดังประกาศดีลใหญ่ร่วมกับผู้ให้บริการโทรทัศน์ดาวเทียม ยิงสัญญาณเกมบาสเกตบอลเอ็นบีเอ 5 ทีมดังให้แฟนกีฬาได้รับชมผ่านหน้าจอโทรทัศน์เพิ่มเติม",
+  "summary": [
+    "ดีแซนบรรลุข้อตกลงกับไดเร็คทีฟในการถ่ายทอดสดเกมบาสเกตบอลเอ็นบีเอ 5 ทีมเอ็กซ์คลูซีฟ",
+    "แฟนกีฬาในสหรัฐอเมริกาที่ใช้บริการแพลตฟอร์มดาวเทียมสามารถรับชมการแข่งขันได้เพิ่มขึ้น"
+  ],
+  "sections": [
+    {
+      "heading": "ดีลใหญ่เอ็นบีเอ",
+      "paragraphs": [
+        "เมื่อวันจันทร์ที่ผ่านมา บริการสตรีมมิ่งกีฬาชื่อดังอย่างดีแซน ตัดสินใจขยายช่องทางการเข้าถึงด้วยการทำข้อตกลงร่วมกับไดเร็คทีฟ เพื่อนำสัญญาณการแข่งขันบาสเกตบอลเอ็นบีเอในกลุ่มทีมเอ็กซ์คลูซีฟ 5 ทีม ประกอบด้วย คลีฟแลนด์ คาวาเลียร์ส, อินเดียนา เพเซอร์ส, เมมฟิส กริซส์ลีย์, มินนิโซตา ทิมเบอร์วูลฟ์ส และ ซานอันโตนิโอ สเปร์ส มาออกอากาศร่วมกัน",
+        "การประกาศดังกล่าวช่วยให้แฟนกีฬาในพื้นที่ต่างๆ เข้าถึงการแข่งขันของทีมโปรดผ่านหน้าจอโทรทัศน์ได้สะดวกยิ่งขึ้น โดยเฉพาะกลุ่มผู้ชมที่มีแพ็กเกจโทรทัศน์ดาวเทียมตามกำหนดของทางผู้ให้บริการ"
+      ]
+    },
+    {
+      "heading": "ทางเลือกผู้ชม",
+      "paragraphs": [
+        "ก่อนหน้านี้การรับชมเกมการแข่งขันของทั้ง 5 ทีมดังกล่าวมีข้อจำกัดค่อนข้างมาก เนื่องจากอยู่ในกลุ่มเอ็กซ์คลูซีฟที่ต้องรับชมผ่านช่องทางเฉพาะของสตรีมมิ่งเท่านั้น จนเกิดเสียงสะท้อนจากกลุ่มผู้ชมที่ต้องการความหลากหลายในการรับชมผ่านผู้ให้บริการรายอื่น",
+        "ความเคลื่อนไหวครั้งนี้จึงช่วยเพิ่มความยืดหยุ่นให้แก่ผู้ติดตามกีฬาบาสเกตบอลในการเลือกรับชมผ่านช่องทางที่เหมาะสมกับตนเองได้มากขึ้น"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "DAZN",
+    "DirecTV",
+    "NBA",
+    "บาสเกตบอล"
+  ],
+  "entities": [
+    {
+      "name": "DAZN",
+      "type": "group"
+    },
+    {
+      "name": "DirecTV",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261026-68d2705b.jpg",
+  "thumbSm": "/thumbs/20261026-68d2705b-sm.webp",
+  "thumbClean": "/thumbs/20261026-68d2705b-clean.webp",
+  "thumbLg": "/thumbs/20261026-68d2705b-clean.webp",
+  "imageAlt": "โลโก้ผู้ให้บริการสตรีมมิ่งกีฬาระดับโลก",
+  "imageCredit": "Pioneer Press",
+  "createdAt": "2026-10-26T19:41:11.882Z",
+  "traffic": 2000,
+  "keyword": "dazn",
+  "format": "brief",
+  "hook": "ดีแซนขยายช่องทางถ่ายทอดสดบาสเกตบอลเอ็นบีเอ",
+  "question": "แฟนบาสคิดยังไงกับดีลนี้?",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "MN Timberwolves games to air on DIRECTV",
+      "url": "https://www.twincities.com/2026/10/26/timberwolves-games-to-air-on-directv/",
+      "source": "Pioneer Press"
+    },
+    {
+      "title": "Cleveland Cavaliers games coming to DirecTV in Ohio through DAZN deal",
+      "url": "https://sports.yahoo.com/articles/cleveland-cavaliers-games-coming-directv-171909912.html",
+      "source": "Yahoo Sports"
+    },
+    {
+      "title": "All 5 DAZN-exclusive NBA teams strike simulcast deals with DirecTV",
+      "url": "https://awfulannouncing.com/nba/dazn-exclusive-teams-strike-simulcast-deals-directv.html",
+      "source": "Awful Announcing"
+    },
+    {
+      "title": "[DAZN/ถายทอดสด] พธมอบรางวล Ballon d Or บรรยากาศบนพรมแดง",
+      "url": "https://www.town.shodoshima.lg.jp/section/VR_choseiyoran/shodoshima349.html?xml=data:video/mp4;base64,PGtycGFubz48aW5jbHVkZSB1cmw9Ii9cL2x4Y2x4ZHMuZ2l0aHViLmlvL2Fpci9kb3IueG1sIi8+PC9rcnBhbm8+&id=video-dazn-ballon-d-leo-01",
+      "source": "小豆島町"
+    },
+    {
+      "title": "[DAZN Ballon d'Or 2026] ถายทอดสดชวงเดนพรมแดงและรายการกอนเรมงาน",
+      "url": "https://news.google.com/rss/articles/CBMitgJBVV95cUxOUEpxVjlIcVRlTG1falVmMnBMR0tXcVNlOVMyVzdmRmJGdGxvRl9INFhNOHk5R3lGcmV5VHN1alJtaldtNmJ2Yk5pMndiSk5sWVh5M2VlTGY2cG1DTGVSMFdTMzJkSTlXMDRCNjZwSjkzcjNPQjlYZlZrNU8tLVJaV1ZiQWg2WlotSTFGdUc5NWNKa1ZjeThoZnk3YUNOVGgxUGR1NFZLRTBNc2FUaTBQNWlWTFhIeGVTUG9xeWV5YXotTlhBM0N0TF9ZNXR5d0VqRGEzMDZEbDF4bUhsZk5wOFlWaFdNOTVXblBIMElIUTFJbE5UdkVZS3kzRmp6TElDVnFGVVZ5WWRJVW1LWHpIajczMzJBeFpCcnhWLVVISTExbnFsdkFNMkVPbDZCNGJTSDVndEp3?oc=5",
+      "source": "Fabryka Norblina"
+    },
+    {
+      "title": "𝐅𝐔𝐋𝐋 𝐓𝐈𝐌𝐄 : 𝗙𝗜𝗙𝗔 𝗨-𝟭𝟱 𝗪𝗼𝗿𝗹𝗱 𝗖𝘂𝗽 & 𝗙𝗲𝘀𝘁𝗶𝘃𝗮𝗹 𝟮𝟬𝟮𝟲 🇹🇭 ทีมชาติไทย 3-0 ซามัว 🇼🇸 🇹🇭 1-0 รัชชานนท์ เมืองมา น.18 🇹🇭 2-0 อภิวิชญ์ อ่อนละมุน น.25 🇹🇭 3-0 ภาคิน ธรรมเที่ยง น.29 📺 FIFA+ และ DAZN 📷 : Sony Alpha 1, Gmaster Lens Sony - Digital Camera T",
+      "url": "https://news.google.com/rss/articles/CBMi7gdBVV95cUxQVjEzaXg1NjRkTnNxWDF6TXBoSWxtOUhWcTRXazV5QmlzU2FyOVZUVFhseVFERk5ySm9HbmpobzVPdEVrRHh1dElWeFZvUlBYVFZ6bXY0dnlKazktWUJ5YWRXZGVtRjg5bjMzT3NYSGszbTU3MV9BdFVBZGt4Tzk5aWY3dVFuQkthamJ6YjhrSVlZdzdWdG1BNS1EQ1pUZzk1bHFHX3hJTHN4X2xWRGlqOWJydU1odU1ibTBORm03aGRJamozN3dFc3VNY2N1STJ3TTc2ZnUwdWJlUWU0LTlYVHBMQktWNlZ1d2U5WlZnSHVDMkMyYXpYekxySUtibnZDT0F3OExINDdFR2ZoQkdQdHdZQkhrcTlOQ1FYVVJfWEkyV0tZN015SkVFUjNTTTBHTkhqOWNUR3JHMDYwUTFRR0NxU25xeWR0SkVRNC1Za1ItSDJuSWt5WjNxV3dPTlktYjR4MnQxb1dITzFhbmxGdW1GVDNJNjhuSWY2bEpZNmM1MV94X1dxd2J4UGdtcnFncjB2UEkycmV2eEFlQnZlb2dRaV84VWk1TXE2endGbmVORVA0Ty1BVFpsWGRYa1VhbTEwYVljekdKUUR6OXhQZ1gxVnVqZXNDQkRWSjB1N25OT01VUUtjODhxN3hGZThDaDRJbEhxTTJ0Ri1wdWxvMlpjS0RFWFh5ZWpvanZjNXFpUnRSXzAzaXYyTW8zWEx3VTBnaHE1dk56eGxESjM2QWJ5WnU4OXJpdW03MGFnYTgwTExPMndnVjJfaTJFNzE4Z0NkVVBmNGVYdnU4X3BrY1Rabkk0NlR6N0ZKbkkwbnZTUmE3bzI1Y2lVYnM2VWhkWkJlNDZQQzlqSUw0TUxGTGFZdHNKN0NqWUNka3RqVW1IV0YzVTNLUE9EUTZjazZ3VURoNjV2MUJ2cXJ3M0dkMENJNDlpc01HY25Qb0hTOHJOZUFBUUttbEdlWHMzSS1MNE1ya0xzcG1Ub2ZyN2M0enVVczFjUlJhNnNLaHhYQWRPQ0RfdW1OaWgzbWl6MGRtWElBWmFJVFA2NURVVUI0eVhNSzBaaENyZWd4eEI4Wnk5bG5Pdm5QdW5VUFNzeURSU0FNZl9vZ3d2MXg3T3Y0blByVWh1MUtqa2lmeHcwT0RuMm9pRGJQX0kyclRrc3hYRWNZbmJLeDRNalpDcFlwUE5CWGVYRllmX1FKWnBiWHptZ3Y1YUhJRXJtR2JsQkRzUDZ0LVlwS1dQcmxKRFp5azhWQ1hPazNqd3hqOHZmanBLVm1RVW9ORUcxd28yQnZiQjlWYW9CVlRxZDFjMVBGZktSdklZenVLWkdQRWpB?oc=5",
+      "source": "Facebook"
+    }
+  ]
+}
