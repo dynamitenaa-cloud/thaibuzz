@@ -1,0 +1,103 @@
+{
+  "slug": "20261026-11390516",
+  "title": "iPad mini รุ่นใหม่จอ OLED ชิป A20 Pro เปิดตัวแล้ว ราคาไทยเท่าไหร่?",
+  "excerpt": "Apple ประกาศเปิดตัวไอแพดมินิรุ่นใหม่ล่าสุดประจำปี 2026 มาพร้อมความบางเพียง 5.4 มม. อัปเกรดหน้าจอ OLED ขนาด 8.5 นิ้ว และขุมพลังชิป A20 Pro",
+  "summary": [
+    "Apple เปิดตัวไอแพดมินิรุ่นใหม่ล่าสุดที่มีการอัปเกรดครั้งใหญ่ที่สุด",
+    "ตัวเครื่องบางลงเหลือ 5.4 มม. พร้อมหน้าจอ OLED ขนาด 8.5 นิ้ว",
+    "ขับเคลื่อนด้วยชิป A20 Pro และรองรับการกันน้ำกันฝุ่น IP67"
+  ],
+  "sections": [
+    {
+      "heading": "การอัปเกรดครั้งใหญ่ของไอแพดมินิ",
+      "paragraphs": [
+        "ความบางเฉียบเพียง 5.4 มม. คือจุดเด่นแรกที่สาวกผลไม้ต้องเหลียวมองเมื่อ Apple จัดเต็มเปิดตัวไอแพดมินิรุ่นใหม่ล่าสุดพร้อมการเปลี่ยนแปลงแบบก้าวกระโดด ทั้งดีไซน์ที่บางและเบาลงกว่าเดิมอย่างเห็นได้ชัด รวมถึงการใส่หน้าจอ OLED ขนาด 8.5 นิ้วเข้ามา",
+        "นอกจากนี้ยังมีฟีเจอร์กันน้ำและกันฝุ่นเพิ่มเข้ามา เอาใจสายพกพาที่ต้องการใช้งานในหลากหลายสถานการณ์มากยิ่งขึ้น"
+      ]
+    },
+    {
+      "heading": "ขุมพลังและฟีเจอร์ภายใน",
+      "paragraphs": [
+        "ภายในตัวเครื่องอัดแน่นไปด้วยชิป A20 Pro ที่เข้ามายกระดับประสิทธิภาพการทำงานให้รวดเร็วยิ่งขึ้น พร้อมรองรับระบบปัญญาประดิษฐ์รุ่นใหม่",
+        "เดฟ ปากูลา รองประธานฝ่ายวิศวกรรมฮาร์ดแวร์ของ Apple เล่าว่า “iPad mini เป็นที่รักในเรื่องความพกพา ประสิทธิภาพ และหน้าจอจากผู้ใช้งานหลากหลายกลุ่ม”"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "iPad mini รุ่นใหม่ราคาเท่าไหร่?",
+      "a": "ราคาไทยเริ่มต้นที่ 24,900 บาท"
+    },
+    {
+      "q": "iPad mini รุ่นใหม่เปิดให้จองเมื่อไหร่?",
+      "a": "ลูกค้าสามารถสั่งซื้อล่วงหน้าได้ตั้งแต่วันพุธที่ 28 ตุลาคม และเริ่มวางจำหน่ายในวันศุกร์ที่ 6 พฤศจิกายนนี้"
+    },
+    {
+      "q": "iPad mini มีการอัปเกรดชิปอะไร?",
+      "a": "ขับเคลื่อนด้วยชิป A20 Pro ที่ช่วยเพิ่มประสิทธิภาพการทำงานและรองรับ AI"
+    }
+  ],
+  "tags": [
+    "iPad mini",
+    "Apple",
+    "ชิป A20 Pro",
+    "ไอแพดมินิ"
+  ],
+  "entities": [
+    {
+      "name": "iPad mini",
+      "type": "work"
+    },
+    {
+      "name": "Apple",
+      "type": "group"
+    }
+  ],
+  "category": "โซเชียล/ไวรัล",
+  "thumb": "/thumbs/20261026-11390516.jpg",
+  "thumbSm": "/thumbs/20261026-11390516-sm.webp",
+  "thumbClean": "/thumbs/20261026-11390516-clean.webp",
+  "thumbLg": "/thumbs/20261026-11390516-clean.webp",
+  "imageAlt": "iPad mini รุ่นใหม่ดีไซน์บางเฉียบ",
+  "imageCredit": "Apple",
+  "createdAt": "2026-10-26T16:07:37.309Z",
+  "traffic": 2000,
+  "keyword": "ipad mini",
+  "format": "qa",
+  "hook": "ไอแพดมินิรุ่นใหม่มาแล้วบางเฉียบพร้อมจอ OLED",
+  "question": "ใครเล็งรุ่นนี้อยู่บ้างยกมือขึ้น",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Apple gives iPad mini its biggest update ever",
+      "url": "https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/",
+      "source": "Apple"
+    },
+    {
+      "title": "Apple just revealed the iPad Mini I’ve always wanted. But is it worth the new price?",
+      "url": "https://www.cnn.com/cnn-underscored/electronics/ipad-mini-8",
+      "source": "CNN"
+    },
+    {
+      "title": "Apple updates the iPad Mini with a larger OLED display",
+      "url": "https://www.theverge.com/tech/1017801/ipad-mini-oled-display-apple-announce",
+      "source": "The Verge"
+    },
+    {
+      "title": "Apple เปิดตัว 'iPad mini' รุ่นใหม่ 2026 เบาบาง ทรงพลัง กันน้ำได้แล้ว! . Apple เปิดตัว iPad mini รุ่นใหม่ล่าสุดที่อัปเดตครั้งยิ่งใหญ่ที่สุดเท่าที่เคยมีมา ทั้งเรื่องดีไซน์ จอภาพ และขุมพลังที่ก้าวกระโดดไปอีกขั้น โดยถูกออกแบบมาให้บางและเบาขึ้นกว่าเดิมอย่างน่าทึ่งด้วยความบางเพียง 5.4 มม.",
+      "url": "https://www.facebook.com/bangkokbiznews/posts/apple-%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B8%A7-ipad-mini-%E0%B8%A3%E0%B8%B8%E0%B9%88%E0%B8%99%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88-2026-%E0%B9%80%E0%B8%9A%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%87-%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A5%E0%B8%B1%E0%B8%87-%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%84%E0%B8%94%E0%B9%89%E0%B9%81%E0%B8%A5%E0%B9%89%E0%B8%A7apple-%E0%B9%80%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B8%A7-/1626204252878488/",
+      "source": "Facebook"
+    },
+    {
+      "title": "iPad mini ใหม่มาแล้ว อัปเกรดใหญ่ทั้ง ชิป A20 Pro, จอ OLED, กันน้ำฝุ่น IP67 และอีกมาก",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9ackIyQzhsQXdLUm9GeUYtQk5oNU5oZ2oxbGpDT2diMm5rY0tHNGlIWHA4WUFKRHhIaWJmX3JaaEczMTZWbm9Ea2w4R1M?oc=5",
+      "source": "Blognone"
+    },
+    {
+      "title": "Apple เปิดตัว 'iPad mini' รุ่นใหม่ 2026 เบาบาง ทรงพลัง กันน้ำได้แล้ว!",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0wdFZhZElXcnV1eUViWnhRMVlsN3J4SFlILXVRRGF4cjlURXNQV3pVT0tPMGRWTlhlblA3WDBsVHF2VWlENS1qdk1RS0QtMWRCME92MTVZT0ktOXdnQVNr?oc=5",
+      "source": "bangkokbiznews"
+    }
+  ]
+}
