@@ -1,0 +1,93 @@
+{
+  "slug": "20261027-11f7b15b",
+  "title": "เลสเตอร์เปิดรังอัดวีแกน 3-0 ศึกฟุตบอลลีกวัน",
+  "excerpt": "สนามคิง เพาเวอร์ สเตเดียม เดือดเมื่อ เลสเตอร์ ซิตี้ เปิดบ้านไล่อัด วีแกน แอธเลติก ไปแบบขาดลอย 3-0 คว้าสามแต้มสำคัญในศึกฟุตบอลลีกวันสำเร็จ",
+  "summary": [
+    "เลสเตอร์ ซิตี้ เปิดบ้านเอาชนะ วีแกน แอธเลติก ไปด้วยสกอร์ 3-0",
+    "เอมิล รีส ซัดคนเดียวสองประตูให้ทีมเจ้าถิ่นคว้าชัยชนะในเกมนี้"
+  ],
+  "sections": [
+    {
+      "heading": "เปิดเกมเดือด",
+      "paragraphs": [
+        "เสียงนกหวีดดังขึ้นท่ามกลางแฟนบอลที่เข้ามาชมเกมในสนามคิง เพาเวอร์ สเตเดียม จำนวน 26,511 คน เลสเตอร์ ซิตี้ เปิดฉากเดินหน้าลุยใส่ วีแกน แอธเลติก ทันทีตั้งแต่นาทีแรกของการแข่งขันในศึกฟุตบอลลีกวัน เมื่อวันที่ 27 ตุลาคม 2569",
+        "เกมดำเนินมาถึงนาทีที่ 17 เจ้าบ้านได้ประตูขึ้นนำอย่างรวดเร็ว จากจังหวะที่ เอมิล รีส ซัดบอลตุงตาข่าย ส่งให้ เลสเตอร์ ซิตี้ ออกนำ 1-0 ก่อนจบครึ่งแรกด้วยสกอร์นี้"
+      ]
+    },
+    {
+      "heading": "ยิงย้ำชัย",
+      "paragraphs": [
+        "กลับมาลงสนามในครึ่งหลัง เลสเตอร์ยังคงครองเกมได้เหนือกว่า จนกระทั่งนาทีที่ 67 เอมิล รีส เจ้าเก่าจัดการซัดประตูที่สองของตัวเองในแมตช์นี้ จากการแอสซิสต์ของ ลุค โทมัส ช่วยให้ทีมหนีห่างเป็น 2-0",
+        "ช่วงทดเวลาบาดเจ็บนาทีที่ 90+2 เจ้าถิ่นมาได้จุดโทษ และเป็น บ็อบบี เด คอร์โดวา-รีด ยิงเข้าไปไม่พลาด จบเกม เลสเตอร์ ซิตี้ เปิดบ้านไลสต็อกสามแต้มเหนือ วีแกน แอธเลติก ไปด้วยสกอร์ 3-0"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "เลสเตอร์พบวีแกน ผลการแข่งขันเป็นอย่างไร",
+      "a": "เลสเตอร์ ซิตี้ เปิดบ้านเอาชนะ วีแกน แอธเลติก 3-0"
+    }
+  ],
+  "tags": [
+    "เลสเตอร์ ซิตี้",
+    "วีแกน แอธเลติก",
+    "เอมิล รีส",
+    "ลีกวัน"
+  ],
+  "entities": [
+    {
+      "name": "เลสเตอร์ ซิตี้",
+      "type": "group"
+    },
+    {
+      "name": "วีแกน แอธเลติก",
+      "type": "group"
+    },
+    {
+      "name": "เอมิล รีส",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261027-11f7b15b.jpg",
+  "thumbSm": "/thumbs/20261027-11f7b15b-sm.webp",
+  "thumbClean": "/thumbs/20261027-11f7b15b-clean.webp",
+  "thumbLg": "/thumbs/20261027-11f7b15b-clean.webp",
+  "imageAlt": "นักฟุตบอลเลสเตอร์ ซิตี้ ลงแข่งขันในศึกฟุตบอลลีกวัน",
+  "imageCredit": "BBC",
+  "createdAt": "2026-10-27T21:41:21.623Z",
+  "traffic": 500,
+  "keyword": "เลสเตอร์ พบ วีแกน",
+  "format": "brief",
+  "hook": "เลสเตอร์เปิดบ้านถล่มวีแกนยับ 3-0",
+  "question": "เกมนี้ใครคือนักเตะยอดเยี่ยมในดวงใจคุณ?",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Leicester City v Wigan Athletic: League One stats & head-to-head",
+      "url": "https://www.bbc.com/sport/football/live/cqj9kylweprjt",
+      "source": "BBC"
+    },
+    {
+      "title": "Leicester vs Wigan – Prediction, Where to Watch, Kick-off Time and Lineups 27-10",
+      "url": "https://oddsscanner.com/predictions/football/leicester-x-wigan-27-10-2026",
+      "source": "Odds Scanner"
+    },
+    {
+      "title": "Leicester City vs Wigan Athletic predictions today: 13/8 win-to-nil tip and a 2-0 Leicester win",
+      "url": "https://www.squawka.com/en/news/leicester-vs-wigan-predictions-today-27-10-2026/",
+      "source": "Squawka"
+    },
+    {
+      "title": "คาราบาว คัพ : โปรแกรมถ่ายทอดสด, ตารางแข่งขัน, ผลการแข่งขัน",
+      "url": "https://www.sportingnews.com/th/football/news/carabao-cup-schedule-results-live-broadcast-channel/585c02580b02153369e4f059",
+      "source": "Sporting News"
+    },
+    {
+      "title": "ต่อลาภชี้เป้า วันอังคารที่ 27 ตุลาคม 2569",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBXbWtUczViTEJ6UkF6RlNUV0xFVVp6dGxXdkZpbGxhRDdGTldRUFFad1doanJETGdYMzdyWmd6OWZoWmdtNFhCZ0VnV3dBZWJiX0xwV0lGdzhYNmZ2?oc=5",
+      "source": "TH Sport"
+    }
+  ]
+}
