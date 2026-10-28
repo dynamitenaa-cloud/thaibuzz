@@ -1,0 +1,101 @@
+{
+  "slug": "20261028-3c3eef39",
+  "title": "เจบี เผยความจริงเรื่อง GOT7 และสเปเชียลโมเมนต์ที่ไทย",
+  "excerpt": "บรรยากาศการนั่งคุยสบาย ๆ ที่คาเฟ่ในย่านHapjeong-dong เริ่มต้นขึ้นเมื่อศิลปินหนุ่มเปิดใจถึงเบื้องหลังเพลงดังและอนาคตของวง",
+  "summary": [
+    "เจบีปล่อยซิงเกิลใหม่ Chapter One พร้อมลุยเดี่ยว",
+    "แย้มเรื่องขึ้นโชว์กับ BamBam และ Mark ที่ไทย"
+  ],
+  "sections": [
+    {
+      "heading": "เบื้องหลังเพลงดัง",
+      "paragraphs": [
+        "สื่อเกาหลี Single List รายงานว่า เจบี GOT7 ได้พูดถึงกระแสความนิยมของเพลง ‘Stop Stop It’ ที่กลับมาเป็นที่พูดถึงอีกครั้งผ่านการนำไปแสดงโดยศิลปินรุ่นน้องในรายการต่าง ๆ เจ้าตัวยอมรับว่ารู้สึกเซอร์ไพรส์เพราะตอนที่ปล่อยเพลงนี้ออกมาครั้งแรกเมื่อนานมาแล้ว พวกเขาเคยคาดหวังความสำเร็จไว้สูงมาก แต่ก็แอบกังวลกับชุดกางเกงเอี๊ยมที่ใส่ขึ้นแสดงในเวลานั้นจนต้องรีบแก้เกมด้วยการใส่ชุดสูทแทน",
+        "นอกจากนี้ในงานสัมภาษณ์ที่จัดขึ้นโดย JoyNews24 เจ้าตัวยังเล่าถึงการทำงานเพลงเดี่ยวในซิงเกิลใหม่ล่าสุดอย่าง ‘Chapter One’ ที่ตั้งใจนำเสนอแนวเพลง R&B ในมุมมองที่แปลกใหม่และเข้าถึงง่ายขึ้นกว่าเดิม"
+      ]
+    },
+    {
+      "heading": "ลุยเดี่ยวและงานไทย",
+      "paragraphs": [
+        "สำหรับแผนการเดินทางไปแสดงที่ประเทศไทยร่วมกับ BamBam และ Mark สื่อเกาหลีระบุว่าเจ้าตัวได้ชี้แจงชัดเจนว่าไม่ได้เป็นการฟอร์มยูนิตเฉพาะกิจ แต่เป็นการมารวมตัวกันเพราะโอกาสอำนวย พร้อมกับแสดงความรู้สึกเสียดายที่สมาชิกทั้งเจ็ดคนยังไม่สามารถกลับมารวมตัวกันได้ครบวงในตอนนี้ เนื่องจากข้อจำกัดเรื่องภารกิจรับราชการทหารของเพื่อนร่วมวง",
+        "“เจ็ด คน ทั้งหมด เวที ไม่ใช่ น่าเสียดาย”",
+        "เจบี กล่าวในงานสัมภาษณ์ที่กรุงโซล"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เจบี",
+    "GOT7",
+    "BamBam",
+    "Mark",
+    "Chapter One"
+  ],
+  "entities": [
+    {
+      "name": "เจบี",
+      "type": "person"
+    },
+    {
+      "name": "GOT7",
+      "type": "group"
+    },
+    {
+      "name": "BamBam",
+      "type": "person"
+    },
+    {
+      "name": "Mark",
+      "type": "person"
+    }
+  ],
+  "category": "K-บันเทิง",
+  "thumb": "/thumbs/20261028-3c3eef39.jpg",
+  "thumbSm": "/thumbs/20261028-3c3eef39-sm.webp",
+  "thumbClean": "",
+  "thumbLg": "/thumbs/20261028-3c3eef39-lg.webp",
+  "imageAlt": "เจบี GOT7 ในงานสัมภาษณ์ซิงเกิลใหม่",
+  "imageCredit": "",
+  "createdAt": "2026-10-28T01:55:20.683Z",
+  "traffic": 0,
+  "keyword": "[인터뷰③]제이비 “태국서 뱀뱀·마크와 무대...완전체 아니라 아쉬워\"",
+  "format": "brief",
+  "hook": "เจบี เปิดใจเรื่อง GOT7 และงานที่ไทยแบบหมดเปลือก",
+  "question": "คิดว่าเพลงใหม่ของเจบีแนวนี้โดนใจแค่ไหนกันบ้าง?",
+  "koreaAngle": "ในเกาหลีใต้ การที่อดีตสมาชิกวงไอดอลรุ่นบุกเบิกผันตัวมาทำเพลงแนว R&B ในฐานะศิลปินเดี่ยวค่อนข้างท้าทาย สื่อเกาหลีจับตาการสร้างเส้นทางใหม่ของเจบีภายหลังการแยกย้ายกันไปเติบโตตามสังกัดต่างๆ แต่ยังคงรักษาความเป็นผู้นำในการขับเคลื่อนชื่อวงเอาไว้",
+  "origin": "kr",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "[인터뷰③]제이비 “태국서 뱀뱀·마크와 무대...완전체 아니라 아쉬워\"",
+      "url": "https://www.slist.kr/news/articleView.html?idxno=777044",
+      "source": "싱글리스트"
+    },
+    {
+      "title": "[인터뷰④]제이비 \"갓세븐 놓을 수 없는 이유는…\"",
+      "url": "https://www.chosun.com/entertainments/music/2026/10/27/MJSTEYTEMVQWMZRQGA3WEYJTGQ/",
+      "source": "조선일보"
+    },
+    {
+      "title": "[조이人] 제이비 \"데뷔·갓세븐·JYP서 독립⋯지금은 내인생 챕터4\"",
+      "url": "https://www.joynews24.com/view/2019432",
+      "source": "조이뉴스24"
+    },
+    {
+      "title": "제이비 '시크한 가을 남자'",
+      "url": "https://www.mt.co.kr/photo/202610271538237429",
+      "source": "머니투데이"
+    },
+    {
+      "title": "\"얘가 이런 말을?\"… 팬들에게 솔직한 지금, 당도 최고 제이비 [인터뷰]",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1HQWd4c19ldDNrNWYwNmNQNkFDX0FDeXhPTURndU1xMWY1YVpiVnltVkdvZFBUTVl3RkhrMkhKTVVHTE54SzVKY2gwbzZMQ3hGOUtGRy1YcWwyeUsxdmMzaXRob0dmUC15c1dFNkM1WWwzcTjSAXNBVV95cUxNR0FneHNfZXQzazVmMDZjUDZBQ19BQ3l4T01EZ3VNcTFmNWFaYlZ5bVZHb2RQVE1Zd0ZIazJISk1VR0xOeEs1SmNoMG82TEN4RjlLRkctWHFsMnlLMXZjM2l0aG9HZlAteXNXRTZDNVlsM3E4?oc=5",
+      "source": "한국일보"
+    },
+    {
+      "title": "제이비 \"갓세븐, JYP 매출 많이 냈는데 안 알려져서 아쉬워\" [인터뷰③]",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5NMXJ6dXpTVzhLNGZJMmVrVzJJQ1k1eGcxbEJZX1dxTjNRNmlzbGlQOU1Zc0I3RTN2UUd6cXZMYlVYTnRmM2pmMjBRN3Q1VGdOOGFIX2dEQ21DRVlXT3VLTXJwUTFrTnJKMUlPMU9KU3ZJYVB1?oc=5",
+      "source": "스타뉴스"
+    }
+  ]
+}
