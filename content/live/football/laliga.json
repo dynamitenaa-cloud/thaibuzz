@@ -113,13 +113,13 @@
   {
    "rank": 10,
    "team": "Villarreal",
-   "p": 10,
+   "p": 11,
    "w": 3,
    "d": 3,
-   "l": 4,
+   "l": 5,
    "gf": 15,
-   "ga": 14,
-   "gd": 1,
+   "ga": 15,
+   "gd": 0,
    "pts": 12
   },
   {
@@ -136,6 +136,18 @@
   },
   {
    "rank": 12,
+   "team": "Espanyol",
+   "p": 11,
+   "w": 3,
+   "d": 2,
+   "l": 6,
+   "gf": 13,
+   "ga": 14,
+   "gd": -1,
+   "pts": 11
+  },
+  {
+   "rank": 13,
    "team": "Osasuna",
    "p": 10,
    "w": 3,
@@ -147,7 +159,7 @@
    "pts": 11
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "Racing Santander",
    "p": 10,
    "w": 3,
@@ -159,7 +171,7 @@
    "pts": 11
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "Levante",
    "p": 10,
    "w": 2,
@@ -171,7 +183,7 @@
    "pts": 10
   },
   {
-   "rank": 15,
+   "rank": 16,
    "team": "Elche",
    "p": 10,
    "w": 2,
@@ -183,7 +195,7 @@
    "pts": 10
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Rayo Vallecano",
    "p": 9,
    "w": 2,
@@ -195,7 +207,7 @@
    "pts": 9
   },
   {
-   "rank": 17,
+   "rank": 18,
    "team": "Getafe",
    "p": 10,
    "w": 2,
@@ -205,18 +217,6 @@
    "ga": 15,
    "gd": -10,
    "pts": 9
-  },
-  {
-   "rank": 18,
-   "team": "Espanyol",
-   "p": 10,
-   "w": 2,
-   "d": 2,
-   "l": 6,
-   "gf": 12,
-   "ga": 14,
-   "gd": -2,
-   "pts": 8
   },
   {
    "rank": 19,
@@ -353,20 +353,20 @@
    "hs": "2",
    "as": "0",
    "venue": "Ramón Sánchez Pizjuán Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882817",
    "date": "2026-10-30T20:00Z",
-   "status": "in",
-   "detail": "80'",
+   "status": "post",
+   "detail": "FT",
    "home": "Villarreal",
    "away": "Espanyol",
    "hs": "0",
    "as": "1",
    "venue": "Estadio de la Cerámica"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882820",
    "date": "2026-10-31T13:00Z",
@@ -478,5 +478,5 @@
    "venue": "Ramón Sánchez Pizjuán Stadium"
   }
  ],
- "updatedAt": "2026-10-30T21:37:26.132Z"
+ "updatedAt": "2026-10-30T22:47:17.625Z"
 }
