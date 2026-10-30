@@ -455,3 +455,19 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .fb-cta span { display: flex; flex-direction: column; font-size: 1rem; }
 .fb-cta small { color: var(--mut); font-size: .85rem; }
 @media (max-width: 520px) { .fx { grid-template-columns: 44px 1fr 52px 1fr; font-size: .88rem; } }
+
+/* 날씨 허브 */
+.wx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 14px 0 24px; }
+.wx-card { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--surface); }
+.wx-card:hover { border-color: var(--brand); }
+.wx-card small { color: var(--fg-2); font-size: .82rem; }
+.wx-now { font-size: 1.9rem; font-weight: 700; font-family: var(--font-head), var(--font-body), sans-serif; display: flex; align-items: center; gap: 6px; }
+.wx-e { font-size: 1.4rem; }
+.wx-hero { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; margin: 4px 0 22px; background: var(--surface); }
+.wx-big { font-size: 3.2rem; font-weight: 700; font-family: var(--font-head), var(--font-body), sans-serif; display: flex; align-items: center; gap: 10px; }
+.wx-meta { display: flex; flex-direction: column; gap: 4px; font-size: .95rem; color: var(--fg-2); }
+.wx-meta b { color: var(--fg); font-size: 1.1rem; }
+.wx-days { list-style: none; padding: 0; margin: 6px 0 20px; }
+.wx-days li { display: grid; grid-template-columns: 96px 30px 1fr 64px 90px; gap: 8px; align-items: center; padding: 10px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
+.wx-dn { font-weight: 600; } .wx-dt { color: var(--fg-2); } .wx-rp { color: #0284c7; font-size: .88rem; } .wx-mm { text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .wx-days li { grid-template-columns: 78px 26px 1fr 58px 72px; font-size: .86rem; } }

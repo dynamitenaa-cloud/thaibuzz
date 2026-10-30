@@ -97,7 +97,38 @@ async function football() {
   }
 }
 
-for (const [name, fn] of [['lottery', lottery], ['gold', gold], ['football', football]]) {
+// ── 날씨: Open-Meteo (무료, 키 없음). 10개 도시 현재 + 7일 + PM2.5 → content/live/weather.json ──
+//  현재 기온은 매시간 바뀌므로, 7일 예보가 그대로면 3시간마다만 저장 (불필요한 커밋·배포 줄이기)
+const CITIES = [['bangkok', 13.7563, 100.5018], ['chiang-mai', 18.7883, 98.9853], ['phuket', 7.8804, 98.3923], ['pattaya', 12.9236, 100.8825], ['khon-kaen', 16.4322, 102.8236],
+  ['korat', 14.9799, 102.0977], ['udon-thani', 17.4138, 102.787], ['chiang-rai', 19.9105, 99.8406], ['hat-yai', 7.0084, 100.4747], ['hua-hin', 12.5684, 99.9577]];
+const WX = path.join(LIVE, 'weather.json');
+async function weather() {
+  const lat = CITIES.map((c) => c[1]).join(','), lon = CITIES.map((c) => c[2]).join(',');
+  const get = async (u) => { const r = await fetch(u, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(30000) }); if (!r.ok) throw new Error(`open-meteo ${r.status}`); return r.json(); };
+  const fc = await get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,uv_index_max&forecast_days=7&timezone=Asia%2FBangkok`);
+  let aq = [];
+  try { aq = await get(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5&timezone=Asia%2FBangkok`); } catch (e) { console.warn('weather: PM2.5 실패', e.message); }
+  const fa = Array.isArray(fc) ? fc : [fc], aa = Array.isArray(aq) ? aq : [aq];
+  const now = new Date().toISOString();
+  const cities = CITIES.map(([slug], i) => {
+    const x = fa[i], dly = x.daily;
+    return {
+      slug, fetchedAt: now,
+      current: { time: x.current.time, temp: x.current.temperature_2m, feels: x.current.apparent_temperature, humidity: x.current.relative_humidity_2m, wind: x.current.wind_speed_10m, code: x.current.weather_code, pm25: aa[i]?.current?.pm2_5 ?? null },
+      days: dly.time.map((d, k) => ({ date: d, code: dly.weather_code[k], max: dly.temperature_2m_max[k], min: dly.temperature_2m_min[k], rainProb: dly.precipitation_probability_max[k] ?? 0, rainMm: dly.precipitation_sum[k] ?? 0, uv: dly.uv_index_max[k] ?? 0 })),
+    };
+  });
+  if (!cities.every((c) => c.days.length)) throw new Error('weather: 빈 예보');
+  const prev = fs.existsSync(WX) ? JSON.parse(fs.readFileSync(WX, 'utf8')) : null;
+  const sameDays = prev && JSON.stringify(prev.cities.map((c) => c.days)) === JSON.stringify(cities.map((c) => c.days));
+  if (sameDays && Date.now() - Date.parse(prev.updatedAt) < 3 * 36e5) { console.log('weather: 예보 동일 (3시간 이내) → 저장 안 함'); return; }
+  fs.writeFileSync(WX, JSON.stringify({ updatedAt: now, cities }, null, 1));
+  changed++;
+  const b = cities[0];
+  console.log(`weather: ${cities.length} cities · กรุงเทพฯ ${b.current.temp}°C PM2.5 ${b.current.pm25}`);
+}
+
+for (const [name, fn] of [['lottery', lottery], ['gold', gold], ['football', football], ['weather', weather]]) {
   try { await fn(); } catch (e) { console.warn(`${name}: 실패 (기존 데이터 유지) — ${e.message}`); }
 }
 if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);

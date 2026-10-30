@@ -10,7 +10,7 @@ export default function Header() {
           <span className="logo-mark" aria-hidden>🔥</span>
           <span>Thai<b>Buzz</b></span>
         </a>
-        <NavLinks items={[{ href: '/', label: 'หน้าแรก' }, { href: '/lottery/', label: '🎱 ตรวจหวย' }, { href: '/gold/', label: '🪙 ราคาทอง' }, { href: '/football/', label: '⚽ ตารางบอล' }, ...CATEGORIES.map((c) => ({ href: `/category/${c.slug}/`, label: c.name }))]} />
+        <NavLinks items={[{ href: '/', label: 'หน้าแรก' }, { href: '/lottery/', label: '🎱 ตรวจหวย' }, { href: '/gold/', label: '🪙 ราคาทอง' }, { href: '/football/', label: '⚽ ตารางบอล' }, { href: '/weather/', label: '⛅ สภาพอากาศ' }, ...CATEGORIES.map((c) => ({ href: `/category/${c.slug}/`, label: c.name }))]} />
         <div className="hdr-act">
           <a href="/search/" className="icon-btn" aria-label="ค้นหา"><SearchIcon /></a>
           <ThemeToggle />

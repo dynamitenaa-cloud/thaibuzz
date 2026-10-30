@@ -4,6 +4,7 @@ import { CATEGORIES, SITE } from '@/lib/site';
 import { editorUrl } from '@/lib/editor';
 import { getDraws, getGold } from '@/lib/live';
 import { getLeagueData, LEAGUES } from '@/lib/football';
+import { CITIES, getWeather } from '@/lib/weather';
 import { categoryIndexable } from '@/lib/category-page';
 
 export const dynamic = 'force-static';
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...(draws.length ? [{ url: `${SITE.url}/lottery/`, lastModified: draws[0].fetchedAt, changeFrequency: 'daily' as const, priority: 0.9 }, ...draws.slice(1).map((d) => ({ url: `${SITE.url}/lottery/${d.date}/`, lastModified: d.fetchedAt, priority: 0.5 }))] : []),
     { url: `${SITE.url}/football/`, changeFrequency: 'hourly' as const, priority: 0.9 },
+    ...(getWeather().cities.length ? [{ url: `${SITE.url}/weather/`, lastModified: getWeather().updatedAt, changeFrequency: 'hourly' as const, priority: 0.85 }, ...CITIES.map((c) => ({ url: `${SITE.url}/weather/${c.slug}/`, lastModified: getWeather().updatedAt, changeFrequency: 'hourly' as const, priority: 0.7 }))] : []),
     ...LEAGUES.filter((l) => getLeagueData(l.slug)).map((l) => ({ url: `${SITE.url}/football/${l.slug}/`, lastModified: getLeagueData(l.slug)!.updatedAt, changeFrequency: 'hourly' as const, priority: 0.85 })),
     ...(gold.items.length ? [{ url: `${SITE.url}/gold/`, lastModified: gold.updatedAt, changeFrequency: 'hourly' as const, priority: 0.9 }] : []),
     { url: `${SITE.url}/`, lastModified: latest, changeFrequency: 'hourly', priority: 1 },
