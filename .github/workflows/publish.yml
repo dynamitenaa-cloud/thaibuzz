@@ -59,6 +59,7 @@ env:
   INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
   FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
   FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+  X_API_KEY: ${{ secrets.X_API_KEY }}
   FB_FORCE: ${{ inputs.force }}
   THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -208,6 +209,16 @@ jobs:
         run: node scripts/threads.mjs
         env:
           THREADS_DAILY_MAX: ${{ vars.THREADS_DAILY_MAX }}
+
+      # 새 글 → X(트위터) 이미지 게시물 (무료 티어). 끄려면 Variables 에 X=false
+      - name: Post to X
+        if: ${{ !cancelled() && env.X_API_KEY != '' && vars.X != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
+        run: node scripts/x.mjs
+        env:
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          X_DAILY_MAX: ${{ vars.X_DAILY_MAX }}
 
       # 새 글 → 세로 숏폼 영상 → Facebook Reels (영상은 저장소에 안 쌓고 올린 뒤 삭제). 끄려면 Variables 에 REELS=false
       # Edge 음성 라이브러리는 매 실행 최신판으로 (마이크로소프트가 막으면 라이브러리가 며칠 내 고침 → 자동 복귀). 실패해도 진행

@@ -72,6 +72,16 @@ export function caption(p, kind, url = '') {
       return `${first}\n\n${q}\n\n${closer} ${url}\n\n${tagsOf(p, 4)} ${extraTags}`;
     case 'instagram':
       return `${first}\n\n${second}\n\n${q}\n\n🔗 อ่านฉบับเต็มที่ลิงก์ในโปรไฟล์ (${url.replace(/^https?:\/\//, '').replace(/\/post\/.*$/, '')})\n\n${tagsOf(p, 5)} ${extraTags} #ไทยบัซ`;
+    case 'x': {
+      // X: 280자 제한 (링크는 23자로 계산). 훅/제목 → 질문 → 링크 → 태그 3~4개. 넘치면 제목부터 줄임
+      const tags = `${tagsOf(p, 3)} ${isK ? '#kpop #ThaiBuzz' : '#ThaiBuzz'}`;
+      const fit = (head) => `${head}\n\n${q}\n\n${url}\n${tags}`;
+      const weigh = (t) => [...t.replace(url, 'x'.repeat(23))].length;
+      let head = first;
+      if (weigh(fit(head)) > 275) head = `${e} ${p.title}`;
+      while (weigh(fit(head)) > 275 && [...head].length > 40) head = [...head].slice(0, -8).join('').trimEnd() + '…';
+      return fit(head);
+    }
     case 'tiktok': {
       // 틱톡: 첫 줄 훅(없으면 제목) → 제목 → 질문 → 링크 안내(틱톡은 본문 링크 불가) → 태그 10개 안팎 (고유 4 + 카테고리 + 트렌드)
       const catTags = isK ? '#kpop #เกาหลี #ข่าวเกาหลี #ซีรีส์เกาหลี' : p.category === 'กีฬา' ? '#ข่าวกีฬา #ฟุตบอล #บอลไทย' : '#ข่าวบันเทิง #ดารา #ข่าววันนี้';

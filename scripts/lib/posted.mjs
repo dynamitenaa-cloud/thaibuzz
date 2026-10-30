@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 
 const FILE = '.cache/fb-posted.json';
-export const KINDS = ['photo', 'reel', 'ig', 'threads', 'tg', 'yt'];
+export const KINDS = ['photo', 'reel', 'ig', 'threads', 'tg', 'yt', 'x'];
 
 // 이미 발행된 글 목록 (이번 실행에서 막 발행된 pending 은 제외)
 function existingSlugs(pending) {
@@ -79,6 +79,7 @@ export const DAILY_MAX = {
   reel: Number(process.env.REEL_DAILY_MAX || 5),
   ig: Number(process.env.IG_DAILY_MAX || 4),
   threads: Number(process.env.THREADS_DAILY_MAX || 10),
+  x: Number(process.env.X_DAILY_MAX || 12),
 };
 export const postedToday = (ledger, kind) => Object.values(ledger[kind] || {}).filter((t) => Date.now() - t < 864e5).length;
 export const underDailyMax = (ledger, kind) => postedToday(ledger, kind) < (DAILY_MAX[kind] ?? Infinity);
