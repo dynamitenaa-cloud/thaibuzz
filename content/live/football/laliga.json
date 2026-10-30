@@ -360,11 +360,11 @@
    "id": "401882817",
    "date": "2026-10-30T20:00Z",
    "status": "in",
-   "detail": "HT",
+   "detail": "80'",
    "home": "Villarreal",
    "away": "Espanyol",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Estadio de la Cerámica"
   },
   {
@@ -478,5 +478,5 @@
    "venue": "Ramón Sánchez Pizjuán Stadium"
   }
  ],
- "updatedAt": "2026-10-30T20:48:41.494Z"
+ "updatedAt": "2026-10-30T21:37:26.132Z"
 }

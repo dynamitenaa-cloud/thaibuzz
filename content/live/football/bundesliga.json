@@ -52,6 +52,18 @@
   },
   {
    "rank": 5,
+   "team": "SV Elversberg",
+   "p": 8,
+   "w": 4,
+   "d": 1,
+   "l": 3,
+   "gf": 16,
+   "ga": 16,
+   "gd": 0,
+   "pts": 13
+  },
+  {
+   "rank": 6,
    "team": "RB Leipzig",
    "p": 7,
    "w": 4,
@@ -63,7 +75,7 @@
    "pts": 12
   },
   {
-   "rank": 6,
+   "rank": 7,
    "team": "Werder Bremen",
    "p": 7,
    "w": 3,
@@ -75,27 +87,15 @@
    "pts": 12
   },
   {
-   "rank": 7,
-   "team": "Mainz",
-   "p": 7,
-   "w": 3,
-   "d": 1,
-   "l": 3,
-   "gf": 16,
-   "ga": 13,
-   "gd": 3,
-   "pts": 10
-  },
-  {
    "rank": 8,
-   "team": "SV Elversberg",
-   "p": 7,
+   "team": "Mainz",
+   "p": 8,
    "w": 3,
    "d": 1,
-   "l": 3,
-   "gf": 12,
-   "ga": 15,
-   "gd": -3,
+   "l": 4,
+   "gf": 17,
+   "ga": 17,
+   "gd": 0,
    "pts": 10
   },
   {
@@ -318,20 +318,20 @@
    "hs": "1",
    "as": "3",
    "venue": "Europa-Park Stadion"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884746",
    "date": "2026-10-30T19:30Z",
-   "status": "in",
-   "detail": "60'",
+   "status": "post",
+   "detail": "FT",
    "home": "SV Elversberg",
    "away": "Mainz",
-   "hs": "3",
-   "as": "0",
+   "hs": "4",
+   "as": "1",
    "venue": "URSAPHARM-Arena an der Kaiserlinde"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884753",
    "date": "2026-10-31T14:30Z",
@@ -432,5 +432,5 @@
    "venue": "Volksparkstadion"
   }
  ],
- "updatedAt": "2026-10-30T20:48:41.756Z"
+ "updatedAt": "2026-10-30T21:37:26.597Z"
 }
