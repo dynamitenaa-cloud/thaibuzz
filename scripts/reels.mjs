@@ -6,7 +6,7 @@ import path from 'node:path';
 import { makeReel, narrationSegments, REEL_DIR } from './lib/video.mjs';
 import { narrate } from './lib/tts.mjs';
 import { trackUsage, overLimit } from './lib/meta-usage.mjs';
-import { telegramReady, sendTelegramVideo, sendTelegramText, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
+import { telegramReady, sendTelegramVideo, sendTelegramText, xIntent, youtubeReady, uploadShort, YT_DAILY_MAX } from './lib/delivery.mjs';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, postedToday, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 import { caption } from './lib/social.mjs';
 
@@ -153,10 +153,7 @@ for (const slug of slugs) {
 ${caption(p, 'tiktok')}
 
 ${note}`);
-      else await sendTelegramText(`📰 ${p.title}
-${SITE}/post/${slug}/
-
-${note}`);
+      else await sendTelegramText(`📰 ${p.title}\n${SITE}/post/${slug}/\n\n${note}`, [{ text: '𝕏 X에 바로 올리기', url: xIntent(caption(p, 'x', `${SITE}/post/${slug}/`)) }]);
       console.log(`reels: telegram sent ← ${slug}`);
       ledger.tg[slug] = Date.now(); saveLedger(ledger);
     } catch (e) { failed++; markFail(ledger, 'reel', slug); console.error(`reels: telegram FAILED ${slug}:`, e.message); }

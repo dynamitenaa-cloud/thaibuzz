@@ -7,10 +7,16 @@ import fs from 'node:fs';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ── Telegram ──
+// X 글쓰기 화면을 문구가 채워진 채로 여는 링크 (누르고 '게시'만 하면 됨). 링크 미리보기 카드에 썸네일이 붙음
+export const xIntent = (text) => `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
+
 export const telegramReady = () => !!(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) && process.env.TELEGRAM !== 'false';
 
-export async function sendTelegramText(text) {
-  const r = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text: [...text].slice(0, 4000).join(''), disable_web_page_preview: false }) });
+// buttons: [{ text, url }] → 메시지 아래 버튼 (누르면 해당 앱/웹이 열림)
+export async function sendTelegramText(text, buttons = []) {
+  const body = { chat_id: process.env.TELEGRAM_CHAT_ID, text: [...text].slice(0, 4000).join(''), disable_web_page_preview: true };
+  if (buttons.length) body.reply_markup = { inline_keyboard: buttons.map((b) => [{ text: b.text, url: b.url }]) };
+  const r = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
   const j = await r.json().catch(() => ({}));
   if (!j.ok) throw new Error('telegram: ' + JSON.stringify(j).slice(0, 200));
   return j.result?.message_id;

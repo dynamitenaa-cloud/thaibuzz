@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { caption } from './lib/social.mjs';
-import { telegramReady, sendTelegramVideo, sendTelegramText } from './lib/delivery.mjs';
+import { telegramReady, sendTelegramVideo, sendTelegramText, xIntent } from './lib/delivery.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').replace(/\/$/, '');
 const PAGE_ID = process.env.FB_PAGE_ID;
@@ -63,7 +63,10 @@ for (const [i, r] of picks.entries()) {
     if (DRY) { console.log(`picks: (dry) ${r.slug} ${Math.round(fs.statSync(file).size / 1e6 * 10) / 10}MB`); continue; }
     await sendTelegramVideo(file, text);
     // X 는 API 유료화(2026) → 사용자가 직접 게시. 같은 영상 + 이 문구를 복사해서 올리면 됨
-    if (p) await sendTelegramText('𝕏 X용 문구 (영상 같이 첨부)' + String.fromCharCode(10, 10) + caption(p, 'x', SITE + '/post/' + r.slug + '/'));
+    if (p) {
+      const xt = caption(p, 'x', SITE + '/post/' + r.slug + '/');
+      await sendTelegramText('𝕏 아래 버튼 → X가 문구 채워진 채로 열림 → 게시만 누르기' + String.fromCharCode(10, 10) + xt, [{ text: '𝕏 X에 바로 올리기', url: xIntent(xt) }]);
+    }
     ledger[r.slug] = now; save(); sent++;
     console.log(`picks: sent ${r.slug} (${r.views} views)`);
   } catch (e) { console.error(`picks: ${r.slug} 실패 — ${e.message}`); }
