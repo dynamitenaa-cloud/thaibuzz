@@ -5,6 +5,7 @@ import { SITE } from '@/lib/site';
 import { EDITOR, editorId, editorUrl } from '@/lib/editor';
 import { layoutOf } from '@/lib/article-layout';
 import { CommentCta } from '@/components/CommentCta';
+import { leagueForPost } from '@/lib/football';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
 import { ArticleChrome, Share } from '@/components/Share';
@@ -247,6 +248,10 @@ export default async function PostPage({ params }: P) {
           <div className="tags">{p.tags.map((t) => (tagHasPage(t) ? <a key={t} href={tagUrl(t)} className="chip">#{t}</a> : <span key={t} className="chip">#{t}</span>))}</div>
 
           <Share url={url} title={p.title} />
+
+          {(() => { const lg = p.category === 'กีฬา' ? leagueForPost([p.title, ...p.tags].join(' ')) : undefined; return lg ? (
+            <a className="fb-cta" href={`/football/${lg.slug}/`}>⚽ <span><b>ตารางคะแนน{lg.name}ล่าสุด</b><small>ผลบอล และโปรแกรมนัดต่อไป เวลาไทย อัปเดตทุกชั่วโมง ›</small></span></a>
+          ) : null; })()}
 
           <CommentCta slug={p.slug} question={p.question} />
 

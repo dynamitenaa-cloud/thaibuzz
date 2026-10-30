@@ -64,7 +64,40 @@ async function gold() {
   else console.log('gold: unchanged');
 }
 
-for (const [name, fn] of [['lottery', lottery], ['gold', gold]]) {
+// ── 축구: ESPN 공개 데이터 (순위표 + 최근 4일 결과 + 앞으로 7일 일정). 리그마다 content/live/football/<slug>.json ──
+const FOOTBALL = [['premier-league', 'eng.1'], ['laliga', 'esp.1'], ['serie-a', 'ita.1'], ['bundesliga', 'ger.1'], ['ucl', 'uefa.champions']];
+const FB_DIR = path.join(LIVE, 'football');
+const ESPN_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36'; // 봇 UA 는 403
+const espn = async (u) => { const r = await fetch(u, { headers: { 'user-agent': ESPN_UA, accept: 'application/json' }, signal: AbortSignal.timeout(20000) }); if (!r.ok) throw new Error(`espn ${r.status}`); return r.json(); };
+const ymd = (d) => d.toISOString().slice(0, 10).replace(/-/g, '');
+async function football() {
+  fs.mkdirSync(FB_DIR, { recursive: true });
+  const days = Array.from({ length: 15 }, (_, i) => ymd(new Date(Date.now() + (i - 7) * 864e5))); // -7 ~ +7일
+  for (const [slug, code] of FOOTBALL) {
+    try {
+      const st = await espn(`https://site.api.espn.com/apis/v2/sports/soccer/${code}/standings`);
+      const g = st.children?.[0];
+      if (!g) throw new Error('no standings');
+      const v = (e, n) => Number(e.stats.find((s) => s.name === n)?.value ?? 0);
+      const table = g.standings.entries.map((e) => ({ rank: v(e, 'rank'), team: e.team.displayName, p: v(e, 'gamesPlayed'), w: v(e, 'wins'), d: v(e, 'ties'), l: v(e, 'losses'), gf: v(e, 'pointsFor'), ga: v(e, 'pointsAgainst'), gd: v(e, 'pointDifferential'), pts: v(e, 'points') })).sort((a, b) => a.rank - b.rank);
+      const evs = (await Promise.all(days.map((d) => espn(`https://site.api.espn.com/apis/site/v2/sports/soccer/${code}/scoreboard?dates=${d}`).then((j) => j.events || []).catch(() => [])))).flat();
+      const seen = new Set();
+      const matches = evs.filter((e) => !seen.has(e.id) && seen.add(e.id)).map((e) => {
+        const c = e.competitions[0];
+        const side = (h) => c.competitors.find((x) => x.homeAway === h) || {};
+        return { id: e.id, date: e.date, status: c.status.type.state, detail: c.status.type.shortDetail, home: side('home').team?.displayName || '', away: side('away').team?.displayName || '', hs: String(side('home').score ?? ''), as: String(side('away').score ?? ''), venue: c.venue?.fullName || '' };
+      }).sort((a, b) => a.date.localeCompare(b.date));
+      const rec = { slug, season: g.name || st.name || '', table, results: matches.filter((m) => m.status === 'post'), fixtures: matches.filter((m) => m.status !== 'post') };
+      const file = path.join(FB_DIR, `${slug}.json`);
+      const prev = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
+      const same = prev && JSON.stringify({ ...prev, updatedAt: 0 }) === JSON.stringify({ ...rec, updatedAt: 0 });
+      if (!same) { fs.writeFileSync(file, JSON.stringify({ ...rec, updatedAt: new Date().toISOString() }, null, 1)); changed++; }
+      console.log(`football: ${slug} ${table.length} teams, ${rec.results.length} results, ${rec.fixtures.length} fixtures${same ? ' (unchanged)' : ''}`);
+    } catch (e) { console.warn(`football: ${slug} 실패 (기존 데이터 유지) — ${e.message}`); }
+  }
+}
+
+for (const [name, fn] of [['lottery', lottery], ['gold', gold], ['football', football]]) {
   try { await fn(); } catch (e) { console.warn(`${name}: 실패 (기존 데이터 유지) — ${e.message}`); }
 }
 if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
