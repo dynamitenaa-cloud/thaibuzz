@@ -325,10 +325,10 @@
    "id": "401884746",
    "date": "2026-10-30T19:30Z",
    "status": "in",
-   "detail": "19'",
+   "detail": "60'",
    "home": "SV Elversberg",
    "away": "Mainz",
-   "hs": "1",
+   "hs": "3",
    "as": "0",
    "venue": "URSAPHARM-Arena an der Kaiserlinde"
   },
@@ -432,5 +432,5 @@
    "venue": "Volksparkstadion"
   }
  ],
- "updatedAt": "2026-10-30T19:48:42.386Z"
+ "updatedAt": "2026-10-30T20:48:41.756Z"
 }

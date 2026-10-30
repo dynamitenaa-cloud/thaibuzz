@@ -359,8 +359,8 @@
   {
    "id": "401882817",
    "date": "2026-10-30T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Villarreal",
    "away": "Espanyol",
    "hs": "0",
@@ -478,5 +478,5 @@
    "venue": "Ramón Sánchez Pizjuán Stadium"
   }
  ],
- "updatedAt": "2026-10-30T11:59:34.638Z"
+ "updatedAt": "2026-10-30T20:48:41.494Z"
 }
