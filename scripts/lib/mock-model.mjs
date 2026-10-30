@@ -52,3 +52,17 @@ export const roundupMock = new MockLanguageModelV4({
     warnings: [],
   }),
 });
+
+// hub-intros.mjs --mock 용
+export const hubMock = new MockLanguageModelV4({
+  doGenerate: async () => ({
+    content: [{ type: 'text', text: JSON.stringify({
+      seoTitle: 'หัวข้อทดสอบ ข่าวล่าสุด ทุก EP ย้อนหลัง',
+      intro: ['ย่อหน้าทดสอบที่หนึ่ง อธิบายว่าหัวข้อนี้คืออะไรตามบทความ', 'ย่อหน้าทดสอบที่สอง สรุปความเคลื่อนไหวล่าสุด'],
+      facts: ['ข้อเท็จจริงทดสอบ 1', 'ข้อเท็จจริงทดสอบ 2', 'ข้อเท็จจริงทดสอบ 3'],
+    }) }],
+    finishReason: { unified: 'stop', raw: undefined },
+    usage: { inputTokens: 0, outputTokens: 0, totalTokens: 0 },
+    warnings: [],
+  }),
+});

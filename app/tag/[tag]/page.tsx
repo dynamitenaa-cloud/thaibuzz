@@ -4,6 +4,14 @@ import { SITE } from '@/lib/site';
 import { Listing } from '@/components/Listing';
 import JsonLd from '@/components/JsonLd';
 import { og } from '@/lib/og';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// scripts/hub-intros.mjs 가 만든 허브 소개문 (없으면 기존 화면 그대로)
+type Intro = { tag: string; seoTitle: string; intro: string[]; facts: string[]; postCount: number; updatedAt: string };
+const introOf = (slug: string): Intro | null => {
+  try { return JSON.parse(fs.readFileSync(path.join(process.cwd(), 'content', 'hubs', `${slug}.json`), 'utf8')); } catch { return null; }
+};
 
 // 인물·작품 허브 페이지 (/tag/<slug>/)
 // 내용은 전부 "우리 기사에서" 만든다 (소개·타임라인·FAQ) → 실존 인물 정보를 지어내지 않음
@@ -43,8 +51,9 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const d = hubData(tag);
   if (!d) return { robots: { index: false } };
   const path = `/tag/${tag}/`;
-  const title = `${d.t.tag} ข่าวล่าสุด: รวมไทม์ไลน์และประเด็นที่ควรรู้`;
-  const description = `รวมข่าว ${d.t.tag} ล่าสุด ${d.posts.length} เรื่อง ${d.last ? `อัปเดต ${day(d.last)}` : ''} สรุปไทม์ไลน์และคำถามที่หลายคนสงสัย พร้อมแหล่งอ้างอิง`;
+  const ix = introOf(tag);
+  const title = ix?.seoTitle || `${d.t.tag} ข่าวล่าสุด: รวมไทม์ไลน์และประเด็นที่ควรรู้`;
+  const description = ix?.intro?.[0] ? [...ix.intro[0]].slice(0, 155).join('') : `รวมข่าว ${d.t.tag} ล่าสุด ${d.posts.length} เรื่อง ${d.last ? `อัปเดต ${day(d.last)}` : ''} สรุปไทม์ไลน์และคำถามที่หลายคนสงสัย พร้อมแหล่งอ้างอิง`;
   return {
     title,
     description,
@@ -61,6 +70,7 @@ export default async function Page({ params }: P) {
   if (!d) return <div className="empty"><p>ไม่พบหน้านี้</p></div>;
   const latest: Post = d.posts[0];
   const url = `${SITE.url}/tag/${tag}/`;
+  const ix = introOf(tag);
   return (
     <>
       <JsonLd
@@ -89,6 +99,19 @@ export default async function Page({ params }: P) {
           {d.first && d.last ? ` ตั้งแต่ ${day(d.first)} ถึง ${day(d.last)}` : ''} ในหมวด {d.cats.join(', ')}
         </p>
       </div>
+
+      {ix && (
+        <section className="hub-intro" aria-label={`เกี่ยวกับ ${d.t.tag}`}>
+          {ix.intro.map((t, i) => <p key={i}>{t}</p>)}
+          {ix.facts.length > 0 && (
+            <div className="hub-facts">
+              <h2>ข้อมูลสำคัญเกี่ยวกับ {d.t.tag}</h2>
+              <ul>{ix.facts.map((f, i) => <li key={i}>{f}</li>)}</ul>
+            </div>
+          )}
+          <small>สรุปจากข่าว {ix.postCount} เรื่องบน {SITE.name} · อัปเดต {day(ix.updatedAt)}</small>
+        </section>
+      )}
 
       <div className="hub-top">
         <section className="tldr" aria-label="ล่าสุด">

@@ -144,6 +144,16 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
         run: node scripts/roundup.mjs
 
+      - name: Hub page intros
+        id: hubs
+        if: ${{ !cancelled() && !inputs.reel_preview && !inputs.fb_test && !inputs.x_check && github.event_name != 'push' }}
+        continue-on-error: true
+        env:
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          HUB_INTROS_PER_RUN: ${{ vars.HUB_INTROS_PER_RUN }}
+        run: node scripts/hub-intros.mjs
+
       - name: Update live data (lottery, gold)
         id: live
         if: ${{ !cancelled() && !inputs.reel_preview }}
@@ -152,7 +162,7 @@ jobs:
 
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0 || steps.hubs.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
