@@ -6,8 +6,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { caption } from './lib/social.mjs';
-import { telegramReady, sendTelegramVideo } from './lib/delivery.mjs';
+import { telegramReady, sendTelegramVideo, sendTelegramText } from './lib/delivery.mjs';
 
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').replace(/\/$/, '');
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
 const N = Number(process.env.TIKTOK_PICKS || 2);
@@ -61,6 +62,8 @@ for (const [i, r] of picks.entries()) {
     const text = `🎯 틱톡 추천 ${i + 1}/${picks.length} · 페북 조회 ${r.views.toLocaleString()}\n\n${p ? caption(p, 'tiktok') : r.slug}\n\n🆔 ${r.slug}\n💬 이 메시지에 답장하면 편집자 노트로 붙습니다`;
     if (DRY) { console.log(`picks: (dry) ${r.slug} ${Math.round(fs.statSync(file).size / 1e6 * 10) / 10}MB`); continue; }
     await sendTelegramVideo(file, text);
+    // X 는 API 유료화(2026) → 사용자가 직접 게시. 같은 영상 + 이 문구를 복사해서 올리면 됨
+    if (p) await sendTelegramText('𝕏 X용 문구 (영상 같이 첨부)' + String.fromCharCode(10, 10) + caption(p, 'x', SITE + '/post/' + r.slug + '/'));
     ledger[r.slug] = now; save(); sent++;
     console.log(`picks: sent ${r.slug} (${r.views} views)`);
   } catch (e) { console.error(`picks: ${r.slug} 실패 — ${e.message}`); }
