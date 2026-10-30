@@ -5,6 +5,10 @@ on:
     - cron: '7 * * * *' # 매시 7분 (정각 혼잡 회피). GitHub 예약 실행은 수십 분 늦거나 건너뛰어질 수 있음
   workflow_dispatch:
     inputs:
+      x_check:
+        description: 'X 키 점검만 (게시 없음)'
+        type: boolean
+        default: false
       roundup:
         description: '아침 정리 글을 지금 바로 1개 생성 (시각 무관)'
         type: boolean
@@ -77,6 +81,14 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci
       # 스크립트 문법 오류를 글 생성 전에 잡음 (import 된 모듈까지 로드 확인)
+      - name: X key check
+        if: ${{ inputs.x_check }}
+        run: node scripts/x.mjs --check
+        env:
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+
       - name: Check scripts
         run: for f in scripts/*.mjs scripts/lib/*.mjs; do node --check "$f" || exit 1; done
 
@@ -90,7 +102,7 @@ jobs:
 
       - name: Generate posts
         id: pipe
-        if: ${{ github.event_name != 'push' && !inputs.fb_test && !inputs.reel_preview }}
+        if: ${{ github.event_name != 'push' && !inputs.fb_test && !inputs.reel_preview && !inputs.x_check }}
         run: node scripts/run-pipeline.mjs
         env:
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}

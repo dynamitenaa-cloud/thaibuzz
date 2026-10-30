@@ -11,7 +11,8 @@ import { caption } from './lib/social.mjs';
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const DRY = process.argv.includes('--dry');
 const FORCE = process.env.FB_FORCE === 'true';
-const K = { key: process.env.X_API_KEY, secret: process.env.X_API_SECRET, token: process.env.X_ACCESS_TOKEN, tokenSecret: process.env.X_ACCESS_SECRET };
+const T = (v) => String(v || '').trim(); // 붙여넣을 때 섞인 공백·줄바꿈 제거
+const K = { key: T(process.env.X_API_KEY), secret: T(process.env.X_API_SECRET), token: T(process.env.X_ACCESS_TOKEN), tokenSecret: T(process.env.X_ACCESS_SECRET) };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 if (process.env.X === 'false') { console.log('x: X=false → 건너뜀'); process.exit(0); }
@@ -52,6 +53,15 @@ async function tweet(text, mediaId) {
   const j = await r.json().catch(() => ({}));
   if (!r.ok || !j.data?.id) throw new Error(`tweet ${r.status} ${JSON.stringify(j).slice(0, 300)}`);
   return j.data.id;
+}
+
+if (process.argv.includes('--check')) {
+  const url = 'https://api.x.com/2/users/me';
+  const r = await fetch(url, { headers: { authorization: authHeader('GET', url) } });
+  const j = await r.json().catch(() => ({}));
+  console.log(`x: check ${r.status} → ${j.data?.username ? '@' + j.data.username + ' 인증 OK' : JSON.stringify(j).slice(0, 200)}`);
+  console.log(`x: key lengths api=${K.key.length} secret=${K.secret.length} token=${K.token.length} tokenSecret=${K.tokenSecret.length}`);
+  process.exit(j.data ? 0 : 1);
 }
 
 const fresh = newSlugs();
