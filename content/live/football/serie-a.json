@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874957",
-   "date": "2026-10-23T18:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Torino",
-   "away": "Monza",
-   "hs": "3",
-   "as": "2",
-   "venue": "Stadio Olimpico Grande Torino"
-  },
-  {
    "id": "401874958",
    "date": "2026-10-24T13:00Z",
    "status": "post",
@@ -586,7 +575,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Stadio Pier Luigi Penzo"
+  },
+  {
+   "id": "401874791",
+   "date": "2026-11-07T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Cagliari",
+   "away": "Frosinone",
+   "hs": "0",
+   "as": "0",
+   "venue": "Unipol Domus"
+  },
+  {
+   "id": "401874811",
+   "date": "2026-11-07T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Torino",
+   "away": "Lecce",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Olimpico Grande Torino"
+  },
+  {
+   "id": "401874974",
+   "date": "2026-11-07T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Parma",
+   "away": "Bologna",
+   "hs": "0",
+   "as": "0",
+   "venue": "Ennio Tardini"
+  },
+  {
+   "id": "401874803",
+   "date": "2026-11-07T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AS Roma",
+   "away": "Sassuolo",
+   "hs": "0",
+   "as": "0",
+   "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-30T11:59:35.598Z"
+ "updatedAt": "2026-10-31T01:12:51.544Z"
 }

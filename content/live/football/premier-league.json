@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401879253",
-   "date": "2026-10-23T19:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Ipswich Town",
-   "away": "Nottingham Forest",
-   "hs": "1",
-   "as": "1",
-   "venue": "Portman Road"
-  },
-  {
    "id": "401879256",
    "date": "2026-10-24T11:30Z",
    "status": "post",
@@ -476,7 +465,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Hill Dickinson Stadium"
+  },
+  {
+   "id": "401878758",
+   "date": "2026-11-07T12:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Leeds United",
+   "away": "Tottenham Hotspur",
+   "hs": "0",
+   "as": "0",
+   "venue": "Elland Road"
+  },
+  {
+   "id": "401878760",
+   "date": "2026-11-07T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Arsenal",
+   "away": "Hull City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Emirates Stadium"
+  },
+  {
+   "id": "401879241",
+   "date": "2026-11-07T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Fulham",
+   "away": "Newcastle United",
+   "hs": "0",
+   "as": "0",
+   "venue": "Craven Cottage"
+  },
+  {
+   "id": "401878757",
+   "date": "2026-11-07T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Nottingham Forest",
+   "away": "Manchester City",
+   "hs": "0",
+   "as": "0",
+   "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-30T11:59:33.944Z"
+ "updatedAt": "2026-10-31T01:12:51.211Z"
 }

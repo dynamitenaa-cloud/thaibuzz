@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401882836",
-   "date": "2026-10-23T19:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Alavés",
-   "away": "Málaga",
-   "hs": "1",
-   "as": "1",
-   "venue": "Mendizorrotza"
-  },
-  {
    "id": "401882830",
    "date": "2026-10-24T12:00Z",
    "status": "post",
@@ -476,7 +465,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Ramón Sánchez Pizjuán Stadium"
+  },
+  {
+   "id": "401882812",
+   "date": "2026-11-07T13:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Málaga",
+   "away": "Racing Santander",
+   "hs": "0",
+   "as": "0",
+   "venue": "La Rosaleda"
+  },
+  {
+   "id": "401882813",
+   "date": "2026-11-07T15:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Espanyol",
+   "away": "Deportivo",
+   "hs": "0",
+   "as": "0",
+   "venue": "RCDE Stadium"
+  },
+  {
+   "id": "401882811",
+   "date": "2026-11-07T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Osasuna",
+   "away": "Athletic Club",
+   "hs": "0",
+   "as": "0",
+   "venue": "El Sadar"
+  },
+  {
+   "id": "401882808",
+   "date": "2026-11-07T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Valencia",
+   "away": "Real Madrid",
+   "hs": "0",
+   "as": "0",
+   "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-30T22:47:17.625Z"
+ "updatedAt": "2026-10-31T01:12:51.352Z"
 }

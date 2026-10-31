@@ -221,17 +221,6 @@
  ],
  "results": [
   {
-   "id": "401884761",
-   "date": "2026-10-23T18:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "VfB Stuttgart",
-   "away": "Borussia Mönchengladbach",
-   "hs": "2",
-   "as": "3",
-   "venue": "MHPArena"
-  },
-  {
    "id": "401884758",
    "date": "2026-10-24T13:30Z",
    "status": "post",
@@ -430,7 +419,62 @@
    "hs": "0",
    "as": "0",
    "venue": "Volksparkstadion"
+  },
+  {
+   "id": "401884745",
+   "date": "2026-11-07T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Borussia Dortmund",
+   "away": "SV Elversberg",
+   "hs": "0",
+   "as": "0",
+   "venue": "Signal Iduna Park"
+  },
+  {
+   "id": "401884740",
+   "date": "2026-11-07T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Mainz",
+   "away": "Bayern Munich",
+   "hs": "0",
+   "as": "0",
+   "venue": "MEWA ARENA"
+  },
+  {
+   "id": "401884744",
+   "date": "2026-11-07T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "RB Leipzig",
+   "away": "FC Augsburg",
+   "hs": "0",
+   "as": "0",
+   "venue": "Red Bull Arena"
+  },
+  {
+   "id": "401884737",
+   "date": "2026-11-07T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "SC Paderborn 07",
+   "away": "Eintracht Frankfurt",
+   "hs": "0",
+   "as": "0",
+   "venue": "Home Deluxe Arena"
+  },
+  {
+   "id": "401884743",
+   "date": "2026-11-07T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "VfB Stuttgart",
+   "away": "Werder Bremen",
+   "hs": "0",
+   "as": "0",
+   "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-10-30T21:37:26.597Z"
+ "updatedAt": "2026-10-31T01:12:51.661Z"
 }
