@@ -4,18 +4,6 @@
  "table": [
   {
    "rank": 1,
-   "team": "Internazionale",
-   "p": 9,
-   "w": 8,
-   "d": 1,
-   "l": 0,
-   "gf": 25,
-   "ga": 10,
-   "gd": 15,
-   "pts": 25
-  },
-  {
-   "rank": 2,
    "team": "Lazio",
    "p": 9,
    "w": 8,
@@ -24,6 +12,18 @@
    "gf": 22,
    "ga": 7,
    "gd": 15,
+   "pts": 25
+  },
+  {
+   "rank": 2,
+   "team": "Internazionale",
+   "p": 10,
+   "w": 8,
+   "d": 1,
+   "l": 1,
+   "gf": 26,
+   "ga": 13,
+   "gd": 13,
    "pts": 25
   },
   {
@@ -40,6 +40,18 @@
   },
   {
    "rank": 4,
+   "team": "AC Milan",
+   "p": 10,
+   "w": 6,
+   "d": 3,
+   "l": 1,
+   "gf": 21,
+   "ga": 12,
+   "gd": 9,
+   "pts": 21
+  },
+  {
+   "rank": 5,
    "team": "Como",
    "p": 9,
    "w": 6,
@@ -49,18 +61,6 @@
    "ga": 8,
    "gd": 9,
    "pts": 20
-  },
-  {
-   "rank": 5,
-   "team": "AC Milan",
-   "p": 9,
-   "w": 5,
-   "d": 3,
-   "l": 1,
-   "gf": 18,
-   "ga": 11,
-   "gd": 7,
-   "pts": 18
   },
   {
    "rank": 6,
@@ -474,20 +474,20 @@
    "hs": "2",
    "as": "5",
    "venue": "Stadio Friuli"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874795",
    "date": "2026-10-31T19:45Z",
-   "status": "in",
-   "detail": "90'+3'",
+   "status": "post",
+   "detail": "FT",
    "home": "AC Milan",
    "away": "Internazionale",
    "hs": "3",
    "as": "1",
    "venue": "San Siro"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401875002",
    "date": "2026-11-01T11:30Z",
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T21:40:53.448Z"
+ "updatedAt": "2026-10-31T22:34:56.396Z"
 }

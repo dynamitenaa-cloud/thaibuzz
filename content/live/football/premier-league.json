@@ -100,6 +100,18 @@
   },
   {
    "rank": 9,
+   "team": "Aston Villa",
+   "p": 9,
+   "w": 3,
+   "d": 3,
+   "l": 3,
+   "gf": 10,
+   "ga": 13,
+   "gd": -3,
+   "pts": 12
+  },
+  {
+   "rank": 10,
    "team": "Hull City",
    "p": 9,
    "w": 2,
@@ -111,7 +123,7 @@
    "pts": 11
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Leeds United",
    "p": 9,
    "w": 2,
@@ -123,7 +135,7 @@
    "pts": 11
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Newcastle United",
    "p": 8,
    "w": 3,
@@ -132,18 +144,6 @@
    "gf": 12,
    "ga": 14,
    "gd": -2,
-   "pts": 11
-  },
-  {
-   "rank": 12,
-   "team": "Aston Villa",
-   "p": 8,
-   "w": 3,
-   "d": 2,
-   "l": 3,
-   "gf": 9,
-   "ga": 12,
-   "gd": -3,
    "pts": 11
   },
   {
@@ -172,6 +172,18 @@
   },
   {
    "rank": 15,
+   "team": "Fulham",
+   "p": 9,
+   "w": 2,
+   "d": 3,
+   "l": 4,
+   "gf": 9,
+   "ga": 11,
+   "gd": -2,
+   "pts": 9
+  },
+  {
+   "rank": 16,
    "team": "Coventry City",
    "p": 9,
    "w": 3,
@@ -181,18 +193,6 @@
    "ga": 16,
    "gd": -7,
    "pts": 9
-  },
-  {
-   "rank": 16,
-   "team": "Fulham",
-   "p": 8,
-   "w": 2,
-   "d": 2,
-   "l": 4,
-   "gf": 8,
-   "ga": 10,
-   "gd": -2,
-   "pts": 8
   },
   {
    "rank": 17,
@@ -419,20 +419,20 @@
    "hs": "2",
    "as": "0",
    "venue": "Tottenham Hotspur Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879250",
    "date": "2026-10-31T20:00Z",
-   "status": "in",
-   "detail": "79'",
+   "status": "post",
+   "detail": "FT",
    "home": "Aston Villa",
    "away": "Fulham",
    "hs": "1",
    "as": "1",
    "venue": "Villa Park"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879246",
    "date": "2026-11-01T16:30Z",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T21:40:53.081Z"
+ "updatedAt": "2026-10-31T22:34:55.914Z"
 }

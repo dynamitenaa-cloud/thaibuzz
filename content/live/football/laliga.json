@@ -4,6 +4,18 @@
  "table": [
   {
    "rank": 1,
+   "team": "Barcelona",
+   "p": 11,
+   "w": 10,
+   "d": 0,
+   "l": 1,
+   "gf": 46,
+   "ga": 12,
+   "gd": 34,
+   "pts": 30
+  },
+  {
+   "rank": 2,
    "team": "Atlético Madrid",
    "p": 11,
    "w": 9,
@@ -13,18 +25,6 @@
    "ga": 8,
    "gd": 14,
    "pts": 28
-  },
-  {
-   "rank": 2,
-   "team": "Barcelona",
-   "p": 10,
-   "w": 9,
-   "d": 0,
-   "l": 1,
-   "gf": 40,
-   "ga": 11,
-   "gd": 29,
-   "pts": 27
   },
   {
    "rank": 3,
@@ -76,18 +76,6 @@
   },
   {
    "rank": 7,
-   "team": "Alavés",
-   "p": 10,
-   "w": 3,
-   "d": 3,
-   "l": 4,
-   "gf": 14,
-   "ga": 11,
-   "gd": 3,
-   "pts": 12
-  },
-  {
-   "rank": 8,
    "team": "Athletic Club",
    "p": 9,
    "w": 3,
@@ -99,7 +87,7 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 8,
    "team": "Villarreal",
    "p": 11,
    "w": 3,
@@ -111,7 +99,7 @@
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 9,
    "team": "Celta Vigo",
    "p": 11,
    "w": 2,
@@ -120,6 +108,18 @@
    "gf": 10,
    "ga": 10,
    "gd": 0,
+   "pts": 12
+  },
+  {
+   "rank": 10,
+   "team": "Alavés",
+   "p": 11,
+   "w": 3,
+   "d": 3,
+   "l": 5,
+   "gf": 15,
+   "ga": 17,
+   "gd": -2,
    "pts": 12
   },
   {
@@ -386,20 +386,20 @@
    "hs": "2",
    "as": "1",
    "venue": "Estadio La Cartuja"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882822",
    "date": "2026-10-31T20:00Z",
-   "status": "in",
-   "detail": "75'",
+   "status": "post",
+   "detail": "FT",
    "home": "Barcelona",
    "away": "Alavés",
-   "hs": "5",
-   "as": "0",
+   "hs": "6",
+   "as": "1",
    "venue": "Spotify Camp Nou"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882821",
    "date": "2026-11-01T13:00Z",
@@ -511,5 +511,5 @@
    "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-31T21:40:53.281Z"
+ "updatedAt": "2026-10-31T22:34:56.173Z"
 }
