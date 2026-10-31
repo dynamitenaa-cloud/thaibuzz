@@ -438,6 +438,105 @@
  "results": [],
  "fixtures": [
   {
+   "id": "401915311",
+   "date": "2026-11-03T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Galatasaray",
+   "away": "VfB Stuttgart",
+   "hs": "0",
+   "as": "0",
+   "venue": "RAMS Park"
+  },
+  {
+   "id": "401915310",
+   "date": "2026-11-03T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Shakhtar Donetsk",
+   "away": "Sporting CP",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stamford Bridge"
+  },
+  {
+   "id": "401915386",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Atlético Madrid",
+   "away": "Bayern Munich",
+   "hs": "0",
+   "as": "0",
+   "venue": "Riyadh Air Metropolitano"
+  },
+  {
+   "id": "401915387",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Barcelona",
+   "away": "Aston Villa",
+   "hs": "0",
+   "as": "0",
+   "venue": "Spotify Camp Nou"
+  },
+  {
+   "id": "401915384",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bodo/Glimt",
+   "away": "Lille",
+   "hs": "0",
+   "as": "0",
+   "venue": "Aspmyra Stadion"
+  },
+  {
+   "id": "401915307",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Feyenoord Rotterdam",
+   "away": "Internazionale",
+   "hs": "0",
+   "as": "0",
+   "venue": "De Kuip"
+  },
+  {
+   "id": "401915385",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "LASK Linz",
+   "away": "Slovan Bratislava",
+   "hs": "0",
+   "as": "0",
+   "venue": "Raiffeisen Arena (Linz)"
+  },
+  {
+   "id": "401915308",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Manchester United",
+   "away": "AS Roma",
+   "hs": "0",
+   "as": "0",
+   "venue": "Old Trafford"
+  },
+  {
+   "id": "401915309",
+   "date": "2026-11-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Villarreal",
+   "away": "Paris Saint-Germain",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio de la Cerámica"
+  },
+  {
    "id": "401915383",
    "date": "2026-11-04T17:45Z",
    "status": "pre",
@@ -537,5 +636,5 @@
    "venue": "Viking Stadion"
   }
  ],
- "updatedAt": "2026-10-31T11:34:56.627Z"
+ "updatedAt": "2026-10-31T12:48:49.786Z"
 }

@@ -348,8 +348,8 @@
   {
    "id": "401879248",
    "date": "2026-10-31T12:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "18'",
    "home": "Chelsea",
    "away": "Manchester United",
    "hs": "0",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T01:12:51.211Z"
+ "updatedAt": "2026-10-31T12:48:49.188Z"
 }

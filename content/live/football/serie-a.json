@@ -456,6 +456,39 @@
  ],
  "fixtures": [
   {
+   "id": "401874798",
+   "date": "2026-10-31T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bologna",
+   "away": "Monza",
+   "hs": "0",
+   "as": "0",
+   "venue": "Renato Dall'Ara"
+  },
+  {
+   "id": "401874990",
+   "date": "2026-10-31T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Udinese",
+   "away": "AS Roma",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Friuli"
+  },
+  {
+   "id": "401874795",
+   "date": "2026-10-31T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AC Milan",
+   "away": "Internazionale",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Siro"
+  },
+  {
    "id": "401875002",
    "date": "2026-11-01T11:30Z",
    "status": "pre",
@@ -588,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T11:34:55.924Z"
+ "updatedAt": "2026-10-31T12:48:49.575Z"
 }
