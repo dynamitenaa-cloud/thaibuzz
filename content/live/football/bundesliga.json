@@ -379,11 +379,11 @@
   {
    "id": "401884754",
    "date": "2026-10-31T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "52'",
    "home": "Bayern Munich",
    "away": "Borussia Dortmund",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Allianz Arena"
   },
@@ -476,5 +476,5 @@
    "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-10-31T16:37:22.058Z"
+ "updatedAt": "2026-10-31T18:46:00.937Z"
 }

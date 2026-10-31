@@ -415,10 +415,10 @@
    "id": "401878761",
    "date": "2026-10-31T17:30Z",
    "status": "in",
-   "detail": "1'",
+   "detail": "57'",
    "home": "Tottenham Hotspur",
    "away": "Crystal Palace",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Tottenham Hotspur Stadium"
   },
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T17:32:25.630Z"
+ "updatedAt": "2026-10-31T18:46:00.151Z"
 }
