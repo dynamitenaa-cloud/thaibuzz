@@ -359,12 +359,12 @@
   {
    "id": "401882820",
    "date": "2026-10-31T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "43'",
    "home": "Levante",
    "away": "Atlético Madrid",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Estadi Ciutat de València"
   },
   {
@@ -511,5 +511,5 @@
    "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-31T01:12:51.352Z"
+ "updatedAt": "2026-10-31T13:44:08.857Z"
 }
