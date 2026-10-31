@@ -360,7 +360,7 @@
    "id": "401879251",
    "date": "2026-10-31T15:00Z",
    "status": "in",
-   "detail": "35'",
+   "detail": "77'",
    "home": "AFC Bournemouth",
    "away": "Leeds United",
    "hs": "1",
@@ -371,10 +371,10 @@
    "id": "401879249",
    "date": "2026-10-31T15:00Z",
    "status": "in",
-   "detail": "34'",
+   "detail": "81'",
    "home": "Brentford",
    "away": "Nottingham Forest",
-   "hs": "1",
+   "hs": "2",
    "as": "0",
    "venue": "Gtech Community Stadium"
   },
@@ -382,29 +382,29 @@
    "id": "401879247",
    "date": "2026-10-31T15:00Z",
    "status": "in",
-   "detail": "34'",
+   "detail": "80'",
    "home": "Coventry City",
    "away": "Sunderland",
-   "hs": "1",
-   "as": "0",
+   "hs": "3",
+   "as": "1",
    "venue": "Coventry Building Society Arena"
   },
   {
    "id": "401878763",
    "date": "2026-10-31T15:00Z",
    "status": "in",
-   "detail": "33'",
+   "detail": "77'",
    "home": "Hull City",
    "away": "Ipswich Town",
-   "hs": "0",
-   "as": "1",
+   "hs": "2",
+   "as": "2",
    "venue": "The MKM Stadium"
   },
   {
    "id": "401879245",
    "date": "2026-10-31T15:00Z",
    "status": "in",
-   "detail": "34'",
+   "detail": "79'",
    "home": "Manchester City",
    "away": "Brighton & Hove Albion",
    "hs": "0",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T15:34:53.610Z"
+ "updatedAt": "2026-10-31T16:37:21.527Z"
 }

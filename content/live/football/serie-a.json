@@ -100,6 +100,18 @@
   },
   {
    "rank": 9,
+   "team": "Bologna",
+   "p": 10,
+   "w": 4,
+   "d": 2,
+   "l": 4,
+   "gf": 14,
+   "ga": 13,
+   "gd": 1,
+   "pts": 14
+  },
+  {
+   "rank": 10,
    "team": "Torino",
    "p": 9,
    "w": 4,
@@ -111,7 +123,7 @@
    "pts": 13
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Cagliari",
    "p": 9,
    "w": 4,
@@ -121,18 +133,6 @@
    "ga": 13,
    "gd": -5,
    "pts": 13
-  },
-  {
-   "rank": 11,
-   "team": "Bologna",
-   "p": 9,
-   "w": 3,
-   "d": 2,
-   "l": 4,
-   "gf": 12,
-   "ga": 12,
-   "gd": 0,
-   "pts": 11
   },
   {
    "rank": 12,
@@ -185,13 +185,13 @@
   {
    "rank": 16,
    "team": "Monza",
-   "p": 9,
+   "p": 10,
    "w": 2,
    "d": 1,
-   "l": 6,
-   "gf": 16,
-   "ga": 22,
-   "gd": -6,
+   "l": 7,
+   "gf": 17,
+   "ga": 24,
+   "gd": -7,
    "pts": 7
   },
   {
@@ -452,20 +452,20 @@
    "hs": "2",
    "as": "2",
    "venue": "Stadio Artemio Franchi"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874798",
    "date": "2026-10-31T14:00Z",
-   "status": "in",
-   "detail": "75'",
+   "status": "post",
+   "detail": "FT",
    "home": "Bologna",
    "away": "Monza",
    "hs": "2",
    "as": "1",
    "venue": "Renato Dall'Ara"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874990",
    "date": "2026-10-31T17:00Z",
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T15:34:54.061Z"
+ "updatedAt": "2026-10-31T16:37:21.876Z"
 }
