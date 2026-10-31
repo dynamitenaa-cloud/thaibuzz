@@ -469,12 +469,12 @@
   {
    "id": "401874990",
    "date": "2026-10-31T17:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "32'",
    "home": "Udinese",
    "away": "AS Roma",
    "hs": "0",
-   "as": "0",
+   "as": "2",
    "venue": "Stadio Friuli"
   },
   {
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T16:37:21.876Z"
+ "updatedAt": "2026-10-31T17:32:26.317Z"
 }

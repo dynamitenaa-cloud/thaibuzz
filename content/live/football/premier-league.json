@@ -5,13 +5,13 @@
   {
    "rank": 1,
    "team": "Manchester City",
-   "p": 8,
+   "p": 9,
    "w": 7,
    "d": 0,
-   "l": 1,
+   "l": 2,
    "gf": 20,
-   "ga": 9,
-   "gd": 11,
+   "ga": 10,
+   "gd": 10,
    "pts": 21
   },
   {
@@ -29,14 +29,14 @@
   {
    "rank": 3,
    "team": "Brighton & Hove Albion",
-   "p": 8,
-   "w": 5,
+   "p": 9,
+   "w": 6,
    "d": 1,
    "l": 2,
-   "gf": 23,
+   "gf": 24,
    "ga": 7,
-   "gd": 16,
-   "pts": 16
+   "gd": 17,
+   "pts": 19
   },
   {
    "rank": 4,
@@ -65,29 +65,53 @@
   {
    "rank": 6,
    "team": "Brentford",
-   "p": 8,
-   "w": 2,
+   "p": 9,
+   "w": 3,
    "d": 5,
    "l": 1,
-   "gf": 14,
+   "gf": 16,
    "ga": 9,
-   "gd": 5,
-   "pts": 11
+   "gd": 7,
+   "pts": 14
   },
   {
    "rank": 7,
-   "team": "Leeds United",
-   "p": 8,
-   "w": 2,
-   "d": 5,
-   "l": 1,
-   "gf": 9,
-   "ga": 6,
-   "gd": 3,
-   "pts": 11
+   "team": "AFC Bournemouth",
+   "p": 9,
+   "w": 3,
+   "d": 3,
+   "l": 3,
+   "gf": 14,
+   "ga": 13,
+   "gd": 1,
+   "pts": 12
   },
   {
    "rank": 8,
+   "team": "Hull City",
+   "p": 9,
+   "w": 2,
+   "d": 5,
+   "l": 2,
+   "gf": 11,
+   "ga": 10,
+   "gd": 1,
+   "pts": 11
+  },
+  {
+   "rank": 9,
+   "team": "Leeds United",
+   "p": 9,
+   "w": 2,
+   "d": 5,
+   "l": 2,
+   "gf": 9,
+   "ga": 8,
+   "gd": 1,
+   "pts": 11
+  },
+  {
+   "rank": 10,
    "team": "Newcastle United",
    "p": 8,
    "w": 3,
@@ -99,7 +123,7 @@
    "pts": 11
   },
   {
-   "rank": 9,
+   "rank": 11,
    "team": "Aston Villa",
    "p": 8,
    "w": 3,
@@ -111,19 +135,19 @@
    "pts": 11
   },
   {
-   "rank": 10,
-   "team": "Hull City",
-   "p": 8,
-   "w": 2,
-   "d": 4,
-   "l": 2,
-   "gf": 9,
-   "ga": 8,
-   "gd": 1,
-   "pts": 10
+   "rank": 12,
+   "team": "Ipswich Town",
+   "p": 9,
+   "w": 3,
+   "d": 2,
+   "l": 4,
+   "gf": 14,
+   "ga": 18,
+   "gd": -4,
+   "pts": 11
   },
   {
-   "rank": 11,
+   "rank": 13,
    "team": "Everton",
    "p": 8,
    "w": 2,
@@ -133,30 +157,6 @@
    "ga": 9,
    "gd": -1,
    "pts": 10
-  },
-  {
-   "rank": 12,
-   "team": "Ipswich Town",
-   "p": 8,
-   "w": 3,
-   "d": 1,
-   "l": 4,
-   "gf": 12,
-   "ga": 16,
-   "gd": -4,
-   "pts": 10
-  },
-  {
-   "rank": 13,
-   "team": "AFC Bournemouth",
-   "p": 8,
-   "w": 2,
-   "d": 3,
-   "l": 3,
-   "gf": 12,
-   "ga": 13,
-   "gd": -1,
-   "pts": 9
   },
   {
    "rank": 14,
@@ -172,6 +172,18 @@
   },
   {
    "rank": 15,
+   "team": "Coventry City",
+   "p": 9,
+   "w": 3,
+   "d": 0,
+   "l": 6,
+   "gf": 9,
+   "ga": 16,
+   "gd": -7,
+   "pts": 9
+  },
+  {
+   "rank": 16,
    "team": "Fulham",
    "p": 8,
    "w": 2,
@@ -183,7 +195,7 @@
    "pts": 8
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Manchester United",
    "p": 9,
    "w": 1,
@@ -195,7 +207,7 @@
    "pts": 7
   },
   {
-   "rank": 17,
+   "rank": 18,
    "team": "Crystal Palace",
    "p": 8,
    "w": 2,
@@ -207,39 +219,27 @@
    "pts": 7
   },
   {
-   "rank": 18,
+   "rank": 19,
    "team": "Nottingham Forest",
-   "p": 8,
+   "p": 9,
    "w": 1,
    "d": 3,
-   "l": 4,
+   "l": 5,
    "gf": 6,
-   "ga": 10,
-   "gd": -4,
-   "pts": 6
-  },
-  {
-   "rank": 19,
-   "team": "Coventry City",
-   "p": 8,
-   "w": 2,
-   "d": 0,
-   "l": 6,
-   "gf": 6,
-   "ga": 15,
-   "gd": -9,
+   "ga": 12,
+   "gd": -6,
    "pts": 6
   },
   {
    "rank": 20,
    "team": "Sunderland",
-   "p": 8,
+   "p": 9,
    "w": 1,
    "d": 2,
-   "l": 5,
-   "gf": 6,
-   "ga": 14,
-   "gd": -8,
+   "l": 6,
+   "gf": 7,
+   "ga": 17,
+   "gd": -10,
    "pts": 5
   }
  ],
@@ -353,25 +353,23 @@
    "hs": "2",
    "as": "0",
    "venue": "Stamford Bridge"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879251",
    "date": "2026-10-31T15:00Z",
-   "status": "in",
-   "detail": "77'",
+   "status": "post",
+   "detail": "FT",
    "home": "AFC Bournemouth",
    "away": "Leeds United",
-   "hs": "1",
+   "hs": "2",
    "as": "0",
    "venue": "Vitality Stadium"
   },
   {
    "id": "401879249",
    "date": "2026-10-31T15:00Z",
-   "status": "in",
-   "detail": "81'",
+   "status": "post",
+   "detail": "FT",
    "home": "Brentford",
    "away": "Nottingham Forest",
    "hs": "2",
@@ -381,8 +379,8 @@
   {
    "id": "401879247",
    "date": "2026-10-31T15:00Z",
-   "status": "in",
-   "detail": "80'",
+   "status": "post",
+   "detail": "FT",
    "home": "Coventry City",
    "away": "Sunderland",
    "hs": "3",
@@ -392,8 +390,8 @@
   {
    "id": "401878763",
    "date": "2026-10-31T15:00Z",
-   "status": "in",
-   "detail": "77'",
+   "status": "post",
+   "detail": "FT",
    "home": "Hull City",
    "away": "Ipswich Town",
    "hs": "2",
@@ -403,19 +401,21 @@
   {
    "id": "401879245",
    "date": "2026-10-31T15:00Z",
-   "status": "in",
-   "detail": "79'",
+   "status": "post",
+   "detail": "FT",
    "home": "Manchester City",
    "away": "Brighton & Hove Albion",
    "hs": "0",
    "as": "1",
    "venue": "Etihad Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401878761",
    "date": "2026-10-31T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "1'",
    "home": "Tottenham Hotspur",
    "away": "Crystal Palace",
    "hs": "0",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T16:37:21.527Z"
+ "updatedAt": "2026-10-31T17:32:25.630Z"
 }

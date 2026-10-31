@@ -100,18 +100,6 @@
   },
   {
    "rank": 9,
-   "team": "Celta Vigo",
-   "p": 10,
-   "w": 2,
-   "d": 6,
-   "l": 2,
-   "gf": 10,
-   "ga": 7,
-   "gd": 3,
-   "pts": 12
-  },
-  {
-   "rank": 10,
    "team": "Villarreal",
    "p": 11,
    "w": 3,
@@ -123,7 +111,31 @@
    "pts": 12
   },
   {
+   "rank": 10,
+   "team": "Celta Vigo",
+   "p": 11,
+   "w": 2,
+   "d": 6,
+   "l": 3,
+   "gf": 10,
+   "ga": 10,
+   "gd": 0,
+   "pts": 12
+  },
+  {
    "rank": 11,
+   "team": "Rayo Vallecano",
+   "p": 10,
+   "w": 3,
+   "d": 3,
+   "l": 4,
+   "gf": 15,
+   "ga": 20,
+   "gd": -5,
+   "pts": 12
+  },
+  {
+   "rank": 12,
    "team": "Deportivo",
    "p": 10,
    "w": 2,
@@ -135,7 +147,7 @@
    "pts": 11
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Espanyol",
    "p": 11,
    "w": 3,
@@ -147,7 +159,7 @@
    "pts": 11
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "Osasuna",
    "p": 10,
    "w": 3,
@@ -159,7 +171,7 @@
    "pts": 11
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "Racing Santander",
    "p": 10,
    "w": 3,
@@ -171,7 +183,7 @@
    "pts": 11
   },
   {
-   "rank": 15,
+   "rank": 16,
    "team": "Elche",
    "p": 10,
    "w": 2,
@@ -183,7 +195,7 @@
    "pts": 10
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Levante",
    "p": 11,
    "w": 2,
@@ -193,18 +205,6 @@
    "ga": 21,
    "gd": -5,
    "pts": 10
-  },
-  {
-   "rank": 17,
-   "team": "Rayo Vallecano",
-   "p": 9,
-   "w": 2,
-   "d": 3,
-   "l": 4,
-   "gf": 12,
-   "ga": 20,
-   "gd": -8,
-   "pts": 9
   },
   {
    "rank": 18,
@@ -364,20 +364,20 @@
    "hs": "0",
    "as": "2",
    "venue": "Estadi Ciutat de València"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882818",
    "date": "2026-10-31T15:15Z",
-   "status": "in",
-   "detail": "59'",
+   "status": "post",
+   "detail": "FT",
    "home": "Rayo Vallecano",
    "away": "Celta Vigo",
-   "hs": "2",
+   "hs": "3",
    "as": "0",
    "venue": "Estadio de Vallecas"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882825",
    "date": "2026-10-31T17:30Z",
@@ -511,5 +511,5 @@
    "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-31T16:37:21.771Z"
+ "updatedAt": "2026-10-31T17:32:26.063Z"
 }
