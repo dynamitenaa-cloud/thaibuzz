@@ -40,6 +40,18 @@
   },
   {
    "rank": 4,
+   "team": "Chelsea",
+   "p": 9,
+   "w": 5,
+   "d": 1,
+   "l": 3,
+   "gf": 19,
+   "ga": 15,
+   "gd": 4,
+   "pts": 16
+  },
+  {
+   "rank": 5,
    "team": "Liverpool",
    "p": 8,
    "w": 4,
@@ -49,18 +61,6 @@
    "ga": 8,
    "gd": 3,
    "pts": 15
-  },
-  {
-   "rank": 5,
-   "team": "Chelsea",
-   "p": 8,
-   "w": 4,
-   "d": 1,
-   "l": 3,
-   "gf": 17,
-   "ga": 15,
-   "gd": 2,
-   "pts": 13
   },
   {
    "rank": 6,
@@ -185,13 +185,13 @@
   {
    "rank": 16,
    "team": "Manchester United",
-   "p": 8,
+   "p": 9,
    "w": 1,
    "d": 4,
-   "l": 3,
+   "l": 4,
    "gf": 10,
-   "ga": 13,
-   "gd": -3,
+   "ga": 15,
+   "gd": -5,
    "pts": 7
   },
   {
@@ -342,20 +342,20 @@
    "hs": "0",
    "as": "0",
    "venue": "Stadium of Light"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879248",
    "date": "2026-10-31T12:30Z",
-   "status": "in",
-   "detail": "54'",
+   "status": "post",
+   "detail": "FT",
    "home": "Chelsea",
    "away": "Manchester United",
-   "hs": "1",
+   "hs": "2",
    "as": "0",
    "venue": "Stamford Bridge"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879251",
    "date": "2026-10-31T15:00Z",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T13:44:01.216Z"
+ "updatedAt": "2026-10-31T14:35:34.483Z"
 }

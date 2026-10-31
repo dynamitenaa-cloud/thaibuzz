@@ -458,12 +458,12 @@
   {
    "id": "401874798",
    "date": "2026-10-31T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "35'",
    "home": "Bologna",
    "away": "Monza",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Renato Dall'Ara"
   },
   {
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T12:48:49.575Z"
+ "updatedAt": "2026-10-31T14:35:34.846Z"
 }
