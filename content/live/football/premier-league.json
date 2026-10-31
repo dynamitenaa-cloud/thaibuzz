@@ -426,11 +426,11 @@
    "id": "401879250",
    "date": "2026-10-31T20:00Z",
    "status": "in",
-   "detail": "33'",
+   "detail": "79'",
    "home": "Aston Villa",
    "away": "Fulham",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Villa Park"
   },
   {
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T20:34:04.678Z"
+ "updatedAt": "2026-10-31T21:40:53.081Z"
 }
