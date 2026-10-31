@@ -392,11 +392,11 @@
   {
    "id": "401882822",
    "date": "2026-10-31T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "31'",
    "home": "Barcelona",
    "away": "Alavés",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Spotify Camp Nou"
   },
@@ -511,5 +511,5 @@
    "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-31T19:38:00.518Z"
+ "updatedAt": "2026-10-31T20:34:04.878Z"
 }

@@ -480,12 +480,12 @@
   {
    "id": "401874795",
    "date": "2026-10-31T19:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "45'",
    "home": "AC Milan",
    "away": "Internazionale",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "1",
    "venue": "San Siro"
   },
   {
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T19:38:00.850Z"
+ "updatedAt": "2026-10-31T20:34:05.013Z"
 }
