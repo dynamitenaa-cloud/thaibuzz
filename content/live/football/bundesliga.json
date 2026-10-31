@@ -5,26 +5,26 @@
   {
    "rank": 1,
    "team": "Bayern Munich",
-   "p": 7,
+   "p": 8,
    "w": 5,
-   "d": 2,
+   "d": 3,
    "l": 0,
-   "gf": 25,
-   "ga": 6,
+   "gf": 27,
+   "ga": 8,
    "gd": 19,
-   "pts": 17
+   "pts": 18
   },
   {
    "rank": 2,
    "team": "Borussia Dortmund",
-   "p": 7,
+   "p": 8,
    "w": 5,
-   "d": 2,
+   "d": 3,
    "l": 0,
-   "gf": 12,
-   "ga": 4,
+   "gf": 14,
+   "ga": 6,
    "gd": 8,
-   "pts": 17
+   "pts": 18
   },
   {
    "rank": 3,
@@ -373,20 +373,20 @@
    "hs": "2",
    "as": "0",
    "venue": "Weserstadion"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884754",
    "date": "2026-10-31T17:30Z",
-   "status": "in",
-   "detail": "52'",
+   "status": "post",
+   "detail": "FT",
    "home": "Bayern Munich",
    "away": "Borussia Dortmund",
-   "hs": "1",
-   "as": "0",
+   "hs": "2",
+   "as": "2",
    "venue": "Allianz Arena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884750",
    "date": "2026-11-01T14:30Z",
@@ -476,5 +476,5 @@
    "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-10-31T18:46:00.937Z"
+ "updatedAt": "2026-10-31T19:38:01.196Z"
 }

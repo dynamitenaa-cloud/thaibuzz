@@ -29,14 +29,14 @@
   {
    "rank": 3,
    "team": "AS Roma",
-   "p": 9,
-   "w": 6,
+   "p": 10,
+   "w": 7,
    "d": 3,
    "l": 0,
-   "gf": 23,
-   "ga": 8,
-   "gd": 15,
-   "pts": 21
+   "gf": 28,
+   "ga": 10,
+   "gd": 18,
+   "pts": 24
   },
   {
    "rank": 4,
@@ -196,18 +196,6 @@
   },
   {
    "rank": 17,
-   "team": "Udinese",
-   "p": 9,
-   "w": 1,
-   "d": 2,
-   "l": 6,
-   "gf": 9,
-   "ga": 18,
-   "gd": -9,
-   "pts": 5
-  },
-  {
-   "rank": 18,
    "team": "Fiorentina",
    "p": 9,
    "w": 1,
@@ -219,7 +207,7 @@
    "pts": 5
   },
   {
-   "rank": 19,
+   "rank": 18,
    "team": "Parma",
    "p": 9,
    "w": 1,
@@ -228,6 +216,18 @@
    "gf": 5,
    "ga": 15,
    "gd": -10,
+   "pts": 5
+  },
+  {
+   "rank": 19,
+   "team": "Udinese",
+   "p": 10,
+   "w": 1,
+   "d": 2,
+   "l": 7,
+   "gf": 11,
+   "ga": 23,
+   "gd": -12,
    "pts": 5
   },
   {
@@ -463,20 +463,20 @@
    "hs": "2",
    "as": "1",
    "venue": "Renato Dall'Ara"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874990",
    "date": "2026-10-31T17:00Z",
-   "status": "in",
-   "detail": "89'",
+   "status": "post",
+   "detail": "FT",
    "home": "Udinese",
    "away": "AS Roma",
    "hs": "2",
-   "as": "4",
+   "as": "5",
    "venue": "Stadio Friuli"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874795",
    "date": "2026-10-31T19:45Z",
@@ -621,5 +621,5 @@
    "venue": "Olimpico"
   }
  ],
- "updatedAt": "2026-10-31T18:46:00.707Z"
+ "updatedAt": "2026-10-31T19:38:00.850Z"
 }

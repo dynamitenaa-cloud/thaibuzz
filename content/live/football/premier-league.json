@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Tottenham Hotspur",
+   "p": 9,
+   "w": 3,
+   "d": 3,
+   "l": 3,
+   "gf": 10,
+   "ga": 10,
+   "gd": 0,
+   "pts": 12
+  },
+  {
+   "rank": 9,
    "team": "Hull City",
    "p": 9,
    "w": 2,
@@ -99,7 +111,7 @@
    "pts": 11
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Leeds United",
    "p": 9,
    "w": 2,
@@ -111,7 +123,7 @@
    "pts": 11
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Newcastle United",
    "p": 8,
    "w": 3,
@@ -123,7 +135,7 @@
    "pts": 11
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Aston Villa",
    "p": 8,
    "w": 3,
@@ -135,7 +147,7 @@
    "pts": 11
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Ipswich Town",
    "p": 9,
    "w": 3,
@@ -147,7 +159,7 @@
    "pts": 11
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "Everton",
    "p": 8,
    "w": 2,
@@ -157,18 +169,6 @@
    "ga": 9,
    "gd": -1,
    "pts": 10
-  },
-  {
-   "rank": 14,
-   "team": "Tottenham Hotspur",
-   "p": 8,
-   "w": 2,
-   "d": 3,
-   "l": 3,
-   "gf": 8,
-   "ga": 10,
-   "gd": -2,
-   "pts": 9
   },
   {
    "rank": 15,
@@ -209,13 +209,13 @@
   {
    "rank": 18,
    "team": "Crystal Palace",
-   "p": 8,
+   "p": 9,
    "w": 2,
    "d": 1,
-   "l": 5,
+   "l": 6,
    "gf": 9,
-   "ga": 19,
-   "gd": -10,
+   "ga": 21,
+   "gd": -12,
    "pts": 7
   },
   {
@@ -408,20 +408,20 @@
    "hs": "0",
    "as": "1",
    "venue": "Etihad Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401878761",
    "date": "2026-10-31T17:30Z",
-   "status": "in",
-   "detail": "57'",
+   "status": "post",
+   "detail": "FT",
    "home": "Tottenham Hotspur",
    "away": "Crystal Palace",
-   "hs": "1",
+   "hs": "2",
    "as": "0",
    "venue": "Tottenham Hotspur Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879250",
    "date": "2026-10-31T20:00Z",
@@ -511,5 +511,5 @@
    "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-10-31T18:46:00.151Z"
+ "updatedAt": "2026-10-31T19:38:00.223Z"
 }

@@ -41,14 +41,14 @@
   {
    "rank": 4,
    "team": "Real Betis",
-   "p": 10,
-   "w": 6,
+   "p": 11,
+   "w": 7,
    "d": 2,
    "l": 2,
-   "gf": 16,
-   "ga": 14,
-   "gd": 2,
-   "pts": 20
+   "gf": 18,
+   "ga": 15,
+   "gd": 3,
+   "pts": 23
   },
   {
    "rank": 5,
@@ -233,13 +233,13 @@
   {
    "rank": 20,
    "team": "Málaga",
-   "p": 10,
+   "p": 11,
    "w": 0,
    "d": 5,
-   "l": 5,
-   "gf": 7,
-   "ga": 19,
-   "gd": -12,
+   "l": 6,
+   "gf": 8,
+   "ga": 21,
+   "gd": -13,
    "pts": 5
   }
  ],
@@ -375,20 +375,20 @@
    "hs": "3",
    "as": "0",
    "venue": "Estadio de Vallecas"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882825",
    "date": "2026-10-31T17:30Z",
-   "status": "in",
-   "detail": "52'",
+   "status": "post",
+   "detail": "FT",
    "home": "Real Betis",
    "away": "Málaga",
    "hs": "2",
-   "as": "0",
+   "as": "1",
    "venue": "Estadio La Cartuja"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882822",
    "date": "2026-10-31T20:00Z",
@@ -511,5 +511,5 @@
    "venue": "Mestalla Stadium"
   }
  ],
- "updatedAt": "2026-10-31T18:46:00.415Z"
+ "updatedAt": "2026-10-31T19:38:00.518Z"
 }
