@@ -180,4 +180,6 @@ export const thaiDate = (iso: string) =>
 // 태국 매체를 다시 쓴 글은 사이트·페북용으로만 두고 구글 색인에서 제외 → 사이트 전체 품질 평가를 지킴
 // 색인: 한국 매체 원문 K-연예(origin=kr), 사람(편집자) 노트가 붙은 글. INDEX_POLICY=all 이면 예전처럼 전부 색인
 export const INDEX_ALL = (process.env.INDEX_POLICY || '').toLowerCase() === 'all';
-export const isIndexable = (p: Post) => INDEX_ALL || (p.format !== 'roundup' && (p.origin === 'kr' || !!p.editorNote?.trim()));
+// 편집자 노트는 60자 이상(실제 의견)일 때만 '사람이 더한 가치'로 인정 — 짧은 질문·잡담은 제외
+export const hasRealNote = (p: Post) => [...(p.editorNote || '').trim()].length >= 60;
+export const isIndexable = (p: Post) => INDEX_ALL || (p.format !== 'roundup' && (p.origin === 'kr' || hasRealNote(p)));

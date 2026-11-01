@@ -53,6 +53,10 @@ for (const u of upd.result || []) {
   if (/^(삭제|ลบ|delete)$/i.test(m.text.trim())) {
     delete post.editorNote; delete post.editorNoteAt;
     await api('sendMessage', { chat_id: CHAT, reply_to_message_id: m.message_id, text: '🗑 편집자 노트 삭제 — 다음 배포에 반영' });
+  } else if ([...m.text.trim()].length < 25) {
+    // 짧은 답장(잡담·테스트·질문 한마디)은 사이트에 "편집자 시선"으로 붙이지 않음
+    await api('sendMessage', { chat_id: CHAT, reply_to_message_id: m.message_id, text: '⚠️ 너무 짧아서 반영 안 함 (25자 이상)\n\n편집자 노트는 사이트에 "한국인 편집자의 시선"으로 공개됩니다. 한국 사람만 아는 한두 문장으로 써 주세요.\n예: "이 배우는 한국에선 드라마보다 광고로 더 유명해요. 이번 작품이 첫 주연이라 한국 반응도 뜨거워요."\n\n지우려면 "삭제"라고 답장' });
+    continue;
   } else {
     try {
       post.editorNote = (await toThai(m.text)).slice(0, 400);

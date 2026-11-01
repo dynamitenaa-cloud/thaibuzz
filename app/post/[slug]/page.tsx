@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     description: p.excerpt,
     keywords: [p.keyword, ...p.tags],
     alternates: { canonical: url },
-    robots: isIndexable(p) ? undefined : { index: false, follow: true },
+    robots: isIndexable(p) ? { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } : { index: false, follow: true },
     openGraph: {
       type: 'article', siteName: SITE.name, locale: SITE.locale, url, title: p.title, description: p.excerpt,
       images: [{ url: ogImage(p), width: 1200, height: 630, alt: p.imageAlt }],
