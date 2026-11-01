@@ -359,12 +359,12 @@
   {
    "id": "401882821",
    "date": "2026-11-01T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "41'",
    "home": "Getafe",
    "away": "Sevilla",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Estadio Coliseum"
   },
   {
@@ -522,5 +522,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T01:04:12.568Z"
+ "updatedAt": "2026-11-01T13:45:51.887Z"
 }
