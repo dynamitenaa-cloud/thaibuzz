@@ -492,10 +492,10 @@
    "id": "401874949",
    "date": "2026-11-01T19:45Z",
    "status": "in",
-   "detail": "HT",
+   "detail": "90'+2'",
    "home": "Juventus",
    "away": "Napoli",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Allianz Stadium"
   },
@@ -632,5 +632,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T20:35:37.341Z"
+ "updatedAt": "2026-11-01T21:36:37.304Z"
 }
