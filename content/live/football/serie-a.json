@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874958",
-   "date": "2026-10-24T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Cagliari",
-   "away": "Bologna",
-   "hs": "0",
-   "as": "2",
-   "venue": "Unipol Domus"
-  },
-  {
-   "id": "401874961",
-   "date": "2026-10-24T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Como",
-   "away": "Sassuolo",
-   "hs": "2",
-   "as": "0",
-   "venue": "Giuseppe Sinigaglia"
-  },
-  {
-   "id": "401874948",
-   "date": "2026-10-24T16:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Napoli",
-   "away": "AS Roma",
-   "hs": "3",
-   "as": "3",
-   "venue": "Stadio Diego Armando Maradona"
-  },
-  {
-   "id": "401874955",
-   "date": "2026-10-24T18:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Lazio",
-   "away": "Parma",
-   "hs": "2",
-   "as": "1",
-   "venue": "Olimpico"
-  },
-  {
    "id": "401875036",
    "date": "2026-10-25T11:30Z",
    "status": "post",
@@ -619,7 +575,62 @@
    "hs": "0",
    "as": "0",
    "venue": "Olimpico"
+  },
+  {
+   "id": "401874810",
+   "date": "2026-11-08T11:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Napoli",
+   "away": "Lazio",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Diego Armando Maradona"
+  },
+  {
+   "id": "401875018",
+   "date": "2026-11-08T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Genoa",
+   "away": "AC Milan",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Luigi Ferraris"
+  },
+  {
+   "id": "401874800",
+   "date": "2026-11-08T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Monza",
+   "away": "Atalanta",
+   "hs": "0",
+   "as": "0",
+   "venue": "U-Power Stadium"
+  },
+  {
+   "id": "401874808",
+   "date": "2026-11-08T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Internazionale",
+   "away": "Como",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Siro"
+  },
+  {
+   "id": "401875003",
+   "date": "2026-11-08T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Fiorentina",
+   "away": "Juventus",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-10-31T22:34:56.396Z"
+ "updatedAt": "2026-11-01T01:04:12.936Z"
 }
