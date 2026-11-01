@@ -5,6 +5,9 @@ import crypto from 'node:crypto';
 import { trendsTH, newsTopicTH, nicheCandidates, koreaCandidates, suggestions, searchNews, fetchArticleText, similarity, jaccard, resolveGoogleNewsUrl } from './lib/sources.mjs';
 import { writeArticle, qualityCheck, normalize, polish, FatalError, QuotaExhausted, hangulTokens, fixHangul, isTransient } from './lib/writer.mjs';
 
+// 투표 선택지: 2~3개, 중복·빈 값 제거, 28자 이내. 부족하면 투표 없이 이모지 반응만
+const cleanPoll = (o) => { const a = [...new Set((o || []).map((x) => String(x).trim()).filter((x) => x && [...x].length <= 28))].slice(0, 3); return a.length >= 2 ? a : undefined; };
+
 // 좋은 모델을 쓸 검색량 기준 (Google Trends approx_traffic)
 const PREMIUM_TRAFFIC = Number(process.env.PREMIUM_TRAFFIC || 10000);
 // 다른 매체 기사를 모아 싣는 사이트 → "원 보도" 출처로 치지 않음
@@ -181,6 +184,7 @@ if (budget > 0) {
         format: w.format,
         hook: a.socialHook?.trim() || undefined,
         question: a.socialQuestion?.trim() || undefined,
+        poll: cleanPoll(a.pollOptions),
         // 한국 시각 코너 (K-연예 글만, 한국 출처 기반). 편집자 노트(사람)와는 별개 표기
         koreaAngle: a.category === KR_CAT && a.koreaAngle?.trim() ? a.koreaAngle.trim() : undefined,
         ...(c.lang === 'ko' ? { origin: 'kr' } : {}),

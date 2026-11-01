@@ -5,6 +5,8 @@ import { SITE } from '@/lib/site';
 import { EDITOR, editorId, editorUrl } from '@/lib/editor';
 import { layoutOf } from '@/lib/article-layout';
 import { CommentCta } from '@/components/CommentCta';
+import { Engage } from '@/components/Engage';
+import { AskEditor } from '@/components/AskEditor';
 import { leagueForPost } from '@/lib/football';
 import { Card } from '@/components/PostCard';
 import { Sidebar } from '@/components/Listing';
@@ -254,7 +256,11 @@ export default async function PostPage({ params }: P) {
             <a className="fb-cta" href={`/football/${lg.slug}/`}>⚽ <span><b>ตารางคะแนน{lg.name}ล่าสุด</b><small>ผลบอล และโปรแกรมนัดต่อไป เวลาไทย อัปเดตทุกชั่วโมง ›</small></span></a>
           ) : null; })()}
 
+          {p.format !== 'roundup' && <Engage slug={p.slug} question={p.question} options={p.poll} />}
+
           <CommentCta slug={p.slug} question={p.question} />
+
+          {p.category === 'K-บันเทิง' && <AskEditor slug={p.slug} compact />}
 
           <AdSlot />
 

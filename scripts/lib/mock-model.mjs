@@ -25,6 +25,7 @@ export default new MockLanguageModelV4({
       koreaAngle: '',
       socialHook: 'งานนี้แฟน ๆ กรี๊ดสนั่น',
       socialQuestion: 'คิดว่ายังไงกันบ้าง?',
+      pollOptions: ['เห็นด้วย', 'ไม่เห็นด้วย'],
     };
     return {
       content: [{ type: 'text', text: JSON.stringify(article) }],

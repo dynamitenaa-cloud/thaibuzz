@@ -471,3 +471,38 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .wx-days li { display: grid; grid-template-columns: 96px 30px 1fr 64px 90px; gap: 8px; align-items: center; padding: 10px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
 .wx-dn { font-weight: 600; } .wx-dt { color: var(--fg-2); } .wx-rp { color: #0284c7; font-size: .88rem; } .wx-mm { text-align: right; font-variant-numeric: tabular-nums; }
 @media (max-width: 520px) { .wx-days li { grid-template-columns: 78px 26px 1fr 58px 72px; font-size: .86rem; } }
+
+/* ============ 참여 (투표·반응·에디터에게 질문) ============ */
+.engage { margin: 24px 0; min-height: 120px; }
+.poll { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.poll h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.poll-opts { display: grid; gap: 8px; }
+.poll-opt { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg-soft); color: var(--fg); font: inherit; font-weight: 600; cursor: pointer; overflow: hidden; transition: border-color .15s, transform .1s; }
+.poll-opt:not(:disabled):hover { border-color: var(--brand); }
+.poll-opt:not(:disabled):active { transform: scale(.99); }
+.poll-opt:disabled { cursor: default; opacity: 1; }
+.poll-opt .bar { position: absolute; inset: 0 auto 0 0; background: var(--brand-soft); transition: width .5s ease; z-index: 0; }
+.poll-opt.mine { border-color: var(--brand); } .poll-opt.mine .bar { background: color-mix(in srgb, var(--brand) 22%, transparent); }
+.poll-opt .lbl, .poll-opt b { position: relative; z-index: 1; }
+.poll-note { display: block; margin-top: 8px; color: var(--mut); min-height: 1.2em; }
+.reacts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.react { display: inline-flex; align-items: center; gap: 6px; min-width: 56px; justify-content: center; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: 99px; background: var(--surface); color: var(--fg); font: inherit; font-size: 1.05rem; cursor: pointer; }
+.react b { font-size: .85rem; color: var(--mut); font-weight: 600; min-width: 0; }
+.react:not(:disabled):hover { border-color: var(--brand); }
+.react.on { border-color: var(--brand); background: var(--brand-soft); } .react.on b { color: var(--brand-ink); }
+.react:disabled { cursor: default; }
+.ask { border: 1px dashed var(--line); border-radius: var(--radius); padding: 16px; margin: 20px 0; background: var(--bg-soft); }
+.ask label { display: block; margin-bottom: 8px; } .ask label small { display: block; color: var(--mut); margin-top: 2px; }
+.ask textarea { width: 100%; resize: vertical; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); font: inherit; }
+.ask textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+.ask .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.ask-row { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.ask-row small { color: var(--mut); }
+.ask-row button { padding: 9px 20px; border: 0; border-radius: 99px; background: var(--brand); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.ask-row button:disabled { opacity: .45; cursor: not-allowed; }
+.ask-ok { margin: 0; } .ask-err { margin: 8px 0 0; color: var(--brand-ink); }
+.qa-list { display: grid; gap: 16px; margin: 20px 0; }
+.qa-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; background: var(--surface); }
+.qa-item h2 { font-size: 1.1rem; margin: 0 0 10px; } .qa-item p { margin: 0 0 8px; } .qa-item small { color: var(--mut); }
+.qa-item .by { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-weight: 600; font-size: .9rem; }
+.qa-item .by img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }

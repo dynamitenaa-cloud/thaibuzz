@@ -44,6 +44,35 @@ for (const u of upd.result || []) {
   last = Math.max(last, u.update_id + 1);
   const m = u.message;
   if (!m || String(m.chat?.id) !== CHAT || !m.text) continue;
+  // 독자 질문(/api/ask 가 보낸 "[Q-xxxxxxxx]" 메시지)에 대한 답장 → content/qa/<id>.json (사이트 /ask/ 에 게시)
+  const qm = (m.reply_to_message?.text || '').match(/\[Q-([0-9a-f]{8})\]/);
+  if (qm) {
+    const id = qm[1];
+    const file = path.join('content', 'qa', `${id}.json`);
+    const say = (text) => api('sendMessage', { chat_id: CHAT, reply_to_message_id: m.message_id, text });
+    if (/^(삭제|ลบ|delete)$/i.test(m.text.trim())) {
+      if (fs.existsSync(file)) { fs.rmSync(file); changed++; await say('🗑 Q&A 삭제 — 다음 배포에 반영'); }
+      continue;
+    }
+    if ([...m.text.trim()].length < 25) { await say('⚠️ 답변이 너무 짧아요 (25자 이상). 한국어로 써도 태국어로 번역됩니다.'); continue; }
+    const q = (m.reply_to_message.text.split('\n\n')[1] || '').trim();
+    if (!q) continue;
+    try {
+      const a = (await toThai(m.text)).slice(0, 900);
+      const slug = m.reply_to_message.text.match(/\/post\/([0-9]{8}-[0-9a-f]{8})\//)?.[1];
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      fs.writeFileSync(file, JSON.stringify({ id, q, a, at: new Date().toISOString(), ...(slug ? { slug } : {}) }, null, 2));
+      changed++;
+      console.log(`notes: Q&A ${id} 게시`);
+      await say(`✅ /ask/ 에 게시됩니다 (다음 배포)
+
+Q. ${q}
+A. ${a}
+
+지우려면 "삭제"라고 답장`);
+    } catch (e) { console.warn('notes: Q&A 번역 실패', e.message); await say('⚠️ 번역 실패 — 잠시 후 다시 답장해 주세요'); }
+    continue;
+  }
   // 답장 대상 메시지(영상 캡션)에 들어 있는 글 ID
   const slug = (m.reply_to_message?.caption || m.reply_to_message?.text || '').match(/🆔\s*([0-9]{8}-[0-9a-f]{8})/)?.[1];
   if (!slug) continue;

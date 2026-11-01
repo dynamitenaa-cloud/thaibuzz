@@ -26,6 +26,7 @@ const Article = z.object({
   koreaAngle: z.string().describe('เฉพาะข่าว K-บันเทิง: 2-4 ประโยค "ในเกาหลีมองเรื่องนี้อย่างไร" — บริบทที่คนเกาหลีรู้กันอยู่แล้วแต่คนไทยอาจไม่รู้ (เช่น คนนี้ดังในเกาหลีจากอะไร รายการนี้สำคัญแค่ไหน สื่อ/แฟนเกาหลีตอบรับอย่างไรตามที่แหล่งข่าวระบุ) ใช้เฉพาะข้อมูลจากแหล่งข่าวเกาหลี เขียนเป็นบุคคลที่สาม ห้ามใช้ "ผม/ฉัน" ถ้าไม่ใช่ข่าวเกาหลีหรือไม่มีข้อมูลพอ ให้เป็นสตริงว่าง'),
   socialHook: z.string().describe('แคปชันโซเชียล 1 บรรทัด ไม่เกิน 60 ตัวอักษร ภาษาพูดแบบเพจข่าวบันเทิงไทย (เช่น "งานนี้แฟน ๆ กรี๊ดสนั่น" "ไม่คิดว่าจะมาไวขนาดนี้") ห้ามหลอกคลิก ห้ามอีโมจิ'),
   socialQuestion: z.string().describe('คำถามชวนคอมเมนต์ 1 ประโยค ไม่เกิน 60 ตัวอักษร เจาะจงกับเรื่องนี้ (เช่น "ทีมไหนจะได้ไปต่อ?" "คิดว่าคู่นี้จะกลับมาคืนดีไหม?") ภาษาพูด เป็นกันเอง'),
+  pollOptions: z.array(z.string()).describe('ตัวเลือกโหวต 2-3 ข้อ ตอบ socialQuestion ได้ในการกดครั้งเดียว แต่ละข้อสั้นไม่เกิน 28 ตัวอักษร มีอีโมจิได้ 1 ตัว ไม่ซ้ำกัน ไม่ชี้นำ ไม่เกี่ยวกับการเมือง/ศาสนา/สถาบัน (เช่น "เห็นด้วย" / "ไม่เห็นด้วย" / "ยังไม่แน่ใจ" หรือ "ทีมเหย้า" / "ทีมเยือน" / "เสมอ") ถ้าคำถามไม่เหมาะกับการโหวต ให้เป็นอาร์เรย์ว่าง'),
 });
 
 const SYSTEM = `คุณคือนักข่าวบันเทิงและเทรนด์ภาษาไทยที่มีประสบการณ์ เขียนแบบคนจริง อ่านง่าย กระชับ เป็นกันเอง เหมือนสื่อออนไลน์ไทยชั้นนำ ไม่ใช่สำนวนหุ่นยนต์
@@ -288,7 +289,7 @@ export function qualityCheck(a, format = 'standard') {
 
 // ── 한글 섞임 복구: 한국 원문 기사에서 이름·매체명이 한글로 남는 경우(거부 사유 1위) → 토큰만 모아 한 번 더 물어 교체 ──
 const HANGUL_TOKEN = /[^\s"“”'‘’()\[\]:,]*[가-힣]+[^\s"“”'‘’()\[\]:,]*/g;
-const VISIBLE = (a) => [a.title, a.excerpt, a.thumbText, ...(a.summary || []), ...(a.sections || []).flatMap((s) => [s.heading, ...s.paragraphs]), ...(a.faq || []).flatMap((q) => [q.q, q.a]), ...(a.tags || []), ...(a.timeline || []).map((t) => t.what), a.koreaAngle || '', a.imageAlt || '', a.socialHook || '', a.socialQuestion || ''];
+const VISIBLE = (a) => [a.title, a.excerpt, a.thumbText, ...(a.summary || []), ...(a.sections || []).flatMap((s) => [s.heading, ...s.paragraphs]), ...(a.faq || []).flatMap((q) => [q.q, q.a]), ...(a.tags || []), ...(a.timeline || []).map((t) => t.what), a.koreaAngle || '', a.imageAlt || '', a.socialHook || '', a.socialQuestion || '', ...(a.pollOptions || [])];
 export const hangulTokens = (a) => [...new Set(VISIBLE(a).join(' ').match(HANGUL_TOKEN) || [])];
 const mapStrings = (v, fn) => (typeof v === 'string' ? fn(v) : Array.isArray(v) ? v.map((x) => mapStrings(x, fn)) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, mapStrings(x, fn)])) : v);
 export async function fixHangul(a, model) {

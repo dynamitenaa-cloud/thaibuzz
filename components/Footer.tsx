@@ -38,6 +38,7 @@ export default function Footer() {
             <h3>เกี่ยวกับเรา</h3>
             <ul>
               <li><a href="/about/">เกี่ยวกับ {SITE.name}</a></li>
+              <li><a href="/ask/">ถามบรรณาธิการชาวเกาหลี</a></li>
               <li><a href={editorUrl()}>บรรณาธิการ: {EDITOR.name}</a></li>
               <li><a href="/editorial-policy/">นโยบายกองบรรณาธิการ</a></li>
               <li><a href="/privacy/">นโยบายความเป็นส่วนตัว</a></li>

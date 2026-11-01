@@ -28,6 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...[...getTags()].filter(([s, t]) => t.count >= MIN_HUB_INDEX && (INDEX_ALL || fs.existsSync(path.join(process.cwd(), 'content', 'hubs', `${s}.json`)))).map(([s]) => ({ url: `${SITE.url}/tag/${s}/`, priority: 0.4 })),
     { url: `${SITE.url}/hub/`, changeFrequency: 'daily' as const, priority: 0.6 },
     { url: `${SITE.url}${editorUrl()}`, lastModified: latest, priority: 0.5 },
-    ...['about', 'editorial-policy', 'privacy', 'terms', 'contact'].map((s) => ({ url: `${SITE.url}/${s}/`, priority: 0.2 })),
+    ...['about', 'ask', 'editorial-policy', 'privacy', 'terms', 'contact'].map((s) => ({ url: `${SITE.url}/${s}/`, priority: 0.2 })),
   ];
 }
