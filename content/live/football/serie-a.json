@@ -459,7 +459,7 @@
    "id": "401874782",
    "date": "2026-11-01T14:00Z",
    "status": "in",
-   "detail": "74'",
+   "detail": "79'",
    "home": "Frosinone",
    "away": "Torino",
    "hs": "1",
@@ -470,7 +470,7 @@
    "id": "401874983",
    "date": "2026-11-01T14:00Z",
    "status": "in",
-   "detail": "76'",
+   "detail": "82'",
    "home": "Lazio",
    "away": "Cagliari",
    "hs": "1",
@@ -632,5 +632,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T15:35:54.749Z"
+ "updatedAt": "2026-11-01T15:41:18.563Z"
 }
