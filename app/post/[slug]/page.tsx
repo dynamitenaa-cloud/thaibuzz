@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
+import { isIndexable, catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { EDITOR, editorId, editorUrl } from '@/lib/editor';
 import { layoutOf } from '@/lib/article-layout';
@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     description: p.excerpt,
     keywords: [p.keyword, ...p.tags],
     alternates: { canonical: url },
+    robots: isIndexable(p) ? undefined : { index: false, follow: true },
     openGraph: {
       type: 'article', siteName: SITE.name, locale: SITE.locale, url, title: p.title, description: p.excerpt,
       images: [{ url: ogImage(p), width: 1200, height: 630, alt: p.imageAlt }],

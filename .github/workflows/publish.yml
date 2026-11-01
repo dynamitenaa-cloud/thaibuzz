@@ -46,6 +46,7 @@ concurrency:
 
 env:
   NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+  INDEX_POLICY: ${{ vars.INDEX_POLICY }}
   NEXT_PUBLIC_FB_APP_ID: ${{ vars.FB_APP_ID }}
   NEXT_PUBLIC_SITE_NAME: ${{ vars.SITE_NAME }}
   NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}

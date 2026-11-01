@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { catOf, getTags, HUB_LABEL, hubKind, hubPosts, MIN_HUB_INDEX, MIN_TAG_POSTS, postUrl, tagSlug, tagUrl, thaiDate, type Post } from '@/lib/posts';
+import { INDEX_ALL, catOf, getTags, HUB_LABEL, hubKind, hubPosts, MIN_HUB_INDEX, MIN_TAG_POSTS, postUrl, tagSlug, tagUrl, thaiDate, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { Listing } from '@/components/Listing';
 import JsonLd from '@/components/JsonLd';
@@ -60,7 +60,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     alternates: { canonical: path },
     openGraph: og(path, title, { description, ...(d.posts[0]?.thumb ? { images: [{ url: d.posts[0].thumb, width: 1200, height: 630 }] } : {}) }),
     // 글이 MIN_HUB_INDEX 개 미만이면 아직 빈약 → 색인 제외 (링크는 따라가게)
-    robots: d.posts.length >= MIN_HUB_INDEX ? undefined : { index: false, follow: true },
+    // 소개문(content/hubs) 있는 허브만 색인 — 글 목록뿐인 허브는 얇은 페이지로 보임
+    robots: d.posts.length >= MIN_HUB_INDEX && (INDEX_ALL || ix) ? undefined : { index: false, follow: true },
   };
 }
 

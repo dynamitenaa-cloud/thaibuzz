@@ -14,7 +14,8 @@ export function categoryMeta(slug: string, page = 1): Metadata {
   const path = page > 1 ? `/category/${slug}/page/${page}/` : `/category/${slug}/`;
   const count = getPosts().filter((p) => p.category === c.name).length;
   // หน้าว่าง/บาง ไม่ให้ index (กัน thin content) — sitemap.ts 도 같은 기준(categoryIndexable) 사용
-  const thin = page > pageCount(count) || !categoryIndexable(count);
+  // 태국 매체 재작성 글이 대부분인 카테고리는 색인 제외 (K-บันเทิง 만 색인). INDEX_POLICY=all 이면 전부
+  const thin = page > pageCount(count) || !categoryIndexable(count) || ((process.env.INDEX_POLICY || '').toLowerCase() !== 'all' && slug !== 'korea');
   // "ข่าวทั่วไป" 처럼 이미 "ข่าว" 로 시작하는 이름에 접두어가 중복되지 않게
   // K-บันเทิง 는 라틴 문자로 시작해 "ข่าวK-…" 가 어색 → 검색어에 맞는 별도 표기
   const label = c.slug === 'korea' ? 'ข่าวบันเทิงเกาหลี' : c.name.startsWith('ข่าว') ? c.name : `ข่าว${c.name}`;

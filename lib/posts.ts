@@ -18,6 +18,7 @@ export type Post = {
   tags: string[];
   entities?: { name: string; type: 'person' | 'work' | 'group' | 'other' }[]; // 핵심 인물/작품 (허브 페이지 분류)
   category: string;
+  origin?: string; // 'kr' = 한국 매체 원문에서 작성
   koreaAngle?: string; // 한국 시각 코너 (AI, 한국 출처 기반 — K-연예 글만)
   roundup?: { slug: string; title: string; line: string; category: string; thumbSm: string }[]; // 아침 정리 코너 (scripts/roundup.mjs)
   editorNote?: string; // 편집자(사람)가 남긴 코멘트 (태국어)
@@ -174,3 +175,9 @@ export const thaiDate = (iso: string) =>
     hour: '2-digit',
     minute: '2-digit',
   });
+
+// ── 구글 색인 정책 (2026-11-01) ──
+// 태국 매체를 다시 쓴 글은 사이트·페북용으로만 두고 구글 색인에서 제외 → 사이트 전체 품질 평가를 지킴
+// 색인: 한국 매체 원문 K-연예(origin=kr), 사람(편집자) 노트가 붙은 글. INDEX_POLICY=all 이면 예전처럼 전부 색인
+export const INDEX_ALL = (process.env.INDEX_POLICY || '').toLowerCase() === 'all';
+export const isIndexable = (p: Post) => INDEX_ALL || (p.format !== 'roundup' && (p.origin === 'kr' || !!p.editorNote?.trim()));
