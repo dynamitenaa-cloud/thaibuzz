@@ -9,7 +9,7 @@ on:
       posts:
         description: '추천 글 개수'
         type: string
-        default: '2'
+        default: '3'
       dry:
         description: '전송 없이 캡션만 로그로 확인'
         type: boolean
@@ -38,7 +38,10 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GROUP_KIT_POSTS: ${{ inputs.posts || '2' }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FACEBOOK_URL: ${{ vars.FACEBOOK_URL }}
+          GROUP_KIT_POSTS: ${{ inputs.posts || '3' }}
       - uses: actions/cache/save@v6
         if: ${{ always() }}
         with:
