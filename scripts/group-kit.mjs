@@ -29,8 +29,8 @@ const now = Date.now();
 const num = (x) => Number(x) || 0;
 const readPost = (slug) => { try { return JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8')); } catch { return null; } };
 // 정치·사건성·도박 주제는 그룹 공유에서 제외 (커뮤니티 분쟁·삭제·계정 제한 위험)
-const RISKY = /การเมือง|เลือกตั้ง|รัฐบาล|พรรค|ศาล|คดี|ฆาตกรรม|ข่มขืน|อุบัติเหตุ|เสียชีวิต|พนัน|หวย|ลอตเตอรี่/;
-const okTopic = (p) => !RISKY.test([p.title, p.keyword, ...(p.tags || [])].join(' '));
+const RISKY = /การเมือง|เลือกตั้ง|รัฐบาล|พรรค|ศาล|คดี|ทนาย|ตำรวจ|จับกุม|ฟ้อง|หมิ่น|ฆาตกรรม|ข่มขืน|อุบัติเหตุ|เสียชีวิต|พนัน|หวย|ลอตเตอรี่/;
+const okTopic = (p) => !RISKY.test([p.title, p.keyword, p.excerpt, ...(p.summary || []), ...(p.tags || [])].join(' '));
 
 const get = async (p, params = {}) => {
   const u = new URL(`${API}/${p}`);
