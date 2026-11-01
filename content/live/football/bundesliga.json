@@ -324,8 +324,8 @@
   {
    "id": "401884750",
    "date": "2026-11-01T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "7'",
    "home": "1. FC Union Berlin",
    "away": "FC Cologne",
    "hs": "0",
@@ -443,5 +443,5 @@
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-01T01:04:13.384Z"
+ "updatedAt": "2026-11-01T14:37:27.186Z"
 }
