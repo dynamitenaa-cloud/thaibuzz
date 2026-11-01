@@ -21,7 +21,7 @@ export function categoryMeta(slug: string, page = 1): Metadata {
   const label = c.slug === 'korea' ? 'ข่าวบันเทิงเกาหลี' : c.name.startsWith('ข่าว') ? c.name : `ข่าว${c.name}`;
   const title = `${label}ล่าสุด${page > 1 ? ` หน้า ${page}` : ''}`;
   return {
-    robots: thin ? { index: false, follow: true } : undefined,
+    robots: thin ? { index: false, follow: true } : { index: true, follow: true, 'max-image-preview': 'large' as const, 'max-snippet': -1 },
     title,
     description: c.slug === 'korea'
       ? 'ข่าว K-pop ไอดอล ซีรีส์เกาหลี และศิลปินไทยในวงการเกาหลี เรียบเรียงจากสื่อเกาหลีต้นฉบับโดยบรรณาธิการชาวเกาหลี อัปเดตตลอด 24 ชั่วโมง'
