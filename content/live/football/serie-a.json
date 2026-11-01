@@ -76,26 +76,26 @@
   },
   {
    "rank": 7,
-   "team": "Napoli",
-   "p": 9,
-   "w": 4,
+   "team": "Juventus",
+   "p": 10,
+   "w": 5,
    "d": 2,
    "l": 3,
-   "gf": 17,
-   "ga": 11,
-   "gd": 6,
-   "pts": 14
+   "gf": 13,
+   "ga": 10,
+   "gd": 3,
+   "pts": 17
   },
   {
    "rank": 8,
-   "team": "Juventus",
-   "p": 9,
+   "team": "Napoli",
+   "p": 10,
    "w": 4,
    "d": 2,
-   "l": 3,
-   "gf": 11,
-   "ga": 10,
-   "gd": 1,
+   "l": 4,
+   "gf": 17,
+   "ga": 13,
+   "gd": 4,
    "pts": 14
   },
   {
@@ -485,20 +485,20 @@
    "hs": "1",
    "as": "2",
    "venue": "Via Del Mare"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874949",
    "date": "2026-11-01T19:45Z",
-   "status": "in",
-   "detail": "90'+2'",
+   "status": "post",
+   "detail": "FT",
    "home": "Juventus",
    "away": "Napoli",
    "hs": "2",
    "as": "0",
    "venue": "Allianz Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874963",
    "date": "2026-11-02T17:30Z",
@@ -632,5 +632,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T21:36:37.304Z"
+ "updatedAt": "2026-11-01T22:36:26.686Z"
 }

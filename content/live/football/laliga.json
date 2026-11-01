@@ -53,13 +53,13 @@
   {
    "rank": 5,
    "team": "Real Sociedad",
-   "p": 10,
+   "p": 11,
    "w": 6,
    "d": 1,
-   "l": 3,
-   "gf": 19,
-   "ga": 18,
-   "gd": 1,
+   "l": 4,
+   "gf": 20,
+   "ga": 20,
+   "gd": 0,
    "pts": 19
   },
   {
@@ -77,14 +77,14 @@
   {
    "rank": 7,
    "team": "Athletic Club",
-   "p": 9,
-   "w": 3,
+   "p": 10,
+   "w": 4,
    "d": 3,
    "l": 3,
-   "gf": 12,
-   "ga": 9,
-   "gd": 3,
-   "pts": 12
+   "gf": 14,
+   "ga": 10,
+   "gd": 4,
+   "pts": 15
   },
   {
    "rank": 8,
@@ -386,20 +386,20 @@
    "hs": "0",
    "as": "1",
    "venue": "Estadio Martínez Valero"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882826",
    "date": "2026-11-01T20:00Z",
-   "status": "in",
-   "detail": "71'",
+   "status": "post",
+   "detail": "FT",
    "home": "Athletic Club",
    "away": "Real Sociedad",
    "hs": "2",
    "as": "1",
    "venue": "San Mamés"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882824",
    "date": "2026-11-02T20:00Z",
@@ -522,5 +522,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T21:36:37.193Z"
+ "updatedAt": "2026-11-01T22:36:26.455Z"
 }
