@@ -447,8 +447,8 @@
   {
    "id": "401875002",
    "date": "2026-11-01T11:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "3'",
    "home": "Como",
    "away": "Venezia",
    "hs": "0",
@@ -632,5 +632,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T01:04:12.936Z"
+ "updatedAt": "2026-11-01T11:34:48.826Z"
 }
