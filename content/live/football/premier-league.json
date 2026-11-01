@@ -393,11 +393,11 @@
    "id": "401879246",
    "date": "2026-11-01T16:30Z",
    "status": "in",
-   "detail": "7'",
+   "detail": "HT",
    "home": "Liverpool",
    "away": "Arsenal",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Anfield"
   },
   {
@@ -522,5 +522,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-01T16:37:27.135Z"
+ "updatedAt": "2026-11-01T17:33:23.127Z"
 }
