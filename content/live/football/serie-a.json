@@ -491,8 +491,8 @@
   {
    "id": "401874949",
    "date": "2026-11-01T19:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Juventus",
    "away": "Napoli",
    "hs": "0",
@@ -632,5 +632,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T19:38:22.959Z"
+ "updatedAt": "2026-11-01T20:35:37.341Z"
 }

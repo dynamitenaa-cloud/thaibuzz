@@ -392,11 +392,11 @@
   {
    "id": "401882826",
    "date": "2026-11-01T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "31'",
    "home": "Athletic Club",
    "away": "Real Sociedad",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "San Mamés"
   },
@@ -522,5 +522,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T19:38:22.505Z"
+ "updatedAt": "2026-11-01T20:35:37.206Z"
 }
