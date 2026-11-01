@@ -197,13 +197,13 @@
   {
    "rank": 17,
    "team": "Elche",
-   "p": 10,
+   "p": 11,
    "w": 2,
    "d": 4,
-   "l": 4,
+   "l": 5,
    "gf": 14,
-   "ga": 17,
-   "gd": -3,
+   "ga": 18,
+   "gd": -4,
    "pts": 10
   },
   {
@@ -221,14 +221,14 @@
   {
    "rank": 19,
    "team": "Valencia",
-   "p": 10,
-   "w": 1,
+   "p": 11,
+   "w": 2,
    "d": 3,
    "l": 6,
-   "gf": 7,
+   "gf": 8,
    "ga": 17,
-   "gd": -10,
-   "pts": 6
+   "gd": -9,
+   "pts": 9
   },
   {
    "rank": 20,
@@ -375,20 +375,20 @@
    "hs": "0",
    "as": "3",
    "venue": "El Sardineros"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882823",
    "date": "2026-11-01T17:30Z",
-   "status": "in",
-   "detail": "51'",
+   "status": "post",
+   "detail": "FT",
    "home": "Elche",
    "away": "Valencia",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Estadio Martínez Valero"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882826",
    "date": "2026-11-01T20:00Z",
@@ -522,5 +522,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T18:40:51.771Z"
+ "updatedAt": "2026-11-01T19:38:22.505Z"
 }
