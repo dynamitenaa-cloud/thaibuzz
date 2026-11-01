@@ -371,11 +371,11 @@
    "id": "401882819",
    "date": "2026-11-01T15:15Z",
    "status": "in",
-   "detail": "25'",
+   "detail": "59'",
    "home": "Racing Santander",
    "away": "Real Madrid",
    "hs": "0",
-   "as": "2",
+   "as": "3",
    "venue": "El Sardineros"
   },
   {
@@ -522,5 +522,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T15:43:27.415Z"
+ "updatedAt": "2026-11-01T16:37:27.484Z"
 }

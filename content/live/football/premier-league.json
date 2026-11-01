@@ -392,8 +392,8 @@
   {
    "id": "401879246",
    "date": "2026-11-01T16:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "7'",
    "home": "Liverpool",
    "away": "Arsenal",
    "hs": "0",
@@ -522,5 +522,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-01T01:04:12.229Z"
+ "updatedAt": "2026-11-01T16:37:27.135Z"
 }
