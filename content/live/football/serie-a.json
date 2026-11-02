@@ -459,11 +459,11 @@
    "id": "401874971",
    "date": "2026-11-02T19:45Z",
    "status": "in",
-   "detail": "7'",
+   "detail": "HT",
    "home": "Atalanta",
    "away": "Parma",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "New Balance Arena"
   },
   {
@@ -577,5 +577,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-02T19:52:11.940Z"
+ "updatedAt": "2026-11-02T20:43:36.698Z"
 }

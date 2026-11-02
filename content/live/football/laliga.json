@@ -359,12 +359,12 @@
   {
    "id": "401882824",
    "date": "2026-11-02T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "41'",
    "home": "Deportivo",
    "away": "Osasuna",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Riazor"
   },
   {
@@ -478,5 +478,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-02T01:03:42.857Z"
+ "updatedAt": "2026-11-02T20:43:36.379Z"
 }

@@ -348,8 +348,8 @@
   {
    "id": "401878762",
    "date": "2026-11-02T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "44'",
    "home": "Newcastle United",
    "away": "Everton",
    "hs": "0",
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-02T01:03:42.535Z"
+ "updatedAt": "2026-11-02T20:43:36.171Z"
 }
