@@ -1,0 +1,85 @@
+{
+  "slug": "20261102-57f11079",
+  "title": "คิมิ แอนโตเนลลี คว้าแชมป์โลก F1 อายุน้อยที่สุดในประวัติศาสตร์",
+  "excerpt": "นักขับดาวรุ่งวัย 20 ปี สร้างประวัติศาสตร์หน้าใหม่คว้าแชมป์โลกฟอร์มูล่าวันสำเร็จ หลังเข้าเส้นชัยอันดับสามในสนามเม็กซิโก ซิตี้ กรังปรีซ์",
+  "summary": [
+    "คิมิ แอนโตเนลลี คว้าแชมป์โลก F1 สมัยแรกด้วยวัย 20 ปี 68 วัน",
+    "ทำลายสถิติเดิมของ เซบาสเตียน เฟทเทล ลงได้สำเร็จ"
+  ],
+  "sections": [
+    {
+      "heading": "สร้างประวัติศาสตร์",
+      "paragraphs": [
+        "ศึกเม็กซิโก ซิตี้ กรังปรีซ์ เมื่อวันที่ 1 พฤศจิกายน 2569 ที่ผ่านมา กลายเป็นสนามประวัติศาสตร์ของวงการมอเตอร์สปอร์ต เมื่อนักขับชาวอิตาเลียนวัย 20 ปี เข้าเส้นชัยในอันดับที่สามตามหลัง แม็กซ์ เวอร์สแทปเปน และ ลูอิส แฮมิลตัน ผลลัพธ์ดังกล่าวเพียงพอที่จะส่งให้เขาผงาดขึ้น ีครองบัลลังก์แชมป์โลกฟอร์มูล่าวันฤดูกาลนี้ไปครอง แม้จะเหลือการแข่งขันอีกสี่สนามก็ตาม",
+        "ความสำเร็จครั้งนี้ทำให้เขากลายเป็นนักขับอิตาลีคนแรกที่คว้าแชมป์โลกนับตั้งแต่ อัลแบร์โต อัสคารี เคยทำไว้เมื่อปี 1953 พร้อมทั้งทุบสถิติแชมป์โลกอายุน้อยที่สุดของ เซบาสเตียน เฟทเทล ลงราบคาบด้วยวัยที่อ่อนกว่าถึงสามปีกับอีกห66วัน"
+      ]
+    },
+    {
+      "heading": "เส้นทางสู่แชมป์",
+      "paragraphs": [
+        "บรรยากาศในสนามเต็มไปด้วยความตึงเครียดและการขับเคี่ยวกันอย่างดุเดือดระหว่างนักขับแถวหน้า รวมถึงเหตุการณ์ธงแดงที่ทำให้ต้องมีการรีสตาร์ทแข่งขันกันต่อในรอบสปรินท์ช่วงท้ายเกม",
+        "ท่ามกลางสถานการณ์ที่กดดัน นักขับวัย 20 ปีจากทีมเมอร์เซเดสโชว์ฟอร์มการขับขี่ที่นิ่งและยอดเยี่ยม จนกระทั่งคว้าโพเดียมและสร้างความสำเร็จครั้งใหญ่ให้แก่ทีมได้สำเร็จ"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "Kimi Antonelli อายุเท่าไหร่",
+      "a": "อายุ 20 ปี และ 68 วัน"
+    }
+  ],
+  "tags": [
+    "Kimi Antonelli",
+    "Max Verstappen",
+    "Formula 1",
+    "Lewis Hamilton",
+    "Mercedes"
+  ],
+  "entities": [
+    {
+      "name": "Kimi Antonelli",
+      "type": "person"
+    },
+    {
+      "name": "Max Verstappen",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261102-57f11079.jpg",
+  "thumbSm": "/thumbs/20261102-57f11079-sm.webp",
+  "thumbClean": "/thumbs/20261102-57f11079-clean.webp",
+  "thumbLg": "/thumbs/20261102-57f11079-clean.webp",
+  "imageAlt": "Kimi Antonelli ฉลองแชมป์โลก F1",
+  "imageCredit": "BBC",
+  "createdAt": "2026-11-02T02:01:04.001Z",
+  "traffic": 1000,
+  "keyword": "kimi antonelli",
+  "format": "brief",
+  "hook": "คิมิ แอนโตเนลลี ทุบสถิติแชมป์โลก F1 อายุน้อยที่สุด",
+  "question": "คิดว่าฟอร์มของแชมป์โลกป้ายแดงคนนี้จะไร้เทียมทานไปอีกนานแค่ไหน?",
+  "poll": [
+    "ไร้เทียมทานยาวๆ",
+    "มีคู่แข่งสูสีแน่นอน",
+    "รอดูสนามหน้า"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Kimi Antonelli becomes F1 world champion as Max Verstappen wins Mexico City Grand Prix",
+      "url": "https://www.bbc.com/sport/formula1/articles/cv62y1e6wly6o",
+      "source": "BBC"
+    },
+    {
+      "title": "Antonelli becomes youngest Formula One world champion",
+      "url": "https://www.bangkokpost.com/sports/3346931/antonelli-becomes-youngest-formula-one-world-champion",
+      "source": "Bangkok Post"
+    },
+    {
+      "title": "Kimi Antonelli becomes youngest F1 champion with third place in Mexican GP",
+      "url": "https://www.theguardian.com/sport/2026/nov/01/kimi-antonelli-youngest-f1-champion-mexican-gp",
+      "source": "The Guardian"
+    }
+  ]
+}
