@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Deportivo",
+   "p": 11,
+   "w": 3,
+   "d": 5,
+   "l": 3,
+   "gf": 15,
+   "ga": 14,
+   "gd": 1,
+   "pts": 14
+  },
+  {
+   "rank": 9,
    "team": "Villarreal",
    "p": 11,
    "w": 3,
@@ -99,7 +111,7 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Celta Vigo",
    "p": 11,
    "w": 2,
@@ -111,7 +123,7 @@
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Alavés",
    "p": 11,
    "w": 3,
@@ -123,7 +135,7 @@
    "pts": 12
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Rayo Vallecano",
    "p": 10,
    "w": 3,
@@ -135,7 +147,7 @@
    "pts": 12
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Getafe",
    "p": 11,
    "w": 3,
@@ -145,18 +157,6 @@
    "ga": 16,
    "gd": -8,
    "pts": 12
-  },
-  {
-   "rank": 13,
-   "team": "Deportivo",
-   "p": 10,
-   "w": 2,
-   "d": 5,
-   "l": 3,
-   "gf": 13,
-   "ga": 13,
-   "gd": 0,
-   "pts": 11
   },
   {
    "rank": 14,
@@ -173,13 +173,13 @@
   {
    "rank": 15,
    "team": "Osasuna",
-   "p": 10,
+   "p": 11,
    "w": 3,
    "d": 2,
-   "l": 5,
-   "gf": 10,
-   "ga": 20,
-   "gd": -10,
+   "l": 6,
+   "gf": 11,
+   "ga": 22,
+   "gd": -11,
    "pts": 11
   },
   {
@@ -353,20 +353,20 @@
    "hs": "2",
    "as": "1",
    "venue": "San Mamés"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882824",
    "date": "2026-11-02T20:00Z",
-   "status": "in",
-   "detail": "80'",
+   "status": "post",
+   "detail": "FT",
    "home": "Deportivo",
    "away": "Osasuna",
-   "hs": "1",
+   "hs": "2",
    "as": "1",
    "venue": "Riazor"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882809",
    "date": "2026-11-06T20:00Z",
@@ -478,5 +478,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-02T21:40:35.213Z"
+ "updatedAt": "2026-11-02T22:40:29.067Z"
 }

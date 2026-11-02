@@ -76,6 +76,18 @@
   },
   {
    "rank": 7,
+   "team": "Everton",
+   "p": 9,
+   "w": 3,
+   "d": 4,
+   "l": 2,
+   "gf": 9,
+   "ga": 9,
+   "gd": 0,
+   "pts": 13
+  },
+  {
+   "rank": 8,
    "team": "AFC Bournemouth",
    "p": 9,
    "w": 3,
@@ -87,7 +99,7 @@
    "pts": 12
   },
   {
-   "rank": 8,
+   "rank": 9,
    "team": "Tottenham Hotspur",
    "p": 9,
    "w": 3,
@@ -99,7 +111,7 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Aston Villa",
    "p": 9,
    "w": 3,
@@ -111,7 +123,7 @@
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Hull City",
    "p": 9,
    "w": 2,
@@ -123,7 +135,7 @@
    "pts": 11
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Leeds United",
    "p": 9,
    "w": 2,
@@ -135,19 +147,19 @@
    "pts": 11
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Newcastle United",
-   "p": 8,
+   "p": 9,
    "w": 3,
    "d": 2,
-   "l": 3,
+   "l": 4,
    "gf": 12,
-   "ga": 14,
-   "gd": -2,
+   "ga": 15,
+   "gd": -3,
    "pts": 11
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "Ipswich Town",
    "p": 9,
    "w": 3,
@@ -157,18 +169,6 @@
    "ga": 18,
    "gd": -4,
    "pts": 11
-  },
-  {
-   "rank": 14,
-   "team": "Everton",
-   "p": 8,
-   "w": 2,
-   "d": 4,
-   "l": 2,
-   "gf": 8,
-   "ga": 9,
-   "gd": -1,
-   "pts": 10
   },
   {
    "rank": 15,
@@ -342,20 +342,20 @@
    "hs": "0",
    "as": "1",
    "venue": "Anfield"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401878762",
    "date": "2026-11-02T20:00Z",
-   "status": "in",
-   "detail": "83'",
+   "status": "post",
+   "detail": "FT",
    "home": "Newcastle United",
    "away": "Everton",
    "hs": "0",
    "as": "1",
    "venue": "St. James' Park"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879242",
    "date": "2026-11-06T20:00Z",
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-02T21:40:35.037Z"
+ "updatedAt": "2026-11-02T22:40:28.888Z"
 }
