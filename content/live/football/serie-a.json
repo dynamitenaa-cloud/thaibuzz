@@ -172,18 +172,30 @@
   },
   {
    "rank": 15,
-   "team": "Sassuolo",
-   "p": 9,
+   "team": "Fiorentina",
+   "p": 10,
    "w": 2,
    "d": 2,
-   "l": 5,
-   "gf": 14,
-   "ga": 22,
+   "l": 6,
+   "gf": 15,
+   "ga": 23,
    "gd": -8,
    "pts": 8
   },
   {
    "rank": 16,
+   "team": "Sassuolo",
+   "p": 10,
+   "w": 2,
+   "d": 2,
+   "l": 6,
+   "gf": 16,
+   "ga": 26,
+   "gd": -10,
+   "pts": 8
+  },
+  {
+   "rank": 17,
    "team": "Monza",
    "p": 10,
    "w": 2,
@@ -193,18 +205,6 @@
    "ga": 24,
    "gd": -7,
    "pts": 7
-  },
-  {
-   "rank": 17,
-   "team": "Fiorentina",
-   "p": 9,
-   "w": 1,
-   "d": 2,
-   "l": 6,
-   "gf": 11,
-   "ga": 21,
-   "gd": -10,
-   "pts": 5
   },
   {
    "rank": 18,
@@ -441,25 +441,25 @@
    "hs": "2",
    "as": "0",
    "venue": "Allianz Stadium"
+  },
+  {
+   "id": "401874963",
+   "date": "2026-11-02T17:30Z",
+   "status": "post",
+   "detail": "FT",
+   "home": "Sassuolo",
+   "away": "Fiorentina",
+   "hs": "2",
+   "as": "4",
+   "venue": "Mapei Stadium"
   }
  ],
  "fixtures": [
   {
-   "id": "401874963",
-   "date": "2026-11-02T17:30Z",
-   "status": "in",
-   "detail": "66'",
-   "home": "Sassuolo",
-   "away": "Fiorentina",
-   "hs": "1",
-   "as": "2",
-   "venue": "Mapei Stadium"
-  },
-  {
    "id": "401874971",
    "date": "2026-11-02T19:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "7'",
    "home": "Atalanta",
    "away": "Parma",
    "hs": "0",
@@ -577,5 +577,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-02T18:54:25.193Z"
+ "updatedAt": "2026-11-02T19:52:11.940Z"
 }
