@@ -349,11 +349,11 @@
    "id": "401878762",
    "date": "2026-11-02T20:00Z",
    "status": "in",
-   "detail": "44'",
+   "detail": "83'",
    "home": "Newcastle United",
    "away": "Everton",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "St. James' Park"
   },
   {
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-02T20:43:36.171Z"
+ "updatedAt": "2026-11-02T21:40:35.037Z"
 }

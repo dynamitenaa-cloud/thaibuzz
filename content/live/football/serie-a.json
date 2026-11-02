@@ -149,13 +149,13 @@
   {
    "rank": 13,
    "team": "Atalanta",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 2,
-   "l": 4,
+   "l": 5,
    "gf": 16,
-   "ga": 17,
-   "gd": -1,
+   "ga": 20,
+   "gd": -4,
    "pts": 11
   },
   {
@@ -172,6 +172,18 @@
   },
   {
    "rank": 15,
+   "team": "Parma",
+   "p": 10,
+   "w": 2,
+   "d": 2,
+   "l": 6,
+   "gf": 8,
+   "ga": 15,
+   "gd": -7,
+   "pts": 8
+  },
+  {
+   "rank": 16,
    "team": "Fiorentina",
    "p": 10,
    "w": 2,
@@ -183,7 +195,7 @@
    "pts": 8
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Sassuolo",
    "p": 10,
    "w": 2,
@@ -195,7 +207,7 @@
    "pts": 8
   },
   {
-   "rank": 17,
+   "rank": 18,
    "team": "Monza",
    "p": 10,
    "w": 2,
@@ -205,18 +217,6 @@
    "ga": 24,
    "gd": -7,
    "pts": 7
-  },
-  {
-   "rank": 18,
-   "team": "Parma",
-   "p": 9,
-   "w": 1,
-   "d": 2,
-   "l": 6,
-   "gf": 5,
-   "ga": 15,
-   "gd": -10,
-   "pts": 5
   },
   {
    "rank": 19,
@@ -452,20 +452,20 @@
    "hs": "2",
    "as": "4",
    "venue": "Mapei Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874971",
    "date": "2026-11-02T19:45Z",
-   "status": "in",
-   "detail": "HT",
+   "status": "post",
+   "detail": "FT",
    "home": "Atalanta",
    "away": "Parma",
    "hs": "0",
-   "as": "1",
+   "as": "3",
    "venue": "New Balance Arena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874815",
    "date": "2026-11-06T19:45Z",
@@ -577,5 +577,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-02T20:43:36.698Z"
+ "updatedAt": "2026-11-02T21:40:35.389Z"
 }
