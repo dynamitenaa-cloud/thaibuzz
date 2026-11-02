@@ -447,8 +447,8 @@
   {
    "id": "401874963",
    "date": "2026-11-02T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "24'",
    "home": "Sassuolo",
    "away": "Fiorentina",
    "hs": "0",
@@ -577,5 +577,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-02T01:03:43.084Z"
+ "updatedAt": "2026-11-02T17:55:23.642Z"
 }
