@@ -221,28 +221,6 @@
  ],
  "results": [
   {
-   "id": "401884760",
-   "date": "2026-10-25T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "TSG Hoffenheim",
-   "away": "Bayer Leverkusen",
-   "hs": "3",
-   "as": "0",
-   "venue": "PreZero Arena"
-  },
-  {
-   "id": "401884759",
-   "date": "2026-10-25T16:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "SC Freiburg",
-   "away": "Bayern Munich",
-   "hs": "1",
-   "as": "3",
-   "venue": "Europa-Park Stadion"
-  },
-  {
    "id": "401884746",
    "date": "2026-10-30T19:30Z",
    "status": "post",
@@ -443,5 +421,5 @@
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-01T18:40:52.410Z"
+ "updatedAt": "2026-11-02T01:03:43.297Z"
 }

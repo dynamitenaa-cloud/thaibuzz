@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401882835",
-   "date": "2026-10-25T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Athletic Club",
-   "away": "Getafe",
-   "hs": "4",
-   "as": "0",
-   "venue": "San Mamés"
-  },
-  {
-   "id": "401882833",
-   "date": "2026-10-25T15:15Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Celta Vigo",
-   "away": "Real Betis",
-   "hs": "0",
-   "as": "0",
-   "venue": "Balaidos"
-  },
-  {
-   "id": "401882829",
-   "date": "2026-10-25T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Real Sociedad",
-   "away": "Levante",
-   "hs": "2",
-   "as": "1",
-   "venue": "Reale Arena"
-  },
-  {
-   "id": "401882832",
-   "date": "2026-10-25T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Barcelona",
-   "away": "Real Madrid",
-   "hs": "1",
-   "as": "2",
-   "venue": "Spotify Camp Nou"
-  },
-  {
    "id": "401882828",
    "date": "2026-10-26T20:00Z",
    "status": "post",
@@ -522,5 +478,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-01T22:36:26.455Z"
+ "updatedAt": "2026-11-02T01:03:42.857Z"
 }

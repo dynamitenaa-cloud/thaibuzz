@@ -245,61 +245,6 @@
  ],
  "results": [
   {
-   "id": "401875036",
-   "date": "2026-10-25T11:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Internazionale",
-   "away": "Fiorentina",
-   "hs": "2",
-   "as": "1",
-   "venue": "San Siro"
-  },
-  {
-   "id": "401874972",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Atalanta",
-   "away": "Frosinone",
-   "hs": "4",
-   "as": "4",
-   "venue": "New Balance Arena"
-  },
-  {
-   "id": "401874952",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Genoa",
-   "away": "Venezia",
-   "hs": "1",
-   "as": "0",
-   "venue": "Stadio Luigi Ferraris"
-  },
-  {
-   "id": "401874772",
-   "date": "2026-10-25T17:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Lecce",
-   "away": "Juventus",
-   "hs": "0",
-   "as": "2",
-   "venue": "Via Del Mare"
-  },
-  {
-   "id": "401874779",
-   "date": "2026-10-25T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Udinese",
-   "away": "AC Milan",
-   "hs": "0",
-   "as": "2",
-   "venue": "Stadio Friuli"
-  },
-  {
    "id": "401874980",
    "date": "2026-10-27T17:30Z",
    "status": "post",
@@ -632,5 +577,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-01T22:36:26.686Z"
+ "updatedAt": "2026-11-02T01:03:43.084Z"
 }

@@ -245,61 +245,6 @@
  ],
  "results": [
   {
-   "id": "401879254",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Crystal Palace",
-   "away": "Newcastle United",
-   "hs": "0",
-   "as": "2",
-   "venue": "Selhurst Park"
-  },
-  {
-   "id": "401878766",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Hull City",
-   "away": "Brentford",
-   "hs": "1",
-   "as": "1",
-   "venue": "The MKM Stadium"
-  },
-  {
-   "id": "401878765",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Liverpool",
-   "away": "Brighton & Hove Albion",
-   "hs": "2",
-   "as": "0",
-   "venue": "Anfield"
-  },
-  {
-   "id": "401879252",
-   "date": "2026-10-25T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Manchester United",
-   "away": "AFC Bournemouth",
-   "hs": "0",
-   "as": "3",
-   "venue": "Old Trafford"
-  },
-  {
-   "id": "401878764",
-   "date": "2026-10-25T16:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Sunderland",
-   "away": "Leeds United",
-   "hs": "0",
-   "as": "0",
-   "venue": "Stadium of Light"
-  },
-  {
    "id": "401879248",
    "date": "2026-10-31T12:30Z",
    "status": "post",
@@ -522,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-01T18:40:51.542Z"
+ "updatedAt": "2026-11-02T01:03:42.535Z"
 }
