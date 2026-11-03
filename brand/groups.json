@@ -1,13 +1,102 @@
 {
   "_readme": "페북 그룹 공유 키트(scripts/group-kit.mjs)가 매일 이 목록에서 그룹을 골라 줍니다. mode: share=글 공유 OK / comment-only=댓글만(홍보 금지 등) / pending=가입 승인 대기 / skip=제외. topics: kdrama, kpop, tpop, news. ko=텔레그램 메시지에 같이 보이는 한국어 설명. url 은 그룹 주소(없으면 이름으로 검색 링크). 새 그룹은 한 줄 추가하면 됩니다.",
   "groups": [
-    { "name": "คอซีรีส์", "ko": "드라마 마니아 방", "members": 540000, "topics": ["kdrama", "news"], "mode": "share", "url": "", "note": "공개, 질문 없이 가입. 드라마 토론이 활발" },
-    { "name": "ข่าวดารา ซุบซิบวงการบันเทิง", "ko": "연예인 뉴스·가십 방", "members": 28000, "topics": ["news", "kpop", "tpop"], "mode": "share", "url": "", "note": "공개, 연예 뉴스 공유용" },
-    { "name": "ข่าวดาราล่าสุด", "ko": "최신 연예인 뉴스 방", "members": 17000, "topics": ["news", "kpop", "tpop"], "mode": "share", "url": "", "note": "공개, 연예 뉴스 공유용" },
-    { "name": "Walking Together With BNK48&CGM48", "ko": "BNK48·CGM48 팬 방 (태국 아이돌)", "members": 53000, "topics": ["tpop"], "mode": "share", "url": "", "note": "공개, T-pop 팬 그룹 (BNK48/CGM48 소식만 맞음)" },
-    { "name": "ติดหนึบซีรี่ส์เกาหลี", "ko": "한국 드라마 덕후 방", "members": 340000, "topics": ["kdrama"], "mode": "comment-only", "url": "", "note": "규칙 1번: 홍보 금지 → 댓글만" },
-    { "name": "K-POP Thailand แลกเปลี่ยนข่าวสาร", "ko": "태국 K-pop 소식 교환 방", "members": 7600, "topics": ["kpop", "news"], "mode": "pending", "url": "", "note": "비공개, 관리자 승인 대기 (2026-11-02 신청). 승인되면 mode 를 share 로" },
-    { "name": "BLACKPINK@THAILAND", "ko": "블랙핑크 태국 팬 방", "members": 24000, "topics": ["kpop", "news"], "mode": "share", "url": "", "note": "공개, 질문 없이 가입 (2026-11-03). BLACKPINK/리사 소식에 맞음" },
-    { "name": "เจาะข่าวเด่นบันเทิง ดารา - นักแสดง - และ นักร้อง", "ko": "연예 이슈 뉴스 방", "members": 4300, "topics": ["news", "kpop", "tpop"], "mode": "share", "url": "", "note": "공개, 연예 뉴스 공유용 (2026-11-03)" }
+    {
+      "name": "คอซีรีส์",
+      "ko": "드라마 마니아 방",
+      "members": 540000,
+      "topics": [
+        "kdrama",
+        "news"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/212767475949539/",
+      "note": "공개, 질문 없이 가입. 드라마 토론이 활발"
+    },
+    {
+      "name": "ข่าวดารา ซุบซิบวงการบันเทิง",
+      "ko": "연예인 뉴스·가십 방",
+      "members": 28000,
+      "topics": [
+        "news",
+        "kpop",
+        "tpop"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/1699458940276134/",
+      "note": "공개, 연예 뉴스 공유용"
+    },
+    {
+      "name": "ข่าวดาราล่าสุด",
+      "ko": "최신 연예인 뉴스 방",
+      "members": 17000,
+      "topics": [
+        "news",
+        "kpop",
+        "tpop"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/802112221161071/",
+      "note": "공개, 연예 뉴스 공유용"
+    },
+    {
+      "name": "Walking Together With BNK48&CGM48",
+      "ko": "BNK48·CGM48 팬 방 (태국 아이돌)",
+      "members": 53000,
+      "topics": [
+        "tpop"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/163534080922304/",
+      "note": "공개, T-pop 팬 그룹 (BNK48/CGM48 소식만 맞음)"
+    },
+    {
+      "name": "ติดหนึบซีรี่ส์เกาหลี",
+      "ko": "한국 드라마 덕후 방",
+      "members": 340000,
+      "topics": [
+        "kdrama"
+      ],
+      "mode": "comment-only",
+      "url": "https://www.facebook.com/groups/4207384725940749/",
+      "note": "규칙 1번: 홍보 금지 → 댓글만"
+    },
+    {
+      "name": "K-POP Thailand แลกเปลี่ยนข่าวสาร",
+      "ko": "태국 K-pop 소식 교환 방",
+      "members": 7600,
+      "topics": [
+        "kpop",
+        "news"
+      ],
+      "mode": "pending",
+      "url": "https://www.facebook.com/groups/360337495352969/",
+      "note": "비공개, 관리자 승인 대기 (2026-11-02 신청). 승인되면 mode 를 share 로"
+    },
+    {
+      "name": "BLACKPINK@THAILAND",
+      "ko": "블랙핑크 태국 팬 방",
+      "members": 24000,
+      "topics": [
+        "kpop",
+        "news"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/114219336056374/",
+      "note": "공개, 질문 없이 가입 (2026-11-03). BLACKPINK/리사 소식에 맞음"
+    },
+    {
+      "name": "เจาะข่าวเด่นบันเทิง ดารา - นักแสดง - และ นักร้อง",
+      "ko": "연예 이슈 뉴스 방",
+      "members": 4300,
+      "topics": [
+        "news",
+        "kpop",
+        "tpop"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/693268754132640/",
+      "note": "공개, 연예 뉴스 공유용 (2026-11-03)"
+    }
   ]
 }
