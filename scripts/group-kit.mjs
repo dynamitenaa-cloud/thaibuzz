@@ -31,6 +31,7 @@ if (!DRY && !telegramReady()) { console.log('group-kit: 텔레그램 설정 없�
 const raw = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : {};
 const ledger = raw.posts || raw.groups || raw.pairs ? { posts: raw.posts || {}, groups: raw.groups || {}, pairs: raw.pairs || {} }
   : { posts: Object.fromEntries(Object.entries(raw).map(([k, t]) => [k, { n: 1, at: t }])), groups: {}, pairs: {} };
+if (process.env.GROUP_KIT_FORCE === 'true') { ledger.groups = {}; ledger.pairs = {}; ledger.posts = {}; console.log('group-kit: FORCE — 보낸 기록을 무시하고 다시 고름'); }
 const now = Date.now();
 const num = (x) => Number(x) || 0;
 const readPost = (slug) => { try { return JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8')); } catch { return null; } };

@@ -10,6 +10,10 @@ on:
         description: '추천 글 개수'
         type: string
         default: '3'
+      force:
+        description: '보낸 기록을 무시하고 다시 고르기 (이미 보냈는데 아직 못 올렸을 때)'
+        type: boolean
+        default: false
       dry:
         description: '전송 없이 캡션만 로그로 확인'
         type: boolean
@@ -42,6 +46,7 @@ jobs:
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           FACEBOOK_URL: ${{ vars.FACEBOOK_URL }}
           GROUP_KIT_POSTS: ${{ inputs.posts || '3' }}
+          GROUP_KIT_FORCE: ${{ inputs.force }}
       - uses: actions/cache/save@v6
         if: ${{ always() }}
         with:
