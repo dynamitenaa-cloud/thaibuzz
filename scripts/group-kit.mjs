@@ -131,6 +131,7 @@ for (const g of eligible) {
 if (!plan.length) { console.log('group-kit: 오늘 짝지을 그룹/글 없음'); process.exit(0); }
 
 const Schema = z.object({
+  ko: z.string().describe('이 뉴스가 무슨 내용인지 한국어로 한 줄(40자 이내) 요약. 한국인 에디터가 어떤 글인지 알아보기 위한 용도'),
   a: z.string().describe('แบบ A (คำถาม): 2-3 บรรทัด เปิดด้วยคำถามที่คนอยากตอบในคอมเมนต์ ไม่มีลิงก์ ไม่มีแฮชแท็ก'),
   b: z.string().describe('แบบ B (ความเห็นสั้น ๆ): 2-3 บรรทัด เล่าประเด็นเหมือนเพื่อนเล่าให้เพื่อนฟังในกลุ่ม แล้วชวนแสดงความเห็น ไม่มีลิงก์ ไม่มีแฮชแท็ก'),
   c: z.string().describe('แบบ C (ให้เลือก): 2-4 บรรทัด ตั้งตัวเลือก 2 ข้อให้คอมเมนต์เลือก (เช่น "ทีม A หรือ ทีม B?") ไม่มีลิงก์ ไม่มีแฮชแท็ก'),
@@ -148,7 +149,7 @@ async function captionsFor(p) {
   try {
     const prompt = `ข่าว: ${p.title}\nสรุป: ${(p.summary || []).slice(0, 3).join(' / ')}\nหมวด: ${p.category}\nคำถามชวนคุย: ${p.question || '-'}\nตัวเลือกโหวต: ${(p.poll || []).join(' / ') || '-'}\n\nเขียนแคปชันสำหรับโพสต์ลงกลุ่ม 3 แบบ (A/B/C) ของข่าวนี้`;
     cap = await generateJSON(prompt, Schema, { system, temperature: 0.9 });
-    if (/[가-힣]|https?:\/\//.test(JSON.stringify(cap))) throw new Error('한글/링크 섞임');
+    if (/[가-힣]|https?:\/\//.test(JSON.stringify({ a: cap.a, b: cap.b, c: cap.c }))) throw new Error('한글/링크 섞임');
   } catch (e) { console.warn(`group-kit: LLM 실패(${String(e.message).slice(0, 80)}) → 규칙 기반 캡션`); cap = ruleBased(p); }
   capCache.set(p.slug, cap);
   return cap;
@@ -166,7 +167,7 @@ for (const [i, { g, c, variant }] of plan.entries()) {
   const first = fromSite ? `อ่านฉบับเต็มได้ที่นี่ 👉 ${SITE}/post/${c.slug}/` : `ข่าวบันเทิงเกาหลี-ไทย อัปเดตทุกวันที่เพจ ThaiBuzz 👉 ${PAGE_URL || SITE}`;
   const tag = p.origin === 'kr' ? '🇰🇷' : p.category;
   console.log(`group-kit: ${i + 1}/${plan.length} [${g.name}] ← ${c.slug} (${VARIANT[variant]}) ${c.stat} ${p.title.slice(0, 40)}`);
-  const text = `📍 ${i + 1}/${plan.length} · <b>${esc(g.name)}</b> (${Math.round(g.members / 1000)}K)\n${esc(tag)} ${esc(p.title.slice(0, 70))} · ${esc(c.stat)}\n\n캡션 (${VARIANT[variant]}) — 탭하면 복사:\n<pre>${esc(cap[variant].trim())}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(first)}</pre>`;
+  const text = `📍 ${i + 1}/${plan.length} · <b>${esc(g.name)}</b>${g.ko ? ` — ${esc(g.ko)}` : ''} (${Math.round(g.members / 1000)}K)\n${esc(tag)} ${esc(cap.ko || p.title.slice(0, 70))} · ${esc(c.stat)}\n\n캡션 (${VARIANT[variant]}) — 탭하면 복사:\n<pre>${esc(cap[variant].trim())}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(first)}</pre>`;
   if (DRY) { console.log(c.url, '\n' + cap[variant].trim() + '\n---'); continue; }
   try {
     await sendTelegramText(text, [{ text: fromSite ? '🖼 글 열기' : '📘 게시물 열기 → 공유', url: c.url }, { text: '👥 그룹 열기', url: groupLink(g) }], 'HTML');
