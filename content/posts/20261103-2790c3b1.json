@@ -1,0 +1,89 @@
+{
+  "slug": "20261103-2790c3b1",
+  "title": "เฆซุส เด มิเกล เสียชีวิตในวัย 30 ปี หลังปะทะผู้รักษาประตู",
+  "excerpt": "วงการฟุตบอลสเปนสูญเสียครั้งใหญ่เมื่อ เฆซุส เด มิเกล กองหน้าเตเนริเฟ่ เสียชีวิตหลังเกิดเหตุปะทะกับผู้รักษาประตูคู่แข่งในสนาม",
+  "summary": [
+    "เฆซุส เด มิเกล กองหน้าเตเนริเฟ่เสียชีวิตในวัย 30 ปี",
+    "เหตุการณ์เกิดขึ้นจากการปะทะกับผู้รักษาประตูระหว่างการแข่งขันลีกรองสเปน"
+  ],
+  "sections": [
+    {
+      "heading": "เหตุสลด",
+      "paragraphs": [
+        "วงการลูกหนังแดนกระทิงดุต้องพบกับข่าวเศร้าสะเทือนใจหลังจากเกมการแข่งขันฟุตบอลลีกรองของสเปนระหว่าง เตเนริเฟ่ และ อันดอร์รา ต้องยุติลงก่อนเวลาอันควร",
+        "เหตุการณ์ดังกล่าวเกิดขึ้นในช่วงทดเวลาเจ็บนาทีที่ 97 เมื่อ เฆซุส เด มิเกล กองหน้าวัย 30 ปี ของทีมเตเนริเฟ่ วิ่งเข้าไปเล่นบอลยาวก่อนจะปะทะเข้ากับ เฮซุส โอโวนอ ผู้รักษาประตูทีมเยือนที่วิ่งออกมาตัดบอล จนได้รับบาดเจ็บที่ศีรษะและหน้าอกอย่างรุนแรงจนหมดสติคาสนาม"
+      ]
+    },
+    {
+      "heading": "ความสูญเสีย",
+      "paragraphs": [
+        "หลังเกิดเหตุ ทีมแพทย์รีบเข้าปฐมพยาบาลและนำตัวส่งโรงพยาบาลมหาวิทยาลัยนูเอสตรา เซญญอรา เด ลา กันเดลารียา ทันที โดยสโมสรเตเนริเฟ่ออกมายืนยันข่าวเศร้าว่านักเตะเสียชีวิตลงในช่วงเช้าวันอังคาร",
+        "บรรยากาศภายในสนามเต็มไปด้วยความโศกเศร้า ผู้เล่นทั้งสองทีมต่างตกใจและมีน้ำตากล่าวอำลาเพื่อนร่วมอาชีพ ขณะที่ผู้ตัดสินได้ตัดสินใจเปยุติการแข่งขันนัดนี้ลงทันทีเพื่อให้เกียรติแก่เหตุการณ์ที่เกิดขึ้น"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เฆซุส เด มิเกล",
+    "เตเนริเฟ่",
+    "ฟุตบอลสเปน",
+    "เซกุนด้า ดิวิชั่น"
+  ],
+  "entities": [
+    {
+      "name": "เฆซุส เด มิเกล",
+      "type": "person"
+    },
+    {
+      "name": "เตเนริเฟ่",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261103-2790c3b1.jpg",
+  "thumbSm": "/thumbs/20261103-2790c3b1-sm.webp",
+  "thumbClean": "/thumbs/20261103-2790c3b1-clean.webp",
+  "thumbLg": "/thumbs/20261103-2790c3b1-clean.webp",
+  "imageAlt": "บรรยากาศสนามฟุตบอลสเปน",
+  "imageCredit": "BBC",
+  "createdAt": "2026-11-03T10:54:53.709Z",
+  "traffic": 1000,
+  "keyword": "jesus de miguel",
+  "format": "brief",
+  "hook": "วงการฟุตบอลสเปนช็อกหลังสูญเสียแข้งวัย 30 ปี",
+  "question": "คุณมีความคิดเห็นอย่างไรกับเหตุการณ์นี้?",
+  "poll": [
+    "เสียใจกับเหตุการณ์",
+    "อุบัติเหตุในสนาม",
+    "ต้องเพิ่มความปลอดภัย"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Tenerife striker De Miguel dies after on-field collision",
+      "url": "https://www.bbc.com/sport/football/articles/ck62yvz046pjo",
+      "source": "BBC"
+    },
+    {
+      "title": "Tenerife footballer Jesús de Miguel dies aged 30 after on-pitch collision",
+      "url": "https://www.theguardian.com/football/2026/nov/03/tenerife-footballer-jesus-de-miguel-hospital-collision",
+      "source": "The Guardian"
+    },
+    {
+      "title": "Spanish 2nd tier clash abandoned with players in tears after star KO'd by keeper",
+      "url": "https://www.thesun.co.uk/sport/40887558/tenerife-andorra-abandoned-jesus-de-miguel-head-injury/",
+      "source": "The Sun"
+    },
+    {
+      "title": "ข่าวเศร้าฟุตบอลสเปน ‘เฆซุส เด มิเกล’ เสียชีวิตในวัย 30 ปี หลังปะทะผู้รักษาประตูระหว่างแข่งขัน",
+      "url": "https://thestandard.co/jesus-de-miguel-passes-away/",
+      "source": "thestandard.co"
+    },
+    {
+      "title": "เหตุการณ์ช็อก !! ฟุตบอลลีกรองของสเปน ต้องยุติลงกลางคัน หลังนักเตะชนกันหมดสติ",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9tQ21aRWJ6bXJ1djc2dzhPY201NHdHZlVObkdtNG42dkRtek1BUWQ2YjgwQmtnMkd0aS1MdVJxS2JodHpmdnk2WFFWUTZCTVE?oc=5",
+      "source": "Kapook.com"
+    }
+  ]
+}
