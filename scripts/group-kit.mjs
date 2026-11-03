@@ -158,7 +158,7 @@ async function captionsFor(p) {
 fs.mkdirSync('.cache', { recursive: true });
 const groupLink = (g) => g.url || `https://www.facebook.com/search/groups/?q=${encodeURIComponent(g.name)}`;
 const VARIANT = { a: '질문형', b: '한줄평형', c: '투표형' };
-const how = fromSite ? '글 열기 → 캡션 복사 → 그룹에 글 올리기 → 첫 댓글에 링크' : '캡션 탭(복사) → 📘 게시물 열기 → 공유 → 그룹에 공유 → 붙여넣기 → 올린 뒤 첫 댓글';
+const how = fromSite ? '글 열기 → 캡션 복사 → 그룹에 글 올리기 → 첫 댓글에 링크' : '글자 탭(복사) → 👥 그룹 열기 → 글쓰기 칸에 붙여넣기 → 게시 → 첫 댓글 붙여넣기 (릴스 링크가 같이 붙어서 미리보기 카드가 생겨요. 안 되면 📘 버튼 → 공유로)';
 let sent = 0;
 if (!DRY) await sendTelegramText(`📣 오늘 공유할 그룹 ${plan.length}곳\n${how}\n• 그룹마다 하루 1번 · 올린 뒤 1시간 안에 댓글 답하기${commentOnly.length ? `\n• 댓글만 달 그룹: ${commentOnly.map((g) => g.name).join(', ')}` : ''}`);
 for (const [i, { g, c, variant }] of plan.entries()) {
@@ -167,7 +167,7 @@ for (const [i, { g, c, variant }] of plan.entries()) {
   const first = fromSite ? `อ่านฉบับเต็มได้ที่นี่ 👉 ${SITE}/post/${c.slug}/` : `ข่าวบันเทิงเกาหลี-ไทย อัปเดตทุกวันที่เพจ ThaiBuzz 👉 ${PAGE_URL || SITE}`;
   const tag = p.origin === 'kr' ? '🇰🇷' : p.category;
   console.log(`group-kit: ${i + 1}/${plan.length} [${g.name}] ← ${c.slug} (${VARIANT[variant]}) ${c.stat} ${p.title.slice(0, 40)}`);
-  const text = `📍 ${i + 1}/${plan.length} · <b>${esc(g.name)}</b>${g.ko ? ` — ${esc(g.ko)}` : ''} (${Math.round(g.members / 1000)}K)\n${esc(tag)} ${esc(cap.ko || p.title.slice(0, 70))} · ${esc(c.stat)}\n\n캡션 (${VARIANT[variant]}) — 탭하면 복사:\n<pre>${esc(cap[variant].trim())}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(first)}</pre>`;
+  const text = `📍 ${i + 1}/${plan.length} · <b>${esc(g.name)}</b>${g.ko ? ` — ${esc(g.ko)}` : ''} (${Math.round(g.members / 1000)}K)\n${esc(tag)} ${esc(cap.ko || p.title.slice(0, 70))} · ${esc(c.stat)}\n\n${fromSite ? '캡션' : '캡션+릴스 링크'} (${VARIANT[variant]}) — 탭하면 복사:\n<pre>${esc(cap[variant].trim() + (fromSite ? '' : '\n' + c.url))}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(first)}</pre>`;
   if (DRY) { console.log(c.url, '\n' + cap[variant].trim() + '\n---'); continue; }
   try {
     await sendTelegramText(text, [{ text: fromSite ? '🖼 글 열기' : '📘 게시물 열기 → 공유', url: c.url }, { text: '👥 그룹 열기', url: groupLink(g) }], 'HTML');
