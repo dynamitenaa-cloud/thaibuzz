@@ -1,0 +1,11 @@
+{
+  "_readme": "페북 그룹 공유 키트(scripts/group-kit.mjs)가 매일 이 목록에서 그룹을 골라 줍니다. mode: share=글 공유 OK / comment-only=댓글만(홍보 금지 등) / pending=가입 승인 대기 / skip=제외. topics: kdrama, kpop, tpop, news. url 은 그룹 주소(없으면 이름으로 검색 링크). 새 그룹은 한 줄 추가하면 됩니다.",
+  "groups": [
+    { "name": "คอซีรีส์", "members": 540000, "topics": ["kdrama", "news"], "mode": "share", "url": "", "note": "공개, 질문 없이 가입. 드라마 토론이 활발" },
+    { "name": "ข่าวดารา ซุบซิบวงการบันเทิง", "members": 28000, "topics": ["news", "kpop", "tpop"], "mode": "share", "url": "", "note": "공개, 연예 뉴스 공유용" },
+    { "name": "ข่าวดาราล่าสุด", "members": 17000, "topics": ["news", "kpop", "tpop"], "mode": "share", "url": "", "note": "공개, 연예 뉴스 공유용" },
+    { "name": "Walking Together With BNK48&CGM48", "members": 53000, "topics": ["tpop"], "mode": "share", "url": "", "note": "공개, T-pop 팬 그룹 (BNK48/CGM48 소식만 맞음)" },
+    { "name": "ติดหนึบซีรี่ส์เกาหลี", "members": 340000, "topics": ["kdrama"], "mode": "comment-only", "url": "", "note": "규칙 1번: 홍보 금지 → 댓글만" },
+    { "name": "K-POP Thailand แลกเปลี่ยนข่าวสาร", "members": 7600, "topics": ["kpop", "news"], "mode": "pending", "url": "", "note": "비공개, 관리자 승인 대기 (2026-11-02 신청). 승인되면 mode 를 share 로" }
+  ]
+}

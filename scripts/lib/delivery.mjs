@@ -13,8 +13,8 @@ export const xIntent = (text) => `https://x.com/intent/post?text=${encodeURIComp
 export const telegramReady = () => !!(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) && process.env.TELEGRAM !== 'false';
 
 // buttons: [{ text, url }] → 메시지 아래 버튼 (누르면 해당 앱/웹이 열림)
-export async function sendTelegramText(text, buttons = []) {
-  const body = { chat_id: process.env.TELEGRAM_CHAT_ID, text: [...text].slice(0, 4000).join(''), disable_web_page_preview: true };
+export async function sendTelegramText(text, buttons = [], parseMode = '') {
+  const body = { chat_id: process.env.TELEGRAM_CHAT_ID, text: [...text].slice(0, 4000).join(''), disable_web_page_preview: true, ...(parseMode ? { parse_mode: parseMode } : {}) };
   if (buttons.length) body.reply_markup = { inline_keyboard: buttons.map((b) => [{ text: b.text, url: b.url }]) };
   const r = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
   const j = await r.json().catch(() => ({}));

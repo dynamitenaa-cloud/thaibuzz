@@ -1,8 +1,9 @@
-// 페북 그룹 공유 키트: 하루 1번, 우리 페이지에서 "반응이 좋은 릴스/게시물" N개를 골라 그룹용 태국어 캡션 3종과 함께 텔레그램으로 보냄
-//  - 사람은 버튼(FB 게시물 열기) → 공유 → 그룹에 공유 → 캡션 붙여넣기 만 하면 됨. 자동 게시는 아님 (메타가 그룹 게시 API 를 막았고, 같은 글을 여러 그룹에 뿌리면 스팸 제한)
-//  - 선택 기준: Graph API 로 최근 72시간 릴스(조회수)·게시물(반응+댓글×3+공유×5) 실적 → 점수 상위. 접근 실패 시 사이트 글 기반(링크 공유)으로 대체
-//  - 캡션 3종: A 질문형 / B 한줄평형 / C 투표형. 링크는 본문에 넣지 않음 (그룹에서 노출이 줄고 삭제되기 쉬움)
-//  - 기록: .cache/group-kit.json (같은 글을 두 번 추천하지 않음)
+// 페북 그룹 공유 키트: 하루 1번, "오늘 올릴 그룹 N곳 + 각 그룹에 맞는 우리 페이지 게시물 + 캡션 + 첫 댓글"을 텔레그램에 보냄
+//  - 그룹은 brand/groups.json (가입한 그룹, mode=share 만) 에서 오래 안 올린 순으로 돌려가며 고름. 같은 그룹은 GROUP_MIN_GAP_H(기본 48h) 안에 다시 안 고름
+//  - 글은 Graph API 로 최근 72시간 릴스(조회수)·게시물(반응+댓글×3+공유×5) 실적을 보고, 그룹 주제(kdrama/kpop/tpop/news)에 맞는 최고 점수 글을 짝지음
+//  - 메시지는 그룹당 1개 (탭하면 복사되는 캡션 + 첫 댓글 + 버튼 2개). 자동 게시 아님 — 사람이 공유 버튼 → 그룹 선택 → 붙여넣기 (메타가 그룹 게시 API 를 막음)
+//  - 캡션은 그룹마다 A 질문형 / B 한줄평형 / C 투표형을 돌려 씀. 링크는 본문에 넣지 않음
+//  - 기록: .cache/group-kit.json { posts:{slug:{n,at}}, groups:{name:ts}, pairs:{"name|slug":ts} }
 // 필요: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, (선택) FB_PAGE_ID/FB_PAGE_TOKEN, GOOGLE_GENERATIVE_AI_API_KEY (LLM 실패 시 규칙 기반 캡션)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,7 +16,9 @@ const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').replac
 const PAGE_URL = process.env.FACEBOOK_URL || '';
 const PAGE_ID = process.env.FB_PAGE_ID;
 const TOKEN = process.env.FB_PAGE_TOKEN;
-const N = Number(process.env.GROUP_KIT_POSTS || 3);
+const GROUPS_PER_DAY = Number(process.env.GROUP_KIT_GROUPS || 3);
+const MIN_GAP_H = Number(process.env.GROUP_MIN_GAP_H || 48);
+const MAX_SHARES_PER_POST = 3; // 한 글을 서로 다른 그룹에 최대 3번까지만
 const WINDOW_H = Number(process.env.GROUP_KIT_WINDOW_H || 72);
 const MIN_AGE_H = Number(process.env.GROUP_KIT_MIN_AGE_H || 3); // 올린 직후엔 숫자가 작아 비교가 안 됨
 const DRY = process.argv.includes('--dry');
@@ -24,13 +27,28 @@ const API = 'https://graph.facebook.com/v25.0';
 
 if (!DRY && !telegramReady()) { console.log('group-kit: 텔레그램 설정 없음'); process.exit(0); }
 
-const ledger = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : {};
+// 예전 형식(slug→시각)이면 posts 로 옮김
+const raw = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : {};
+const ledger = raw.posts || raw.groups || raw.pairs ? { posts: raw.posts || {}, groups: raw.groups || {}, pairs: raw.pairs || {} }
+  : { posts: Object.fromEntries(Object.entries(raw).map(([k, t]) => [k, { n: 1, at: t }])), groups: {}, pairs: {} };
 const now = Date.now();
 const num = (x) => Number(x) || 0;
 const readPost = (slug) => { try { return JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8')); } catch { return null; } };
 // 정치·사건성·도박 주제는 그룹 공유에서 제외 (커뮤니티 분쟁·삭제·계정 제한 위험)
 const RISKY = /การเมือง|เลือกตั้ง|รัฐบาล|พรรค|ศาล|คดี|ทนาย|ตำรวจ|จับกุม|ฟ้อง|หมิ่น|ฆาตกรรม|ข่มขืน|อุบัติเหตุ|เสียชีวิต|พนัน|หวย|ลอตเตอรี่/;
 const okTopic = (p) => !RISKY.test([p.title, p.keyword, p.excerpt, ...(p.summary || []), ...(p.tags || [])].join(' '));
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// 글 → 어떤 주제의 그룹에 맞는지 (맞는 그룹이 없는 글, 예: 스포츠는 오늘 추천에서 빠짐)
+function topicsOf(p) {
+  const t = new Set();
+  const text = [p.title, ...(p.tags || [])].join(' ');
+  const kr = p.origin === 'kr' || p.category === 'K-บันเทิง';
+  if (kr) { t.add('kpop'); t.add('news'); if (/ซีรีส์|ซีรีย์|ละคร/.test(text)) t.add('kdrama'); }
+  else if (p.category === 'ซีรีส์/หนัง') { t.add('kdrama'); t.add('news'); }
+  else if (p.category === 'บันเทิง') { t.add('news'); t.add('tpop'); }
+  return t;
+}
 
 const get = async (p, params = {}) => {
   const u = new URL(`${API}/${p}`);
@@ -66,35 +84,51 @@ async function pageCandidates() {
   return out;
 }
 
+const usable = (c) => c.p && c.p.format !== 'roundup' && okTopic(c.p) && (ledger.posts[c.slug]?.n || 0) < MAX_SHARES_PER_POST;
 let cands = (await pageCandidates()).filter((c) => now - c.at < WINDOW_H * 36e5 && now - c.at > MIN_AGE_H * 36e5);
 const bySlug = new Map();
 for (const c of cands.sort((a, b) => b.score - a.score)) if (!bySlug.has(c.slug)) bySlug.set(c.slug, c); // 같은 글은 점수 높은 쪽 하나만
-cands = [...bySlug.values()]
-  .map((c) => ({ ...c, p: readPost(c.slug) }))
-  .filter((c) => c.p && c.p.format !== 'roundup' && okTopic(c.p) && !ledger[c.slug]);
+cands = [...bySlug.values()].map((c) => ({ ...c, p: readPost(c.slug) })).filter(usable);
 // K-연예(우리 색인 대상·전문 분야)는 가산점
 cands.forEach((c) => { c.rank = c.score * (c.p.origin === 'kr' ? 1.5 : 1); });
-cands.sort((a, b) => b.rank - a.rank);
-console.log(`group-kit: 페이지 실적 후보 ${cands.length}개`);
-cands.slice(0, 8).forEach((c) => console.log(`  ${Math.round(c.rank).toString().padStart(6)}  ${c.kind}  ${c.slug}  ${c.stat}`));
 
 // 2) 대체: 페이지 실적을 못 읽으면 사이트 글(링크 공유) 기반
-let picks = [];
-const cats = new Set();
-for (const c of cands) if (picks.length < N && !cats.has(c.p.category)) { picks.push(c); cats.add(c.p.category); }
-for (const c of cands) if (picks.length < N && !picks.includes(c)) picks.push(c);
 let fromSite = false;
-if (!picks.length) {
+if (!cands.length) {
   fromSite = true;
   const hasNote = (p) => [...(p.editorNote || '').trim()].length >= 60;
-  const posts = fs.readdirSync('content/posts').filter((f) => f.endsWith('.json') && !f.startsWith('demo-'))
-    .map((f) => JSON.parse(fs.readFileSync(path.join('content/posts', f), 'utf8')))
-    .filter((p) => p.format !== 'roundup' && now - Date.parse(p.createdAt) < 36 * 36e5 && !ledger[p.slug] && okTopic(p));
   const score = (p) => (p.origin === 'kr' ? 3 : 0) + (hasNote(p) ? 2 : 0) + (p.poll ? 0.7 : 0) + Math.log10((p.traffic || 100) + 10);
-  picks = posts.sort((a, b) => score(b) - score(a)).slice(0, N).map((p) => ({ slug: p.slug, p, kind: 'site', stat: '사이트 글', url: `${SITE}/post/${p.slug}/` }));
+  cands = fs.readdirSync('content/posts').filter((f) => f.endsWith('.json') && !f.startsWith('demo-'))
+    .map((f) => JSON.parse(fs.readFileSync(path.join('content/posts', f), 'utf8')))
+    .filter((p) => now - Date.parse(p.createdAt) < 36 * 36e5)
+    .map((p) => ({ slug: p.slug, p, kind: 'site', stat: '사이트 글', url: `${SITE}/post/${p.slug}/`, rank: score(p) }))
+    .filter(usable);
   console.log('group-kit: 페이지 실적 후보 없음 → 사이트 글 기반으로 대체');
 }
-if (!picks.length) { console.log('group-kit: 추천할 글 없음'); process.exit(0); }
+cands.sort((a, b) => b.rank - a.rank);
+console.log(`group-kit: 후보 ${cands.length}개`);
+cands.slice(0, 8).forEach((c) => console.log(`  ${Math.round(c.rank).toString().padStart(6)}  ${c.kind}  ${c.slug}  ${c.stat}  [${[...topicsOf(c.p)].join(',')}]`));
+
+// 3) 오늘 올릴 그룹 고르기: share 모드, 마지막 게시가 오래된 순 (같은 날/48h 안은 제외)
+const cfg = JSON.parse(fs.readFileSync(path.join('brand', 'groups.json'), 'utf8')).groups || [];
+const share = cfg.filter((g) => g.mode === 'share');
+const commentOnly = cfg.filter((g) => g.mode === 'comment-only');
+const eligible = share.filter((g) => !ledger.groups[g.name] || now - ledger.groups[g.name] > MIN_GAP_H * 36e5)
+  .sort((a, b) => (ledger.groups[a.name] || 0) - (ledger.groups[b.name] || 0) || b.members - a.members);
+
+// 4) 그룹 ↔ 글 짝짓기: 그룹 주제에 맞는 최고 점수 글. 오늘 이미 다른 그룹에 쓴 글은 뒤로 (다양하게), 같은 그룹에 같은 글은 안 줌
+const todayUse = new Map();
+const plan = [];
+for (const g of eligible) {
+  if (plan.length >= GROUPS_PER_DAY) break;
+  const fit = cands.filter((c) => !ledger.pairs[`${g.name}|${c.slug}`] && [...topicsOf(c.p)].some((t) => g.topics.includes(t)));
+  fit.sort((a, b) => (todayUse.get(a.slug) || 0) - (todayUse.get(b.slug) || 0) || b.rank - a.rank);
+  const c = fit.find((x) => (ledger.posts[x.slug]?.n || 0) + (todayUse.get(x.slug) || 0) < MAX_SHARES_PER_POST);
+  if (!c) { console.log(`group-kit: ${g.name} — 맞는 글 없음 → 건너뜀`); continue; }
+  todayUse.set(c.slug, (todayUse.get(c.slug) || 0) + 1);
+  plan.push({ g, c, variant: 'abc'[plan.length % 3] });
+}
+if (!plan.length) { console.log('group-kit: 오늘 짝지을 그룹/글 없음'); process.exit(0); }
 
 const Schema = z.object({
   a: z.string().describe('แบบ A (คำถาม): 2-3 บรรทัด เปิดด้วยคำถามที่คนอยากตอบในคอมเมนต์ ไม่มีลิงก์ ไม่มีแฮชแท็ก'),
@@ -102,40 +136,48 @@ const Schema = z.object({
   c: z.string().describe('แบบ C (ให้เลือก): 2-4 บรรทัด ตั้งตัวเลือก 2 ข้อให้คอมเมนต์เลือก (เช่น "ทีม A หรือ ทีม B?") ไม่มีลิงก์ ไม่มีแฮชแท็ก'),
 });
 const system = `คุณเป็นสมาชิกกลุ่ม Facebook ภาษาไทยที่เล่าข่าวให้เพื่อนฟัง ไม่ใช่เพจข่าวที่โปรโมตตัวเอง เขียนภาษาพูดธรรมชาติ ห้ามมีลิงก์ ห้ามแฮชแท็ก ห้ามหลอกคลิก ห้ามมีอักษรเกาหลี ห้ามแต่งข้อเท็จจริงนอกเหนือจากข้อมูลที่ให้ ใช้อีโมจิได้ไม่เกิน 2 ตัวต่อแบบ`;
-
 const ruleBased = (p) => {
   const q = questionOf(p).replace(/\s*👇$/, '');
   const opts = p.poll?.length >= 2 ? p.poll.slice(0, 3).join(' หรือ ') : 'เห็นด้วย หรือ ไม่เห็นด้วย';
   return { a: `${p.hook || p.title}\n${q} 👇`, b: `${p.title}\nใครตามเรื่องนี้อยู่บ้าง? เห็นยังไงกันบ้าง`, c: `${p.hook || p.title}\n${p.question || 'คิดว่ายังไง?'}\n${opts} — คอมเมนต์ได้เลย 👇` };
 };
-
-fs.mkdirSync('.cache', { recursive: true });
-let sent = 0;
-const how = fromSite
-  ? '1) 아래 버튼으로 글 열기 2) 캡션 복사 → 그룹에 글 올리기 3) 링크는 첫 댓글에'
-  : '1) 아래 "FB 게시물 열기" 버튼 → 우리 페이지 게시물이 열려요\n2) 게시물의 "공유" → "그룹에 공유" → 그룹 선택\n3) 캡션 3종 중 하나를 붙여넣고 올리기 (링크 넣지 않기)\n4) 올린 뒤 첫 댓글에 아래 "첫 댓글" 문구 붙이기';
-if (!DRY) await sendTelegramText(`📣 오늘의 페북 그룹 공유 (${picks.length}개)\n\n${how}\n\n✅ 규칙\n• 하루 그룹 3~5곳, 같은 그룹엔 하루 1번\n• 그룹마다 A/B/C 중 다른 캡션 쓰기 (복붙 금지)\n• 올리고 1시간 안에 달린 댓글에 답하기\n• 그룹 규칙이 홍보 금지면 그 그룹은 건너뛰기`);
-for (const [i, c] of picks.entries()) {
-  const p = c.p;
+const capCache = new Map();
+async function captionsFor(p) {
+  if (capCache.has(p.slug)) return capCache.get(p.slug);
   let cap;
   try {
     const prompt = `ข่าว: ${p.title}\nสรุป: ${(p.summary || []).slice(0, 3).join(' / ')}\nหมวด: ${p.category}\nคำถามชวนคุย: ${p.question || '-'}\nตัวเลือกโหวต: ${(p.poll || []).join(' / ') || '-'}\n\nเขียนแคปชันสำหรับโพสต์ลงกลุ่ม 3 แบบ (A/B/C) ของข่าวนี้`;
     cap = await generateJSON(prompt, Schema, { system, temperature: 0.9 });
     if (/[가-힣]|https?:\/\//.test(JSON.stringify(cap))) throw new Error('한글/링크 섞임');
   } catch (e) { console.warn(`group-kit: LLM 실패(${String(e.message).slice(0, 80)}) → 규칙 기반 캡션`); cap = ruleBased(p); }
-  const tag = p.origin === 'kr' ? '🇰🇷 K-ent' : p.category;
-  console.log(`group-kit: ${i + 1}/${picks.length} ${c.slug} [${tag}] ${c.stat} ${p.title.slice(0, 40)}`);
-  if (DRY) { console.log(c.url); console.log(JSON.stringify(cap, null, 1)); continue; }
-  try {
-    await sendTelegramText(`━━━ ${i + 1}/${picks.length} · ${tag} · ${c.stat} ━━━\n${p.title}`, [{ text: fromSite ? '🖼 글 열기' : '📘 FB 게시물 열기 → 공유', url: c.url }]);
-    for (const [k, label] of [['a', 'A 질문형'], ['b', 'B 한줄평형'], ['c', 'C 투표형']]) {
-      await sendTelegramText(cap[k].trim());
-      await sendTelegramText(`↑ ${label} (복사해서 그룹 글에 붙이기)`);
-    }
-    await sendTelegramText(`💬 첫 댓글 문구 (올린 뒤 복사해서 붙이기):\n${fromSite ? `อ่านฉบับเต็มได้ที่นี่ 👉 ${SITE}/post/${c.slug}/` : `ข่าวบันเทิงเกาหลี-ไทย อัปเดตทุกวันที่เพจ ThaiBuzz 👉 ${PAGE_URL || SITE}`}`);
-    ledger[c.slug] = now; sent++;
-  } catch (e) { console.error(`group-kit: ${c.slug} 전송 실패 — ${e.message}`); }
+  capCache.set(p.slug, cap);
+  return cap;
 }
-for (const [k, t] of Object.entries(ledger)) if (now - t > 14 * 864e5) delete ledger[k];
+
+fs.mkdirSync('.cache', { recursive: true });
+const groupLink = (g) => g.url || `https://www.facebook.com/search/groups/?q=${encodeURIComponent(g.name)}`;
+const VARIANT = { a: '질문형', b: '한줄평형', c: '투표형' };
+const how = fromSite ? '글 열기 → 캡션 복사 → 그룹에 글 올리기 → 첫 댓글에 링크' : '캡션 탭(복사) → 📘 게시물 열기 → 공유 → 그룹에 공유 → 붙여넣기 → 올린 뒤 첫 댓글';
+let sent = 0;
+if (!DRY) await sendTelegramText(`📣 오늘 공유할 그룹 ${plan.length}곳\n${how}\n• 그룹마다 하루 1번 · 올린 뒤 1시간 안에 댓글 답하기${commentOnly.length ? `\n• 댓글만 달 그룹: ${commentOnly.map((g) => g.name).join(', ')}` : ''}`);
+for (const [i, { g, c, variant }] of plan.entries()) {
+  const p = c.p;
+  const cap = await captionsFor(p);
+  const first = fromSite ? `อ่านฉบับเต็มได้ที่นี่ 👉 ${SITE}/post/${c.slug}/` : `ข่าวบันเทิงเกาหลี-ไทย อัปเดตทุกวันที่เพจ ThaiBuzz 👉 ${PAGE_URL || SITE}`;
+  const tag = p.origin === 'kr' ? '🇰🇷' : p.category;
+  console.log(`group-kit: ${i + 1}/${plan.length} [${g.name}] ← ${c.slug} (${VARIANT[variant]}) ${c.stat} ${p.title.slice(0, 40)}`);
+  const text = `📍 ${i + 1}/${plan.length} · <b>${esc(g.name)}</b> (${Math.round(g.members / 1000)}K)\n${esc(tag)} ${esc(p.title.slice(0, 70))} · ${esc(c.stat)}\n\n캡션 (${VARIANT[variant]}) — 탭하면 복사:\n<pre>${esc(cap[variant].trim())}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(first)}</pre>`;
+  if (DRY) { console.log(c.url, '\n' + cap[variant].trim() + '\n---'); continue; }
+  try {
+    await sendTelegramText(text, [{ text: fromSite ? '🖼 글 열기' : '📘 게시물 열기 → 공유', url: c.url }, { text: '👥 그룹 열기', url: groupLink(g) }], 'HTML');
+    ledger.groups[g.name] = now; ledger.pairs[`${g.name}|${c.slug}`] = now;
+    ledger.posts[c.slug] = { n: (ledger.posts[c.slug]?.n || 0) + 1, at: now };
+    sent++;
+  } catch (e) { console.error(`group-kit: ${g.name} 전송 실패 — ${e.message}`); }
+}
+// 정리: 글 기록 14일, 그룹 기록 30일, 짝 기록 30일
+for (const [k, v] of Object.entries(ledger.posts)) if (now - v.at > 14 * 864e5) delete ledger.posts[k];
+for (const [k, t] of Object.entries(ledger.groups)) if (now - t > 30 * 864e5) delete ledger.groups[k];
+for (const [k, t] of Object.entries(ledger.pairs)) if (now - t > 30 * 864e5) delete ledger.pairs[k];
 fs.writeFileSync(LEDGER, JSON.stringify(ledger));
-console.log(`group-kit: ${sent}개 전송`);
+console.log(`group-kit: ${sent}개 그룹 전송`);
