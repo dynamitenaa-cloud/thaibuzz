@@ -540,23 +540,23 @@
   {
    "id": "401915383",
    "date": "2026-11-04T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "AEK Athens",
    "away": "Real Madrid",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "OPAP Arena"
   },
   {
    "id": "401915382",
    "date": "2026-11-04T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Fenerbahce",
    "away": "Liverpool",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Şükrü Saracoğlu Stadium"
   },
   {
@@ -637,5 +637,5 @@
    "venue": "Viking Stadion"
   }
  ],
- "updatedAt": "2026-11-04T02:09:49.092Z"
+ "updatedAt": "2026-11-04T18:46:07.680Z"
 }
