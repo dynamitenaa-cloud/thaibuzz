@@ -5,29 +5,41 @@
   {
    "rank": 1,
    "team": "Paris Saint-Germain",
-   "p": 3,
-   "w": 3,
+   "p": 4,
+   "w": 4,
    "d": 0,
    "l": 0,
-   "gf": 14,
+   "gf": 20,
    "ga": 5,
-   "gd": 9,
-   "pts": 9
+   "gd": 15,
+   "pts": 12
   },
   {
    "rank": 2,
-   "team": "Aston Villa",
-   "p": 3,
+   "team": "Barcelona",
+   "p": 4,
    "w": 3,
    "d": 0,
-   "l": 0,
-   "gf": 12,
-   "ga": 3,
-   "gd": 9,
+   "l": 1,
+   "gf": 14,
+   "ga": 6,
+   "gd": 8,
    "pts": 9
   },
   {
    "rank": 3,
+   "team": "Aston Villa",
+   "p": 4,
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 12,
+   "ga": 6,
+   "gd": 6,
+   "pts": 9
+  },
+  {
+   "rank": 4,
    "team": "Liverpool",
    "p": 3,
    "w": 3,
@@ -39,7 +51,7 @@
    "pts": 9
   },
   {
-   "rank": 4,
+   "rank": 5,
    "team": "Real Madrid",
    "p": 3,
    "w": 3,
@@ -51,7 +63,7 @@
    "pts": 9
   },
   {
-   "rank": 5,
+   "rank": 6,
    "team": "Sporting CP",
    "p": 4,
    "w": 3,
@@ -63,7 +75,7 @@
    "pts": 9
   },
   {
-   "rank": 6,
+   "rank": 7,
    "team": "Real Betis",
    "p": 3,
    "w": 3,
@@ -75,7 +87,19 @@
    "pts": 9
   },
   {
-   "rank": 7,
+   "rank": 8,
+   "team": "Bayern Munich",
+   "p": 4,
+   "w": 2,
+   "d": 2,
+   "l": 0,
+   "gf": 12,
+   "ga": 5,
+   "gd": 7,
+   "pts": 8
+  },
+  {
+   "rank": 9,
    "team": "Arsenal",
    "p": 3,
    "w": 2,
@@ -87,7 +111,7 @@
    "pts": 7
   },
   {
-   "rank": 8,
+   "rank": 10,
    "team": "VfB Stuttgart",
    "p": 4,
    "w": 2,
@@ -99,19 +123,7 @@
    "pts": 7
   },
   {
-   "rank": 9,
-   "team": "Barcelona",
-   "p": 3,
-   "w": 2,
-   "d": 0,
-   "l": 1,
-   "gf": 11,
-   "ga": 6,
-   "gd": 5,
-   "pts": 6
-  },
-  {
-   "rank": 10,
+   "rank": 11,
    "team": "Como",
    "p": 3,
    "w": 2,
@@ -123,7 +135,7 @@
    "pts": 6
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Manchester City",
    "p": 3,
    "w": 2,
@@ -135,7 +147,7 @@
    "pts": 6
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Club Brugge",
    "p": 3,
    "w": 2,
@@ -147,7 +159,31 @@
    "pts": 6
   },
   {
-   "rank": 13,
+   "rank": 14,
+   "team": "Internazionale",
+   "p": 4,
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 8,
+   "ga": 6,
+   "gd": 2,
+   "pts": 6
+  },
+  {
+   "rank": 15,
+   "team": "LASK Linz",
+   "p": 4,
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 10,
+   "ga": 9,
+   "gd": 1,
+   "pts": 6
+  },
+  {
+   "rank": 16,
    "team": "Borussia Dortmund",
    "p": 3,
    "w": 2,
@@ -159,7 +195,19 @@
    "pts": 6
   },
   {
-   "rank": 14,
+   "rank": 17,
+   "team": "Manchester United",
+   "p": 4,
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 8,
+   "ga": 8,
+   "gd": 0,
+   "pts": 6
+  },
+  {
+   "rank": 18,
    "team": "Galatasaray",
    "p": 4,
    "w": 2,
@@ -171,43 +219,19 @@
    "pts": 6
   },
   {
-   "rank": 15,
-   "team": "Bayern Munich",
-   "p": 3,
-   "w": 1,
-   "d": 2,
-   "l": 0,
-   "gf": 10,
-   "ga": 5,
-   "gd": 5,
-   "pts": 5
-  },
-  {
-   "rank": 16,
+   "rank": 19,
    "team": "AS Roma",
-   "p": 3,
+   "p": 4,
    "w": 1,
    "d": 1,
-   "l": 1,
-   "gf": 8,
-   "ga": 5,
-   "gd": 3,
+   "l": 2,
+   "gf": 10,
+   "ga": 8,
+   "gd": 2,
    "pts": 4
   },
   {
-   "rank": 17,
-   "team": "Atlético Madrid",
-   "p": 3,
-   "w": 1,
-   "d": 1,
-   "l": 1,
-   "gf": 4,
-   "ga": 3,
-   "gd": 1,
-   "pts": 4
-  },
-  {
-   "rank": 18,
+   "rank": 20,
    "team": "Shakhtar Donetsk",
    "p": 4,
    "w": 1,
@@ -219,7 +243,7 @@
    "pts": 4
   },
   {
-   "rank": 19,
+   "rank": 21,
    "team": "PSV Eindhoven",
    "p": 3,
    "w": 1,
@@ -231,43 +255,31 @@
    "pts": 4
   },
   {
-   "rank": 20,
-   "team": "Villarreal",
-   "p": 3,
-   "w": 1,
-   "d": 0,
-   "l": 2,
-   "gf": 8,
-   "ga": 8,
-   "gd": 0,
-   "pts": 3
-  },
-  {
-   "rank": 21,
-   "team": "Internazionale",
-   "p": 3,
-   "w": 1,
-   "d": 0,
-   "l": 2,
-   "gf": 5,
-   "ga": 6,
-   "gd": -1,
-   "pts": 3
-  },
-  {
    "rank": 22,
-   "team": "Manchester United",
-   "p": 3,
+   "team": "Atlético Madrid",
+   "p": 4,
    "w": 1,
-   "d": 0,
+   "d": 1,
    "l": 2,
-   "gf": 5,
-   "ga": 6,
+   "gf": 4,
+   "ga": 5,
    "gd": -1,
-   "pts": 3
+   "pts": 4
   },
   {
    "rank": 23,
+   "team": "Bodo/Glimt",
+   "p": 4,
+   "w": 1,
+   "d": 1,
+   "l": 2,
+   "gf": 4,
+   "ga": 9,
+   "gd": -5,
+   "pts": 4
+  },
+  {
+   "rank": 24,
    "team": "Napoli",
    "p": 3,
    "w": 1,
@@ -276,18 +288,6 @@
    "gf": 5,
    "ga": 7,
    "gd": -2,
-   "pts": 3
-  },
-  {
-   "rank": 24,
-   "team": "LASK Linz",
-   "p": 3,
-   "w": 1,
-   "d": 0,
-   "l": 2,
-   "gf": 6,
-   "ga": 9,
-   "gd": -3,
    "pts": 3
   },
   {
@@ -304,18 +304,6 @@
   },
   {
    "rank": 26,
-   "team": "Feyenoord Rotterdam",
-   "p": 3,
-   "w": 1,
-   "d": 0,
-   "l": 2,
-   "gf": 4,
-   "ga": 8,
-   "gd": -4,
-   "pts": 3
-  },
-  {
-   "rank": 27,
    "team": "Lens",
    "p": 3,
    "w": 1,
@@ -327,19 +315,7 @@
    "pts": 3
   },
   {
-   "rank": 28,
-   "team": "Bodo/Glimt",
-   "p": 3,
-   "w": 1,
-   "d": 0,
-   "l": 2,
-   "gf": 4,
-   "ga": 9,
-   "gd": -5,
-   "pts": 3
-  },
-  {
-   "rank": 29,
+   "rank": 27,
    "team": "AEK Athens",
    "p": 3,
    "w": 1,
@@ -351,7 +327,7 @@
    "pts": 3
   },
   {
-   "rank": 30,
+   "rank": 28,
    "team": "RB Leipzig",
    "p": 3,
    "w": 1,
@@ -360,6 +336,30 @@
    "gf": 3,
    "ga": 8,
    "gd": -5,
+   "pts": 3
+  },
+  {
+   "rank": 29,
+   "team": "Villarreal",
+   "p": 4,
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 8,
+   "ga": 14,
+   "gd": -6,
+   "pts": 3
+  },
+  {
+   "rank": 30,
+   "team": "Feyenoord Rotterdam",
+   "p": 4,
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 4,
+   "ga": 11,
+   "gd": -7,
    "pts": 3
   },
   {
@@ -400,6 +400,18 @@
   },
   {
    "rank": 34,
+   "team": "Lille",
+   "p": 4,
+   "w": 0,
+   "d": 1,
+   "l": 3,
+   "gf": 4,
+   "ga": 10,
+   "gd": -6,
+   "pts": 1
+  },
+  {
+   "rank": 35,
    "team": "FC Porto",
    "p": 3,
    "w": 0,
@@ -411,27 +423,15 @@
    "pts": 0
   },
   {
-   "rank": 35,
-   "team": "Lille",
-   "p": 3,
-   "w": 0,
-   "d": 0,
-   "l": 3,
-   "gf": 4,
-   "ga": 10,
-   "gd": -6,
-   "pts": 0
-  },
-  {
    "rank": 36,
    "team": "Slovan Bratislava",
-   "p": 3,
+   "p": 4,
    "w": 0,
    "d": 0,
-   "l": 3,
+   "l": 4,
    "gf": 1,
-   "ga": 13,
-   "gd": -12,
+   "ga": 17,
+   "gd": -16,
    "pts": 0
   }
  ],
@@ -457,14 +457,12 @@
    "hs": "0",
    "as": "1",
    "venue": "Stamford Bridge"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401915386",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "82'",
+   "status": "post",
+   "detail": "FT",
    "home": "Atlético Madrid",
    "away": "Bayern Munich",
    "hs": "0",
@@ -474,8 +472,8 @@
   {
    "id": "401915387",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "80'",
+   "status": "post",
+   "detail": "FT",
    "home": "Barcelona",
    "away": "Aston Villa",
    "hs": "3",
@@ -485,8 +483,8 @@
   {
    "id": "401915384",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "85'",
+   "status": "post",
+   "detail": "FT",
    "home": "Bodo/Glimt",
    "away": "Lille",
    "hs": "0",
@@ -496,8 +494,8 @@
   {
    "id": "401915307",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "79'",
+   "status": "post",
+   "detail": "FT",
    "home": "Feyenoord Rotterdam",
    "away": "Internazionale",
    "hs": "0",
@@ -507,8 +505,8 @@
   {
    "id": "401915385",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "81'",
+   "status": "post",
+   "detail": "FT",
    "home": "LASK Linz",
    "away": "Slovan Bratislava",
    "hs": "4",
@@ -518,25 +516,27 @@
   {
    "id": "401915308",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "81'",
+   "status": "post",
+   "detail": "FT",
    "home": "Manchester United",
    "away": "AS Roma",
-   "hs": "1",
+   "hs": "3",
    "as": "2",
    "venue": "Old Trafford"
   },
   {
    "id": "401915309",
    "date": "2026-11-03T20:00Z",
-   "status": "in",
-   "detail": "81'",
+   "status": "post",
+   "detail": "FT",
    "home": "Villarreal",
    "away": "Paris Saint-Germain",
    "hs": "0",
    "as": "6",
    "venue": "Estadio de la Cerámica"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401915383",
    "date": "2026-11-04T17:45Z",
@@ -637,5 +637,5 @@
    "venue": "Viking Stadion"
   }
  ],
- "updatedAt": "2026-11-03T21:41:19.551Z"
+ "updatedAt": "2026-11-04T02:09:49.092Z"
 }

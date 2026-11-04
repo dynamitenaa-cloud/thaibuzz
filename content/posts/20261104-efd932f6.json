@@ -1,0 +1,115 @@
+{
+  "slug": "20261104-efd932f6",
+  "title": "ทำไม Google เปลี่ยนนโยบาย Classroom และ Search จนเกิดดราม่าการเมือง",
+  "excerpt": "เพราะกระแสวิจารณ์เดือดจากนักการเมืองสหรัฐฯ หลัง Google ประกาศอัปเดตระบบ Classroom และ Search พ่วงฟีเจอร์ AI แบบบังคับใช้งานในโรงเรียน",
+  "summary": [
+    "Google เพิ่มฟีเจอร์ Guided Learning ขับเคลื่อนด้วย AI ลงใน Search และ Google Classroom",
+    "เกิดกระแสต่อต้านจากนักการเมืองสหรัฐฯ หลังมีรายงานว่าโรงเรียนที่แบน AI จะถูกตัดสิทธิ์การเข้าถึงระบบค้นหา",
+    "Google ชี้แจงว่าโรงเรียนยังมีอำนาจควบคุมการเปิดปิดเครื่องมือ และ AI ทำหน้าที่เป็นโค้ชส่วนตัวคอยตั้งคำถามแนะนำทีละขั้นตอน"
+  ],
+  "sections": [
+    {
+      "heading": "ที่มาของฟีเจอร์ Guided Learning ใน Google Classroom",
+      "paragraphs": [
+        "คริส ฟิลลิปส์ รองประธานและผู้จัดการทั่วไปด้านการศึกษาของ Google เปิดเผยถึงการนำเทคโนโลยีปัญญาประดิษฐ์เข้ามาเสริมทัพในระบบการเรียนรู้ เพื่อช่วยให้นักเรียนฝึกฝนการคิดวิเคราะห์ผ่านโจทย์ปัญหาที่ซับซ้อนได้อย่างมีประสิทธิภาพมากขึ้น",
+        "เครื่องมือดังกล่าวถูกออกแบบมาทำหน้าที่เสมือนโค้ชส่วนตัว โดยจะคอยไกด์แนวทางด้วยคำถามปลายเปิดแบบทีละขั้นตอน แทนการป้อนคำตอบสำเร็จรูปให้ทันที เพื่อสนับสนุนพฤติกรรมการศึกษาที่ยั่งยืนและสร้างกระบวนการเรียนรู้ที่แข็งแกร่งให้กับผู้เรียน"
+      ]
+    },
+    {
+      "heading": "จุดเริ่มต้นดราม่าการเมืองสหรัฐฯ และเสียงวิจารณ์",
+      "paragraphs": [
+        "ประเด็นร้อนเริ่มขึ้นเมื่อสำนักข่าว The New York Times รายงานข่าวว่าบริษัทเทคโนโลยีรายใหญ่จะปิดกั้นการเข้าถึงระบบค้นหาสำหรับโรงเรียนที่ปฏิเสธการใช้งานปัญญาประดิษฐ์อย่างสิ้นเชิง ส่งผลให้เกิดกระแสความไม่พอใจในกลุ่มนักการเมืองฝ่ายซ้ายของสหรัฐฯ",
+        "เบอร์นี แซนเดอร์ส สมาชิกวุฒิสภาจากรัฐเวอร์มอนต์ ออกมาวิจารณ์ผ่านสื่อโซเชียลมีเดียว่าการกระทำดังกล่าวเปรียบเสมือนการข่มขู่สถานศึกษา ขณะที่ โซห์ราน มาดานี นายกเทศมนตรีเมืองนิวยอร์ก ระบุว่าบริษัทกำลังใช้อำนาจผูกขาดเพื่อบังคับให้ห้องเรียนต้องยอมรับเทคโนโลยี AI"
+      ]
+    },
+    {
+      "heading": "การชี้แจงจาก Google ท่ามกลางกระแสกดดัน",
+      "paragraphs": [
+        "หลังเผชิญแรงต้านอย่างหนัก ทางบริษัทได้ออกมาชี้แจงผ่านแพลตฟอร์ม X โดยยืนยันว่านโยบายใหม่มีเป้าหมายเพื่อให้โรงเรียนมีทางเลือกมากขึ้นในการจัดการสภาพแวดล้อมการเรียนรู้ พร้อมระบุว่าระบบแชทบอตและเครื่องมือค้นหาจะถูกตั้งค่าปิดการใช้งานไว้เป็นค่าเริ่มต้น",
+        "นอกจากนี้ ตัวแทนขององค์กรยังเน้นย้ำว่าผู้บริหารสถานศึกษามีอำนาจเต็มที่ในการตัดสินใจเปิดหรือปิดระบบเหล่านี้ตามความเหมาะสม รวมถึงมีการอัปเดตระบบค้นหาให้เน้นรูปแบบการเรียนรู้แบบทีละขั้นตอนผ่าน AI Overviews และ AI Mode เพื่อประโยชน์ทางการศึกษาอย่างแท้จริง"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "classroom google คืออะไร",
+      "a": "เครื่องมือและผลิตภัณฑ์สำหรับการศึกษาจาก Google ที่ล่าสุดมีการผนบรวมความสามารถด้าน Guided Learning เข้ามาช่วยเหลือนักเรียนในห้องเรียน"
+    },
+    {
+      "q": "ทำไมคนถึงพูดถึงประเด็น Google กับโรงเรียนตอนนี้",
+      "a": "เนื่องจากเกิดกระแสวิจารณ์และเสียงต่อต้านจากนักการเมืองสหรัฐฯ ต่อเงื่อนไขการใช้งาน AI และการเข้าถึงระบบค้นหาในสถานศึกษา"
+    }
+  ],
+  "tags": [
+    "Google",
+    "Google Classroom",
+    "Chris Phillips",
+    "Artificial Intelligence"
+  ],
+  "entities": [
+    {
+      "name": "Google",
+      "type": "group"
+    },
+    {
+      "name": "Google Classroom",
+      "type": "work"
+    },
+    {
+      "name": "Chris Phillips",
+      "type": "person"
+    }
+  ],
+  "category": "ข่าวทั่วไป",
+  "thumb": "/thumbs/20261104-efd932f6.jpg",
+  "thumbSm": "/thumbs/20261104-efd932f6-sm.webp",
+  "thumbClean": "/thumbs/20261104-efd932f6-clean.webp",
+  "thumbLg": "/thumbs/20261104-efd932f6-clean.webp",
+  "imageAlt": "หน้าจอระบบ Google Classroom และเครื่องมือค้นหา",
+  "imageCredit": "blog.google",
+  "createdAt": "2026-11-04T02:09:01.903Z",
+  "traffic": 2000,
+  "keyword": "classroom",
+  "format": "explainer",
+  "hook": "งานนี้ Google งานเข้าหลังบังคับใช้ AI ในโรงเรียน",
+  "question": "คิดว่าโรงเรียนควรมีสิทธิ์แบน AI ในห้องเรียนหรือไม่?",
+  "poll": [
+    "ควรมีสิทธิ์แบน 🏫",
+    "ควรให้ใช้ร่วมกัน 💻",
+    "ยังไม่แน่ใจ ⚖️"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Designing responsible AI for learning",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-learning-era-updates-2026/",
+      "source": "blog.google"
+    },
+    {
+      "title": "Google will cut off search access for students at schools that reject AI",
+      "url": "https://triblive.com/news/world/google-will-cut-off-search-access-for-students-at-schools-that-reject-ai/",
+      "source": "TribLIVE.com"
+    },
+    {
+      "title": "Google responds to political backlash over removing search from schools that ban AI",
+      "url": "https://www.cnbc.com/2026/11/03/google-responds-to-outrage-over-removing-search-in-schools-that-ban-ai.html",
+      "source": "CNBC"
+    },
+    {
+      "title": "ชวนคนรักธรรมชาติออกไปเรียนรู้ กับ 3 ห้องเรียนกลางป่าส่งท้ายปี",
+      "url": "https://thestandard.co/life/nature-classroom-forest-trips-year-end/",
+      "source": "thestandard.co"
+    },
+    {
+      "title": "THE OPPORTUNITY MAKER จากห้องเรียนสู่เวทีโลก! CATH SPU เปิดโอกาส 4 นักศึกษาสร้างประสบการณ์ระดับนานาชาติ - วิทยาลัยการบิน การท่องเที่ยวและการบริการ",
+      "url": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxNYm1Pcmlfd3l3QUdOakpTQlVKZDNIWjZ6RjAyQVhLcVBZWVkxdTEwRVNEU3RTUHM4MmsybXREajlxY04ySVVxdFpaOC1IU1Y0aWx1UWJoWFhsaTBRcy11bUFvVUtEZmlkN1U5Rjg1YXF3NFlhZU1lVzZNVHJUaUhlMXE2dW1aRElJRTMzREJCQWdYeGNHQlQ1TnRva2cwTEJBeGEySDM0aTdvZ3lpN281ajFWY2xTaGYtOFozWjlmS0ZwUnVGSE42dUhBc1JSZ3VDemdtem5sSjFpcloxNEx3SU9KNEgzWjhvSzM2UlhnVVgxV2g4MVI5bExCRVdrVl9aLXgwZGZWTGVHNjZ5MXRidWtrc1pRQXZONjVzcE9FcUV0ZTJfTWNZbW1WWGt0dFpOUnp2MktZLXFfWHFaX050QnZ3WDJIOTRq?oc=5",
+      "source": "มหาวิทยาลัยศรีปทุม"
+    },
+    {
+      "title": "ครูดีเด่น 34 ท่านจาก \"ห้องเรียนแห่งความสุข\" ในเขตที่ราบสูง",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxObHkwaGVhNEpJY2ZvMElfeDAxVEJlQXlKVGdCb3A5MFBOM1NtR0M4OElqbW8tOEVzSExWZThDbVowcnNycTNLemp0R3RhczIwRHNMMTk3VWdJR3lpQ0YwV0NfbmJldmZ3TTNtM1UtZi1SamxpU0pSMEhsUlROT0RlQk9zQWY4b1k?oc=5",
+      "source": "Vietnam.vn"
+    }
+  ]
+}
