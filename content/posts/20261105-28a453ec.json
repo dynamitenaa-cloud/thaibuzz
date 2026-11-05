@@ -1,0 +1,107 @@
+{
+  "slug": "20261105-28a453ec",
+  "title": "ยูเวนตุสบุกเยือนอาแซด อัลค์มาร์จริงไหม?",
+  "excerpt": "สนามแข่งเดือดเมื่อทัพม้าลายเตรียมยกพลบุกแดนกังหันลมเพื่อล่าชัยชนะนัดที่ 3 ในศึกยูโรปา ลีก หลังฟอร์มเริ่มกลับมาร้อนแรงอีกครั้ง",
+  "summary": [
+    "ยูเวนตุสมีคิวบุกเยือนอาแซด อัลค์มาร์ในศึกยูโรปา ลีก",
+    "ทัพม้าลายเพิ่งคว้าชัยชนะนัดสำคัญเหนือนาโปลีมา",
+    "อินเตอร์ มิลานตกเป็นข่าวเล็งเป้าหมายเสริมทัพ"
+  ],
+  "sections": [
+    {
+      "heading": "ความพร้อมก่อนเกมยูโรปา ลีก",
+      "paragraphs": [
+        "บรรยากาศในแคมป์ม้าลายคึกคักไม่น้อยหลังจากเพิ่งโชว์ฟอร์มเก่งปราบนาโปลีลงได้สำเร็จ ทำให้เส้นทางในเวทียุโรปดูสดใสขึ้นทันตาเห็น",
+        "โปรแกรมเด็ดประจำวันที่ 5 พฤศจิกายน 2569 พาพลพรรคยูเวนตุสเดินทางไปเยือนถิ่นอาแซด อัลค์มาร์ ซึ่งเจ้าบ้านกำลังสะดุดอย่างหนักหลังแพ้มาสองนัดติดแบบยิงประตูไม่ได้เลย"
+      ]
+    },
+    {
+      "heading": "กระแสเสริมทัพและข่าวรอบรั้ว",
+      "paragraphs": [
+        "ตลาดนักเตะยังคงร้อนระอุเมื่อมีกระแสข่าวเชื่อมโยงว่าฮาคาน ชัลฮาโนกลู อาจกลายเป็นเป้าหมายในการเสริมทัพของยูเวนตุส",
+        "ในขณะเดียวกันยังมีรายงานความเคลื่อนไหวจากฝั่งพรีเมียร์ลีกและกัลโช่เซเรียอาที่น่าติดตามต่อเนื่อง"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "ยูเวนตุสบุกเยือนอาแซด อัลค์มาร์จริงไหม?",
+      "a": "จริง โดยมีโปรแกรมแข่งขันในศึกยูโรปา ลีก วันที่ 5 พฤศจิกายน 2569"
+    },
+    {
+      "q": "ฟอร์มล่าสุดของอาแซด อัลค์มาร์เป็นอย่างไร?",
+      "a": "แพ้ติดต่อกันมา 2 นัดโดยยิงประตูไม่ได้เลยก่อนเปิดบ้านรับมือยูเวนตุส"
+    },
+    {
+      "q": "ใครคือเป้าหมายเสริมทัพที่เป็นข่าวกับยูเวนตุส?",
+      "a": "ฮาคาน ชัลฮาโนกลู อาจกลายเป็นเป้าหมายเสริมทัพของยูเวนตุส"
+    }
+  ],
+  "tags": [
+    "ยูเวนตุส",
+    "อาแซด อัลค์มาร์",
+    "ยูโรปาลีก"
+  ],
+  "entities": [
+    {
+      "name": "ยูเวนตุส",
+      "type": "group"
+    },
+    {
+      "name": "อาแซด อัลค์มาร์",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261105-28a453ec.jpg",
+  "thumbSm": "/thumbs/20261105-28a453ec-sm.webp",
+  "thumbClean": "/thumbs/20261105-28a453ec-clean.webp",
+  "thumbLg": "/thumbs/20261105-28a453ec-clean.webp",
+  "imageAlt": "นักฟุตบอลยูเวนตุสลงสนามแข่งขัน",
+  "imageCredit": "Siamsport",
+  "createdAt": "2026-11-05T22:47:37.802Z",
+  "traffic": 2000,
+  "keyword": "ยูเวนตุส",
+  "format": "qa",
+  "hook": "ม้าลายเตรียมบุกเยือนอาแซด",
+  "question": "คิดว่ายูเวนตุสจะเก็บชัยชนะได้ไหม?",
+  "poll": [
+    "ชนะแน่นอน",
+    "ลุ้นเหนื่อย",
+    "น่าจะเสมอ"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "ชี้ 4 ตัวเต็งบอลน่าเชียร์ 5 พ.ย. 69 : ทีเด็ดบอลวันนี้ คัดเน้น ๆ เบนฟิก้า, ไบรท์ตัน คว้าชัย!",
+      "url": "https://www.siamsport.co.th/football-international/europa-league/111683/",
+      "source": "Siamsport"
+    },
+    {
+      "title": "\"พาเลซ\" 10 ตัวโชว์ฮึดไล่ตีเจ๊า \"ฮอฟฯ\" นาทีบาป",
+      "url": "https://www.dailynews.co.th/news/6335759/",
+      "source": "เดลินิวส์"
+    },
+    {
+      "title": "โปรแกรมกีฬาวันนี้ พร้อมช่องถ่ายทอดสด วันพฤหัสบดีที่ 5 พฤศจิกายน 69",
+      "url": "https://www.tnnthailand.com/sports/251520/",
+      "source": "TNN Thailand"
+    },
+    {
+      "title": "“คาร์ราเกอร์” คอมเมนต์ถึง “ซาลาห์” หลังแยกทาง “ลิเวอร์พูล” ซบ “แทร็บซอนสปอร์” โยง “มิลาน-ยูเวนตุส”",
+      "url": "https://www.thairath.co.th/sport/eurofootball/premierleague/2950987",
+      "source": "thairath.co.th"
+    },
+    {
+      "title": "เทน ฮาก กล่าวว่า โรนัลโด้เลยจุดสูงสุดของอาชีพไปแล้ว แต่สถิติกลับบอกเป็นอย่างอื่น",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPU1RFeFZOcXJNN2hKSjRXNnV4eXJ4WklCYXFvUmhFbzY2QVJwRjZTSlJoVk1ENHN3cHYzN1BOSGVkMEZJS2swY1RoNW01UUpmSy11VGRkVHVxUlJEcUE5MFFqVFNtQkNTUmNBd25nbGoxQS0xcUZRMnBZRUdMM29lclN3?oc=5",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "ลิเวอร์พูลเล็งเสริมแบ็กขวา! ล็อกเป้า 2 แข้งกัลโช่เข้าลิสต์เสริมทัพ",
+      "url": "https://news.google.com/rss/articles/CBMivAZBVV95cUxNSXNmY3R4cFE1U0tHaTg3Y2ZHdXNMNkhxeC1tcXNrUFJIM1g5eTFVNnVRMGJVakUtVEZXd0VZREhUNmYzVFRSLUVpdTNGaWxIa2ZOOVFTSWFpaEdwWnI2Zjg3UlJ6YkM0NVdLSVNQVkUzSW9hN3NLeUoweExCNWNWeG5ZQ3JJTk9JS2xYVkJveFg0a3E0U3g5YWRtSjlDY0I4Rm9zZFpGR0tuSENXSGZaRHJGQTlVOV9CcjM1RVE0VGxoUlFaRjc3emNDTk1rdXNzWmc0TS05am1ndEgzRHprSENncUV5cl80czgteksyS0JDSHBLNGlvVk5ycmVYMmFkRlJVd1htTTBobnlIUzFqTUhBN1VoNzJoNHdIZW9sLUNaVjktM2JIazdQQnBtVl9oTWwyQ0pTTUIwelBaT3VVNVJjczR5MnJkTUZIVnVudGtSNVJmLW55X2ZDcmRpUk5IR1hzcHdOSkxuRUphQjU5Y19LSUZKWE9Md056TVBBWFF3TW1sWXRtQUtTSDcyenVReWNSZ2VYWjk2NUxXSURvZkgtM0taZWVNd3ZPRVpPb3lCaDJLNTR1M1ZjcUZmZTliZlo4Q3BkUVM5NFhibFpYSGRRTV9oWks0ZEdNMnhoNERYd2VZbTZBM0hPYUd0a0tES2lpT0xiNS14dmFRUzE3YzRxNFdPaUpGR2JSLXB3SkVqdFF4SUNPeWprbUUwdzM5b3QyMS1QUEVGazZoY0RMVU9LVzhIZlBFamxZOTVGQXR2Qmx2ZHc1VjB4YWxLQTY3Z1YxTEtKRi10dWFXb1B1UTF5eTFnQkhaRHhaa0N3QzlwTmZ3dHdtUmJyZWdiazRhWHRpT3N6WnBXbFRpVnVoSDhoOUlCemVmSUl3MXpDY0FHWkwyTE1TU2gtd0FqQ2hMcUJzblFub3dvelVrNHZqWkRFaEZvSWJMWURlQlE4bzh4UG5kVmxNMG9ObVRwVVo3ZEk5ZlpESTNoc0pfeWxOckZqTFRXM1g4bE1sNTJQRkplUkpjNFg5clpQNGEtZ1RpYm42aDg2UGc3ZFdMVXJkMkRWOWpmdVo4blFUVjVxZncwVURIY19IaEx4TWE?oc=5",
+      "source": "FanPiece"
+    }
+  ]
+}
