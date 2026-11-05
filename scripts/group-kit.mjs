@@ -112,7 +112,9 @@ cands.slice(0, 8).forEach((c) => console.log(`  ${Math.round(c.rank).toString().
 
 // 3) 오늘 올릴 그룹 고르기: share 모드, 마지막 게시가 오래된 순 (같은 날/48h 안은 제외)
 const cfg = JSON.parse(fs.readFileSync(path.join('brand', 'groups.json'), 'utf8')).groups || [];
-const share = cfg.filter((g) => g.mode === 'share');
+const isFb = (g) => g.topics?.includes('football'); // 축구 그룹은 연예 글 대신 축구 참여 기능 안내만
+const share = cfg.filter((g) => g.mode === 'share' && !isFb(g));
+const fbShare = cfg.filter((g) => g.mode === 'share' && isFb(g));
 const commentOnly = cfg.filter((g) => g.mode === 'comment-only');
 const eligible = share.filter((g) => !ledger.groups[g.name] || now - ledger.groups[g.name] > MIN_GAP_H * 36e5)
   .sort((a, b) => (ledger.groups[a.name] || 0) - (ledger.groups[b.name] || 0) || b.members - a.members);
@@ -129,7 +131,21 @@ for (const g of eligible) {
   todayUse.set(c.slug, (todayUse.get(c.slug) || 0) + 1);
   plan.push({ g, c, variant: 'abc'[plan.length % 3] });
 }
-if (!plan.length) { console.log('group-kit: 오늘 짝지을 그룹/글 없음'); process.exit(0); }
+// 4-2) 축구 그룹: 하루 FB_GROUPS_PER_DAY(기본 1)곳, 같은 그룹은 FB_GAP_H(기본 72h) 뒤에, 그룹마다 아직 안 보낸 기능부터 돌려가며 안내
+const FB_PER_DAY = Number(process.env.GROUP_KIT_FB_GROUPS || 1);
+const FB_GAP_H = Number(process.env.GROUP_FB_GAP_H || 72);
+const FEATURES = [
+  { key: 'fan-xi', ko: '이번 주 Fan XI 투표', path: '/football/fan-xi/', cap: 'สัปดาห์นี้ใครเล่นดีที่สุดในพรีเมียร์ลีก? 🔥\nมาช่วยกันเลือก 11 ตัวจริงยอดเยี่ยมประจำสัปดาห์ เลือกได้เลย GK 1 กองหลัง 4 กองกลาง 3 กองหน้า 3\nคอมเมนต์บอกหน่อยว่าใครคือ MVP ของคุณ 👇' },
+  { key: 'best11', ko: '나만의 BEST 11 만들기', path: '/football/best11/', cap: 'ลองจัดทีม BEST 11 ในฝันของคุณ ⚽\nเลือกแผน เลือกนักเตะจากพรีเมียร์ลีก ลาลีกา กัลโช่ บุนเดส แล้วได้รูปทีมไปแชร์\nใครจัดทีมแรงสุดมาโชว์ในคอมเมนต์เลย 👇' },
+  { key: 'predict', ko: '경기 결과 예측', path: '/football/predict/', cap: 'ทายผลบอลสัปดาห์นี้กัน 🎯 (เล่นสนุก ไม่มีเงินรางวัล)\nเลือก ชนะ/เสมอ/แพ้ ดูว่าแฟนบอลคนอื่นทายยังไงบ้าง\nนัดไหนที่คุณมั่นใจที่สุด คอมเมนต์บอกได้เลย 👇' },
+];
+const fbPlan = [];
+for (const g of fbShare.filter((x) => !ledger.groups[x.name] || now - ledger.groups[x.name] > FB_GAP_H * 36e5).sort((a, b) => (ledger.groups[a.name] || 0) - (ledger.groups[b.name] || 0) || b.members - a.members)) {
+  if (fbPlan.length >= FB_PER_DAY) break;
+  const f = [...FEATURES].sort((a, b) => (ledger.pairs[`${g.name}|fb-${a.key}`] || 0) - (ledger.pairs[`${g.name}|fb-${b.key}`] || 0))[0];
+  fbPlan.push({ g, f });
+}
+if (!plan.length && !fbPlan.length) { console.log('group-kit: 오늘 짝지을 그룹/글 없음'); process.exit(0); }
 
 const Schema = z.object({
   ko: z.string().describe('이 뉴스가 무슨 내용인지 한국어로 한 줄(40자 이내) 요약. 한국인 에디터가 어떤 글인지 알아보기 위한 용도'),
@@ -161,7 +177,7 @@ const groupLink = (g) => g.url || 'https://www.facebook.com/groups/joins/';
 const VARIANT = { a: '질문형', b: '한줄평형', c: '투표형' };
 const how = fromSite ? '글 열기 → 캡션 복사 → 그룹에 글 올리기 → 첫 댓글에 링크' : '글자 탭(복사) → 👥 그룹 열기 → 글쓰기 칸에 붙여넣기 → 게시 → 첫 댓글 붙여넣기 (릴스 링크가 같이 붙어서 미리보기 카드가 생겨요. 안 되면 📘 버튼 → 공유로)';
 let sent = 0;
-if (!DRY) await sendTelegramText(`📣 오늘 공유할 그룹 ${plan.length}곳\n${how}\n• 그룹마다 하루 1번 · 올린 뒤 1시간 안에 댓글 답하기${commentOnly.length ? `\n• 댓글만 달 그룹: ${commentOnly.map((g) => g.name).join(', ')}` : ''}`);
+if (!DRY && plan.length) await sendTelegramText(`📣 오늘 공유할 그룹 ${plan.length}곳\n${how}\n• 그룹마다 하루 1번 · 올린 뒤 1시간 안에 댓글 답하기${commentOnly.length ? `\n• 댓글만 달 그룹: ${commentOnly.map((g) => g.name).join(', ')}` : ''}`);
 for (const [i, { g, c, variant }] of plan.entries()) {
   const p = c.p;
   const cap = await captionsFor(p);
@@ -174,6 +190,18 @@ for (const [i, { g, c, variant }] of plan.entries()) {
     await sendTelegramText(text, [{ text: fromSite ? '🖼 글 열기' : '📘 게시물 열기 → 공유', url: c.url }, { text: '👥 그룹 열기', url: groupLink(g) }], 'HTML');
     ledger.groups[g.name] = now; ledger.pairs[`${g.name}|${c.slug}`] = now;
     ledger.posts[c.slug] = { n: (ledger.posts[c.slug]?.n || 0) + 1, at: now };
+    sent++;
+  } catch (e) { console.error(`group-kit: ${g.name} 전송 실패 — ${e.message}`); }
+}
+// 축구 그룹 안내 (기능 링크는 첫 댓글에 — 본문 링크는 그룹 규칙에 걸리기 쉬움)
+for (const [i, { g, f }] of fbPlan.entries()) {
+  const url = `${SITE}${f.path}`;
+  console.log(`group-kit: ⚽ [${g.name}] ← ${f.key}`);
+  if (DRY) { console.log(f.cap + '\n' + url + '\n---'); continue; }
+  const text = `⚽ 축구 그룹 ${i + 1}/${fbPlan.length} · <b>${esc(g.ko || g.name)}</b> (${Math.round(g.members / 1000)}K)\n그룹 이름(탭=복사): <code>${esc(g.name)}</code>\n오늘 소개할 기능: ${esc(f.ko)}\n⚠️ 올리기 전에 그룹 규칙(홍보·링크 금지 여부) 한 번 보세요. 금지면 캡션만 올리고 링크는 생략\n\n캡션 — 탭하면 복사:\n<pre>${esc(f.cap)}</pre>\n첫 댓글 — 탭하면 복사:\n<pre>${esc(`ลองเล่นได้ที่นี่ 👉 ${url}`)}</pre>`;
+  try {
+    await sendTelegramText(text, [{ text: '🔗 기능 페이지 열기', url }, { text: '👥 그룹 열기', url: groupLink(g) }], 'HTML');
+    ledger.groups[g.name] = now; ledger.pairs[`${g.name}|fb-${f.key}`] = now;
     sent++;
   } catch (e) { console.error(`group-kit: ${g.name} 전송 실패 — ${e.message}`); }
 }

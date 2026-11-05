@@ -1,5 +1,5 @@
 {
-  "_readme": "페북 그룹 공유 키트(scripts/group-kit.mjs)가 매일 이 목록에서 그룹을 골라 줍니다. mode: share=글 공유 OK / comment-only=댓글만(홍보 금지 등) / pending=가입 승인 대기 / skip=제외. topics: kdrama, kpop, tpop, news. ko=텔레그램 메시지에 같이 보이는 한국어 설명. url 은 그룹 주소(없으면 이름으로 검색 링크). 새 그룹은 한 줄 추가하면 됩니다.",
+  "_readme": "페북 그룹 공유 키트(scripts/group-kit.mjs)가 매일 이 목록에서 그룹을 골라 줍니다. mode: share=글 공유 OK / comment-only=댓글만(홍보 금지 등) / pending=가입 승인 대기 / skip=제외. topics: kdrama, kpop, tpop, news, football(축구 참여 기능 전용). ko=텔레그램 메시지에 같이 보이는 한국어 설명. url 은 그룹 주소(없으면 이름으로 검색 링크). 새 그룹은 한 줄 추가하면 됩니다.",
   "groups": [
     {
       "name": "คอซีรีส์",
@@ -97,6 +97,50 @@
       "mode": "share",
       "url": "https://www.facebook.com/groups/693268754132640/",
       "note": "공개, 연예 뉴스 공유용 (2026-11-03)"
+    },
+    {
+      "name": "Premier League Fans Thailand - แฟนบอลพรีเมียร์ลีกแห่งประเทศไทย",
+      "ko": "프리미어리그 태국 팬 방",
+      "members": 25000,
+      "topics": [
+        "football"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/premierleague.thai/",
+      "note": "공개, 즉시 가입(2026-11-05). 축구 참여 기능(Fan XI/BEST 11/예측) 전용 — 연예 글 보내지 않음. 팀 팬 그룹이라 팀 편향 문구 금지"
+    },
+    {
+      "name": "แฟนแมนยู",
+      "ko": "맨유 팬 방",
+      "members": 38000,
+      "topics": [
+        "football"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/judtemmanu/",
+      "note": "공개, 즉시 가입(2026-11-05). 축구 참여 기능(Fan XI/BEST 11/예측) 전용 — 연예 글 보내지 않음. 팀 팬 그룹이라 팀 편향 문구 금지"
+    },
+    {
+      "name": "แฟนคลับ อาร์เซนอล Thailand",
+      "ko": "아스널 팬 방",
+      "members": 10000,
+      "topics": [
+        "football"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/879910052684837/",
+      "note": "공개, 즉시 가입(2026-11-05). 축구 참여 기능(Fan XI/BEST 11/예측) 전용 — 연예 글 보내지 않음. 팀 팬 그룹이라 팀 편향 문구 금지"
+    },
+    {
+      "name": "บอลพรีเมียร์ลีก",
+      "ko": "프리미어리그 이야기 방",
+      "members": 6700,
+      "topics": [
+        "football"
+      ],
+      "mode": "share",
+      "url": "https://www.facebook.com/groups/476373800127278/",
+      "note": "공개, 즉시 가입(2026-11-05). 축구 참여 기능(Fan XI/BEST 11/예측) 전용 — 연예 글 보내지 않음. 팀 팬 그룹이라 팀 편향 문구 금지"
     }
   ]
 }
