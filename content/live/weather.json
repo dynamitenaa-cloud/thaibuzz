@@ -1,17 +1,17 @@
 {
- "updatedAt": "2026-11-05T07:53:10.819Z",
+ "updatedAt": "2026-11-05T16:37:56.950Z",
  "cities": [
   {
    "slug": "bangkok",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 31.7,
-    "feels": 36.1,
-    "humidity": 57,
-    "wind": 4,
+    "time": "2026-11-05T23:30",
+    "temp": 28.4,
+    "feels": 34.1,
+    "humidity": 77,
+    "wind": 2.5,
     "code": 3,
-    "pm25": 25
+    "pm25": 14.6
    },
    "days": [
     {
@@ -19,311 +19,311 @@
      "code": 55,
      "max": 33.3,
      "min": 26,
-     "rainProb": 100,
-     "rainMm": 2.8,
+     "rainProb": 87,
+     "rainMm": 2.1,
      "uv": 7.65
     },
     {
      "date": "2026-11-06",
-     "code": 55,
-     "max": 31.8,
-     "min": 25.9,
-     "rainProb": 100,
-     "rainMm": 3.7,
+     "code": 53,
+     "max": 32.8,
+     "min": 26.4,
+     "rainProb": 96,
+     "rainMm": 1.2,
      "uv": 7.65
     },
     {
      "date": "2026-11-07",
      "code": 80,
-     "max": 31.7,
-     "min": 25,
-     "rainProb": 81,
-     "rainMm": 5.8,
-     "uv": 7.4
+     "max": 33.6,
+     "min": 25.4,
+     "rainProb": 77,
+     "rainMm": 2.9,
+     "uv": 7.05
     },
     {
      "date": "2026-11-08",
      "code": 80,
-     "max": 32.8,
-     "min": 24.3,
-     "rainProb": 82,
-     "rainMm": 5.2,
-     "uv": 7.55
+     "max": 33.2,
+     "min": 24.5,
+     "rainProb": 88,
+     "rainMm": 3,
+     "uv": 7.6
     },
     {
      "date": "2026-11-09",
      "code": 51,
-     "max": 32,
-     "min": 23.8,
+     "max": 33.5,
+     "min": 24.4,
      "rainProb": 29,
-     "rainMm": 0.1,
-     "uv": 7.55
+     "rainMm": 1.2,
+     "uv": 7.5
     },
     {
      "date": "2026-11-10",
      "code": 3,
-     "max": 32.2,
-     "min": 24.2,
-     "rainProb": 10,
+     "max": 32.3,
+     "min": 24.9,
+     "rainProb": 8,
      "rainMm": 0,
-     "uv": 6.75
+     "uv": 7.2
     },
     {
      "date": "2026-11-11",
      "code": 3,
      "max": 32.5,
-     "min": 23.7,
+     "min": 24.2,
      "rainProb": 12,
      "rainMm": 0,
-     "uv": 6.95
+     "uv": 6.3
     }
    ]
   },
   {
    "slug": "chiang-mai",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 31.8,
-    "feels": 34.6,
-    "humidity": 53,
-    "wind": 10.7,
-    "code": 51,
-    "pm25": 10.7
+    "time": "2026-11-05T23:30",
+    "temp": 24.3,
+    "feels": 29.9,
+    "humidity": 97,
+    "wind": 2.1,
+    "code": 3,
+    "pm25": 6.6
    },
    "days": [
     {
      "date": "2026-11-05",
-     "code": 95,
-     "max": 32.3,
-     "min": 23.6,
-     "rainProb": 46,
-     "rainMm": 6.6,
+     "code": 96,
+     "max": 32.7,
+     "min": 24,
+     "rainProb": 52,
+     "rainMm": 11,
      "uv": 7.15
     },
     {
      "date": "2026-11-06",
-     "code": 80,
-     "max": 28.7,
-     "min": 23,
-     "rainProb": 82,
-     "rainMm": 4.7,
-     "uv": 6.75
+     "code": 95,
+     "max": 29.7,
+     "min": 22.8,
+     "rainProb": 89,
+     "rainMm": 6.8,
+     "uv": 7.15
     },
     {
      "date": "2026-11-07",
-     "code": 81,
-     "max": 26.6,
-     "min": 22.6,
-     "rainProb": 95,
-     "rainMm": 11.9,
-     "uv": 7
+     "code": 95,
+     "max": 27.3,
+     "min": 21.9,
+     "rainProb": 97,
+     "rainMm": 13.6,
+     "uv": 5.35
     },
     {
      "date": "2026-11-08",
      "code": 53,
-     "max": 28.1,
-     "min": 21.8,
-     "rainProb": 76,
-     "rainMm": 4.7,
-     "uv": 7.05
+     "max": 28.2,
+     "min": 21.3,
+     "rainProb": 78,
+     "rainMm": 4.5,
+     "uv": 7
     },
     {
      "date": "2026-11-09",
-     "code": 95,
-     "max": 28.4,
-     "min": 20.9,
-     "rainProb": 85,
-     "rainMm": 15.1,
+     "code": 55,
+     "max": 28.5,
+     "min": 20.1,
+     "rainProb": 94,
+     "rainMm": 5.1,
      "uv": 7.05
     },
     {
      "date": "2026-11-10",
-     "code": 51,
-     "max": 27.9,
-     "min": 20.3,
-     "rainProb": 56,
-     "rainMm": 0.2,
-     "uv": 6.95
+     "code": 55,
+     "max": 28,
+     "min": 20.1,
+     "rainProb": 63,
+     "rainMm": 3,
+     "uv": 5.4
     },
     {
      "date": "2026-11-11",
      "code": 51,
      "max": 27.2,
      "min": 20.4,
-     "rainProb": 28,
+     "rainProb": 31,
      "rainMm": 2.4,
-     "uv": 1.7
+     "uv": 1.05
     }
    ]
   },
   {
    "slug": "phuket",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 30.8,
-    "feels": 36.2,
-    "humidity": 65,
-    "wind": 7.9,
-    "code": 0,
-    "pm25": 5.5
+    "time": "2026-11-05T23:30",
+    "temp": 25.8,
+    "feels": 31.5,
+    "humidity": 95,
+    "wind": 6.1,
+    "code": 80,
+    "pm25": 5
    },
    "days": [
     {
      "date": "2026-11-05",
      "code": 80,
-     "max": 30.9,
+     "max": 31.4,
      "min": 25,
-     "rainProb": 78,
-     "rainMm": 3.5,
+     "rainProb": 81,
+     "rainMm": 3.8,
      "uv": 7.7
     },
     {
      "date": "2026-11-06",
-     "code": 95,
-     "max": 29.5,
-     "min": 24.3,
-     "rainProb": 75,
-     "rainMm": 12.2,
-     "uv": 8.2
+     "code": 81,
+     "max": 29.7,
+     "min": 24,
+     "rainProb": 86,
+     "rainMm": 10.1,
+     "uv": 8.3
     },
     {
      "date": "2026-11-07",
      "code": 80,
-     "max": 29.9,
-     "min": 24.1,
-     "rainProb": 89,
-     "rainMm": 7.1,
-     "uv": 8.25
+     "max": 30.2,
+     "min": 24.7,
+     "rainProb": 92,
+     "rainMm": 5.8,
+     "uv": 8.1
     },
     {
      "date": "2026-11-08",
-     "code": 53,
-     "max": 29.3,
-     "min": 24.9,
-     "rainProb": 86,
-     "rainMm": 5.8,
-     "uv": 8.25
+     "code": 81,
+     "max": 30.1,
+     "min": 24.6,
+     "rainProb": 83,
+     "rainMm": 12.5,
+     "uv": 8.05
     },
     {
      "date": "2026-11-09",
-     "code": 80,
-     "max": 28.6,
-     "min": 24.4,
-     "rainProb": 84,
-     "rainMm": 21.7,
-     "uv": 8.15
+     "code": 95,
+     "max": 28.9,
+     "min": 24.2,
+     "rainProb": 94,
+     "rainMm": 24.6,
+     "uv": 8.1
     },
     {
      "date": "2026-11-10",
-     "code": 80,
-     "max": 28.3,
+     "code": 53,
+     "max": 28.8,
      "min": 24.2,
      "rainProb": 80,
-     "rainMm": 11.5,
-     "uv": 3.05
+     "rainMm": 9,
+     "uv": 2.95
     },
     {
      "date": "2026-11-11",
      "code": 80,
      "max": 29.1,
-     "min": 23.5,
-     "rainProb": 82,
-     "rainMm": 13.4,
-     "uv": 7.75
+     "min": 24.3,
+     "rainProb": 85,
+     "rainMm": 12,
+     "uv": 8
     }
    ]
   },
   {
    "slug": "pattaya",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 29.1,
-    "feels": 35.1,
-    "humidity": 79,
-    "wind": 5.2,
+    "time": "2026-11-05T23:30",
+    "temp": 25.4,
+    "feels": 31.1,
+    "humidity": 96,
+    "wind": 6.1,
     "code": 3,
-    "pm25": 6.3
+    "pm25": 9.2
    },
    "days": [
     {
      "date": "2026-11-05",
      "code": 95,
-     "max": 29.7,
+     "max": 30,
      "min": 24.5,
-     "rainProb": 98,
-     "rainMm": 9.2,
+     "rainProb": 100,
+     "rainMm": 8.8,
      "uv": 7.7
     },
     {
      "date": "2026-11-06",
-     "code": 95,
-     "max": 30.8,
-     "min": 24.5,
-     "rainProb": 100,
-     "rainMm": 8.5,
+     "code": 96,
+     "max": 30.6,
+     "min": 24.8,
+     "rainProb": 98,
+     "rainMm": 7.3,
      "uv": 7.7
     },
     {
      "date": "2026-11-07",
-     "code": 95,
-     "max": 29.5,
-     "min": 24.2,
-     "rainProb": 93,
-     "rainMm": 8.4,
-     "uv": 7.65
+     "code": 80,
+     "max": 29.6,
+     "min": 24.5,
+     "rainProb": 98,
+     "rainMm": 2.5,
+     "uv": 7.7
     },
     {
      "date": "2026-11-08",
-     "code": 80,
-     "max": 31.6,
-     "min": 24.2,
-     "rainProb": 51,
-     "rainMm": 3.5,
+     "code": 95,
+     "max": 31.8,
+     "min": 24.5,
+     "rainProb": 73,
+     "rainMm": 5.9,
      "uv": 7.65
     },
     {
      "date": "2026-11-09",
-     "code": 51,
-     "max": 31.4,
-     "min": 24.3,
+     "code": 3,
+     "max": 31.2,
+     "min": 24.9,
      "rainProb": 22,
-     "rainMm": 1.5,
-     "uv": 7.6
+     "rainMm": 0,
+     "uv": 7.65
     },
     {
      "date": "2026-11-10",
      "code": 3,
-     "max": 30.2,
+     "max": 30.3,
      "min": 24.5,
-     "rainProb": 6,
+     "rainProb": 4,
      "rainMm": 0,
-     "uv": 7.4
+     "uv": 7.55
     },
     {
      "date": "2026-11-11",
      "code": 3,
      "max": 29.6,
-     "min": 23.4,
-     "rainProb": 2,
+     "min": 23.3,
+     "rainProb": 4,
      "rainMm": 0,
-     "uv": 7.45
+     "uv": 7.6
     }
    ]
   },
   {
    "slug": "khon-kaen",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 30,
-    "feels": 35.2,
-    "humidity": 68,
-    "wind": 3.5,
+    "time": "2026-11-05T23:30",
+    "temp": 26,
+    "feels": 32,
+    "humidity": 91,
+    "wind": 2.1,
     "code": 3,
-    "pm25": 4.2
+    "pm25": 7.2
    },
    "days": [
     {
@@ -331,7 +331,7 @@
      "code": 95,
      "max": 33.1,
      "min": 25.4,
-     "rainProb": 84,
+     "rainProb": 92,
      "rainMm": 5.8,
      "uv": 7.1
     },
@@ -339,435 +339,435 @@
      "date": "2026-11-06",
      "code": 95,
      "max": 30,
-     "min": 24,
+     "min": 24.2,
      "rainProb": 90,
-     "rainMm": 11.2,
-     "uv": 6.5
-    },
-    {
-     "date": "2026-11-07",
-     "code": 81,
-     "max": 31.5,
-     "min": 22.6,
-     "rainProb": 33,
-     "rainMm": 3.7,
-     "uv": 6.9
-    },
-    {
-     "date": "2026-11-08",
-     "code": 53,
-     "max": 31.7,
-     "min": 22.6,
-     "rainProb": 30,
-     "rainMm": 1.9,
-     "uv": 7.1
-    },
-    {
-     "date": "2026-11-09",
-     "code": 3,
-     "max": 31,
-     "min": 21.6,
-     "rainProb": 29,
-     "rainMm": 0,
+     "rainMm": 5.4,
      "uv": 7.05
     },
     {
-     "date": "2026-11-10",
-     "code": 3,
-     "max": 27.5,
-     "min": 20.6,
-     "rainProb": 6,
-     "rainMm": 0,
-     "uv": 2.7
-    },
-    {
-     "date": "2026-11-11",
-     "code": 3,
-     "max": 27.8,
-     "min": 19.1,
-     "rainProb": 24,
-     "rainMm": 0,
-     "uv": 5.6
-    }
-   ]
-  },
-  {
-   "slug": "korat",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
-   "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 28.2,
-    "feels": 31.7,
-    "humidity": 75,
-    "wind": 14.8,
-    "code": 55,
-    "pm25": 8.1
-   },
-   "days": [
-    {
-     "date": "2026-11-05",
-     "code": 80,
-     "max": 33,
-     "min": 23.6,
-     "rainProb": 67,
-     "rainMm": 1.8,
-     "uv": 7.5
-    },
-    {
-     "date": "2026-11-06",
-     "code": 80,
-     "max": 29.3,
-     "min": 23.8,
-     "rainProb": 100,
-     "rainMm": 6.4,
-     "uv": 7.35
-    },
-    {
      "date": "2026-11-07",
-     "code": 53,
-     "max": 31,
-     "min": 23.3,
-     "rainProb": 57,
-     "rainMm": 1.9,
-     "uv": 6.95
+     "code": 51,
+     "max": 31.5,
+     "min": 23.2,
+     "rainProb": 35,
+     "rainMm": 0.6,
+     "uv": 6.5
     },
     {
      "date": "2026-11-08",
-     "code": 80,
-     "max": 30.9,
-     "min": 22.4,
-     "rainProb": 44,
-     "rainMm": 5.2,
-     "uv": 7.45
+     "code": 53,
+     "max": 32.3,
+     "min": 23.3,
+     "rainProb": 24,
+     "rainMm": 1.2,
+     "uv": 7.05
     },
     {
      "date": "2026-11-09",
      "code": 51,
      "max": 31.1,
-     "min": 22.5,
-     "rainProb": 33,
-     "rainMm": 0.6,
-     "uv": 7.35
+     "min": 21.9,
+     "rainProb": 31,
+     "rainMm": 1.2,
+     "uv": 7.05
     },
     {
      "date": "2026-11-10",
-     "code": 3,
-     "max": 28.2,
+     "code": 2,
+     "max": 28.1,
      "min": 20.9,
-     "rainProb": 4,
+     "rainProb": 5,
      "rainMm": 0,
-     "uv": 6.45
+     "uv": 6.1
     },
     {
      "date": "2026-11-11",
      "code": 3,
-     "max": 28.1,
-     "min": 20.7,
-     "rainProb": 5,
+     "max": 27.8,
+     "min": 18.9,
+     "rainProb": 10,
      "rainMm": 0,
-     "uv": 5.45
+     "uv": 5
+    }
+   ]
+  },
+  {
+   "slug": "korat",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
+   "current": {
+    "time": "2026-11-05T23:30",
+    "temp": 25.9,
+    "feels": 31.6,
+    "humidity": 89,
+    "wind": 1.7,
+    "code": 3,
+    "pm25": 5.4
+   },
+   "days": [
+    {
+     "date": "2026-11-05",
+     "code": 53,
+     "max": 33.4,
+     "min": 23.6,
+     "rainProb": 83,
+     "rainMm": 1,
+     "uv": 7.5
+    },
+    {
+     "date": "2026-11-06",
+     "code": 80,
+     "max": 30,
+     "min": 23.9,
+     "rainProb": 94,
+     "rainMm": 3.8,
+     "uv": 7.55
+    },
+    {
+     "date": "2026-11-07",
+     "code": 51,
+     "max": 31.1,
+     "min": 23.7,
+     "rainProb": 50,
+     "rainMm": 1.4,
+     "uv": 7.5
+    },
+    {
+     "date": "2026-11-08",
+     "code": 53,
+     "max": 31.4,
+     "min": 23.1,
+     "rainProb": 38,
+     "rainMm": 0.8,
+     "uv": 7.5
+    },
+    {
+     "date": "2026-11-09",
+     "code": 3,
+     "max": 31.6,
+     "min": 23.8,
+     "rainProb": 33,
+     "rainMm": 0,
+     "uv": 6.75
+    },
+    {
+     "date": "2026-11-10",
+     "code": 3,
+     "max": 28.9,
+     "min": 21.6,
+     "rainProb": 2,
+     "rainMm": 0,
+     "uv": 6.85
+    },
+    {
+     "date": "2026-11-11",
+     "code": 3,
+     "max": 28.5,
+     "min": 20.9,
+     "rainProb": 6,
+     "rainMm": 0,
+     "uv": 6.15
     }
    ]
   },
   {
    "slug": "udon-thani",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 27.7,
-    "feels": 32.4,
-    "humidity": 81,
-    "wind": 9.5,
-    "code": 53,
-    "pm25": 5.6
+    "time": "2026-11-05T23:30",
+    "temp": 24.2,
+    "feels": 29.1,
+    "humidity": 96,
+    "wind": 6.5,
+    "code": 95,
+    "pm25": 5.1
    },
    "days": [
     {
      "date": "2026-11-05",
      "code": 95,
      "max": 32,
-     "min": 24.3,
-     "rainProb": 96,
-     "rainMm": 4.2,
+     "min": 24.2,
+     "rainProb": 86,
+     "rainMm": 4.7,
      "uv": 6.9
     },
     {
      "date": "2026-11-06",
      "code": 95,
-     "max": 29.5,
+     "max": 30,
      "min": 23.2,
-     "rainProb": 84,
-     "rainMm": 20.6,
-     "uv": 5.55
+     "rainProb": 87,
+     "rainMm": 13.5,
+     "uv": 7
     },
     {
      "date": "2026-11-07",
-     "code": 3,
-     "max": 31.1,
-     "min": 22.9,
-     "rainProb": 25,
-     "rainMm": 0,
-     "uv": 7
+     "code": 51,
+     "max": 30.9,
+     "min": 22.7,
+     "rainProb": 37,
+     "rainMm": 0.7,
+     "uv": 6.85
     },
     {
      "date": "2026-11-08",
      "code": 51,
      "max": 31.5,
-     "min": 23.2,
-     "rainProb": 29,
-     "rainMm": 0.7,
+     "min": 22.1,
+     "rainProb": 37,
+     "rainMm": 0.9,
      "uv": 6.95
     },
     {
      "date": "2026-11-09",
-     "code": 2,
-     "max": 29.8,
+     "code": 1,
+     "max": 30.2,
      "min": 22.1,
-     "rainProb": 14,
+     "rainProb": 23,
      "rainMm": 0,
      "uv": 6.95
     },
     {
      "date": "2026-11-10",
-     "code": 2,
+     "code": 51,
      "max": 27.4,
-     "min": 20,
-     "rainProb": 2,
-     "rainMm": 0,
-     "uv": 4.2
+     "min": 19.3,
+     "rainProb": 4,
+     "rainMm": 1.2,
+     "uv": 6.7
     },
     {
      "date": "2026-11-11",
      "code": 3,
      "max": 27.9,
      "min": 18.7,
-     "rainProb": 12,
+     "rainProb": 6,
      "rainMm": 0,
-     "uv": 3.95
+     "uv": 6.85
     }
    ]
   },
   {
    "slug": "chiang-rai",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 30.2,
-    "feels": 33.9,
-    "humidity": 58,
-    "wind": 5.3,
-    "code": 3,
-    "pm25": 10.8
+    "time": "2026-11-05T23:30",
+    "temp": 24.5,
+    "feels": 29.5,
+    "humidity": 91,
+    "wind": 2.9,
+    "code": 2,
+    "pm25": 6.2
    },
    "days": [
     {
      "date": "2026-11-05",
      "code": 51,
-     "max": 30.9,
+     "max": 31.4,
      "min": 21.7,
-     "rainProb": 77,
+     "rainProb": 53,
      "rainMm": 0.1,
      "uv": 7
     },
     {
      "date": "2026-11-06",
      "code": 95,
-     "max": 29,
-     "min": 21.9,
-     "rainProb": 88,
-     "rainMm": 5.9,
-     "uv": 6.85
+     "max": 29.3,
+     "min": 22,
+     "rainProb": 97,
+     "rainMm": 6,
+     "uv": 6.7
     },
     {
      "date": "2026-11-07",
      "code": 95,
-     "max": 27,
-     "min": 20.8,
-     "rainProb": 92,
-     "rainMm": 13.9,
-     "uv": 1.75
+     "max": 25.9,
+     "min": 21.4,
+     "rainProb": 94,
+     "rainMm": 8.1,
+     "uv": 6.75
     },
     {
      "date": "2026-11-08",
-     "code": 53,
-     "max": 27.9,
-     "min": 20.4,
+     "code": 80,
+     "max": 27.2,
+     "min": 20.1,
      "rainProb": 53,
-     "rainMm": 2.5,
-     "uv": 6.35
+     "rainMm": 5.6,
+     "uv": 6.9
     },
     {
      "date": "2026-11-09",
-     "code": 80,
-     "max": 28,
-     "min": 19.7,
-     "rainProb": 51,
-     "rainMm": 9.3,
+     "code": 81,
+     "max": 27.7,
+     "min": 20.1,
+     "rainProb": 76,
+     "rainMm": 10.4,
      "uv": 6.9
     },
     {
      "date": "2026-11-10",
      "code": 3,
-     "max": 25.7,
-     "min": 18.5,
-     "rainProb": 23,
+     "max": 25.4,
+     "min": 18.6,
+     "rainProb": 44,
      "rainMm": 0,
-     "uv": 6.8
+     "uv": 4.4
     },
     {
      "date": "2026-11-11",
      "code": 51,
      "max": 25.6,
-     "min": 19.1,
-     "rainProb": 38,
+     "min": 19.6,
+     "rainProb": 48,
      "rainMm": 1.2,
-     "uv": 2.15
+     "uv": 1.15
     }
    ]
   },
   {
    "slug": "hat-yai",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 30.5,
-    "feels": 35,
-    "humidity": 66,
-    "wind": 11.9,
-    "code": 51,
-    "pm25": 4.5
+    "time": "2026-11-05T23:30",
+    "temp": 23.7,
+    "feels": 28.9,
+    "humidity": 99,
+    "wind": 3.8,
+    "code": 81,
+    "pm25": 7
    },
    "days": [
     {
      "date": "2026-11-05",
-     "code": 53,
-     "max": 31.8,
-     "min": 23.7,
-     "rainProb": 76,
-     "rainMm": 2.1,
+     "code": 81,
+     "max": 32.9,
+     "min": 23.6,
+     "rainProb": 80,
+     "rainMm": 5.5,
      "uv": 7.7
     },
     {
      "date": "2026-11-06",
-     "code": 55,
-     "max": 29.7,
-     "min": 23.7,
-     "rainProb": 85,
-     "rainMm": 5.1,
-     "uv": 7.3
+     "code": 81,
+     "max": 29.9,
+     "min": 23.5,
+     "rainProb": 84,
+     "rainMm": 7.1,
+     "uv": 8.25
     },
     {
      "date": "2026-11-07",
-     "code": 95,
-     "max": 29.8,
-     "min": 23.5,
-     "rainProb": 100,
-     "rainMm": 7,
-     "uv": 5.85
+     "code": 81,
+     "max": 29.7,
+     "min": 22.9,
+     "rainProb": 97,
+     "rainMm": 11.4,
+     "uv": 7.45
     },
     {
      "date": "2026-11-08",
-     "code": 80,
-     "max": 29.1,
-     "min": 23.2,
-     "rainProb": 99,
-     "rainMm": 12,
-     "uv": 2.85
+     "code": 95,
+     "max": 29,
+     "min": 22.7,
+     "rainProb": 91,
+     "rainMm": 13.1,
+     "uv": 5.05
     },
     {
      "date": "2026-11-09",
-     "code": 80,
-     "max": 27.4,
+     "code": 81,
+     "max": 27,
      "min": 22.6,
      "rainProb": 100,
-     "rainMm": 26,
-     "uv": 4
+     "rainMm": 25.2,
+     "uv": 7.2
     },
     {
      "date": "2026-11-10",
      "code": 80,
-     "max": 28.1,
-     "min": 22.6,
-     "rainProb": 93,
+     "max": 29.1,
+     "min": 22.9,
+     "rainProb": 86,
      "rainMm": 14.5,
-     "uv": 4.9
+     "uv": 4.7
     },
     {
      "date": "2026-11-11",
      "code": 53,
-     "max": 28.2,
-     "min": 22.9,
+     "max": 28.3,
+     "min": 22.7,
      "rainProb": 100,
-     "rainMm": 8.6,
-     "uv": 7.35
+     "rainMm": 5.2,
+     "uv": 5.75
     }
    ]
   },
   {
    "slug": "hua-hin",
-   "fetchedAt": "2026-11-05T07:53:10.819Z",
+   "fetchedAt": "2026-11-05T16:37:56.950Z",
    "current": {
-    "time": "2026-11-05T14:45",
-    "temp": 29.9,
-    "feels": 36.6,
-    "humidity": 78,
-    "wind": 3.6,
-    "code": 95,
-    "pm25": 3.3
+    "time": "2026-11-05T23:30",
+    "temp": 26.2,
+    "feels": 31.8,
+    "humidity": 89,
+    "wind": 5,
+    "code": 3,
+    "pm25": 4.1
    },
    "days": [
     {
      "date": "2026-11-05",
      "code": 95,
-     "max": 30.3,
-     "min": 24.8,
-     "rainProb": 98,
-     "rainMm": 9.3,
+     "max": 30.7,
+     "min": 25,
+     "rainProb": 85,
+     "rainMm": 2.5,
      "uv": 7.75
     },
     {
      "date": "2026-11-06",
      "code": 95,
-     "max": 29.8,
-     "min": 24.4,
-     "rainProb": 100,
-     "rainMm": 2.7,
-     "uv": 5.85
+     "max": 30,
+     "min": 25.1,
+     "rainProb": 86,
+     "rainMm": 3.6,
+     "uv": 7.7
     },
     {
      "date": "2026-11-07",
      "code": 81,
-     "max": 28.4,
-     "min": 23.1,
-     "rainProb": 98,
-     "rainMm": 8.5,
-     "uv": 3.65
+     "max": 28.7,
+     "min": 24.7,
+     "rainProb": 100,
+     "rainMm": 7.5,
+     "uv": 6.95
     },
     {
      "date": "2026-11-08",
      "code": 80,
-     "max": 29.5,
-     "min": 23.4,
-     "rainProb": 92,
-     "rainMm": 10.6,
+     "max": 30,
+     "min": 23,
+     "rainProb": 88,
+     "rainMm": 9.4,
      "uv": 7.7
     },
     {
      "date": "2026-11-09",
-     "code": 80,
-     "max": 29.4,
-     "min": 22.4,
-     "rainProb": 94,
-     "rainMm": 13.3,
-     "uv": 7.7
+     "code": 95,
+     "max": 29.2,
+     "min": 21.9,
+     "rainProb": 88,
+     "rainMm": 20.3,
+     "uv": 7.25
     },
     {
      "date": "2026-11-10",
-     "code": 80,
-     "max": 28.9,
-     "min": 23.3,
+     "code": 55,
+     "max": 29.2,
+     "min": 24.1,
      "rainProb": 76,
-     "rainMm": 10.8,
+     "rainMm": 7.7,
      "uv": 6.15
     },
     {
@@ -776,8 +776,8 @@
      "max": 28.2,
      "min": 23.2,
      "rainProb": 37,
-     "rainMm": 3.9,
-     "uv": 4.6
+     "rainMm": 2.8,
+     "uv": 5.9
     }
    ]
   }
