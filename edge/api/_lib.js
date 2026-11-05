@@ -5,6 +5,7 @@ const SCHEMA = [
   'CREATE TABLE IF NOT EXISTS reacts (slug TEXT NOT NULL, voter TEXT NOT NULL, emoji TEXT NOT NULL, PRIMARY KEY (slug, voter, emoji))',
   'CREATE TABLE IF NOT EXISTS asks (id TEXT PRIMARY KEY, voter TEXT NOT NULL, slug TEXT, text TEXT NOT NULL, at INTEGER NOT NULL)',
   'CREATE INDEX IF NOT EXISTS asks_voter ON asks (voter, at)',
+  'CREATE TABLE IF NOT EXISTS xi_votes (round TEXT NOT NULL, league TEXT NOT NULL, pos TEXT NOT NULL, cand INTEGER NOT NULL, voter TEXT NOT NULL, PRIMARY KEY (round, league, pos, cand, voter))',
 ];
 let ready;
 export const init = (db) => (ready ??= db.batch(SCHEMA.map((s) => db.prepare(s))).catch((e) => { ready = undefined; throw e; }));

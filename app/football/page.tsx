@@ -26,6 +26,11 @@ export default function Page() {
         <h1>ตารางบอล ผลบอล โปรแกรมบอลวันนี้</h1>
         <p className="lede">ตารางคะแนนและโปรแกรมบอล 5 ลีกดัง เวลาไทย อัปเดตอัตโนมัติทุกชั่วโมง</p>
         <nav className="fb-tabs" aria-label="ลีก">{LEAGUES.map((x) => <a key={x.slug} href={`/football/${x.slug}/`}>{x.name}</a>)}</nav>
+        <div className="fb-feats">
+          <a href="/football/predict/"><b>🎯 ทายผลก่อนเตะ</b><small>กดเลือกทีมที่ชนะ แล้วดูว่าแฟนบอลไทยทายยังไง</small></a>
+          <a href="/football/fan-xi/"><b>🏆 Fan XI ประจำสัปดาห์</b><small>โหวตนักเตะที่ดีที่สุด ดูทีม 11 คนที่ชาวไทยเลือก</small></a>
+          <a href="/football/best11/"><b>⚽ สร้าง BEST 11 ของคุณ</b><small>จัดทีมในฝัน บันทึกเป็นรูปแชร์เพื่อน</small></a>
+        </div>
 
         <section>
           <h2>โปรแกรมบอลคืนนี้ - พรุ่งนี้ (เวลาไทย)</h2>

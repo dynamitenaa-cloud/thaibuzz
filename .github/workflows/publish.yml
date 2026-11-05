@@ -161,9 +161,16 @@ jobs:
         continue-on-error: true
         run: node scripts/live-data.mjs
 
+      # 축구 참여 기능 데이터: 선수 명단(하루 1번) + 주간 Fan XI 후보(주 1번). ESPN 무료 데이터, 실패해도 기존 파일 유지
+      - name: Football players (rosters, weekly Fan XI candidates)
+        id: fbx
+        if: ${{ !cancelled() && !inputs.reel_preview && !inputs.x_check && github.event_name != 'push' }}
+        continue-on-error: true
+        run: node scripts/football-players.mjs
+
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0 || steps.hubs.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0 || steps.hubs.outputs.changed > 0 || steps.fbx.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
