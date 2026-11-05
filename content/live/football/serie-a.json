@@ -245,61 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874993",
-   "date": "2026-10-28T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "AC Milan",
-   "away": "Bologna",
-   "hs": "2",
-   "as": "4",
-   "venue": "San Siro"
-  },
-  {
-   "id": "401874965",
-   "date": "2026-10-28T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Parma",
-   "away": "Udinese",
-   "hs": "0",
-   "as": "0",
-   "venue": "Ennio Tardini"
-  },
-  {
-   "id": "401874773",
-   "date": "2026-10-28T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Venezia",
-   "away": "Internazionale",
-   "hs": "0",
-   "as": "2",
-   "venue": "Stadio Pier Luigi Penzo"
-  },
-  {
-   "id": "401874988",
-   "date": "2026-10-28T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Genoa",
-   "away": "Juventus",
-   "hs": "2",
-   "as": "0",
-   "venue": "Stadio Luigi Ferraris"
-  },
-  {
-   "id": "401874799",
-   "date": "2026-10-28T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Monza",
-   "away": "Napoli",
-   "hs": "1",
-   "as": "4",
-   "venue": "U-Power Stadium"
-  },
-  {
    "id": "401874976",
    "date": "2026-10-29T17:30Z",
    "status": "post",
@@ -544,5 +489,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-04T02:09:48.199Z"
+ "updatedAt": "2026-11-05T00:19:16.061Z"
 }
