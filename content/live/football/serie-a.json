@@ -245,28 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874976",
-   "date": "2026-10-29T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Frosinone",
-   "away": "Lecce",
-   "hs": "5",
-   "as": "1",
-   "venue": "Stadio Benito Stirpe"
-  },
-  {
-   "id": "401874969",
-   "date": "2026-10-29T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Fiorentina",
-   "away": "Atalanta",
-   "hs": "2",
-   "as": "2",
-   "venue": "Stadio Artemio Franchi"
-  },
-  {
    "id": "401874798",
    "date": "2026-10-31T14:00Z",
    "status": "post",
@@ -489,5 +467,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-05T00:19:16.061Z"
+ "updatedAt": "2026-11-06T03:39:36.536Z"
 }
