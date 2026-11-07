@@ -234,10 +234,14 @@ jobs:
           FB_DAILY_MAX: ${{ vars.FB_DAILY_MAX }}
 
       # 축구 참여 기능 소개 글 (월 Fan XI · 수 BEST 11 · 금 경기 예측, 방콕 시각 기준 주 3회). 스크립트가 요일·시각·중복을 스스로 판단
-      - name: Football engagement posts (Facebook Page)
-        if: ${{ !cancelled() && env.FB_PAGE_TOKEN != '' && !inputs.reel_preview && github.event_name != 'push' && steps.deploy.outcome != 'failure' }}
+      - name: Football engagement posts (Facebook Page, Threads, X)
+        if: ${{ !cancelled() && !inputs.reel_preview && github.event_name != 'push' && steps.deploy.outcome != 'failure' }}
         continue-on-error: true
         run: node scripts/football-engage.mjs
+        env:
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
 
       # 새 글 → Threads 이미지 게시물 (THREADS_TOKEN 시크릿이 있을 때만). 끄려면 Variables 에 THREADS=false
       - name: Post to Threads
