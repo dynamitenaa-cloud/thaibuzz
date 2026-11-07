@@ -4,6 +4,7 @@ import { SITE } from '@/lib/site';
 import { og } from '@/lib/og';
 import { FanXI } from '@/components/FanXI';
 import JsonLd from '@/components/JsonLd';
+import { PushButton } from '@/components/PushButton';
 
 export const dynamic = 'force-static';
 const title = 'Fan XI ประจำสัปดาห์ โหวตทีม 11 คนยอดเยี่ยม พรีเมียร์ลีก ลาลีกา เซเรีย อา บุนเดสลีกา';
@@ -24,6 +25,7 @@ export default function Page() {
         <nav className="crumbs" aria-label="breadcrumb"><ol><li><a href="/">หน้าแรก</a></li><li><a href="/football/">ตารางบอล</a></li><li>Fan XI</li></ol></nav>
         <h1>🏆 Fan XI ประจำสัปดาห์</h1>
         <p className="lede">เลือกนักเตะที่คุณคิดว่าเล่นดีที่สุดในสัปดาห์ที่ผ่านมา ตามแผน 4-3-3 รายชื่อผู้เข้าชิงคัดจากสถิติจริง (ประตู แอสซิสต์ คลีนชีต เซฟ) แล้วดูว่าทีมในฝันของแฟนบอลไทยออกมาเป็นยังไง ผลโหวตอัปเดตทันที</p>
+        <PushButton />
         {leagues.length ? <FanXI round={xi!.round} label={xi!.label} leagues={leagues} /> : <p>รายชื่อผู้เข้าชิงรอบนี้กำลังเตรียม กลับมาดูใหม่หลังจันทร์นี้นะครับ</p>}
         <p className="pm-more">เล่นต่อ: <a href="/football/predict/">🎯 ทายผลก่อนเตะ</a> · <a href="/football/best11/">⚽ สร้าง BEST 11 ของคุณ</a></p>
       </div>

@@ -4,6 +4,7 @@ import { SITE } from '@/lib/site';
 import { og } from '@/lib/og';
 import { MatchPredict, type PM } from '@/components/MatchPredict';
 import JsonLd from '@/components/JsonLd';
+import { PushButton } from '@/components/PushButton';
 
 export const dynamic = 'force-static';
 const title = 'ทายผลบอลก่อนเตะ ใครจะชนะ? โหวตกับแฟนบอลไทย พรีเมียร์ลีก ลาลีกา เซเรีย อา บุนเดสลีกา UCL';
@@ -30,6 +31,7 @@ export default function Page() {
         <nav className="crumbs" aria-label="breadcrumb"><ol><li><a href="/">หน้าแรก</a></li><li><a href="/football/">ตารางบอล</a></li><li>ทายผลบอล</li></ol></nav>
         <h1>🎯 ทายผลบอลก่อนเตะ</h1>
         <p className="lede">กดเลือกทีมที่คิดว่าชนะ (หรือเสมอ) ก่อนเตะ แล้วดูว่าแฟนบอลไทยคนอื่นทายยังไง พอนัดจบจะบอกว่ามีกี่เปอร์เซ็นต์ที่ทายถูก เวลาไทย อัปเดตอัตโนมัติ</p>
+        <PushButton />
         <p className="pm-rule">เล่นเพื่อความสนุกเท่านั้น ไม่มีเงินเดิมพัน ไม่มีรางวัล และไม่ใช่คำแนะนำการพนัน · ไม่ต้องสมัครสมาชิก</p>
         <MatchPredict matches={[...upcoming, ...past]} />
         <p className="pm-more">เล่นต่อ: <a href="/football/fan-xi/">🏆 โหวต Fan XI ประจำสัปดาห์</a> · <a href="/football/best11/">⚽ สร้าง BEST 11 ของคุณ</a></p>

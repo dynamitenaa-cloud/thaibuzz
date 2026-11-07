@@ -583,3 +583,10 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
   :root:not([data-theme="light"]) .mp-D { background: #334155; color: #e2e8f0; }
   :root:not([data-theme="light"]) .mp-L { background: #7f1d1d; color: #fecaca; }
 }
+
+/* 웹 푸시 버튼 */
+.push-box { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 12px 0; }
+.push-btn { border: 1px solid var(--brand-ink); background: transparent; color: var(--brand-ink); border-radius: 999px; padding: 8px 16px; font-weight: 700; cursor: pointer; font-size: .92rem; }
+.push-btn.on { opacity: .75; }
+.push-btn:disabled { opacity: .5; cursor: default; }
+.push-box small { color: var(--mut); }

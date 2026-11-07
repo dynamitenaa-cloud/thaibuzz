@@ -3,6 +3,7 @@ import { getLeagueData, LEAGUES, thTeam, thTime, thDay, todayTh, type Match } fr
 import { SITE } from '@/lib/site';
 import { og } from '@/lib/og';
 import JsonLd from '@/components/JsonLd';
+import { PushButton } from '@/components/PushButton';
 
 export const dynamic = 'force-static';
 const title = `ตารางบอล ผลบอล โปรแกรมบอลวันนี้ ${todayTh()} พรีเมียร์ลีก ลาลีกา เซเรีย อา บุนเดสลีกา UCL`;
@@ -25,6 +26,7 @@ export default function Page() {
         <nav className="crumbs" aria-label="breadcrumb"><ol><li><a href="/">หน้าแรก</a></li><li>ตารางบอล</li></ol></nav>
         <h1>ตารางบอล ผลบอล โปรแกรมบอลวันนี้</h1>
         <p className="lede">ตารางคะแนนและโปรแกรมบอล 5 ลีกดัง เวลาไทย อัปเดตอัตโนมัติทุกชั่วโมง</p>
+        <PushButton />
         <nav className="fb-tabs" aria-label="ลีก">{LEAGUES.map((x) => <a key={x.slug} href={`/football/${x.slug}/`}>{x.name}</a>)}</nav>
         <div className="fb-feats">
           <a href="/football/predict/"><b>🎯 ทายผลก่อนเตะ</b><small>กดเลือกทีมที่ชนะ แล้วดูว่าแฟนบอลไทยทายยังไง</small></a>

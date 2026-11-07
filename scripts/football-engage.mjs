@@ -41,7 +41,7 @@ const fanXi = () => {
     `⚽ ใครคือตัวจริงยอดเยี่ยมประจำสัปดาห์?\nเลือก 11 นักเตะที่เล่นดีที่สุดจากพรีเมียร์ลีก ลาลีกา กัลโช่ บุนเดส (${xi.label})\nเลือกได้เลย GK 1 · กองหลัง 4 · กองกลาง 3 · กองหน้า 3 แล้วดูว่าแฟนบอลคนอื่นเลือกใครบ้าง 👇`,
     `🔥 สัปดาห์นี้ใครเด่นสุด? มาจัด 11 ตัวจริงประจำสัปดาห์กัน (${xi.label})\nโหวตได้ทั้ง 4 ลีกดัง ผลโหวตของแฟน ๆ อัปเดตให้ดูแบบสด ๆ\nบอกหน่อยว่าใครคือ MVP ของคุณ 👇`,
   ][w(0)];
-  return { key: `fx-${week}`, message: m, short: '⚽ ใครคือ 11 ตัวจริงยอดเยี่ยมประจำสัปดาห์? โหวตได้เลย GK1 · DF4 · MF3 · FW3 แล้วดูว่าแฟนบอลคนอื่นเลือกใคร 👇', link: `${SITE}/football/fan-xi/` };
+  return { key: `fx-${week}`, message: m, short: '⚽ ใครคือ 11 ตัวจริงยอดเยี่ยมประจำสัปดาห์? โหวตได้เลย GK1 · DF4 · MF3 · FW3 แล้วดูว่าแฟนบอลคนอื่นเลือกใคร 👇', link: `${SITE}/football/fan-xi/`, push: ['🏆 โหวต Fan XI ประจำสัปดาห์', 'มาเลือก 11 ตัวจริงยอดเยี่ยมของสัปดาห์กัน'] };
 };
 const best11 = () => ({
   key: `b11-${week}`,
@@ -51,6 +51,7 @@ const best11 = () => ({
   ][w(1)],
   short: '🏆 ถ้าเลือกได้แค่ 11 คน คุณจะเลือกใคร? จัดทีม BEST 11 ในฝันแล้วเซฟเป็นรูปแชร์ได้เลย 👇',
   link: `${SITE}/football/best11/`,
+  push: ['⚽ จัดทีม BEST 11 ในฝันของคุณ', 'เลือกแผน เลือกนักเตะ แล้วเซฟเป็นรูปแชร์ได้เลย'],
 });
 const when = (iso) => new Date(iso).toLocaleString('th-TH', { timeZone: 'Asia/Bangkok', weekday: 'short', hour: '2-digit', minute: '2-digit' });
 const predict = () => {
@@ -67,6 +68,7 @@ const predict = () => {
     message: `🎯 ทายผลบอลสุดสัปดาห์นี้กัน!\n${list}\n\nเลือก ชนะ / เสมอ / แพ้ แล้วดูว่าแฟนบอลคนอื่นทายยังไง (เล่นสนุก ไม่มีเงินรางวัล)\nนัดไหนมั่นใจสุด คอมเมนต์บอกได้เลย 👇`,
     short: `🎯 ทายผลบอลสุดสัปดาห์!\n${pick.slice(0, 2).map((m) => `• ${m.home} พบ ${m.away}`).join('\n')}\nและอีกหลายนัด เลือก ชนะ/เสมอ/แพ้ ดูว่าแฟนบอลคนอื่นทายยังไง (เล่นสนุก ไม่มีรางวัล) 👇`,
     link: `${SITE}/football/predict/`,
+    push: ['🎯 ทายผลบอลสุดสัปดาห์นี้', `${pick.length} นัดน่าดู เลือก ชนะ/เสมอ/แพ้ ได้เลย`],
   };
 };
 // 지난 4일 안에 끝난 경기 중 투표 5표 이상인 경기의 "맞힌 비율". 투표 집계는 공개 API(GET /api/matches)에서 읽음
@@ -91,6 +93,7 @@ const recap = async () => {
     message: `📊 สรุปผลทายผลบอลสุดสัปดาห์ที่ผ่านมา\n${list}\n\nนัดที่ทายง่ายสุด: ${best.m.home} พบ ${best.m.away} (${best.pct}%) · นัดที่หักมุมสุด: ${worst.m.home} พบ ${worst.m.away} (${worst.pct}%)\nคุณทายถูกกี่นัด? มาดูคะแนนของคุณ แล้วทายนัดต่อไปได้เลย 👇`,
     short: `📊 สรุปผลทายผลบอลสุดสัปดาห์\n${rows.slice(0, 2).map((r) => `• ${r.m.home} ${r.m.hs}-${r.m.as} ${r.m.away} ทายถูก ${r.pct}%`).join('\n')}\nคุณทายถูกกี่นัด? 👇`,
     link: `${SITE}/football/predict/`,
+    push: ['📊 สรุปผลทายผลบอลสุดสัปดาห์', 'ดูว่าแฟนบอลทายถูกกี่เปอร์เซ็นต์ และคุณทายถูกกี่นัด'],
   };
 };
 
@@ -132,7 +135,20 @@ async function toX(p) {
   if (!r.ok || !j.data?.id) throw new Error(`${r.status} ${JSON.stringify(j).slice(0, 300)}`);
   return j.data.id;
 }
-const CHANNELS = [['fb', '', toFacebook], ['threads', ':th', toThreads], ['x', ':x', toX]];
+async function toPush(p) {
+  if (!process.env.PUSH_SECRET || !p.push) return 'skip';
+  let offset = 0, sent = 0, gone = 0;
+  for (let i = 0; i < 400; i++) { // 구독자 40명씩 (최대 16,000명)
+    const r = await fetch(`${SITE}/api/push-send`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-push-secret': process.env.PUSH_SECRET }, body: JSON.stringify({ title: p.push[0], body: p.push[1], url: new URL(p.link).pathname, offset }), signal: AbortSignal.timeout(30000) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(`push-send ${r.status} ${JSON.stringify(j).slice(0, 150)}`);
+    sent += j.sent; gone += j.gone;
+    if (j.next == null) break;
+    offset = j.next;
+  }
+  return `${sent}명 (만료 ${gone})`;
+}
+const CHANNELS = [['fb', '', toFacebook], ['threads', ':th', toThreads], ['x', ':x', toX], ['push', ':push', toPush]];
 
 // 요일/시각 → 오늘 올릴 것
 const SCHEDULE = [{ dow: 1, hour: 12, make: recap }, { dow: 1, hour: 19, make: fanXi }, { dow: 3, hour: 19, make: best11 }, { dow: 5, hour: 18, make: predict }];
