@@ -1,0 +1,28 @@
+name: push-setup
+# 웹 푸시 발송용 비밀키(PUSH_SECRET, VAPID_PRIVATE_JWK)를 GitHub 시크릿 → Cloudflare Pages 시크릿으로 복사 (수동 실행, 키를 바꿀 때만)
+# 값은 로그에 찍히지 않음. Pages 시크릿은 다음 배포부터 적용됨
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PROJECT: ${{ vars.CF_PROJECT || 'thaibuzz' }}
+      PUSH_SECRET: ${{ secrets.PUSH_SECRET }}
+      VAPID_PRIVATE_JWK: ${{ secrets.VAPID_PRIVATE_JWK }}
+    steps:
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - name: Copy secrets to Cloudflare Pages
+        run: |
+          test -n "$PUSH_SECRET" && test -n "$VAPID_PRIVATE_JWK" || { echo "GitHub 시크릿 PUSH_SECRET / VAPID_PRIVATE_JWK 가 없음"; exit 1; }
+          printf '%s' "$PUSH_SECRET" | npx -y wrangler@4 pages secret put PUSH_SECRET --project-name="$PROJECT"
+          printf '%s' "$VAPID_PRIVATE_JWK" | npx -y wrangler@4 pages secret put VAPID_PRIVATE_JWK --project-name="$PROJECT"
+          npx -y wrangler@4 pages secret list --project-name="$PROJECT"
