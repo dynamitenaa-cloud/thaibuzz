@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLeagueData, LEAGUES, leagueBySlug, thDay, thDayKey, thTeam, thTime, todayTh, type Match } from '@/lib/football';
+import { allMatches, teamByName, teamSlug } from '@/lib/football-match';
 import { getPosts, postUrl } from '@/lib/posts';
 import { SITE } from '@/lib/site';
 import { og } from '@/lib/og';
@@ -21,14 +22,17 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   return { title, description, alternates: { canonical: path }, openGraph: og(path, title, { description }) };
 }
 
-const MatchRow = ({ m }: { m: Match }) => (
-  <li className={`fx fx-${m.status}`}>
-    <span className="fx-t">{m.status === 'pre' ? thTime(m.date) : m.status === 'in' ? 'สด' : 'จบ'}</span>
-    <span className="fx-h">{thTeam(m.home)}</span>
-    <span className="fx-s">{m.status === 'pre' ? 'vs' : `${m.hs} - ${m.as}`}</span>
-    <span className="fx-a">{thTeam(m.away)}</span>
-  </li>
-);
+const MatchRow = ({ m }: { m: Match }) => {
+  const inner = (
+    <>
+      <span className="fx-t">{m.status === 'pre' ? thTime(m.date) : m.status === 'in' ? 'สด' : 'จบ'}</span>
+      <span className="fx-h">{thTeam(m.home)}</span>
+      <span className="fx-s">{m.status === 'pre' ? 'vs' : `${m.hs} - ${m.as}`}</span>
+      <span className="fx-a">{thTeam(m.away)}</span>
+    </>
+  );
+  return <li className={`fx fx-${m.status}`}>{allMatches().some((x) => x.id === m.id) ? <a className="fx-link" href={`/football/match/${m.id}/`}>{inner}</a> : inner}</li>;
+};
 
 function ByDay({ list }: { list: Match[] }) {
   const days = [...new Set(list.map((m) => thDayKey(m.date)))];
@@ -81,7 +85,7 @@ export default async function Page({ params }: P) {
             <table className="fb-table">
               <thead><tr><th>#</th><th className="tm">ทีม</th><th>แข่ง</th><th>ชนะ</th><th>เสมอ</th><th>แพ้</th><th>ได้-เสีย</th><th>แต้ม</th></tr></thead>
               <tbody>{d.table.map((r) => (
-                <tr key={r.team}><td>{r.rank}</td><td className="tm">{thTeam(r.team)}</td><td>{r.p}</td><td>{r.w}</td><td>{r.d}</td><td>{r.l}</td><td>{r.gd > 0 ? `+${r.gd}` : r.gd}</td><td><b>{r.pts}</b></td></tr>
+                <tr key={r.team}><td>{r.rank}</td><td className="tm">{teamByName(r.team) ? <a href={`/football/team/${teamSlug(r.team)}/`}>{thTeam(r.team)}</a> : thTeam(r.team)}</td><td>{r.p}</td><td>{r.w}</td><td>{r.d}</td><td>{r.l}</td><td>{r.gd > 0 ? `+${r.gd}` : r.gd}</td><td><b>{r.pts}</b></td></tr>
               ))}</tbody>
             </table>
           </div>

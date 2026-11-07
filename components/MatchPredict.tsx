@@ -10,7 +10,7 @@ const day = (iso: string) => new Date(iso).toLocaleDateString('th-TH', { timeZon
 const time = (iso: string) => new Date(iso).toLocaleTimeString('th-TH', { timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit' });
 const outcome = (m: PM) => (Number(m.hs) > Number(m.as) ? 0 : Number(m.hs) < Number(m.as) ? 2 : 1);
 
-export function MatchPredict({ matches }: { matches: PM[] }) {
+export function MatchPredict({ matches, compact = false }: { matches: PM[]; compact?: boolean }) {
   const [data, setData] = useState<Record<string, Snap> | null>(null);
   const [dead, setDead] = useState(false);
   const [now, setNow] = useState(0);
@@ -67,6 +67,7 @@ export function MatchPredict({ matches }: { matches: PM[] }) {
     );
   };
 
+  if (compact) return <div className="pm-wrap pm-compact"><ul className="pm-list">{matches.map(card)}</ul></div>; // 경기 프리뷰 페이지용: 제목 없이 카드만
   const up = matches.filter((m) => m.status !== 'post');
   const past = matches.filter((m) => m.status === 'post');
   return (

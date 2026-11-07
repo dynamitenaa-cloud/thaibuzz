@@ -562,3 +562,24 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .b11-list button:disabled { opacity: .35; cursor: not-allowed; } .b11-list i { font-style: normal; color: var(--mut); text-align: center; } .b11-list small { color: var(--mut); }
 .b11-remove { padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--brand-ink); font: inherit; cursor: pointer; }
 @media (min-width: 700px) { .b11-modal { align-items: center; } .b11-panel { border-radius: 16px; } }
+
+/* 경기 프리뷰 / 팀 페이지 */
+.mp-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; font-size: .9rem; }
+.mp-form b { margin-right: 4px; }
+.mp-form span, .mp-form a { padding: 3px 9px; border-radius: 999px; font-size: .82rem; font-weight: 600; text-decoration: none; }
+.mp-W { background: #dcfce7; color: #166534; }
+.mp-D { background: #f1f5f9; color: #475569; }
+.mp-L { background: #fee2e2; color: #991b1b; }
+.pm-compact .pm-list { margin: 0; }
+.tm-players { list-style: none; margin: 4px 0 14px; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px 12px; }
+.tm-players li { padding: 5px 0; border-bottom: 1px solid var(--line); font-size: .93rem; }
+.tm-players b { display: inline-block; min-width: 1.8em; color: var(--brand-ink); font-variant-numeric: tabular-nums; }
+.fx-link { display: contents; color: inherit; text-decoration: none; }
+:root[data-theme="dark"] .mp-W { background: #14532d; color: #bbf7d0; }
+:root[data-theme="dark"] .mp-D { background: #334155; color: #e2e8f0; }
+:root[data-theme="dark"] .mp-L { background: #7f1d1d; color: #fecaca; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mp-W { background: #14532d; color: #bbf7d0; }
+  :root:not([data-theme="light"]) .mp-D { background: #334155; color: #e2e8f0; }
+  :root:not([data-theme="light"]) .mp-L { background: #7f1d1d; color: #fecaca; }
+}
