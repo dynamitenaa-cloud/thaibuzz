@@ -30,7 +30,17 @@ export function Best11({ leagues }: { leagues: LeagueOpt[] }) {
   const [tf, setTf] = useState('');
   const [note, setNote] = useState('');
   const loaded = useRef(false);
+  const [friend, setFriend] = useState<{ form: string; ps: Pick[] } | null>(null);
 
+  useEffect(() => { // 친구가 보낸 도전 링크 (?d=...) 읽기. 값은 신뢰하지 않고 모양·길이를 검사
+    try {
+      const d = new URLSearchParams(location.search).get('d'); if (!d || d.length > 3000) return;
+      const j = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(d.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0))));
+      if (!FORMS[j?.f] || !Array.isArray(j.p) || j.p.length > 11) return;
+      const ps: Pick[] = j.p.map((x: unknown[]) => ({ id: String(x[0]).slice(0, 12), n: String(x[1]).slice(0, 40), no: String(x[2] ?? '').slice(0, 3), t: String(x[3] ?? '').slice(0, 40), p: (['GK', 'DF', 'MF', 'FW'].includes(String(x[4])) ? x[4] : 'MF') as Pick['p'] }));
+      setFriend({ form: j.f, ps });
+    } catch {}
+  }, []);
   useEffect(() => { // 내 브라우저에 저장된 팀 복원
     try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s?.form && FORMS[s.form]) { setForm(s.form); setPicks(s.picks || {}); } } catch {}
     loaded.current = true;
@@ -67,6 +77,14 @@ export function Best11({ leagues }: { leagues: LeagueOpt[] }) {
   const clear = (k: string) => setPicks((x) => { const n = { ...x }; delete n[k]; return n; });
 
   const lineup = () => rows.map(([pos], r) => ({ pos, ps: slots.filter((s) => s.row === r).map((s) => picks[s.key]) }));
+  const challengeUrl = () => {
+    const raw = JSON.stringify({ f: form, p: slots.map((x) => picks[x.key]).filter(Boolean).map((x) => [x.id, x.n, x.no, x.t, x.p]) });
+    let bin = ''; new TextEncoder().encode(raw).forEach((b) => { bin += String.fromCharCode(b); });
+    return `${location.origin}/football/best11/?d=${btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')}`;
+  };
+  const copyChallenge = async () => { try { await navigator.clipboard.writeText(`ฉันจัด BEST 11 แล้ว ลองจัดทีมของคุณมาเทียบกัน ⚔️ ${challengeUrl()}`); setNote('คัดลอกลิงก์ท้าเพื่อนแล้ว — ส่งใน LINE / Messenger ได้เลย'); } catch { setNote('คัดลอกไม่ได้ ลองบันทึกรูปแทนนะครับ'); } };
+  const mineIds = new Set(Object.values(picks).map((x) => x.id));
+  const same = friend ? friend.ps.filter((x) => mineIds.has(x.id)) : [];
   const text = () => `BEST 11 ของฉัน (${form})\n${[...lineup()].reverse().map((l) => `${l.pos}: ${l.ps.map((p) => p?.n || '-').join(', ')}`).join('\n')}\n\nสร้างทีมของคุณ 👉 ${location.origin}/football/best11/`;
 
   const draw = () => {
@@ -121,6 +139,14 @@ export function Best11({ leagues }: { leagues: LeagueOpt[] }) {
         <button type="button" className="b11-reset" onClick={() => setPicks({})} disabled={!filled}>ล้างทั้งหมด</button>
       </div>
 
+      {friend && (
+        <aside className="b11-friend" aria-label="ทีมของเพื่อน">
+          <b>⚔️ เพื่อนส่งทีมนี้มาท้าคุณ (แผน {friend.form})</b>
+          <p>{friend.ps.map((x) => x.n).join(' · ')}</p>
+          <small>{filled ? `ทีมของคุณเลือกตรงกับเพื่อน ${same.length}/11 คน${same.length ? `: ${same.map((x) => x.n).join(', ')}` : ''}` : 'จัดทีมของคุณด้านล่าง แล้วดูว่าเลือกตรงกับเพื่อนกี่คน'}</small>
+        </aside>
+      )}
+
       <div className="b11-pitch" role="group" aria-label="สนาม">
         {rows.map(([pos], r) => (
           <div className="b11-row" key={r}>
@@ -142,6 +168,7 @@ export function Best11({ leagues }: { leagues: LeagueOpt[] }) {
         <button type="button" onClick={share} disabled={!filled}>📤 แชร์ทีมของฉัน</button>
         <button type="button" onClick={save} disabled={!filled}>💾 บันทึกรูป</button>
         <button type="button" onClick={copy} disabled={!filled}>📋 คัดลอกรายชื่อ</button>
+        <button type="button" onClick={copyChallenge} disabled={!filled}>⚔️ ลิงก์ท้าเพื่อน</button>
       </div>
       {note && <p className="b11-note" role="status">{note}</p>}
 

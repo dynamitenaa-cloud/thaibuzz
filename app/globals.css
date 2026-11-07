@@ -590,3 +590,9 @@ mark { background: color-mix(in srgb, var(--brand) 22%, transparent); color: inh
 .push-btn.on { opacity: .75; }
 .push-btn:disabled { opacity: .5; cursor: default; }
 .push-box small { color: var(--mut); }
+
+/* 공유 카드 / 친구 대결 */
+.pm-share { margin-left: 8px; border: 1px solid var(--brand-ink); background: transparent; color: var(--brand-ink); border-radius: 999px; padding: 3px 12px; font-size: .82rem; font-weight: 700; cursor: pointer; }
+.b11-friend { border: 2px dashed var(--brand-ink); border-radius: 12px; padding: 10px 14px; margin: 0 0 14px; }
+.b11-friend p { margin: 6px 0; font-size: .9rem; }
+.b11-friend small { color: var(--mut); }

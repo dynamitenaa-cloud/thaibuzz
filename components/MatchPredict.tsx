@@ -34,6 +34,38 @@ export function MatchPredict({ matches, compact = false }: { matches: PM[]; comp
   const mine = matches.filter((m) => m.status === 'post' && data?.[`m${m.id}`]?.mine != null);
   const hit = mine.filter((m) => data![`m${m.id}`].mine === outcome(m)).length;
 
+  // 내 성적 카드 (공유용 PNG). 종료된 경기 중 내가 투표한 것 최대 6개
+  const [note, setNote] = useState('');
+  const drawCard = () => {
+    const W = 1080, H = 1080, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d')!;
+    const font = (w: number, z: number) => `${w} ${z}px "Noto Sans Thai", "Prompt", system-ui, sans-serif`;
+    const bg = g.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, '#14532d'); bg.addColorStop(1, '#0f3d22'); g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    g.textAlign = 'center'; g.fillStyle = '#fff'; g.font = font(700, 58); g.fillText('ผลทายบอลของฉัน', W / 2, 105);
+    g.font = font(800, 190); g.fillStyle = '#fde047'; g.fillText(`${hit}/${mine.length}`, W / 2, 310);
+    g.font = font(500, 38); g.fillStyle = 'rgba(255,255,255,.9)'; g.fillText(`ทายถูก ${hit} จาก ${mine.length} นัดที่จบแล้ว`, W / 2, 375);
+    g.textAlign = 'left';
+    const list = [...mine].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 6);
+    list.forEach((m, i) => {
+      const y = 470 + i * 88, ok = data![`m${m.id}`].mine === outcome(m);
+      g.fillStyle = 'rgba(255,255,255,.1)'; g.fillRect(60, y - 52, W - 120, 74);
+      g.fillStyle = ok ? '#86efac' : '#fca5a5'; g.font = font(700, 40); g.fillText(ok ? '✓' : '✗', 84, y);
+      g.fillStyle = '#fff'; let z = 32; g.font = font(600, z); const t = `${m.home} ${m.hs}-${m.as} ${m.away}`;
+      while (g.measureText(t).width > W - 260 && z > 20) { z -= 2; g.font = font(600, z); }
+      g.fillText(t, 140, y);
+    });
+    g.textAlign = 'center'; g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(0, H - 90, W, 90); g.fillStyle = '#fff'; g.font = font(600, 34); g.fillText('ทายผลบอลกับแฟนบอลไทย thaibuzz.net/football/predict', W / 2, H - 34);
+    return c;
+  };
+  const shareCard = async () => {
+    const b = await new Promise<Blob | null>((res) => drawCard().toBlob(res, 'image/png')); if (!b) return;
+    const f = new File([b], 'thaibuzz-predict.png', { type: 'image/png' });
+    const text = `ฉันทายบอลถูก ${hit}/${mine.length} นัด! มาทายกัน 👉 ${location.origin}/football/predict/`;
+    try { if (navigator.canShare?.({ files: [f] })) { await navigator.share({ files: [f], text }); return; } } catch { return; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'thaibuzz-predict.png'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    setNote('บันทึกรูปแล้ว — นำไปโพสต์ใน Facebook / LINE ได้เลย');
+  };
+
   // 컴포넌트가 아니라 함수로 호출 (안에서 정의한 컴포넌트는 state 가 바뀔 때마다 통째로 다시 만들어져 깜빡임/포커스 손실이 생김)
   const card = (m: PM) => {
     const s = data?.[`m${m.id}`];
@@ -72,7 +104,7 @@ export function MatchPredict({ matches, compact = false }: { matches: PM[]; comp
   const past = matches.filter((m) => m.status === 'post');
   return (
     <div className="pm-wrap">
-      {mine.length > 0 && <p className="pm-score">🎯 คุณทายถูก <b>{hit}/{mine.length}</b> นัดที่จบแล้ว</p>}
+      {mine.length > 0 && <p className="pm-score">🎯 คุณทายถูก <b>{hit}/{mine.length}</b> นัดที่จบแล้ว <button type="button" className="pm-share" onClick={shareCard}>📤 แชร์คะแนน</button>{note && <small> {note}</small>}</p>}
       <h2>นัดที่กำลังจะแข่ง</h2>
       {up.length ? <ul className="pm-list">{up.map(card)}</ul> : <p>ยังไม่มีโปรแกรมใหม่ ลองกลับมาดูอีกครั้งก่อนวันแข่ง</p>}
       {past.length > 0 && (<><h2>ผลที่ผ่านมา</h2><ul className="pm-list">{past.map(card)}</ul></>)}
