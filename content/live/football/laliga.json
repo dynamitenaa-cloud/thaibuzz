@@ -77,14 +77,14 @@
   {
    "rank": 7,
    "team": "Athletic Club",
-   "p": 10,
+   "p": 11,
    "w": 4,
-   "d": 3,
+   "d": 4,
    "l": 3,
-   "gf": 14,
-   "ga": 10,
+   "gf": 15,
+   "ga": 11,
    "gd": 4,
-   "pts": 15
+   "pts": 16
   },
   {
    "rank": 8,
@@ -185,14 +185,14 @@
   {
    "rank": 16,
    "team": "Osasuna",
-   "p": 11,
+   "p": 12,
    "w": 3,
-   "d": 2,
+   "d": 3,
    "l": 6,
-   "gf": 11,
-   "ga": 22,
+   "gf": 12,
+   "ga": 23,
    "gd": -11,
-   "pts": 11
+   "pts": 12
   },
   {
    "rank": 17,
@@ -375,29 +375,29 @@
    "hs": "0",
    "as": "0",
    "venue": "RCDE Stadium"
+  },
+  {
+   "id": "401882811",
+   "date": "2026-11-07T17:30Z",
+   "status": "post",
+   "detail": "FT",
+   "home": "Osasuna",
+   "away": "Athletic Club",
+   "hs": "1",
+   "as": "1",
+   "venue": "El Sadar"
   }
  ],
  "fixtures": [
   {
-   "id": "401882811",
-   "date": "2026-11-07T17:30Z",
-   "status": "in",
-   "detail": "34'",
-   "home": "Osasuna",
-   "away": "Athletic Club",
-   "hs": "0",
-   "as": "0",
-   "venue": "El Sadar"
-  },
-  {
    "id": "401882808",
    "date": "2026-11-07T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "86'",
    "home": "Valencia",
    "away": "Real Madrid",
    "hs": "0",
-   "as": "0",
+   "as": "3",
    "venue": "Mestalla Stadium"
   },
   {
@@ -456,5 +456,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-07T18:04:25.944Z"
+ "updatedAt": "2026-11-07T21:49:22.628Z"
 }

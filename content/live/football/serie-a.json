@@ -16,6 +16,18 @@
   },
   {
    "rank": 2,
+   "team": "AS Roma",
+   "p": 11,
+   "w": 8,
+   "d": 3,
+   "l": 0,
+   "gf": 31,
+   "ga": 10,
+   "gd": 21,
+   "pts": 27
+  },
+  {
+   "rank": 3,
    "team": "Internazionale",
    "p": 10,
    "w": 8,
@@ -25,18 +37,6 @@
    "ga": 13,
    "gd": 13,
    "pts": 25
-  },
-  {
-   "rank": 3,
-   "team": "AS Roma",
-   "p": 10,
-   "w": 7,
-   "d": 3,
-   "l": 0,
-   "gf": 28,
-   "ga": 10,
-   "gd": 18,
-   "pts": 24
   },
   {
    "rank": 4,
@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Bologna",
+   "p": 11,
+   "w": 5,
+   "d": 2,
+   "l": 4,
+   "gf": 16,
+   "ga": 14,
+   "gd": 2,
+   "pts": 17
+  },
+  {
+   "rank": 9,
    "team": "Cagliari",
    "p": 11,
    "w": 5,
@@ -99,7 +111,7 @@
    "pts": 16
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Napoli",
    "p": 10,
    "w": 4,
@@ -108,18 +120,6 @@
    "gf": 17,
    "ga": 13,
    "gd": 4,
-   "pts": 14
-  },
-  {
-   "rank": 10,
-   "team": "Bologna",
-   "p": 10,
-   "w": 4,
-   "d": 2,
-   "l": 4,
-   "gf": 14,
-   "ga": 13,
-   "gd": 1,
    "pts": 14
   },
   {
@@ -172,18 +172,6 @@
   },
   {
    "rank": 15,
-   "team": "Parma",
-   "p": 10,
-   "w": 2,
-   "d": 2,
-   "l": 6,
-   "gf": 8,
-   "ga": 15,
-   "gd": -7,
-   "pts": 8
-  },
-  {
-   "rank": 16,
    "team": "Fiorentina",
    "p": 10,
    "w": 2,
@@ -195,15 +183,27 @@
    "pts": 8
   },
   {
-   "rank": 17,
-   "team": "Sassuolo",
-   "p": 10,
+   "rank": 16,
+   "team": "Parma",
+   "p": 11,
    "w": 2,
    "d": 2,
-   "l": 6,
+   "l": 7,
+   "gf": 9,
+   "ga": 17,
+   "gd": -8,
+   "pts": 8
+  },
+  {
+   "rank": 17,
+   "team": "Sassuolo",
+   "p": 11,
+   "w": 2,
+   "d": 2,
+   "l": 7,
    "gf": 16,
-   "ga": 26,
-   "gd": -10,
+   "ga": 29,
+   "gd": -13,
    "pts": 8
   },
   {
@@ -386,31 +386,31 @@
    "hs": "1",
    "as": "1",
    "venue": "Stadio Olimpico Grande Torino"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874974",
    "date": "2026-11-07T17:00Z",
-   "status": "in",
-   "detail": "HT",
+   "status": "post",
+   "detail": "FT",
    "home": "Parma",
    "away": "Bologna",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "2",
    "venue": "Ennio Tardini"
   },
   {
    "id": "401874803",
    "date": "2026-11-07T19:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "AS Roma",
    "away": "Sassuolo",
-   "hs": "0",
+   "hs": "3",
    "as": "0",
    "venue": "Olimpico"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874810",
    "date": "2026-11-08T11:30Z",
@@ -467,5 +467,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-07T18:04:26.061Z"
+ "updatedAt": "2026-11-07T21:49:22.891Z"
 }

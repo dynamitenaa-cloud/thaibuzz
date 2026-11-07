@@ -53,13 +53,13 @@
   {
    "rank": 5,
    "team": "Werder Bremen",
-   "p": 8,
+   "p": 9,
    "w": 4,
    "d": 3,
-   "l": 1,
+   "l": 2,
    "gf": 17,
-   "ga": 14,
-   "gd": 3,
+   "ga": 15,
+   "gd": 2,
    "pts": 15
   },
   {
@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "VfB Stuttgart",
+   "p": 9,
+   "w": 4,
+   "d": 0,
+   "l": 5,
+   "gf": 15,
+   "ga": 15,
+   "gd": 0,
+   "pts": 12
+  },
+  {
+   "rank": 9,
    "team": "Eintracht Frankfurt",
    "p": 9,
    "w": 3,
@@ -99,7 +111,7 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Hamburg SV",
    "p": 9,
    "w": 4,
@@ -111,7 +123,7 @@
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Mainz",
    "p": 9,
    "w": 3,
@@ -123,7 +135,7 @@
    "pts": 10
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "SC Paderborn 07",
    "p": 9,
    "w": 2,
@@ -135,7 +147,7 @@
    "pts": 10
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "FC Augsburg",
    "p": 9,
    "w": 2,
@@ -144,18 +156,6 @@
    "gf": 20,
    "ga": 20,
    "gd": 0,
-   "pts": 9
-  },
-  {
-   "rank": 13,
-   "team": "VfB Stuttgart",
-   "p": 8,
-   "w": 3,
-   "d": 0,
-   "l": 5,
-   "gf": 14,
-   "ga": 15,
-   "gd": -1,
    "pts": 9
   },
   {
@@ -362,20 +362,20 @@
    "hs": "2",
    "as": "2",
    "venue": "Home Deluxe Arena"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884743",
    "date": "2026-11-07T17:30Z",
-   "status": "in",
-   "detail": "34'",
+   "status": "post",
+   "detail": "FT",
    "home": "VfB Stuttgart",
    "away": "Werder Bremen",
    "hs": "1",
    "as": "0",
    "venue": "MHPArena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884738",
    "date": "2026-11-08T14:30Z",
@@ -410,5 +410,5 @@
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-07T18:04:26.158Z"
+ "updatedAt": "2026-11-07T21:49:23.126Z"
 }

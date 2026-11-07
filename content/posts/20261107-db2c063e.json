@@ -1,0 +1,96 @@
+{
+  "slug": "20261107-db2c063e",
+  "title": "โรม่า เปิดรังรับมือ ซาสซูโอโล่ ล่าแต้มจัตุรัสหัวตารางกัลโช่",
+  "excerpt": "เอเอส โรม่า เตรียมลงสนามพบกับ ซาสซูโอโล่ ในศึกกัลโช่ เซเรีย อา ด้วยเป้าหมายเก็บสามแต้มเพื่อไล่ล่าตำแหน่งจ่าฝูงในค่ำคืนนี้",
+  "summary": [
+    "เอเอส โรม่า รั้งอันดับ 3 ของตารางคะแนน มี 24 แต้มจาก 11 นัด",
+    "ซาสซูโอโล่ อยู่ในโซนท้ายตารางอันดับ 17 และไม่ชนะใครใน 5 นัดหลังสุด"
+  ],
+  "sections": [
+    {
+      "heading": "สถานการณ์",
+      "paragraphs": [
+        "ความเคลื่อนไหวศึกกัลโช่ เซเรีย อา ที่สนามสตาดิโอ โอลิมปิโก เอเอส โรม่า เตรียมลงสนามพบกับ ซาสซูโอโล่ ในเวลา 02:45 น. ของวันที่ 8 พฤศจิกายน 2026 โดยเจ้าบ้านรั้งอันดับ 3 ของตาราง มี 24 คะแนน ต้องการชัยชนะเพื่อรักษาโมเมนตัมและกดดันทีมหัวตารางหลังผ่านโปรแกรมยุโรป",
+        "ฝั่งทีมเยือนซาสซูโอโล่อยู่ในสถานการณ์ที่ยากลำบาก หลังรั้งอันดับ 17 ของตารางและไม่ชนะใครเลยใน 5 นัดหลังสุดในลีก ทำให้การมาเยือนถิ่นโรมครั้งนี้ถือเป็นโจทย์ยากในการเก็บแต้มหนีโซนตกชั้น"
+      ]
+    },
+    {
+      "heading": "ความพร้อม",
+      "paragraphs": [
+        "เกมนี้เจ้าบ้านภายใต้การคุมทีมของกัสเปรินี จะไม่มี เปาโล ดีบาล่า ที่ยังไม่พร้อมลงสนาม รวมถึงผู้เล่นที่บาดเจ็บจากเกมยุโรป แต่จะได้ มารู คอน กลับมามีชื่อในทีมอีกครั้ง",
+        "สถิติการพบกันที่ผ่านมา 5 นัดหลังสุด เอเอส โรม่า เป็นฝ่ายเอาชนะได้ถึง 4 ครั้ง และซาสซูโอโล่ชนะไป 1 ครั้ง โดยไม่มีผลเสมอ"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เอเอส โรม่า",
+    "ซาสซูโอโล่",
+    "โรม่า",
+    "กัลโช่ เซเรีย อา",
+    "ผลบอลสด",
+    "โปรแกรมบอล"
+  ],
+  "entities": [
+    {
+      "name": "เอเอส โรม่า",
+      "type": "group"
+    },
+    {
+      "name": "ซาสซูโอโล่",
+      "type": "group"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261107-db2c063e.jpg",
+  "thumbSm": "/thumbs/20261107-db2c063e-sm.webp",
+  "thumbClean": "/thumbs/20261107-db2c063e-clean.webp",
+  "thumbLg": "/thumbs/20261107-db2c063e-clean.webp",
+  "imageAlt": "นักฟุตบอลเอเอส โรม่า ลงสนามแข่งขันในศึกกัลโช่ เซเรีย อา",
+  "imageCredit": "Sports Illustrated",
+  "createdAt": "2026-11-07T21:47:20.518Z",
+  "traffic": 1000,
+  "keyword": "โรมา พบ ซัสซูโอโล",
+  "format": "brief",
+  "hook": "โรม่าเปิดบ้านล่าสามแต้มเต็ม",
+  "question": "คืนนี้โรม่าจะเก็บชัยชนะได้ตามเป้าหรือไม่?",
+  "poll": [
+    "โรม่าชนะแน่นอน",
+    "ซาสซูโอโล่มีแต้ม",
+    "เสมอกันไป"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Gasperini’s Roma break scoring record: 31 goals in 11 games",
+      "url": "https://sports.yahoo.com/articles/gasperini-roma-break-scoring-record-212000592.html",
+      "source": "Yahoo Sports"
+    },
+    {
+      "title": "UEFA Rule on Further Champions League Punishment for Matheus Cunha",
+      "url": "https://www.si.com/soccer/uefa-rule-further-champions-league-punishment-matheus-cunha",
+      "source": "Sports Illustrated"
+    },
+    {
+      "title": "การคาดการณ์ผลการแข่งขันระหว่าง AS Roma กับ Sassuolo: โอกาสในการไล่ล่าตำแหน่งสูงสุด",
+      "url": "https://www.vietnam.vn/th/nhan-dinh-as-roma-vs-sassuolo-co-hoi-bam-duoi-ngoi-dau",
+      "source": "Vietnam.vn"
+    },
+    {
+      "title": "วันนี้มีอะไรดูบ้าง? เช็กโปรแกรมถ่ายทอดสดกีฬาทางทรูวิชั่นส์ ประจำวันที่ 7 พฤศจิกายน 2569 -FORMULA 1 SAO PAULO 2026 ฟอร์มูล่า วัน 2026 มุ่งหน้าสู่สนามอินเตอร์ลากอส ในเมืองเซาเปาโล ประเทศบราซิล สนามระดับตำนานที่โดดเด่นด้วยทางขึ้นลงเนิน โค้งต่อเนื่อง และทางตรงที่เปิดโ",
+      "url": "https://www.facebook.com/Truevisions/posts/%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B8%A1%E0%B8%B5%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%8A%E0%B9%87%E0%B8%81%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%AA%E0%B8%94%E0%B8%81%E0%B8%B5%E0%B8%AC%E0%B8%B2%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%97%E0%B8%A3%E0%B8%B9%E0%B8%A7%E0%B8%B4%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99%E0%B8%AA%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88-7-%E0%B8%9E%E0%B8%A4%E0%B8%A8%E0%B8%88%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A2%E0%B8%99-/1594004709439534/",
+      "source": "Facebook"
+    },
+    {
+      "title": "ดูบอลสด โรม่า VS ซาสซูโอโล่ : พรีวิว กัลโช่ เซเรีย อา 2026/27",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBjenp0eXRieDc1b1BnNnFfaXBnNFZqVlZFWnJieHpuN1J2TFNzZWZ6Tl9SdnhQTzNSYlZmTjFLYUIyWkZMc1Ywdkt2T2RWWFFkZWREQzMwYw?oc=5",
+      "source": "TrueID"
+    },
+    {
+      "title": "บอลวันนี้ ดูบอลฟรี โปรแกรมบอล ดูบอลสด ถ่ายทอดสด วันเสาร์ที่ 7 พ.ย. 69",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5TOFQwTC1QNm1adHN2RnhDRXFfcnRtOFBXdEdSS1JOdXpCZGp5bnQ0QXc4cXl2Y2pyQ1RsZ3FmeVZ5TXhnLTQ1TUpRQjY2SndDencwUg?oc=5",
+      "source": "posttoday"
+    }
+  ]
+}
