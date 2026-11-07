@@ -65,13 +65,13 @@
   {
    "rank": 6,
    "team": "Frosinone",
-   "p": 10,
+   "p": 11,
    "w": 6,
    "d": 2,
-   "l": 2,
+   "l": 3,
    "gf": 24,
-   "ga": 14,
-   "gd": 10,
+   "ga": 15,
+   "gd": 9,
    "pts": 20
   },
   {
@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Cagliari",
+   "p": 11,
+   "w": 5,
+   "d": 1,
+   "l": 5,
+   "gf": 10,
+   "ga": 15,
+   "gd": -5,
+   "pts": 16
+  },
+  {
+   "rank": 9,
    "team": "Napoli",
    "p": 10,
    "w": 4,
@@ -99,7 +111,7 @@
    "pts": 14
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Bologna",
    "p": 10,
    "w": 4,
@@ -111,19 +123,19 @@
    "pts": 14
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Torino",
-   "p": 10,
+   "p": 11,
    "w": 4,
-   "d": 1,
+   "d": 2,
    "l": 5,
-   "gf": 14,
-   "ga": 16,
+   "gf": 15,
+   "ga": 17,
    "gd": -2,
-   "pts": 13
+   "pts": 14
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Genoa",
    "p": 10,
    "w": 4,
@@ -132,18 +144,6 @@
    "gf": 10,
    "ga": 14,
    "gd": -4,
-   "pts": 13
-  },
-  {
-   "rank": 12,
-   "team": "Cagliari",
-   "p": 10,
-   "w": 4,
-   "d": 1,
-   "l": 5,
-   "gf": 9,
-   "ga": 15,
-   "gd": -6,
    "pts": 13
   },
   {
@@ -161,14 +161,14 @@
   {
    "rank": 14,
    "team": "Lecce",
-   "p": 10,
+   "p": 11,
    "w": 3,
-   "d": 0,
+   "d": 1,
    "l": 7,
-   "gf": 11,
-   "ga": 21,
+   "gf": 12,
+   "ga": 22,
    "gd": -10,
-   "pts": 9
+   "pts": 10
   },
   {
    "rank": 15,
@@ -364,36 +364,36 @@
    "hs": "2",
    "as": "1",
    "venue": "Stadio Pier Luigi Penzo"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874791",
    "date": "2026-11-07T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Cagliari",
    "away": "Frosinone",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Unipol Domus"
   },
   {
    "id": "401874811",
    "date": "2026-11-07T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Torino",
    "away": "Lecce",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Stadio Olimpico Grande Torino"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874974",
    "date": "2026-11-07T17:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Parma",
    "away": "Bologna",
    "hs": "0",
@@ -467,5 +467,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-07T00:14:53.444Z"
+ "updatedAt": "2026-11-07T18:04:26.061Z"
 }

@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Arsenal",
-   "p": 9,
-   "w": 8,
+   "p": 10,
+   "w": 9,
    "d": 0,
    "l": 1,
-   "gf": 14,
+   "gf": 15,
    "ga": 5,
-   "gd": 9,
-   "pts": 24
+   "gd": 10,
+   "pts": 27
   },
   {
    "rank": 2,
@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Leeds United",
+   "p": 10,
+   "w": 3,
+   "d": 5,
+   "l": 2,
+   "gf": 10,
+   "ga": 8,
+   "gd": 2,
+   "pts": 14
+  },
+  {
+   "rank": 9,
    "team": "AFC Bournemouth",
    "p": 9,
    "w": 3,
@@ -99,19 +111,31 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Tottenham Hotspur",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 3,
-   "l": 3,
+   "l": 4,
    "gf": 10,
-   "ga": 10,
-   "gd": 0,
+   "ga": 11,
+   "gd": -1,
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 11,
+   "team": "Newcastle United",
+   "p": 10,
+   "w": 3,
+   "d": 3,
+   "l": 4,
+   "gf": 13,
+   "ga": 16,
+   "gd": -3,
+   "pts": 12
+  },
+  {
+   "rank": 12,
    "team": "Aston Villa",
    "p": 9,
    "w": 3,
@@ -123,39 +147,15 @@
    "pts": 12
   },
   {
-   "rank": 11,
-   "team": "Hull City",
-   "p": 9,
-   "w": 2,
-   "d": 5,
-   "l": 2,
-   "gf": 11,
-   "ga": 10,
-   "gd": 1,
-   "pts": 11
-  },
-  {
-   "rank": 12,
-   "team": "Leeds United",
-   "p": 9,
-   "w": 2,
-   "d": 5,
-   "l": 2,
-   "gf": 9,
-   "ga": 8,
-   "gd": 1,
-   "pts": 11
-  },
-  {
    "rank": 13,
-   "team": "Newcastle United",
-   "p": 9,
-   "w": 3,
-   "d": 2,
-   "l": 4,
-   "gf": 12,
-   "ga": 15,
-   "gd": -3,
+   "team": "Hull City",
+   "p": 10,
+   "w": 2,
+   "d": 5,
+   "l": 3,
+   "gf": 11,
+   "ga": 11,
+   "gd": 0,
    "pts": 11
   },
   {
@@ -173,14 +173,14 @@
   {
    "rank": 15,
    "team": "Fulham",
-   "p": 9,
+   "p": 10,
    "w": 2,
-   "d": 3,
+   "d": 4,
    "l": 4,
-   "gf": 9,
-   "ga": 11,
+   "gf": 10,
+   "ga": 12,
    "gd": -2,
-   "pts": 9
+   "pts": 10
   },
   {
    "rank": 16,
@@ -364,50 +364,50 @@
    "hs": "3",
    "as": "1",
    "venue": "Hill Dickinson Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401878758",
    "date": "2026-11-07T12:30Z",
-   "status": "in",
-   "detail": "25'",
+   "status": "post",
+   "detail": "FT",
    "home": "Leeds United",
    "away": "Tottenham Hotspur",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Elland Road"
   },
   {
    "id": "401878760",
    "date": "2026-11-07T15:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Arsenal",
    "away": "Hull City",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Emirates Stadium"
   },
   {
    "id": "401879241",
    "date": "2026-11-07T15:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Fulham",
    "away": "Newcastle United",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Craven Cottage"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401878757",
    "date": "2026-11-07T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "32'",
    "home": "Nottingham Forest",
    "away": "Manchester City",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "The City Ground"
   },
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-07T12:55:07.640Z"
+ "updatedAt": "2026-11-07T18:04:25.793Z"
 }

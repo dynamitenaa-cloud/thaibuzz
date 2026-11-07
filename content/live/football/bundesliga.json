@@ -5,29 +5,41 @@
   {
    "rank": 1,
    "team": "Bayern Munich",
-   "p": 8,
-   "w": 5,
+   "p": 9,
+   "w": 6,
    "d": 3,
    "l": 0,
-   "gf": 27,
-   "ga": 8,
-   "gd": 19,
-   "pts": 18
+   "gf": 29,
+   "ga": 9,
+   "gd": 20,
+   "pts": 21
   },
   {
    "rank": 2,
    "team": "Borussia Dortmund",
-   "p": 8,
-   "w": 5,
+   "p": 9,
+   "w": 6,
    "d": 3,
    "l": 0,
-   "gf": 14,
-   "ga": 6,
-   "gd": 8,
-   "pts": 18
+   "gf": 16,
+   "ga": 7,
+   "gd": 9,
+   "pts": 21
   },
   {
    "rank": 3,
+   "team": "RB Leipzig",
+   "p": 9,
+   "w": 6,
+   "d": 0,
+   "l": 3,
+   "gf": 27,
+   "ga": 13,
+   "gd": 14,
+   "pts": 18
+  },
+  {
+   "rank": 4,
    "team": "SC Freiburg",
    "p": 8,
    "w": 5,
@@ -37,18 +49,6 @@
    "ga": 10,
    "gd": 8,
    "pts": 16
-  },
-  {
-   "rank": 4,
-   "team": "RB Leipzig",
-   "p": 8,
-   "w": 5,
-   "d": 0,
-   "l": 3,
-   "gf": 22,
-   "ga": 11,
-   "gd": 11,
-   "pts": 15
   },
   {
    "rank": 5,
@@ -77,17 +77,29 @@
   {
    "rank": 7,
    "team": "SV Elversberg",
-   "p": 8,
+   "p": 9,
    "w": 4,
    "d": 1,
-   "l": 3,
-   "gf": 16,
-   "ga": 16,
-   "gd": 0,
+   "l": 4,
+   "gf": 17,
+   "ga": 18,
+   "gd": -1,
    "pts": 13
   },
   {
    "rank": 8,
+   "team": "Eintracht Frankfurt",
+   "p": 9,
+   "w": 3,
+   "d": 3,
+   "l": 3,
+   "gf": 15,
+   "ga": 20,
+   "gd": -5,
+   "pts": 12
+  },
+  {
+   "rank": 9,
    "team": "Hamburg SV",
    "p": 9,
    "w": 4,
@@ -99,43 +111,43 @@
    "pts": 12
   },
   {
-   "rank": 9,
-   "team": "Eintracht Frankfurt",
-   "p": 8,
-   "w": 3,
-   "d": 2,
-   "l": 3,
-   "gf": 13,
-   "ga": 18,
-   "gd": -5,
-   "pts": 11
-  },
-  {
    "rank": 10,
    "team": "Mainz",
-   "p": 8,
+   "p": 9,
    "w": 3,
    "d": 1,
-   "l": 4,
-   "gf": 17,
-   "ga": 17,
-   "gd": 0,
+   "l": 5,
+   "gf": 18,
+   "ga": 19,
+   "gd": -1,
    "pts": 10
   },
   {
    "rank": 11,
-   "team": "FC Augsburg",
-   "p": 8,
+   "team": "SC Paderborn 07",
+   "p": 9,
    "w": 2,
-   "d": 3,
+   "d": 4,
    "l": 3,
-   "gf": 18,
-   "ga": 15,
-   "gd": 3,
-   "pts": 9
+   "gf": 8,
+   "ga": 11,
+   "gd": -3,
+   "pts": 10
   },
   {
    "rank": 12,
+   "team": "FC Augsburg",
+   "p": 9,
+   "w": 2,
+   "d": 3,
+   "l": 4,
+   "gf": 20,
+   "ga": 20,
+   "gd": 0,
+   "pts": 9
+  },
+  {
+   "rank": 13,
    "team": "VfB Stuttgart",
    "p": 8,
    "w": 3,
@@ -147,7 +159,7 @@
    "pts": 9
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "TSG Hoffenheim",
    "p": 8,
    "w": 3,
@@ -159,7 +171,7 @@
    "pts": 9
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "FC Cologne",
    "p": 8,
    "w": 2,
@@ -167,18 +179,6 @@
    "l": 3,
    "gf": 9,
    "ga": 12,
-   "gd": -3,
-   "pts": 9
-  },
-  {
-   "rank": 15,
-   "team": "SC Paderborn 07",
-   "p": 8,
-   "w": 2,
-   "d": 3,
-   "l": 3,
-   "gf": 6,
-   "ga": 9,
    "gd": -3,
    "pts": 9
   },
@@ -318,61 +318,61 @@
    "hs": "3",
    "as": "1",
    "venue": "Volksparkstadion"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884745",
    "date": "2026-11-07T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Borussia Dortmund",
    "away": "SV Elversberg",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "1",
    "venue": "Signal Iduna Park"
   },
   {
    "id": "401884740",
    "date": "2026-11-07T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Mainz",
    "away": "Bayern Munich",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "2",
    "venue": "MEWA ARENA"
   },
   {
    "id": "401884744",
    "date": "2026-11-07T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "RB Leipzig",
    "away": "FC Augsburg",
-   "hs": "0",
-   "as": "0",
+   "hs": "5",
+   "as": "2",
    "venue": "Red Bull Arena"
   },
   {
    "id": "401884737",
    "date": "2026-11-07T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "SC Paderborn 07",
    "away": "Eintracht Frankfurt",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "2",
    "venue": "Home Deluxe Arena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884743",
    "date": "2026-11-07T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "34'",
    "home": "VfB Stuttgart",
    "away": "Werder Bremen",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "MHPArena"
   },
@@ -410,5 +410,5 @@
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-07T00:14:53.605Z"
+ "updatedAt": "2026-11-07T18:04:26.158Z"
 }

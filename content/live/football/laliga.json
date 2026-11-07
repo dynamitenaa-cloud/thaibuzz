@@ -89,17 +89,29 @@
   {
    "rank": 8,
    "team": "Deportivo",
-   "p": 11,
+   "p": 12,
    "w": 3,
-   "d": 5,
+   "d": 6,
    "l": 3,
    "gf": 15,
    "ga": 14,
    "gd": 1,
-   "pts": 14
+   "pts": 15
   },
   {
    "rank": 9,
+   "team": "Racing Santander",
+   "p": 12,
+   "w": 4,
+   "d": 2,
+   "l": 6,
+   "gf": 17,
+   "ga": 30,
+   "gd": -13,
+   "pts": 14
+  },
+  {
+   "rank": 10,
    "team": "Alavés",
    "p": 12,
    "w": 3,
@@ -111,7 +123,7 @@
    "pts": 13
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Villarreal",
    "p": 11,
    "w": 3,
@@ -123,7 +135,7 @@
    "pts": 12
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Celta Vigo",
    "p": 11,
    "w": 2,
@@ -135,7 +147,19 @@
    "pts": 12
   },
   {
-   "rank": 12,
+   "rank": 13,
+   "team": "Espanyol",
+   "p": 12,
+   "w": 3,
+   "d": 3,
+   "l": 6,
+   "gf": 13,
+   "ga": 14,
+   "gd": -1,
+   "pts": 12
+  },
+  {
+   "rank": 14,
    "team": "Rayo Vallecano",
    "p": 10,
    "w": 3,
@@ -147,7 +171,7 @@
    "pts": 12
   },
   {
-   "rank": 13,
+   "rank": 15,
    "team": "Getafe",
    "p": 11,
    "w": 3,
@@ -159,19 +183,7 @@
    "pts": 12
   },
   {
-   "rank": 14,
-   "team": "Espanyol",
-   "p": 11,
-   "w": 3,
-   "d": 2,
-   "l": 6,
-   "gf": 13,
-   "ga": 14,
-   "gd": -1,
-   "pts": 11
-  },
-  {
-   "rank": 15,
+   "rank": 16,
    "team": "Osasuna",
    "p": 11,
    "w": 3,
@@ -180,18 +192,6 @@
    "gf": 11,
    "ga": 22,
    "gd": -11,
-   "pts": 11
-  },
-  {
-   "rank": 16,
-   "team": "Racing Santander",
-   "p": 11,
-   "w": 3,
-   "d": 2,
-   "l": 6,
-   "gf": 15,
-   "ga": 29,
-   "gd": -14,
    "pts": 11
   },
   {
@@ -233,13 +233,13 @@
   {
    "rank": 20,
    "team": "Málaga",
-   "p": 11,
+   "p": 12,
    "w": 0,
    "d": 5,
-   "l": 6,
-   "gf": 8,
-   "ga": 21,
-   "gd": -13,
+   "l": 7,
+   "gf": 9,
+   "ga": 23,
+   "gd": -14,
    "pts": 5
   }
  ],
@@ -353,36 +353,36 @@
    "hs": "0",
    "as": "0",
    "venue": "Ramón Sánchez Pizjuán Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882812",
    "date": "2026-11-07T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Málaga",
    "away": "Racing Santander",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "2",
    "venue": "La Rosaleda"
   },
   {
    "id": "401882813",
    "date": "2026-11-07T15:15Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Espanyol",
    "away": "Deportivo",
    "hs": "0",
    "as": "0",
    "venue": "RCDE Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882811",
    "date": "2026-11-07T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "34'",
    "home": "Osasuna",
    "away": "Athletic Club",
    "hs": "0",
@@ -456,5 +456,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-07T00:14:53.263Z"
+ "updatedAt": "2026-11-07T18:04:25.944Z"
 }
