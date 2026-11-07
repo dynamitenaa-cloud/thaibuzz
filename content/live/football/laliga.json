@@ -65,14 +65,14 @@
   {
    "rank": 6,
    "team": "Sevilla",
-   "p": 11,
+   "p": 12,
    "w": 5,
-   "d": 2,
+   "d": 3,
    "l": 4,
    "gf": 17,
    "ga": 19,
    "gd": -2,
-   "pts": 17
+   "pts": 18
   },
   {
    "rank": 7,
@@ -100,6 +100,18 @@
   },
   {
    "rank": 9,
+   "team": "Alavés",
+   "p": 12,
+   "w": 3,
+   "d": 4,
+   "l": 5,
+   "gf": 15,
+   "ga": 17,
+   "gd": -2,
+   "pts": 13
+  },
+  {
+   "rank": 10,
    "team": "Villarreal",
    "p": 11,
    "w": 3,
@@ -111,7 +123,7 @@
    "pts": 12
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Celta Vigo",
    "p": 11,
    "w": 2,
@@ -120,18 +132,6 @@
    "gf": 10,
    "ga": 10,
    "gd": 0,
-   "pts": 12
-  },
-  {
-   "rank": 11,
-   "team": "Alavés",
-   "p": 11,
-   "w": 3,
-   "d": 3,
-   "l": 5,
-   "gf": 15,
-   "ga": 17,
-   "gd": -2,
    "pts": 12
   },
   {
@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401882817",
-   "date": "2026-10-30T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Villarreal",
-   "away": "Espanyol",
-   "hs": "0",
-   "as": "1",
-   "venue": "Estadio de la Cerámica"
-  },
-  {
    "id": "401882820",
    "date": "2026-10-31T13:00Z",
    "status": "post",
@@ -353,20 +342,20 @@
    "hs": "2",
    "as": "1",
    "venue": "Riazor"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882809",
    "date": "2026-11-06T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Sevilla",
    "away": "Alavés",
    "hs": "0",
    "as": "0",
    "venue": "Ramón Sánchez Pizjuán Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882812",
    "date": "2026-11-07T13:00Z",
@@ -467,5 +456,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-03T00:56:56.443Z"
+ "updatedAt": "2026-11-07T00:14:53.263Z"
 }

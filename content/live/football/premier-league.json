@@ -52,6 +52,18 @@
   },
   {
    "rank": 5,
+   "team": "Everton",
+   "p": 10,
+   "w": 4,
+   "d": 4,
+   "l": 2,
+   "gf": 12,
+   "ga": 10,
+   "gd": 2,
+   "pts": 16
+  },
+  {
+   "rank": 6,
    "team": "Liverpool",
    "p": 9,
    "w": 4,
@@ -63,7 +75,7 @@
    "pts": 15
   },
   {
-   "rank": 6,
+   "rank": 7,
    "team": "Brentford",
    "p": 9,
    "w": 3,
@@ -73,18 +85,6 @@
    "ga": 9,
    "gd": 7,
    "pts": 14
-  },
-  {
-   "rank": 7,
-   "team": "Everton",
-   "p": 9,
-   "w": 3,
-   "d": 4,
-   "l": 2,
-   "gf": 9,
-   "ga": 9,
-   "gd": 0,
-   "pts": 13
   },
   {
    "rank": 8,
@@ -185,13 +185,13 @@
   {
    "rank": 16,
    "team": "Coventry City",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 0,
-   "l": 6,
-   "gf": 9,
-   "ga": 16,
-   "gd": -7,
+   "l": 7,
+   "gf": 10,
+   "ga": 19,
+   "gd": -9,
    "pts": 9
   },
   {
@@ -353,20 +353,20 @@
    "hs": "0",
    "as": "1",
    "venue": "St. James' Park"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879242",
    "date": "2026-11-06T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Everton",
    "away": "Coventry City",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "1",
    "venue": "Hill Dickinson Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401878758",
    "date": "2026-11-07T12:30Z",
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-02T22:40:28.888Z"
+ "updatedAt": "2026-11-07T00:14:53.067Z"
 }
