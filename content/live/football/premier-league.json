@@ -370,8 +370,8 @@
   {
    "id": "401878758",
    "date": "2026-11-07T12:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "25'",
    "home": "Leeds United",
    "away": "Tottenham Hotspur",
    "hs": "0",
@@ -467,5 +467,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-07T00:14:53.067Z"
+ "updatedAt": "2026-11-07T12:55:07.640Z"
 }
