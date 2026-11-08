@@ -245,39 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874798",
-   "date": "2026-10-31T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Bologna",
-   "away": "Monza",
-   "hs": "2",
-   "as": "1",
-   "venue": "Renato Dall'Ara"
-  },
-  {
-   "id": "401874990",
-   "date": "2026-10-31T17:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Udinese",
-   "away": "AS Roma",
-   "hs": "2",
-   "as": "5",
-   "venue": "Stadio Friuli"
-  },
-  {
-   "id": "401874795",
-   "date": "2026-10-31T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "AC Milan",
-   "away": "Internazionale",
-   "hs": "3",
-   "as": "1",
-   "venue": "San Siro"
-  },
-  {
    "id": "401875002",
    "date": "2026-11-01T11:30Z",
    "status": "post",
@@ -467,5 +434,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-07T21:49:22.891Z"
+ "updatedAt": "2026-11-08T01:22:04.660Z"
 }

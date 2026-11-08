@@ -1,0 +1,88 @@
+{
+  "slug": "20261108-d0616c76",
+  "title": "เถียนซีเวยเยือนไทย ปลื้มรับฉายตายัยแป๋ว อ้อนบอกรักแฟนๆ",
+  "excerpt": "นางเอกจีน เถียนซีเวย ลัดฟ้าเยือนไทยร่วมงาน iQIYI ปลื้มฉายายัยแป๋ว ทรงคิตตี้พลังมาร์เวล พร้อมเผยเมนูโปรดและสถานที่อยากไปทำสปา",
+  "summary": [
+    "เถียนซีเวยเดินทางมาพบปะแฟนชาวไทยอย่างเป็นทางการครั้งแรกในฐานะ iQIYI Global Ambassador",
+    "นักแสดงสาวยิ้มรับฉายายัยแป๋ว พร้อมกล่าวขอบคุณและบอกรักแฟนคลับชาวไทย"
+  ],
+  "sections": [
+    {
+      "heading": "เยือนไทยครั้งแรก",
+      "paragraphs": [
+        "บรรยากาศบนรถไฟไทยชั้นสามกลายเป็นจุดเช็กอินสุดน่ารัก เมื่อนางเอกสาวแดนมังกร เถียนซีเวย ปล่อยภาพแฟชั่นเซ็ตระหว่างเดินทางมาพบปะแฟนคลับชาวไทยอย่างเป็นทางการครั้งแรก ในฐานะ iQIYI International Global Ambassador เพื่อร่วมงาน iQIYI iJOY TH 2027 เจ้าตัวเผยความรู้สึกว่าตื่นเต้นและดีใจที่ได้มาใกล้ชิดกับแฟนๆ ทุกคน",
+        "“ตื่นเต้นมากๆ รอคอยที่จะได้มาเจกับทุกคน ก่อนหน้านี้รู้สึกว่าระยะทางอาจไกล แต่พอได้มาเจอทุกคนแล้ว รู้สึกว่าได้ใกล้ชิดกับแฟนๆ มากขึ้น และรู้สึกว่าเราสนิทกันมากยิ่งขึ้น เป็นเกียรติมากๆ ที่ได้รับหน้าที่เป็น iQIYI Global Ambassador ซึ่งเป็นบทบาทใหม่ เป็นแรงผลักดันที่จะสร้างผลงานดีๆ ออกมาในอนาคตให้ทุกคนได้ติดตามกัน” เถียนซีเวย กล่าว"
+      ]
+    },
+    {
+      "heading": "ปลื้มฉายายัยแป๋ว",
+      "paragraphs": [
+        "อีกหนึ่งโมเมนต์สร้างรอยยิ้มคือการที่นางเอกสาวได้ยินเสียงแฟนๆ เรียกที่สนามบินว่ายัยแป๋วหรือยัยน้องแป๋วทรงคิตตี้พลังมาเวล ซึ่งเจ้าตัวได้ถามล่ามจนทราบความหมายและประทับใจมาก มองว่าเป็นคำอวยพรที่น่ารัก พร้อมฝากผลงานซีรีส์เรื่องล่าสุดและเผยว่าหากมีเวลาว่างอยากลองกินต้มยำกุ้ง ข้าวเหนียวมะม่วง และไปนวดสปาในไทย"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "เถียนซีเวย",
+    "เถียนซีเวยมาไทย",
+    "iQIYI",
+    "ปลดหน้ากาก"
+  ],
+  "entities": [
+    {
+      "name": "เถียนซีเวย",
+      "type": "person"
+    }
+  ],
+  "category": "บันเทิง",
+  "thumb": "/thumbs/20261108-d0616c76.jpg",
+  "thumbSm": "/thumbs/20261108-d0616c76-sm.webp",
+  "thumbClean": "/thumbs/20261108-d0616c76-clean.webp",
+  "thumbLg": "/thumbs/20261108-d0616c76-clean.webp",
+  "imageAlt": "เถียนซีเวย นางเอกจีนชื่อดัง",
+  "imageCredit": "ผู้จัดการออนไลน์",
+  "createdAt": "2026-11-08T01:17:37.929Z",
+  "traffic": 200,
+  "keyword": "เถียน ซีเวย",
+  "format": "brief",
+  "hook": "เถียนซีเวยเยือนไทย ปลื้มฉายายัยแป๋ว",
+  "question": "ใครได้เจอเถียนซีเวยตัวจริงมาบ้างแล้ว?",
+  "poll": [
+    "เจอมาแล้ว น่ารักมาก",
+    "อยากเจอตัวจริงบ้าง"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "“เถียนซีเว่ย” นางเอกดังจากแดนมังกร กับโมเมนต์สุดน่ารักบนรถไฟไทยสุดคลาสสิก",
+      "url": "https://mgronline.com/travel/detail/9690000106800",
+      "source": "ผู้จัดการออนไลน์"
+    },
+    {
+      "title": "แกลเลอรีรูปภาพ เปิดอายุ-ส่วนสูงจริง \"เถียนซีเวย\" นางเอกลักยิ้มทรงเสน่ห์ หน้าเด็กและสูงมาก",
+      "url": "https://www.sanook.com/movie/190890/gallery/",
+      "source": "Sanook"
+    },
+    {
+      "title": "“เถียนซีเวย” ยิ้มรับฉายา “ยัยแป๋ว” อ้อนพูดไทย “รักทุกคนนะคะ” | daradaily",
+      "url": "https://today.line.me/th/v3/article/EXwO26m",
+      "source": "LINE TODAY"
+    },
+    {
+      "title": "แฟนๆชาวไทยฟินหนักมาก นางเอกปลดหน้ากาก 'เถียน ซีเวย' สาดความสดใสเช็กอินบนรถไฟไทย",
+      "url": "https://www.naewna.com/n/top-stories/153804/",
+      "source": "แนวหน้า"
+    },
+    {
+      "title": "ทีม Netflix เพิ่งอัปครบทั้ง 30 ตอนเมื่อคืน ใครดูจบแล้ว มาบอกกันหน่อยว่าเป็นยังไงกันบ้าง ตอนจบค้างมากเลยเนอะ ปกติซีรีส์จีนมีซีซัน 2 ไหมนะ?🥹 อยากดูอีกกกกก เรื่องนี้ดีใจที่ได้ค้นพบเหยียนอัน และก็ยิ่งตกหลุมรักเถียนซีเวยมากกว่าเดิม คาแรคเตอร์พระนางเรื่องนี้ดีงามมาก!!!❤️ #WhereThe",
+      "url": "https://news.google.com/rss/articles/CBMiiwdBVV95cUxNeDBGQlluQk9HS25BX1dFeGFFR0hDSDltTzhtOFpjRy10N29FYzYya1FfS2huWUZHd0h2RVFXMENmblJ3N0lFa2NjNzdYVlM1V3JQWE5nTy0wTXEzLThKeWpuTy1GcTNuZm1YZXJRQkhOLUdzNGJWX1UwY0xCd2dwRjhpd09NQ3NadjJVV3JwamVIQ3lSOUFDekw2LVpDb2JSUUMtRkk0Y0R3VC1jSE5QcXlneDd2VWJBR0hNV3dNOW56QmFmTkVKeWZyLWFFT3Q0eUxTM1ZZRUt4bi1mSnI5VVhTckNXNy1ReDd5cl9NSHVtVkdhR0xPbWc3d0NmUTAzbWJaTGg5aW11eS1FYnFiOW1mN2RoS3AxRldSRlFLU2FuZy14RjNkMkgzQkw0TjFwZmV0NEg3RkI4Nnl5bk5icTl1aUtNTU0yRFJhYXRDUVk3MlNXcWNtUWxHR3M0amVNcnJCWnlYUm5KZ1Y4LTRUNW9rSnRYWHV6cUdEMEt0TmtQNURPbnhQRGF6TXhKaUNEZXFXMlh6ME55WEp1XzBfMjFRSFhPbWpNakpJRVhlSUdaV1RGY3F3TDhJYlJOQjJYMHJmMVlhcmUxMHZwVTJ2ZDZ2aDU5Umtfald0ZFo3Si0zRUNpSVVEWUdLWTJBT2lfc1pvRV9NSHBWbTVad0kwZDR6RWIxTy1iSVBfZFlhVmpwZ3RPekY2THdCOXo2aTA5TGVKdGJaRGRkM3EwZXVGSUFEQ2REOFVkeUpxcV9mUm9DdkhKSXd5SlNKbE5JQzJhVjhLZUx4MTgwLW1iYVA3V3lCVmFKLUc1UlBmMVBVaW93Z0xJVTMwRFd5d25sYmMtNnJZZTVwSm50MkZLSmY3clBvSnRHOEdYT2h2c2EwMlhvSjhGbjktSzNtNWxnQ19feWU0ZHNpdUh3NENwMFdwUHRldjE0R0VrMVo2TFk5eUV2NThsN19fM29yeU1jclFwaS01bXlhMTBQWUpTSDlwSVpmMXg1Q2VydnFfT2U5M3JNdGlCN2xjQ1FRRUtXd0o4SUdKMlBBSm5DcWpXWEJHSFdoZlE1ODdyVElia0tVeXNFckVKVENLb0J1X1lSbXJ0UHhGN2ZhRnl0c25memtrX3FXWDhoemlWVG5WeVhpMlZGY3pZMHRiRWh0bnlPSWRxVTRlSHZjdks2eUVFcjZhVFBiQmh2OTZNMllF?oc=5",
+      "source": "Facebook"
+    },
+    {
+      "title": "“เถียนซีเวย” นางเอกจีนซีรีส์ดังแจกความสดใส ปลื้มคนไทยเรียก “ยายแป๋ว” ให้ฉายาทรงคิตตี้พลังมาร์เวล ลิสต์เมนูโปรดอยากนวดสปา",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1GV2Y4SjQxMkF2S2xMQlV2ZFUxNWxUMFBsZUF0Y2EzX0VPMG5pT0ZjckxoOVRqZFYzWFpaQ19zb0RhUUxtenZzM3R5aUcxNDF4aDNYQkxIZlpvbTc1NFdKaE5hN3A4dWs?oc=5",
+      "source": "ผู้จัดการออนไลน์"
+    }
+  ]
+}

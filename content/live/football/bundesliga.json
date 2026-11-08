@@ -221,72 +221,6 @@
  ],
  "results": [
   {
-   "id": "401884753",
-   "date": "2026-10-31T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Bayer Leverkusen",
-   "away": "VfB Stuttgart",
-   "hs": "2",
-   "as": "4",
-   "venue": "BayArena"
-  },
-  {
-   "id": "401884749",
-   "date": "2026-10-31T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Borussia Mönchengladbach",
-   "away": "SC Paderborn 07",
-   "hs": "0",
-   "as": "0",
-   "venue": "BORUSSIA-PARK"
-  },
-  {
-   "id": "401884751",
-   "date": "2026-10-31T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "FC Augsburg",
-   "away": "SC Freiburg",
-   "hs": "1",
-   "as": "2",
-   "venue": "WWK Arena"
-  },
-  {
-   "id": "401884747",
-   "date": "2026-10-31T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Schalke 04",
-   "away": "RB Leipzig",
-   "hs": "0",
-   "as": "2",
-   "venue": "Veltins Arena"
-  },
-  {
-   "id": "401884748",
-   "date": "2026-10-31T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Werder Bremen",
-   "away": "TSG Hoffenheim",
-   "hs": "2",
-   "as": "0",
-   "venue": "Weserstadion"
-  },
-  {
-   "id": "401884754",
-   "date": "2026-10-31T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Bayern Munich",
-   "away": "Borussia Dortmund",
-   "hs": "2",
-   "as": "2",
-   "venue": "Allianz Arena"
-  },
-  {
    "id": "401884750",
    "date": "2026-11-01T14:30Z",
    "status": "post",
@@ -410,5 +344,5 @@
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-07T21:49:23.126Z"
+ "updatedAt": "2026-11-08T01:22:04.871Z"
 }

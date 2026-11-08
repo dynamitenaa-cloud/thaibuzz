@@ -245,94 +245,6 @@
  ],
  "results": [
   {
-   "id": "401879248",
-   "date": "2026-10-31T12:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Chelsea",
-   "away": "Manchester United",
-   "hs": "2",
-   "as": "0",
-   "venue": "Stamford Bridge"
-  },
-  {
-   "id": "401879251",
-   "date": "2026-10-31T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "AFC Bournemouth",
-   "away": "Leeds United",
-   "hs": "2",
-   "as": "0",
-   "venue": "Vitality Stadium"
-  },
-  {
-   "id": "401879249",
-   "date": "2026-10-31T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Brentford",
-   "away": "Nottingham Forest",
-   "hs": "2",
-   "as": "0",
-   "venue": "Gtech Community Stadium"
-  },
-  {
-   "id": "401879247",
-   "date": "2026-10-31T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Coventry City",
-   "away": "Sunderland",
-   "hs": "3",
-   "as": "1",
-   "venue": "Coventry Building Society Arena"
-  },
-  {
-   "id": "401878763",
-   "date": "2026-10-31T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Hull City",
-   "away": "Ipswich Town",
-   "hs": "2",
-   "as": "2",
-   "venue": "The MKM Stadium"
-  },
-  {
-   "id": "401879245",
-   "date": "2026-10-31T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Manchester City",
-   "away": "Brighton & Hove Albion",
-   "hs": "0",
-   "as": "1",
-   "venue": "Etihad Stadium"
-  },
-  {
-   "id": "401878761",
-   "date": "2026-10-31T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Tottenham Hotspur",
-   "away": "Crystal Palace",
-   "hs": "2",
-   "as": "0",
-   "venue": "Tottenham Hotspur Stadium"
-  },
-  {
-   "id": "401879250",
-   "date": "2026-10-31T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Aston Villa",
-   "away": "Fulham",
-   "hs": "1",
-   "as": "1",
-   "venue": "Villa Park"
-  },
-  {
    "id": "401879246",
    "date": "2026-11-01T16:30Z",
    "status": "post",
@@ -467,5 +379,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-07T21:49:22.440Z"
+ "updatedAt": "2026-11-08T01:22:04.279Z"
 }
