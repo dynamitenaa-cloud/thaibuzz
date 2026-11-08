@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Lazio",
-   "p": 10,
+   "p": 11,
    "w": 9,
-   "d": 1,
+   "d": 2,
    "l": 0,
-   "gf": 24,
-   "ga": 8,
+   "gf": 25,
+   "ga": 9,
    "gd": 16,
-   "pts": 28
+   "pts": 29
   },
   {
    "rank": 2,
@@ -40,6 +40,18 @@
   },
   {
    "rank": 4,
+   "team": "AC Milan",
+   "p": 11,
+   "w": 7,
+   "d": 3,
+   "l": 1,
+   "gf": 23,
+   "ga": 13,
+   "gd": 10,
+   "pts": 24
+  },
+  {
+   "rank": 5,
    "team": "Como",
    "p": 10,
    "w": 7,
@@ -49,18 +61,6 @@
    "ga": 8,
    "gd": 10,
    "pts": 23
-  },
-  {
-   "rank": 5,
-   "team": "AC Milan",
-   "p": 10,
-   "w": 6,
-   "d": 3,
-   "l": 1,
-   "gf": 21,
-   "ga": 12,
-   "gd": 9,
-   "pts": 21
   },
   {
    "rank": 6,
@@ -113,14 +113,14 @@
   {
    "rank": 10,
    "team": "Napoli",
-   "p": 10,
+   "p": 11,
    "w": 4,
-   "d": 2,
+   "d": 3,
    "l": 4,
-   "gf": 17,
-   "ga": 13,
+   "gf": 18,
+   "ga": 14,
    "gd": 4,
-   "pts": 14
+   "pts": 15
   },
   {
    "rank": 11,
@@ -136,27 +136,27 @@
   },
   {
    "rank": 12,
-   "team": "Genoa",
-   "p": 10,
+   "team": "Atalanta",
+   "p": 11,
    "w": 4,
-   "d": 1,
+   "d": 2,
    "l": 5,
-   "gf": 10,
-   "ga": 14,
-   "gd": -4,
-   "pts": 13
+   "gf": 17,
+   "ga": 20,
+   "gd": -3,
+   "pts": 14
   },
   {
    "rank": 13,
-   "team": "Atalanta",
-   "p": 10,
-   "w": 3,
-   "d": 2,
-   "l": 5,
-   "gf": 16,
-   "ga": 20,
-   "gd": -4,
-   "pts": 11
+   "team": "Genoa",
+   "p": 11,
+   "w": 4,
+   "d": 1,
+   "l": 6,
+   "gf": 11,
+   "ga": 16,
+   "gd": -5,
+   "pts": 13
   },
   {
    "rank": 14,
@@ -209,13 +209,13 @@
   {
    "rank": 18,
    "team": "Monza",
-   "p": 10,
+   "p": 11,
    "w": 2,
    "d": 1,
-   "l": 7,
+   "l": 8,
    "gf": 17,
-   "ga": 24,
-   "gd": -7,
+   "ga": 25,
+   "gd": -8,
    "pts": 7
   },
   {
@@ -375,42 +375,42 @@
    "hs": "3",
    "as": "0",
    "venue": "Olimpico"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401874810",
    "date": "2026-11-08T11:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Napoli",
    "away": "Lazio",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Stadio Diego Armando Maradona"
   },
   {
    "id": "401875018",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Genoa",
    "away": "AC Milan",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "2",
    "venue": "Stadio Luigi Ferraris"
   },
   {
    "id": "401874800",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Monza",
    "away": "Atalanta",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "U-Power Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874808",
    "date": "2026-11-08T17:00Z",
@@ -434,5 +434,5 @@
    "venue": "Stadio Artemio Franchi"
   }
  ],
- "updatedAt": "2026-11-08T01:22:04.660Z"
+ "updatedAt": "2026-11-08T16:09:20.492Z"
 }

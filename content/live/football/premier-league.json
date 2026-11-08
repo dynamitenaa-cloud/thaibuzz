@@ -16,6 +16,18 @@
   },
   {
    "rank": 2,
+   "team": "Brighton & Hove Albion",
+   "p": 10,
+   "w": 7,
+   "d": 1,
+   "l": 2,
+   "gf": 26,
+   "ga": 7,
+   "gd": 19,
+   "pts": 22
+  },
+  {
+   "rank": 3,
    "team": "Manchester City",
    "p": 10,
    "w": 7,
@@ -27,31 +39,31 @@
    "pts": 21
   },
   {
-   "rank": 3,
-   "team": "Brighton & Hove Albion",
-   "p": 9,
-   "w": 6,
-   "d": 1,
-   "l": 2,
-   "gf": 24,
-   "ga": 7,
-   "gd": 17,
-   "pts": 19
-  },
-  {
    "rank": 4,
-   "team": "Chelsea",
-   "p": 9,
+   "team": "Liverpool",
+   "p": 10,
    "w": 5,
-   "d": 1,
-   "l": 3,
-   "gf": 19,
-   "ga": 15,
+   "d": 3,
+   "l": 2,
+   "gf": 14,
+   "ga": 10,
    "gd": 4,
-   "pts": 16
+   "pts": 18
   },
   {
    "rank": 5,
+   "team": "Chelsea",
+   "p": 10,
+   "w": 5,
+   "d": 1,
+   "l": 4,
+   "gf": 19,
+   "ga": 16,
+   "gd": 3,
+   "pts": 16
+  },
+  {
+   "rank": 6,
    "team": "Everton",
    "p": 10,
    "w": 4,
@@ -63,31 +75,31 @@
    "pts": 16
   },
   {
-   "rank": 6,
-   "team": "Liverpool",
-   "p": 9,
+   "rank": 7,
+   "team": "AFC Bournemouth",
+   "p": 10,
    "w": 4,
    "d": 3,
-   "l": 2,
-   "gf": 11,
-   "ga": 9,
+   "l": 3,
+   "gf": 16,
+   "ga": 14,
    "gd": 2,
    "pts": 15
   },
   {
-   "rank": 7,
+   "rank": 8,
    "team": "Brentford",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 5,
-   "l": 1,
+   "l": 2,
    "gf": 16,
-   "ga": 9,
-   "gd": 7,
+   "ga": 11,
+   "gd": 5,
    "pts": 14
   },
   {
-   "rank": 8,
+   "rank": 9,
    "team": "Leeds United",
    "p": 10,
    "w": 3,
@@ -97,18 +109,6 @@
    "ga": 8,
    "gd": 2,
    "pts": 14
-  },
-  {
-   "rank": 9,
-   "team": "AFC Bournemouth",
-   "p": 9,
-   "w": 3,
-   "d": 3,
-   "l": 3,
-   "gf": 14,
-   "ga": 13,
-   "gd": 1,
-   "pts": 12
   },
   {
    "rank": 10,
@@ -161,13 +161,13 @@
   {
    "rank": 14,
    "team": "Ipswich Town",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 2,
-   "l": 4,
-   "gf": 14,
-   "ga": 18,
-   "gd": -4,
+   "l": 5,
+   "gf": 15,
+   "ga": 20,
+   "gd": -5,
    "pts": 11
   },
   {
@@ -208,6 +208,18 @@
   },
   {
    "rank": 18,
+   "team": "Sunderland",
+   "p": 10,
+   "w": 2,
+   "d": 2,
+   "l": 6,
+   "gf": 8,
+   "ga": 17,
+   "gd": -9,
+   "pts": 8
+  },
+  {
+   "rank": 19,
    "team": "Manchester United",
    "p": 9,
    "w": 1,
@@ -219,28 +231,16 @@
    "pts": 7
   },
   {
-   "rank": 19,
+   "rank": 20,
    "team": "Crystal Palace",
-   "p": 9,
+   "p": 10,
    "w": 2,
    "d": 1,
-   "l": 6,
-   "gf": 9,
-   "ga": 21,
-   "gd": -12,
+   "l": 7,
+   "gf": 10,
+   "ga": 24,
+   "gd": -14,
    "pts": 7
-  },
-  {
-   "rank": 20,
-   "team": "Sunderland",
-   "p": 9,
-   "w": 1,
-   "d": 2,
-   "l": 6,
-   "gf": 7,
-   "ga": 17,
-   "gd": -10,
-   "pts": 5
   }
  ],
  "results": [
@@ -320,53 +320,53 @@
    "hs": "3",
    "as": "1",
    "venue": "The City Ground"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879244",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Brighton & Hove Albion",
    "away": "Brentford",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "American Express Stadium"
   },
   {
    "id": "401879243",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Crystal Palace",
    "away": "Liverpool",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "3",
    "venue": "Selhurst Park"
   },
   {
    "id": "401878759",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Ipswich Town",
    "away": "AFC Bournemouth",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "2",
    "venue": "Portman Road"
   },
   {
    "id": "401879239",
    "date": "2026-11-08T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Sunderland",
    "away": "Chelsea",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Stadium of Light"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879240",
    "date": "2026-11-08T16:30Z",
@@ -379,5 +379,5 @@
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-08T01:22:04.279Z"
+ "updatedAt": "2026-11-08T16:09:20.263Z"
 }

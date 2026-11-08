@@ -41,14 +41,14 @@
   {
    "rank": 4,
    "team": "Real Betis",
-   "p": 11,
-   "w": 7,
+   "p": 12,
+   "w": 8,
    "d": 2,
    "l": 2,
-   "gf": 18,
+   "gf": 20,
    "ga": 15,
-   "gd": 3,
-   "pts": 23
+   "gd": 5,
+   "pts": 26
   },
   {
    "rank": 5,
@@ -196,18 +196,6 @@
   },
   {
    "rank": 17,
-   "team": "Elche",
-   "p": 11,
-   "w": 2,
-   "d": 4,
-   "l": 5,
-   "gf": 14,
-   "ga": 18,
-   "gd": -4,
-   "pts": 10
-  },
-  {
-   "rank": 18,
    "team": "Levante",
    "p": 11,
    "w": 2,
@@ -216,6 +204,18 @@
    "gf": 16,
    "ga": 21,
    "gd": -5,
+   "pts": 10
+  },
+  {
+   "rank": 18,
+   "team": "Elche",
+   "p": 12,
+   "w": 2,
+   "d": 4,
+   "l": 6,
+   "gf": 14,
+   "ga": 20,
+   "gd": -6,
    "pts": 10
   },
   {
@@ -353,25 +353,25 @@
    "hs": "0",
    "as": "3",
    "venue": "Mestalla Stadium"
+  },
+  {
+   "id": "401882814",
+   "date": "2026-11-08T13:00Z",
+   "status": "post",
+   "detail": "FT",
+   "home": "Elche",
+   "away": "Real Betis",
+   "hs": "0",
+   "as": "2",
+   "venue": "Estadio Martínez Valero"
   }
  ],
  "fixtures": [
   {
-   "id": "401882814",
-   "date": "2026-11-08T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
-   "home": "Elche",
-   "away": "Real Betis",
-   "hs": "0",
-   "as": "0",
-   "venue": "Estadio Martínez Valero"
-  },
-  {
    "id": "401882810",
    "date": "2026-11-08T15:15Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Real Sociedad",
    "away": "Rayo Vallecano",
    "hs": "0",
@@ -412,5 +412,5 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-08T01:22:04.491Z"
+ "updatedAt": "2026-11-08T16:09:20.382Z"
 }
