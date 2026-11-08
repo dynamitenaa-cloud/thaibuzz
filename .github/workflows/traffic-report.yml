@@ -1,0 +1,31 @@
+name: traffic-report
+
+# 매일 아침 8시(방콕): 사이트 방문자 + 페북 페이지 + 사이트 참여 현황을 텔레그램으로 전송. 비용 없음
+on:
+  schedule:
+    - cron: '0 1 * * *' # 01:00 UTC = 08:00 방콕
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: '전송 없이 로그로만 확인'
+        type: boolean
+        default: false
+
+concurrency: { group: traffic-report, cancel-in-progress: false }
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 22 }
+      - run: node scripts/traffic-report.mjs ${{ inputs.dry && '--dry' || '' }}
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
