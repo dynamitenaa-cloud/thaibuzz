@@ -53,14 +53,14 @@
   {
    "rank": 5,
    "team": "Real Sociedad",
-   "p": 11,
-   "w": 6,
+   "p": 12,
+   "w": 7,
    "d": 1,
    "l": 4,
-   "gf": 20,
+   "gf": 21,
    "ga": 20,
-   "gd": 0,
-   "pts": 19
+   "gd": 1,
+   "pts": 22
   },
   {
    "rank": 6,
@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Villarreal",
+   "p": 12,
+   "w": 4,
+   "d": 3,
+   "l": 5,
+   "gf": 17,
+   "ga": 15,
+   "gd": 2,
+   "pts": 15
+  },
+  {
+   "rank": 9,
    "team": "Deportivo",
    "p": 12,
    "w": 3,
@@ -99,7 +111,7 @@
    "pts": 15
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Racing Santander",
    "p": 12,
    "w": 4,
@@ -111,7 +123,19 @@
    "pts": 14
   },
   {
-   "rank": 10,
+   "rank": 11,
+   "team": "Celta Vigo",
+   "p": 12,
+   "w": 2,
+   "d": 7,
+   "l": 3,
+   "gf": 10,
+   "ga": 10,
+   "gd": 0,
+   "pts": 13
+  },
+  {
+   "rank": 12,
    "team": "Alavés",
    "p": 12,
    "w": 3,
@@ -121,30 +145,6 @@
    "ga": 17,
    "gd": -2,
    "pts": 13
-  },
-  {
-   "rank": 11,
-   "team": "Villarreal",
-   "p": 11,
-   "w": 3,
-   "d": 3,
-   "l": 5,
-   "gf": 15,
-   "ga": 15,
-   "gd": 0,
-   "pts": 12
-  },
-  {
-   "rank": 12,
-   "team": "Celta Vigo",
-   "p": 11,
-   "w": 2,
-   "d": 6,
-   "l": 3,
-   "gf": 10,
-   "ga": 10,
-   "gd": 0,
-   "pts": 12
   },
   {
    "rank": 13,
@@ -161,25 +161,25 @@
   {
    "rank": 14,
    "team": "Rayo Vallecano",
-   "p": 10,
+   "p": 11,
    "w": 3,
    "d": 3,
-   "l": 4,
+   "l": 5,
    "gf": 15,
-   "ga": 20,
-   "gd": -5,
+   "ga": 21,
+   "gd": -6,
    "pts": 12
   },
   {
    "rank": 15,
    "team": "Getafe",
-   "p": 11,
+   "p": 12,
    "w": 3,
    "d": 3,
-   "l": 5,
+   "l": 6,
    "gf": 8,
-   "ga": 16,
-   "gd": -8,
+   "ga": 18,
+   "gd": -10,
    "pts": 12
   },
   {
@@ -197,14 +197,14 @@
   {
    "rank": 17,
    "team": "Levante",
-   "p": 11,
+   "p": 12,
    "w": 2,
-   "d": 4,
+   "d": 5,
    "l": 5,
    "gf": 16,
    "ga": 21,
    "gd": -5,
-   "pts": 10
+   "pts": 11
   },
   {
    "rank": 18,
@@ -364,25 +364,23 @@
    "hs": "0",
    "as": "2",
    "venue": "Estadio Martínez Valero"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882810",
    "date": "2026-11-08T15:15Z",
-   "status": "in",
-   "detail": "HT",
+   "status": "post",
+   "detail": "FT",
    "home": "Real Sociedad",
    "away": "Rayo Vallecano",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Reale Arena"
   },
   {
    "id": "401882815",
    "date": "2026-11-08T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Celta Vigo",
    "away": "Levante",
    "hs": "0",
@@ -392,25 +390,27 @@
   {
    "id": "401882807",
    "date": "2026-11-08T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Villarreal",
    "away": "Getafe",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Estadio de la Cerámica"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882816",
    "date": "2026-11-08T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "28'",
    "home": "Atlético Madrid",
    "away": "Barcelona",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-08T16:09:20.382Z"
+ "updatedAt": "2026-11-08T20:29:44.950Z"
 }

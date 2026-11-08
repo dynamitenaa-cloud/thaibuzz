@@ -112,6 +112,18 @@
   },
   {
    "rank": 10,
+   "team": "Aston Villa",
+   "p": 10,
+   "w": 3,
+   "d": 4,
+   "l": 3,
+   "gf": 14,
+   "ga": 17,
+   "gd": -3,
+   "pts": 13
+  },
+  {
+   "rank": 11,
    "team": "Tottenham Hotspur",
    "p": 10,
    "w": 3,
@@ -123,7 +135,7 @@
    "pts": 12
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Newcastle United",
    "p": 10,
    "w": 3,
@@ -131,18 +143,6 @@
    "l": 4,
    "gf": 13,
    "ga": 16,
-   "gd": -3,
-   "pts": 12
-  },
-  {
-   "rank": 12,
-   "team": "Aston Villa",
-   "p": 9,
-   "w": 3,
-   "d": 3,
-   "l": 3,
-   "gf": 10,
-   "ga": 13,
    "gd": -3,
    "pts": 12
   },
@@ -208,6 +208,18 @@
   },
   {
    "rank": 18,
+   "team": "Manchester United",
+   "p": 10,
+   "w": 1,
+   "d": 5,
+   "l": 4,
+   "gf": 14,
+   "ga": 19,
+   "gd": -5,
+   "pts": 8
+  },
+  {
+   "rank": 19,
    "team": "Sunderland",
    "p": 10,
    "w": 2,
@@ -217,18 +229,6 @@
    "ga": 17,
    "gd": -9,
    "pts": 8
-  },
-  {
-   "rank": 19,
-   "team": "Manchester United",
-   "p": 9,
-   "w": 1,
-   "d": 4,
-   "l": 4,
-   "gf": 10,
-   "ga": 15,
-   "gd": -5,
-   "pts": 7
   },
   {
    "rank": 20,
@@ -364,20 +364,19 @@
    "hs": "1",
    "as": "0",
    "venue": "Stadium of Light"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879240",
    "date": "2026-11-08T16:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Manchester United",
    "away": "Aston Villa",
-   "hs": "0",
-   "as": "0",
+   "hs": "4",
+   "as": "4",
    "venue": "Old Trafford"
   }
  ],
- "updatedAt": "2026-11-08T16:09:20.263Z"
+ "fixtures": [],
+ "updatedAt": "2026-11-08T20:29:44.691Z"
 }

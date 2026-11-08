@@ -28,6 +28,18 @@
   },
   {
    "rank": 3,
+   "team": "SC Freiburg",
+   "p": 9,
+   "w": 6,
+   "d": 1,
+   "l": 2,
+   "gf": 20,
+   "ga": 10,
+   "gd": 10,
+   "pts": 19
+  },
+  {
+   "rank": 4,
    "team": "RB Leipzig",
    "p": 9,
    "w": 6,
@@ -39,19 +51,19 @@
    "pts": 18
   },
   {
-   "rank": 4,
-   "team": "SC Freiburg",
-   "p": 8,
+   "rank": 5,
+   "team": "Bayer Leverkusen",
+   "p": 9,
    "w": 5,
    "d": 1,
-   "l": 2,
-   "gf": 18,
-   "ga": 10,
-   "gd": 8,
+   "l": 3,
+   "gf": 20,
+   "ga": 17,
+   "gd": 3,
    "pts": 16
   },
   {
-   "rank": 5,
+   "rank": 6,
    "team": "Werder Bremen",
    "p": 9,
    "w": 4,
@@ -61,18 +73,6 @@
    "ga": 15,
    "gd": 2,
    "pts": 15
-  },
-  {
-   "rank": 6,
-   "team": "Bayer Leverkusen",
-   "p": 8,
-   "w": 4,
-   "d": 1,
-   "l": 3,
-   "gf": 18,
-   "ga": 16,
-   "gd": 2,
-   "pts": 13
   },
   {
    "rank": 7,
@@ -173,25 +173,25 @@
   {
    "rank": 15,
    "team": "FC Cologne",
-   "p": 8,
+   "p": 9,
    "w": 2,
    "d": 3,
-   "l": 3,
-   "gf": 9,
-   "ga": 12,
-   "gd": -3,
+   "l": 4,
+   "gf": 10,
+   "ga": 14,
+   "gd": -4,
    "pts": 9
   },
   {
    "rank": 16,
    "team": "1. FC Union Berlin",
-   "p": 8,
+   "p": 9,
    "w": 1,
    "d": 4,
-   "l": 3,
+   "l": 4,
    "gf": 7,
-   "ga": 19,
-   "gd": -12,
+   "ga": 21,
+   "gd": -14,
    "pts": 7
   },
   {
@@ -307,42 +307,41 @@
    "hs": "1",
    "as": "0",
    "venue": "MHPArena"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884738",
    "date": "2026-11-08T14:30Z",
-   "status": "in",
-   "detail": "81'",
+   "status": "post",
+   "detail": "FT",
    "home": "FC Cologne",
    "away": "Bayer Leverkusen",
-   "hs": "0",
-   "as": "1",
+   "hs": "1",
+   "as": "2",
    "venue": "RheinEnergieStadion"
   },
   {
    "id": "401884741",
    "date": "2026-11-08T16:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "SC Freiburg",
    "away": "1. FC Union Berlin",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Europa-Park Stadion"
   },
   {
    "id": "401884742",
    "date": "2026-11-08T18:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "TSG Hoffenheim",
    "away": "Schalke 04",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "1",
    "venue": "PreZero Arena"
   }
  ],
- "updatedAt": "2026-11-08T16:09:20.588Z"
+ "fixtures": [],
+ "updatedAt": "2026-11-08T20:29:45.881Z"
 }
