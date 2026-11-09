@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401879246",
-   "date": "2026-11-01T16:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Liverpool",
-   "away": "Arsenal",
-   "hs": "0",
-   "as": "1",
-   "venue": "Anfield"
-  },
-  {
    "id": "401878762",
    "date": "2026-11-02T20:00Z",
    "status": "post",
@@ -378,5 +367,5 @@
   }
  ],
  "fixtures": [],
- "updatedAt": "2026-11-08T20:29:44.691Z"
+ "updatedAt": "2026-11-09T00:44:39.359Z"
 }

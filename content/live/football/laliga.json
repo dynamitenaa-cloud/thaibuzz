@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Barcelona",
-   "p": 11,
-   "w": 10,
+   "p": 12,
+   "w": 11,
    "d": 0,
    "l": 1,
-   "gf": 46,
-   "ga": 12,
-   "gd": 34,
-   "pts": 30
+   "gf": 48,
+   "ga": 13,
+   "gd": 35,
+   "pts": 33
   },
   {
    "rank": 2,
@@ -29,13 +29,13 @@
   {
    "rank": 3,
    "team": "Atlético Madrid",
-   "p": 11,
+   "p": 12,
    "w": 9,
    "d": 1,
-   "l": 1,
-   "gf": 22,
-   "ga": 8,
-   "gd": 14,
+   "l": 2,
+   "gf": 23,
+   "ga": 10,
+   "gd": 13,
    "pts": 28
   },
   {
@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401882821",
-   "date": "2026-11-01T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Getafe",
-   "away": "Sevilla",
-   "hs": "3",
-   "as": "1",
-   "venue": "Estadio Coliseum"
-  },
-  {
-   "id": "401882819",
-   "date": "2026-11-01T15:15Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Racing Santander",
-   "away": "Real Madrid",
-   "hs": "0",
-   "as": "3",
-   "venue": "El Sardineros"
-  },
-  {
-   "id": "401882823",
-   "date": "2026-11-01T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Elche",
-   "away": "Valencia",
-   "hs": "0",
-   "as": "1",
-   "venue": "Estadio Martínez Valero"
-  },
-  {
-   "id": "401882826",
-   "date": "2026-11-01T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Athletic Club",
-   "away": "Real Sociedad",
-   "hs": "2",
-   "as": "1",
-   "venue": "San Mamés"
-  },
-  {
    "id": "401882824",
    "date": "2026-11-02T20:00Z",
    "status": "post",
@@ -397,20 +353,19 @@
    "hs": "2",
    "as": "0",
    "venue": "Estadio de la Cerámica"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882816",
    "date": "2026-11-08T20:00Z",
-   "status": "in",
-   "detail": "28'",
+   "status": "post",
+   "detail": "FT",
    "home": "Atlético Madrid",
    "away": "Barcelona",
    "hs": "1",
-   "as": "0",
+   "as": "2",
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "updatedAt": "2026-11-08T20:29:44.950Z"
+ "fixtures": [],
+ "updatedAt": "2026-11-09T00:44:39.439Z"
 }
