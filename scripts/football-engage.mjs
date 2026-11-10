@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { telegramReady, sendTelegramText, xIntent } from './lib/delivery.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://thaibuzz.net').replace(/\/$/, '');
 const DRY = process.argv.includes('--dry');
@@ -129,12 +130,10 @@ function xAuth(method, url) {
   return 'OAuth ' + Object.entries({ ...oauth, oauth_signature: sig }).map(([k, v]) => `${enc(k)}="${enc(v)}"`).join(', ');
 }
 async function toX(p) {
-  if (!(K.key && K.secret && K.token && K.tokenSecret) || process.env.X === 'false') return 'skip';
-  const url = 'https://api.x.com/2/tweets';
-  const r = await fetch(url, { method: 'POST', headers: { authorization: xAuth('POST', url), 'content-type': 'application/json' }, body: JSON.stringify({ text: `${p.short}\n${p.link}` }), signal: AbortSignal.timeout(30000) });
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok || !j.data?.id) throw new Error(`${r.status} ${JSON.stringify(j).slice(0, 300)}`);
-  return j.data.id;
+  // X API 는 유료 크레딧제라(402) 사람이 올림: 텔레그램에 "X에 올리기" 버튼 (글이 채워진 X 작성 화면이 열림)
+  if (!telegramReady()) return 'skip';
+  const id = await sendTelegramText(`🐦 X에 올릴 글 (버튼 → 게시만 누르면 돼요)\n\n${p.short}\n${p.link}`, [{ text: '🐦 X에 올리기', url: xIntent(`${p.short}\n${p.link}`) }]);
+  return `텔레그램 ${id}`;
 }
 async function toPush(p) {
   if (!process.env.PUSH_SECRET || !p.push) return 'skip';
