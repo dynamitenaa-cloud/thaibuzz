@@ -28,7 +28,8 @@ function isoWeekKey(d) {
   const y = th.getUTCFullYear();
   return `${y}w${pad(1 + Math.floor((th - new Date(Date.UTC(y, 0, 1))) / 864e5 / 7))}`;
 }
-const week = isoWeekKey(bkk);
+let week = isoWeekKey(bkk); // 게시 예정 시각(slot)이 속한 주로 아래에서 다시 설정
+let slotDate = bkk.toISOString().slice(0, 10);
 const read = (f) => { try { return JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')); } catch { return null; } };
 const ledger = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : {};
 const w = (n) => (Number(week.slice(-2)) + n) % 2; // 주마다 문구 번갈아
@@ -64,7 +65,7 @@ const predict = () => {
   for (const m of ms) { per[m.league] = (per[m.league] || 0) + 1; if (per[m.league] <= 2 && pick.length < 4) pick.push(m); }
   const list = pick.map((m) => `• ${m.home} พบ ${m.away} (${when(m.date)} น.)`).join('\n');
   return {
-    key: `pm-${bkk.toISOString().slice(0, 10)}`,
+    key: `pm-${slotDate}`,
     message: `🎯 ทายผลบอลสุดสัปดาห์นี้กัน!\n${list}\n\nเลือก ชนะ / เสมอ / แพ้ แล้วดูว่าแฟนบอลคนอื่นทายยังไง (เล่นสนุก ไม่มีเงินรางวัล)\nนัดไหนมั่นใจสุด คอมเมนต์บอกได้เลย 👇`,
     short: `🎯 ทายผลบอลสุดสัปดาห์!\n${pick.slice(0, 2).map((m) => `• ${m.home} พบ ${m.away}`).join('\n')}\nและอีกหลายนัด เลือก ชนะ/เสมอ/แพ้ ดูว่าแฟนบอลคนอื่นทายยังไง (เล่นสนุก ไม่มีรางวัล) 👇`,
     link: `${SITE}/football/predict/`,
@@ -152,11 +153,14 @@ const CHANNELS = [['fb', '', toFacebook], ['threads', ':th', toThreads], ['x', '
 
 // 요일/시각 → 오늘 올릴 것
 const SCHEDULE = [{ dow: 1, hour: 12, make: recap }, { dow: 1, hour: 19, make: fanXi }, { dow: 3, hour: 19, make: best11 }, { dow: 5, hour: 18, make: predict }];
-const todo = FORCE || DRY ? SCHEDULE : SCHEDULE.filter((s) => s.dow === dow && hour >= s.hour && hour < s.hour + 5);
-if (!todo.length) { console.log(`football-engage: 지금(방콕 ${dow}요일 ${hour}시)은 게시 시각 아님`); process.exit(0); }
+// GitHub 정기 실행은 늦거나 건너뛰는 일이 있어서, "가장 최근의 게시 예정 시각(요일+시)" 으로부터 20시간 안이면 올림 (중복은 장부가 막음)
+const lastSlot = (d, h) => { for (let i = 0; i < 8; i++) { const t = new Date(Date.UTC(bkk.getUTCFullYear(), bkk.getUTCMonth(), bkk.getUTCDate() - i, h)); if (t.getUTCDay() === d && t <= bkk) return t; } return null; };
+const todo = (FORCE || DRY ? SCHEDULE.map((s) => ({ ...s, at: lastSlot(s.dow, s.hour) || bkk })) : SCHEDULE.map((s) => ({ ...s, at: lastSlot(s.dow, s.hour) })).filter((s) => s.at && bkk - s.at < 20 * 36e5));
+if (!todo.length) { console.log(`football-engage: 지금(방콕 ${dow}요일 ${hour}시)은 게시 시각 아님 (예정 시각 후 20시간 안만 게시)`); process.exit(0); }
 
 let failed = 0;
 for (const s of todo) {
+  week = isoWeekKey(s.at); slotDate = s.at.toISOString().slice(0, 10);
   const post = await s.make();
   if (!post) continue;
   if (DRY) { console.log(`--- ${post.key}\n[FB/Threads]\n${post.message}\n[X] ${[...post.short].length}자 + 링크\n${post.short}\n${post.link}\n`); continue; }
