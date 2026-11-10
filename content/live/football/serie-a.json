@@ -245,28 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874963",
-   "date": "2026-11-02T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Sassuolo",
-   "away": "Fiorentina",
-   "hs": "2",
-   "as": "4",
-   "venue": "Mapei Stadium"
-  },
-  {
-   "id": "401874971",
-   "date": "2026-11-02T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Atalanta",
-   "away": "Parma",
-   "hs": "0",
-   "as": "3",
-   "venue": "New Balance Arena"
-  },
-  {
    "id": "401874815",
    "date": "2026-11-06T19:45Z",
    "status": "post",
@@ -378,5 +356,5 @@
   }
  ],
  "fixtures": [],
- "updatedAt": "2026-11-09T00:44:39.628Z"
+ "updatedAt": "2026-11-10T02:05:23.482Z"
 }

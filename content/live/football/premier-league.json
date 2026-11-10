@@ -245,17 +245,6 @@
  ],
  "results": [
   {
-   "id": "401878762",
-   "date": "2026-11-02T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Newcastle United",
-   "away": "Everton",
-   "hs": "0",
-   "as": "1",
-   "venue": "St. James' Park"
-  },
-  {
    "id": "401879242",
    "date": "2026-11-06T20:00Z",
    "status": "post",
@@ -367,5 +356,5 @@
   }
  ],
  "fixtures": [],
- "updatedAt": "2026-11-09T00:44:39.359Z"
+ "updatedAt": "2026-11-10T02:05:23.262Z"
 }
