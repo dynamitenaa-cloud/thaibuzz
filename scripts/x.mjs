@@ -1,4 +1,5 @@
-// 새 글 → X(트위터) 게시 (무료 티어: 월 1,500건 쓰기). 태국 K-pop 팬덤의 중심 채널 → K-연예 글 우선
+// 새 글 → X(트위터). X API 가 유료 크레딧제(402)로 바뀌어 기본은 "텔레그램 버튼": 글이 채워진 X 작성 화면을 여는 버튼을 보내고 사람이 게시만 누름 (하루 X_DAILY_MAX 개, 기본 3 — K-연예 우선, 검색량 순)
+// X_MODE=api 로 두면 예전처럼 API 로 직접 게시. 태국 K-pop 팬덤의 중심 채널 → K-연예 글 우선
 // 필요: X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET (OAuth 1.0a, 앱 권한 Read and write). 없으면 조용히 건너뜀
 //  - 썸네일을 media/upload(v1.1) 로 올려 이미지 + 글 + 링크. 이미지 업로드 실패 시 글만
 //  - 하루 상한 X_DAILY_MAX(기본 12). 기록은 .cache/fb-posted.json 의 x 항목 (다른 채널과 같은 장부)
@@ -7,6 +8,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { loadLedger, saveLedger, pendingSlugs, markFail, newSlugs, underDailyMax, byTraffic, DAILY_MAX } from './lib/posted.mjs';
 import { caption } from './lib/social.mjs';
+import { telegramReady, sendTelegramText, xIntent } from './lib/delivery.mjs';
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/$/, '');
 const DRY = process.argv.includes('--dry');
@@ -16,7 +18,9 @@ const K = { key: T(process.env.X_API_KEY), secret: T(process.env.X_API_SECRET), 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 if (process.env.X === 'false') { console.log('x: X=false → 건너뜀'); process.exit(0); }
-if (!DRY && !(K.key && K.secret && K.token && K.tokenSecret)) { console.log('x: 키 없음 → 건너뜀'); process.exit(0); }
+const MANUAL = process.env.X_MODE !== 'api';
+if (!DRY && MANUAL && !telegramReady()) { console.log('x: 텔레그램 설정 없음 → 건너뜀'); process.exit(0); }
+if (!DRY && !MANUAL && !(K.key && K.secret && K.token && K.tokenSecret)) { console.log('x: 키 없음 → 건너뜀'); process.exit(0); }
 
 // ── OAuth 1.0a (HMAC-SHA1) ──
 const enc = (s) => encodeURIComponent(s).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
@@ -84,10 +88,15 @@ for (const slug of slugs) {
   const image = p.thumb ? `${SITE}${p.thumb}` : '';
   if (DRY) { console.log(`--- (${[...text].length}자)\n${text}\n`); continue; }
   try {
-    let mediaId = '';
-    if (image) { try { mediaId = await uploadMedia(image); } catch (e) { console.warn(`x: 이미지 업로드 실패 → 글만 (${e.message.slice(0, 120)})`); } }
-    const id = await tweet(text, mediaId);
-    console.log(`x: posted ${id}${mediaId ? ' (image)' : ''} ← ${slug}`);
+    if (MANUAL) {
+      const id = await sendTelegramText(`🐦 X에 올릴 글 (버튼 → 게시만 누르면 돼요)\n\n${text}`, [{ text: '🐦 X에 올리기', url: xIntent(text) }]);
+      console.log(`x: telegram ${id} ← ${slug}`);
+    } else {
+      let mediaId = '';
+      if (image) { try { mediaId = await uploadMedia(image); } catch (e) { console.warn(`x: 이미지 업로드 실패 → 글만 (${e.message.slice(0, 120)})`); } }
+      const id = await tweet(text, mediaId);
+      console.log(`x: posted ${id}${mediaId ? ' (image)' : ''} ← ${slug}`);
+    }
     ledger.x[slug] = Date.now(); saveLedger(ledger); posted++;
   } catch (e) {
     failed++; markFail(ledger, 'x', slug); console.error(`x: FAILED ${slug}:`, e.message);

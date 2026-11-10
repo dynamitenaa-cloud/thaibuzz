@@ -253,7 +253,7 @@ jobs:
 
       # 새 글 → X(트위터) 이미지 게시물 (무료 티어). 끄려면 Variables 에 X=false
       - name: Post to X
-        if: ${{ !cancelled() && env.X_API_KEY != '' && vars.X != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
+        if: ${{ !cancelled() && env.TELEGRAM_BOT_TOKEN != '' && vars.X != 'false' && !inputs.reel_preview && steps.commit.outcome != 'failure' && steps.deploy.outcome != 'failure' }}
         run: node scripts/x.mjs
         env:
           X_API_SECRET: ${{ secrets.X_API_SECRET }}

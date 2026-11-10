@@ -79,7 +79,7 @@ export const DAILY_MAX = {
   reel: Number(process.env.REEL_DAILY_MAX || 5),
   ig: Number(process.env.IG_DAILY_MAX || 4),
   threads: Number(process.env.THREADS_DAILY_MAX || 10),
-  x: Number(process.env.X_DAILY_MAX || 12),
+  x: Number(process.env.X_DAILY_MAX || 3), // 텔레그램 버튼 방식이라 사람이 올릴 수 있는 만큼만
 };
 export const postedToday = (ledger, kind) => Object.values(ledger[kind] || {}).filter((t) => Date.now() - t < 864e5).length;
 export const underDailyMax = (ledger, kind) => postedToday(ledger, kind) < (DAILY_MAX[kind] ?? Infinity);
