@@ -437,105 +437,6 @@
  ],
  "results": [
   {
-   "id": "401915311",
-   "date": "2026-11-03T17:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Galatasaray",
-   "away": "VfB Stuttgart",
-   "hs": "2",
-   "as": "0",
-   "venue": "RAMS Park"
-  },
-  {
-   "id": "401915310",
-   "date": "2026-11-03T17:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Shakhtar Donetsk",
-   "away": "Sporting CP",
-   "hs": "0",
-   "as": "1",
-   "venue": "Stamford Bridge"
-  },
-  {
-   "id": "401915386",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Atlético Madrid",
-   "away": "Bayern Munich",
-   "hs": "0",
-   "as": "2",
-   "venue": "Riyadh Air Metropolitano"
-  },
-  {
-   "id": "401915387",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Barcelona",
-   "away": "Aston Villa",
-   "hs": "3",
-   "as": "0",
-   "venue": "Spotify Camp Nou"
-  },
-  {
-   "id": "401915384",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Bodo/Glimt",
-   "away": "Lille",
-   "hs": "0",
-   "as": "0",
-   "venue": "Aspmyra Stadion"
-  },
-  {
-   "id": "401915307",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Feyenoord Rotterdam",
-   "away": "Internazionale",
-   "hs": "0",
-   "as": "3",
-   "venue": "De Kuip"
-  },
-  {
-   "id": "401915385",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "LASK Linz",
-   "away": "Slovan Bratislava",
-   "hs": "4",
-   "as": "0",
-   "venue": "Raiffeisen Arena (Linz)"
-  },
-  {
-   "id": "401915308",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Manchester United",
-   "away": "AS Roma",
-   "hs": "3",
-   "as": "2",
-   "venue": "Old Trafford"
-  },
-  {
-   "id": "401915309",
-   "date": "2026-11-03T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Villarreal",
-   "away": "Paris Saint-Germain",
-   "hs": "0",
-   "as": "6",
-   "venue": "Estadio de la Cerámica"
-  },
-  {
    "id": "401915383",
    "date": "2026-11-04T17:45Z",
    "status": "post",
@@ -636,5 +537,5 @@
   }
  ],
  "fixtures": [],
- "updatedAt": "2026-11-05T00:19:16.643Z"
+ "updatedAt": "2026-11-11T03:26:58.504Z"
 }
