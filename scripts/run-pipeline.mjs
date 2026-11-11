@@ -106,9 +106,9 @@ async function buildFacts(c) {
   // og:image ของต้นฉบับมักคมชัดที่สุด → ลองก่อน แล้วค่อยภาพจาก Trends
   const direct = news.filter((n) => n.url && !n.url.includes('news.google.com')).slice(0, 3);
   const images = [
-    ...bodies.map((b, i) => ({ url: b.image, credit: direct[i]?.source })),
+    ...bodies.map((b, i) => ({ url: b.image, credit: direct[i]?.source, from: direct[i]?.title })),
     { url: c.picture, credit: c.pictureSource },
-    ...news.map((n) => ({ url: n.picture, credit: n.source })),
+    ...news.map((n) => ({ url: n.picture, credit: n.source, from: n.title })),
   ].filter((x) => x.url && process.env.USE_SOURCE_IMAGES !== 'false' && c.lang !== 'ko'); // 한국 매체 사진은 저작권 관리가 엄격 → 자체 썸네일만 // false → ใช้ภาพปกไล่สี+ข้อความเท่านั้น
   return { news, facts, images, richness: news.length + bodies.filter((b) => b.text).length * 2 };
 }
@@ -159,7 +159,11 @@ if (budget > 0) {
 
       const now = new Date();
       const slug = `${now.toISOString().slice(0, 10).replace(/-/g, '')}-${crypto.createHash('md5').update(c.keyword + now.toISOString()).digest('hex').slice(0, 8)}`;
-      const t = await makeThumb(slug, { text: a.thumbText, category: a.category, color: CAT_COLOR[a.category], imageUrls: f.images.map((x) => x.url) });
+      // 스포츠 글: 출처 기사 제목에 "다른 경기" 점수(예: 0-1)가 있으면 그 사진은 점수판이 다른 경기일 수 있어 쓰지 않음 (2026-11 맨시티 사례)
+      const scoreOf = (t) => { const m = String(t || '').match(/(?<!\d)(\d{1,2})\s*[-–]\s*(\d{1,2})(?!\d)/); return m ? `${+m[1]}-${+m[2]}` : ''; };
+      const okImages = a.category === 'กีฬา' ? f.images.filter((x) => { const sc = scoreOf(x.from); return !sc || sc === scoreOf(a.title); }) : f.images;
+      if (okImages.length < f.images.length) console.log(`  images: ${f.images.length - okImages.length} dropped (other match scoreboard?)`);
+      const t = await makeThumb(slug, { text: a.thumbText, category: a.category, color: CAT_COLOR[a.category], imageUrls: okImages.map((x) => x.url) });
       const post = {
         slug,
         title: a.title,
