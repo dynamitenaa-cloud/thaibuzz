@@ -1,0 +1,105 @@
+{
+  "slug": "20261111-add138af",
+  "title": "Disney+ บน Meta Quest มาเมื่อไหร่และมีอะไรใหม่บ้าง?",
+  "excerpt": "เมื่อวันที่ 10 พฤศจิกายน 2569 ข่าวความบันเทิงระดับโลกอัปเดตฟีเจอร์ใหม่ เมื่อ Disney+ ประกาศนำภาพยนตร์ 3D และสภาพแวดล้อมเสมือนจริงมาให้สตรีมมิ่งบนอุปกรณ์ Meta Quest แล้ว",
+  "summary": [
+    "Disney+ รองรับการสตรีมภาพยนตร์ 3D บน Meta Quest แล้ว",
+    "ผู้ใช้ Meta Quest 3 และ Meta Quest 3S ในบางประเทศสามารถใช้งานได้ทันที",
+    "เตรียมขยายบริการสู่ Meta VR Glasses ในช่วงฤดูใบไม้ผลิปี 2027"
+  ],
+  "sections": [
+    {
+      "heading": "การสตรีมหนัง 3D บน Meta Quest",
+      "paragraphs": [
+        "คอหนังและแฟนคลับสตรีมมิ่งเตรียมสัมผัสประสบการณ์ใหม่ หลังจากแพลตฟอร์ม Disney+ เริ่มให้บริการภาพยนตร์ 3D และสภาพแวดล้อมเสมือนจริงบนอุปกรณ์ Meta Quest เรียบร้อยแล้วในบางประเทศ",
+        "ผู้ใช้งาน Meta Quest 3 และ Meta Quest 3S สามารถรับชมคอนเทนต์โปรดจากจักรวาล Marvel, Star Wars และ Pixar ในรูปแบบเสมือนจริงได้ทันทีตั้งแต่วันนี้เป็นต้นไป"
+      ]
+    },
+    {
+      "heading": "แผนขยายบริการสู่ Meta VR Glasses ในอนาคต",
+      "paragraphs": [
+        "นอกจากความบันเทิงบน Meta Quest ในปัจจุบันแล้ว ทางบริษัทยังมีแผนขยายประสบการณ์ 3D ของ Disney+ ไปยังอุปกรณ์ Meta VR Glasses ที่กำลังจะเปิดตัวในช่วงฤดูใบไม้ผลิ ปี 2027 อีกด้วย",
+        "ผู้ใช้ระดับพรีเมียมจะสามารถรับชมคอนเทนต์ในระบบ Dolby Vision และ Dolby Atmos รวมถึงรองรับเนื้อหา IMAX Enhanced บนอุปกรณ์ที่ได้รับการรับรองเป็นครั้งแรก"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "Disney+ บน Meta Quest รองรับอุปกรณ์รุ่นไหนบ้าง?",
+      "a": "รองรับ Meta Quest 3 และ Meta Quest 3S ในบางประเทศ และจะขยายไปยัง Meta VR Glasses ในช่วงฤดูใบไม้ผลิ ปี 2027"
+    },
+    {
+      "q": "ผู้ชมจะได้รับประสบการณ์แบบใดบน Meta Quest?",
+      "a": "สามารถสตรีมภาพยนตร์ 3D และรับชมในสภาพแวดล้อมเสมือนจริงจาก Marvel Studios, Star Wars และ Pixar รวมถึงรองรับ Dolby Vision และ Dolby Atmos สำหรับสมาชิกพรีเมียม"
+    }
+  ],
+  "tags": [
+    "Disney+",
+    "Meta Quest",
+    "Meta VR Glasses",
+    "Marvel",
+    "Star Wars"
+  ],
+  "entities": [
+    {
+      "name": "Disney+",
+      "type": "work"
+    },
+    {
+      "name": "Meta Quest",
+      "type": "other"
+    }
+  ],
+  "category": "โซเชียล/ไวรัล",
+  "thumb": "/thumbs/20261111-add138af.jpg",
+  "thumbSm": "/thumbs/20261111-add138af-sm.webp",
+  "thumbClean": "/thumbs/20261111-add138af-clean.webp",
+  "thumbLg": "/thumbs/20261111-add138af-clean.webp",
+  "imageAlt": "โลโก้ Disney+ และอุปกรณ์ Meta Quest",
+  "imageCredit": "The Walt Disney Company",
+  "createdAt": "2026-11-11T14:09:19.682Z",
+  "traffic": 1000,
+  "keyword": "disney+",
+  "format": "qa",
+  "hook": "Disney+ พาหนัง 3D บุก Meta Quest แล้ว",
+  "question": "ใครลองดูหนัง 3D บน Meta Quest แล้วบ้าง?",
+  "poll": [
+    "ลองแล้ว ฟินมาก",
+    "ยังไม่ได้ลอง",
+    "รอดูรุ่นใหม่ปี 2027"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Disney+ launches ad-supported subscription tier in Austria",
+      "url": "https://www.broadbandtvnews.com/2026/11/11/disney-launches-ad-supported-subscription-tier-in-austria/",
+      "source": "Broadband TV News"
+    },
+    {
+      "title": "Disney+ Brings 3D and Viewing Environments to Meta Quest and Meta VR Glasses",
+      "url": "https://thewaltdisneycompany.com/news/disney-plus-3d-viewing-meta-quest-vr-glasses/",
+      "source": "The Walt Disney Company"
+    },
+    {
+      "title": "Meta Reportedly Rebranding Horizon+ to 'Meta VR+', Adding Popular 3D Films to Game Service",
+      "url": "https://roadtovr.com/meta-rebrand-horizon-plus-meta-vr-glasses/",
+      "source": "Road to VR"
+    },
+    {
+      "title": "Disney พิจารณาเพิ่มแพ็กเกจสมาชิกฟรีและวิดีโอสั้นจากครีเอเตอร์เพื่อกระตุ้นการมีส่วนร่วมบน Disney+",
+      "url": "https://www.tmgm.com/th/analysis/market-insight/disney-explores-free-streaming",
+      "source": "www.tmgm.com"
+    },
+    {
+      "title": "ปังต่อเนื่อง “The Remarried Empress” ครองแชมป์อันดับ 1 ทั่วโลก ทุบสถิติซีรีส์เอเชียบน Disney+",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBndVdVOEtlTGo1cnZPcWJ5elo1T2xOTk4ya2ktLWpja2s1czF2Zi1xWlJwb2Iwc216U0o1SHZ3M3NtRDZpWXBOcVl0TzUxUDNSTkM3OXg1Q1dmMTZsakhPUQ?oc=5",
+      "source": "www.thairath.co.th"
+    },
+    {
+      "title": "ดิสนีย์และเนชั่นแนล จีโอกราฟิก นำเสนอโลกของ Frozen ในรูปแบบสารคดี",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWTBRR0hHWjZ4N3U5VmdGWnBsYlhkVTRfXzA5cE5DcjFMVmVRRWV5TFRiT2IwNklDYzJhMVF2dF9yWUpDLTBZWjJLRTNfaGtIYzZPWHc4VTU0QkhaZUdNNUZ0UEV6czNZLTBvSUxDXzF2Q2Fjb0QxNERack9zU0lEaTVyUTZ6eGdESGxOQ1dmZGVva3Zub2ZyUQ?oc=5",
+      "source": "Vietnam.vn"
+    }
+  ]
+}
