@@ -25,6 +25,10 @@ on:
         description: '미리보기: 가장 최근 글로 숏폼 영상만 만들어 다운로드용 파일로 저장 (게시 안 함)'
         type: boolean
         default: false
+      reel_slugs:
+        description: '미리보기(reel_preview)와 함께 쓰기: 영상으로 만들 글 slug 목록 (쉼표 구분, 비우면 가장 최근 글 1개)'
+        type: string
+        default: ''
       kr_only:
         description: 'K-บันเทิง 후보만으로 글 생성 (테스트용)'
         type: boolean
@@ -300,9 +304,10 @@ jobs:
         if: ${{ inputs.reel_preview }}
         run: |
           mkdir -p .cache
-          node -e "const fs=require('fs');const p=fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0];fs.writeFileSync('.cache/new-urls.txt','/post/'+p.slug+'/');console.log('preview target:',p.slug)"
+          node -e "const fs=require('fs');const want=(process.env.REEL_SLUGS||'').split(',').map(x=>x.trim()).filter(Boolean);const slugs=want.length?want:[fs.readdirSync('content/posts').filter(f=>f.endsWith('.json')&&!f.startsWith('demo')).map(f=>JSON.parse(fs.readFileSync('content/posts/'+f))).sort((a,b)=>b.createdAt.localeCompare(a.createdAt))[0].slug];slugs.forEach(s=>{if(!fs.existsSync('content/posts/'+s+'.json'))throw new Error('no such post: '+s)});fs.writeFileSync('.cache/new-urls.txt',slugs.map(s=>'/post/'+s+'/').join('\n'));console.log('preview targets:',slugs.join(', '))"
           node scripts/reels.mjs --dry
         env:
+          REEL_SLUGS: ${{ inputs.reel_slugs }}
           GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
           GEMINI_TTS_VOICE: ${{ vars.GEMINI_TTS_VOICE }}
