@@ -172,13 +172,20 @@ jobs:
         continue-on-error: true
         run: node scripts/football-players.mjs
 
+      # Pinterest 용 세로형 핀 이미지 (최근 7일 글만). 실패해도 계속
+      - name: Make Pinterest pin images
+        id: pins
+        if: ${{ !cancelled() && !inputs.reel_preview && !inputs.x_check && github.event_name != 'push' }}
+        continue-on-error: true
+        run: node scripts/make-pins.mjs
+
       - name: Commit new posts
         id: commit
-        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0 || steps.hubs.outputs.changed > 0 || steps.fbx.outputs.changed > 0) }}
+        if: ${{ !cancelled() && (steps.pipe.outputs.published > 0 || steps.notes.outputs.changed > 0 || steps.archive.outputs.changed > 0 || steps.live.outputs.changed > 0 || steps.roundup.outputs.changed > 0 || steps.hubs.outputs.changed > 0 || steps.fbx.outputs.changed > 0 || steps.pins.outputs.changed > 0) }}
         run: |
           git config user.name "thaibuzz-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content public/thumbs
+          git add content public/thumbs public/pins
           git diff --cached --quiet && exit 0
           git commit -m "content: ${{ steps.pipe.outputs.published || 0 }} new posts, ${{ steps.notes.outputs.changed || 0 }} editor notes"
           # 동시에 다른 커밋(웹에서 글 수정 등)이 들어오면 몇 번 다시 시도. 충돌이면 중단 → 배포/게시 건너뜀

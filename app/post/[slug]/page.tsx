@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import PinSave from '@/components/PinSave';
 import { notFound } from 'next/navigation';
 import { isIndexable, catOf, displayImg, getPost, hasImg, ogImage, getPosts, postUrl, readingMinutes, related, tagHasPage, tagUrl, thaiDate, wordCount, type Post } from '@/lib/posts';
 import { SITE } from '@/lib/site';
@@ -258,6 +259,7 @@ export default async function PostPage({ params }: P) {
           {p.category === 'กีฬา' && leagueForPost([p.title, ...p.tags].join(' ')) && <a className="fb-cta" href="/football/predict/">🎯 <span><b>ทายผลบอลก่อนเตะ + จัด BEST 11 ของคุณ</b><small>โหวตกับแฟนบอลไทย เล่นฟรี ไม่ต้องสมัคร ›</small></span></a>}
 
           {p.format !== 'roundup' && <Engage slug={p.slug} question={p.question} options={p.poll} />}
+          {p.format !== 'roundup' && <PinSave slug={p.slug} title={p.title} url={url} />}
 
           <CommentCta slug={p.slug} question={p.question} />
 
