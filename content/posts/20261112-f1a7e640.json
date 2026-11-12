@@ -1,0 +1,100 @@
+{
+  "slug": "20261112-f1a7e640",
+  "title": "ถ่ายทอดสดหวยลาวพัฒนา เช็กผลสลากพัฒนาและแนวทางตัวเลขล่าสุด",
+  "excerpt": "ตรวจผลสลากพัฒนาหรือหวยลาว 6 ตัว พร้อมแนวทางตัวเลขจากสำนักมะยมแดง นำโชค งวดวันที่ 11 พฤศจิกายน 2569 ที่หลายคนกำลังติดตาม",
+  "summary": [
+    "หวยลาวพัฒนาหรือสลากพัฒนา ดำเนินการโดยบริษัทรัฐวิสาหกิจหวยพัฒนาภายใต้กระทรวงการเงิน สปป.ลาว",
+    "สำนักมะยมแดง นำโชค เปิดเผยแนวทางเลขเด่นชุดสองตัว สามตัว และเลขสรุป 4 ตัวในงวด 11 พฤศจิกายน 2569"
+  ],
+  "sections": [
+    {
+      "heading": "ตรวจผลหวยลาวพัฒนา",
+      "paragraphs": [
+        "“รายงานผลครบทุกตัวเลขทั้งหวยลาว 6 ตัว วันนี้ออกอะไร” Sanook รายงานรายละเอียดการตรวจผลหวยลาวพัฒนาแบบเรียลไทม์ พร้อมอัตราการจ่ายรางวัลและวิธีคิดเงินรางวัลสำหรับผู้ที่สนใจติดตามตัวเลขในแต่ละงวด",
+        "สลากพัฒนาเป็นรูปแบบสลากกินแบ่งที่ถูกต้องตามกฎหมายของประเทศลาว ภายใต้การกำกับดูแลของกระทรวงการเงินแห่ง สปป.ลาว ซึ่งมีการออกรางวัลเป็นประจำเพื่อให้ประชาชนได้ร่วมลุ้นกันอย่างต่อเนื่อง"
+      ]
+    },
+    {
+      "heading": "แนวทางเลขเด่นงวดนี้",
+      "paragraphs": [
+        "สำนักมะยมแดง นำโชค ได้จัดทำโพยแนวทางสำหรับงวดวันที่ 11 พฤศจิกายน 2569 โดยมีทั้งชุดเลขสองตัวแถวบน ตัวเลขที่วงกลมเน้นพิเศษ และชุดสามตัวตรง รวมถึงเลขสรุปชุดใหญ่บนจี้ทองคำมงคล",
+        "การนำเสนอแนวทางดังกล่าวมีกลุ่มตัวเลขที่น่าสนใจอย่างเลข 0, 5, 7 และ 8 ปรากฏร่วมกันในหลายชุด เพื่อเป็นอีกหนึ่งทางเลือกประกอบการพิจารณาของผู้ที่ติดตามตัวเลขในงวดนี้"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "หวยลาวพัฒนาคืออะไรและออกโดยใคร?",
+      "a": "หวยลาวหรือสลากพัฒนา ดำเนินการโดยบริษัทรัฐวิสาหกิจหวยพัฒนา ภายใต้การกำกับดูแลของกระทรวงการเงินแห่ง สปป.ลาว"
+    }
+  ],
+  "tags": [
+    "หวยลาวพัฒนา",
+    "มะยมแดง นำโชค",
+    "ตรวจหวยลาว",
+    "หวยลาววันนี้",
+    "ผลหวยลาว"
+  ],
+  "entities": [
+    {
+      "name": "หวยลาวพัฒนา",
+      "type": "other"
+    },
+    {
+      "name": "มะยมแดง นำโชค",
+      "type": "person"
+    }
+  ],
+  "category": "ข่าวทั่วไป",
+  "thumb": "/thumbs/20261112-f1a7e640.jpg",
+  "thumbSm": "/thumbs/20261112-f1a7e640-sm.webp",
+  "thumbClean": "/thumbs/20261112-f1a7e640-clean.webp",
+  "thumbLg": "/thumbs/20261112-f1a7e640-clean.webp",
+  "imageAlt": "ผลการออกรางวัลหวยลาวพัฒนา",
+  "imageCredit": "Sanook",
+  "createdAt": "2026-11-12T10:55:24.691Z",
+  "traffic": 10000,
+  "keyword": "ถ่ายทอดสดหวยลาวพัฒนา",
+  "format": "brief",
+  "hook": "เช็กผลหวยลาวพัฒนาและแนวทางงวดนี้",
+  "question": "งวดนี้คุณตามเลขชุดไหนอยู่?",
+  "poll": [
+    "เลข 2 ตัว",
+    "เลข 3 ตัว",
+    "เลขสรุปชุดใหญ่"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "หวยลาววันนี้ 11 พฤศจิกายน 2569 ตรวจผลหวยลาว หวยลาววันนี้ออกอะไร?",
+      "url": "https://www.sanook.com/news/9911731/",
+      "source": "Sanook"
+    },
+    {
+      "title": "มะยมแดง นำโชค เปิดโพยตำลาว เลขเด่นสองตัว–สามตัว พร้อมเลขเน้นพิเศษ งวด 11 พฤศจิกายน 2569",
+      "url": "https://postjung.com/lotto/1735643",
+      "source": "Postjung.com"
+    },
+    {
+      "title": "ตรวจหวยลาววันนี้ พุธ 11 พ.ย. 2569 เช็กผลหวยลาวงวดล่าสุด หวยลาวพัฒนา 5/45",
+      "url": "https://www.pptvhd36.com/news/%E0%B8%A5%E0%B8%AD%E0%B8%95%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B8%B5%E0%B9%88/286943",
+      "source": "pptvhd36.com"
+    },
+    {
+      "title": "ถ่ายทอดสดหวยลาว 12/11/69 ตรวจหวยลาววันนี้ 12 พ.ย. 69",
+      "url": "https://www.sanook.com/news/9911846/",
+      "source": "Sanook"
+    },
+    {
+      "title": "หวยลาววันนี้ 12 พฤศจิกายน 2569 ตรวจหวยลาว หวยลาววันนี้ออกอะไร?",
+      "url": "https://news.google.com/rss/articles/CBMixgJBVV95cUxOUHNnQkpHNnRPQ1I2VnoyU0FZVkd1WWJnMnFmS2dUS2d2XzB5WkxhaE1TcV9tbGNJc2NUM29Bb3ZpcmIzYWoyY3l1ZnRjOFpSLXhDRllvRWJDMVJXTUdPbXBDME5wYlVwWGdFbnl1QktEdHk1czlRc2NqQWdlLVZOMnhoOC1pVVlIRUJnZUhsZlBCUkl2M2RCbWZtRE5hV3N6V3FTclpCdlM3UC1fTTVreHVOaGctUjhrZkRuVmpqSm5pb1J5UUE2dHdnZHp5Ym9EUG1FNk85MzJpNXBzdU0wSm9nbF9rNEpCQXl6OVJyUldvTXE3WkFLQ19PdTRHZEJ1dEpLOWdoRHU3ZnpRNXh4Q3M4ZW5GM1BLTG4tQlFjc3JyZjNYNmxhNm0xUFFyQk1FWjR3OFc5MlY1QjZHSy1LU3lPLWJfdw?oc=5",
+      "source": "คลาวด์ปัง"
+    },
+    {
+      "title": "ไลฟ์สด หวยลาว 9/11/69 ตรวจหวยลาววันนี้ ถ่ายทอดสด 9 พฤศจิกายน 2569",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE55THZkYS1MUldKTVhkNzVuNUZfOTZseEV4azNQNjQ5YkdzUXFFZTBTRzA5RVBKOVIwcUlIMm8xNjVqUURKZGJ0MDZuT3I1VWUxWGJtUVI4OFR4MWFKbXJCYTA3YVpsNDg?oc=5",
+      "source": "komchadluek"
+    }
+  ]
+}
