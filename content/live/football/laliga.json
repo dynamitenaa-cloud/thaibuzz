@@ -355,6 +355,18 @@
    "venue": "Riyadh Air Metropolitano"
   }
  ],
- "fixtures": [],
- "updatedAt": "2026-11-10T02:05:23.366Z"
+ "fixtures": [
+  {
+   "id": "401882805",
+   "date": "2026-11-20T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Athletic Club",
+   "away": "Espanyol",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Mamés"
+  }
+ ],
+ "updatedAt": "2026-11-13T00:11:47.963Z"
 }

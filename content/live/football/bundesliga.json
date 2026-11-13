@@ -320,6 +320,18 @@
    "venue": "PreZero Arena"
   }
  ],
- "fixtures": [],
- "updatedAt": "2026-11-09T00:44:39.735Z"
+ "fixtures": [
+  {
+   "id": "401884736",
+   "date": "2026-11-20T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bayern Munich",
+   "away": "FC Cologne",
+   "hs": "0",
+   "as": "0",
+   "venue": "Allianz Arena"
+  }
+ ],
+ "updatedAt": "2026-11-13T00:11:48.346Z"
 }
