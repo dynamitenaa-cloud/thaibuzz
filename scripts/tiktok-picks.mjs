@@ -39,7 +39,17 @@ const rows = reels.data
   .map((r) => ({ id: r.id, at: Date.parse(r.created_time), views: Math.max(n(r.views), n(r.post_views)), source: r.source || '', slug: String(r.description || '').match(/\/post\/([0-9]{8}-[0-9a-f]{8})\//)?.[1] }))
   .filter((r) => r.slug && now - r.at < WINDOW_H * 36e5 && now - r.at > MIN_AGE_H * 36e5);
 console.log(`picks: 최근 ${WINDOW_H}h 릴스 ${rows.length}개 (게시 ${MIN_AGE_H}h 이상)`);
-rows.sort((a, b) => b.views - a.views).forEach((r) => console.log(`  ${r.views.toString().padStart(6)} views  ${r.slug}${ledger[r.slug] ? '  (이미 추천)' : ''}`));
+// 순위 = 페북 조회수 × 소재 가중치. 2026-11 실측: 태국 현지 연예/TV/시리즈/라이프스타일이 쇼츠에서 훨씬 잘 나오고(The Voice 251회), K-POP 은 2회 안팎 → 태국 소재 가중, K-연예 감점
+const topicMult = (slug) => {
+  try {
+    const p = JSON.parse(fs.readFileSync(path.join('content', 'posts', `${slug}.json`), 'utf8'));
+    if (p.origin === 'kr' || p.category === 'K-บันเทิง') return 0.6;
+    if (['บันเทิง', 'ซีรีส์/หนัง', 'ไลฟ์สไตล์', 'โซเชียล/ไวรัล'].includes(p.category)) return 1.5;
+    return 1;
+  } catch { return 1; }
+};
+rows.forEach((r) => { r.rank = r.views * topicMult(r.slug); });
+rows.sort((a, b) => b.rank - a.rank).forEach((r) => console.log(`  ${r.views.toString().padStart(6)} views  x${topicMult(r.slug)}  ${r.slug}${ledger[r.slug] ? '  (이미 추천)' : ''}`));
 
 // 틱톡 커뮤니티 가이드라인: 복권·도박 관련 영상은 삭제/제재 대상 → 추천에서 제외 (페이스북에는 그대로 올라감)
 const GAMBLE = /หวย|สลาก|ลอตเตอรี่|เลขเด็ด|เลขดัง|ออกรางวัล|พนัน|คาสิโน|บาคาร่า|(?<!อาร์เน่อ ?)สล็อต|แทงบอล|lottery|lotto|casino|gambling/i; // สล็อต = 슬롯머신, 단 '아르네 슬롯'(리버풀 감독)은 제외
