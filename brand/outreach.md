@@ -44,3 +44,5 @@ https://thaibuzz.net/football/
 
 ## 발송 기록
 - 2026-11-08: Boston Hirunlertteeratorn (Premier League Fans Thailand 관리자) 에게 초안 A 발송 (사장님 개인 계정). 5일 뒤(11-13 이후) 답이 없으면 후속 1회만. 나머지 관리자(Kunlanit Jayasakul 등)는 반응 보고 결정
+
+- 2026-11-14: Boston 후속 DM 시도 — Messenger가 종단간 암호화 채팅 복원 PIN을 요구해 스레드를 열 수 없었음(PIN은 사장님만 입력 가능). 답장 여부 미확인, 후속 DM 미발송.
