@@ -221,17 +221,6 @@
  ],
  "results": [
   {
-   "id": "401884739",
-   "date": "2026-11-06T19:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Hamburg SV",
-   "away": "Borussia Mönchengladbach",
-   "hs": "3",
-   "as": "1",
-   "venue": "Volksparkstadion"
-  },
-  {
    "id": "401884745",
    "date": "2026-11-07T14:30Z",
    "status": "post",
@@ -331,7 +320,73 @@
    "hs": "0",
    "as": "0",
    "venue": "Allianz Arena"
+  },
+  {
+   "id": "401884732",
+   "date": "2026-11-21T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "1. FC Union Berlin",
+   "away": "RB Leipzig",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadion An der Alten Försterei"
+  },
+  {
+   "id": "401884735",
+   "date": "2026-11-21T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bayer Leverkusen",
+   "away": "SC Paderborn 07",
+   "hs": "0",
+   "as": "0",
+   "venue": "BayArena"
+  },
+  {
+   "id": "401884731",
+   "date": "2026-11-21T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Borussia Mönchengladbach",
+   "away": "Borussia Dortmund",
+   "hs": "0",
+   "as": "0",
+   "venue": "BORUSSIA-PARK"
+  },
+  {
+   "id": "401884734",
+   "date": "2026-11-21T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Eintracht Frankfurt",
+   "away": "TSG Hoffenheim",
+   "hs": "0",
+   "as": "0",
+   "venue": "Deutsche Bank Park"
+  },
+  {
+   "id": "401884728",
+   "date": "2026-11-21T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "SV Elversberg",
+   "away": "SC Freiburg",
+   "hs": "0",
+   "as": "0",
+   "venue": "URSAPHARM-Arena an der Kaiserlinde"
+  },
+  {
+   "id": "401884729",
+   "date": "2026-11-21T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Schalke 04",
+   "away": "VfB Stuttgart",
+   "hs": "0",
+   "as": "0",
+   "venue": "Veltins Arena"
   }
  ],
- "updatedAt": "2026-11-13T00:11:48.346Z"
+ "updatedAt": "2026-11-14T03:06:21.070Z"
 }
