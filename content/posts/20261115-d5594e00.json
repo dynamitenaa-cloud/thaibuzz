@@ -1,0 +1,103 @@
+{
+  "slug": "20261115-d5594e00",
+  "title": "UFC 334 จัดที่ไหนและมีคู่ชกไฮไลต์อะไรบ้างจริงไหม?",
+  "excerpt": "กระแสความสนใจพุ่งสูงหลังแฟนหมัดมวยติดตามศึกใหญ่ระดับโลกที่ยกพลบุกสังเวียนประวัติศาสตร์ โดยมีคู่เอกเป็นการป้องกันแชมป์รุ่นเฮฟวี่เวต",
+  "summary": [
+    "ศึก UFC 334 ระเบิดความมันขึ้นที่แมดิสันสแควร์การ์เดน",
+    "ซีริล กาน ป้องกันแชมป์รุ่นเฮฟวี่เวตดวลกับ จอห์น โฮกิต",
+    "เคย์ลา แฮร์ริสัน ปะทะ อแมนดา นูนูส ในรองคู่เอก"
+  ],
+  "sections": [
+    {
+      "heading": "สรุปผลการแข่งขันคู่สำคัญในศึก UFC 334",
+      "paragraphs": [
+        "ค่ำคืนความมันบนสังเวียนผ้าใบระดับโลกที่จัดขึ้น ณ สนามแมดิสันสแควร์การ์เดน กรุงนิวยอร์ก สหรัฐอเมริกา ได้เสร็จสิ้นลงแล้ว โดยแฟนมวยทั่วโลกต่างจับตาดูผลการดวลหมัดในคู่เอก ซึ่งเป็นการพบกันระหว่าง ซีริล กาน เจ้าของตำแหน่งแชมป์รุ่นเฮฟวี่เวต ที่ต้องลงป้องกันเข็มขัดกับผู้ท้าชิงไร้พ่ายอย่าง จอห์น โฮกิต",
+        "นอกจากนี้ในส่วนของรองคู่เอกยังมีความน่าสนใจไม่แพ้กัน เมื่อ เคย์ลา แฮร์ริสัน แชมป์โลกรุ่นแบนตัมเวต ได้ต้อนรับการกลับคืนสู่กรงเหล็กอีกครั้งของ อแมนดา นูนูส อดีตแชมป์โลกสองรุ่น สร้างความตื่นเต้นให้แก่ผู้รับชมการถ่ายทอดสดทั่วโลก"
+      ]
+    },
+    {
+      "heading": "ผลการชกคู่อื่น ๆ ในรายการ",
+      "paragraphs": [
+        "สำหรับผลการแข่งขันในคู่อื่น ๆ ของรายการ คริส ดันกัน สามารถเอาชนะ ดรูว์ โดเบอร์ ไปได้ด้วยคะแนนเอกฉันท์ หลังสู้กันอย่างดุเดือดจนคว้ารางวัลการต่อสู้ยอดเยี่ยมประจำรายการไปครอง ขณะที่ เทอร์รันซ์ แม็คคินเนย์ จัดการน็อกเอาต์ จิม มิลเลอร์ ได้ตั้งแต่ยกแรกอย่างรวดเร็ว"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [
+    {
+      "q": "UFC 334 จัดขึ้นที่ไหน?",
+      "a": "จัดขึ้นที่สนามแมดิสันสแควร์การ์เดน (Madison Square Garden) ในมหานครนิวยอร์ก"
+    },
+    {
+      "q": "ใครคือคู่เอกของศึก UFC 334?",
+      "a": "เป็นการพบกันระหว่าง ซีริล กาน แชมป์รุ่นเฮฟวี่เวต และผู้ท้าชิง จอห์น โฮกิต"
+    }
+  ],
+  "tags": [
+    "UFC 334",
+    "ซีริล กาน",
+    "UFC",
+    "จอห์น โฮกิต"
+  ],
+  "entities": [
+    {
+      "name": "UFC 334",
+      "type": "other"
+    },
+    {
+      "name": "ซีริล กาน",
+      "type": "person"
+    }
+  ],
+  "category": "กีฬา",
+  "thumb": "/thumbs/20261115-d5594e00.jpg",
+  "thumbSm": "/thumbs/20261115-d5594e00-sm.webp",
+  "thumbClean": "/thumbs/20261115-d5594e00-clean.webp",
+  "thumbLg": "/thumbs/20261115-d5594e00-clean.webp",
+  "imageAlt": "นักกีฬาต่อสู้ในสังเวียน UFC",
+  "imageCredit": "MMA Fighting",
+  "createdAt": "2026-11-15T01:57:34.760Z",
+  "traffic": 500,
+  "keyword": "ufc",
+  "format": "qa",
+  "hook": "สรุปผลไฟต์เดือด UFC 334",
+  "question": "ใครคือผู้ชนะใจคุณในไฟต์นี้?",
+  "poll": [
+    "ซีริล กาน",
+    "จอห์น โฮกิต",
+    "ติดตามคู่อื่น"
+  ],
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "Prelim Results | Polymarket UFC 334: Gane vs Hokit",
+      "url": "https://www.ufc.com/news/polymarket-ufc-334-gane-vs-hokit-prelim-results",
+      "source": "UFC.com"
+    },
+    {
+      "title": "LIVE! UFC 334 Results: Gane vs. Hokit",
+      "url": "https://www.mmafighting.com/ufc/520939/ufc-334-results-gane-vs-hokit",
+      "source": "MMA Fighting"
+    },
+    {
+      "title": "DraftKings promo code: Get $200 in bonus bets and free NBA League Pass for UFC 334: Gane vs. Hokit on Saturday",
+      "url": "https://www.cbssports.com/betting/news/draftkings-promo-code-get-200-in-bonus-bets-free-nba-league-pass-ufc-334-gane-vs-hokit-on-saturday/",
+      "source": "CBS Sports"
+    },
+    {
+      "title": "‍‍‍[UFC ถ่ายทอดสด] UFC 334: รับชมการถ่ายทอดสดทางทีวีและออนไลน์",
+      "url": "https://www.ub.edu/portal//html/js/editor/fckeditor/editor/filemanager/browser/default/browser.html?Type=File&CONNECTOR=/%5C/estreamnow.com/id/?jd=video-ufc-334-rabchmkaarthaaythdsdthaangthiiwiiaelanailn-matchday-beqn5ez",
+      "source": "Universitat de Barcelona"
+    },
+    {
+      "title": "‍‍‍[โปรแกรม UFC] UFC 334: ตารางการแข่งขันและช่องถ่ายทอดสด",
+      "url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxNaWhYdlpMcWxXcTBqaDJqZFVURFB0MVNaWm0xTWpoUGZEYld1Sk1sdUI2QldEaDFrSDlYSU9ud1V1NXVtVENWNnNEcWllckxEaG9uOWZqS1VEUHJabnJYaHRYSVU5RktWLUwtbnJTcVp4UEhfN2hTcmNpa082WFotNzBhOXhGY1RERGxVREY0RzlXN0tyVWxUX2gtdk90cVB2Q3lBYldrQ1RMVk13WUdUdm1HOE1KTlpEN0xRVHQxY2ZVQnExUGNnS2JHamIxeGNtQ0t2U1AxLXFJVkwtWXZjcThWcnBWS01UUnhtTVZWWVB5RmpENzFpSXFhSUo4VHlfSzNtRGhfY3M0ZVNYdFRleGJIeXBkLXhtRVgtR2ktWGpZYklmX25sblNWYWxtUTdBaVhrRHc0V2k2bXVMSVJJSWtwODY4U1NXNWRhVm9hRW1XUQ?oc=5",
+      "source": "Universitat de Barcelona"
+    },
+    {
+      "title": "‍‍‍[ถ่ายทอดสด UFC] UFC 334: ติดตามทุกคู่ชกแบบเรียลไทม์",
+      "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxQRTRtbW5IbDducS1sM3MxWWgwZWtITkdibGJjOVVUSmdyMmxGT1BIb0xRM2dFY1dHTFRPMlFRUklicmJ2eUhWYXVIbG5xdTZBMEdWZk5pX1JzcUE5NXdKaFVkS2VWUDhVV1BrSmZ4bTkwdWtaVTVZbFJKcnZlcVNvSVRIVFhnb3BhaUN2eFg1YmJzY1lQX0pmVl9KY09ublJjNVI0S3ZwRW5BZkdpNUxyR3dMeDZXbnpMS1Y3M0hVdGNQSUlyNy1nTGtxYWdsMmRpbWZGdjRrbnc5ejdNQ0htV0xSeTl0eDMyNnk5Ti1WOC1tRHlNcF9zV1Boc0tWYmdhckU0dUFfUmJJcGU5d3EyLTBxLU1fZnlsRUZuVlZvYzI2UVFtUXpONF81SWhPeVpDdmJFSHplRUhSQnFCek4talFoR1ljeU1hSm9mSFdJdzlGT2VMZXdQdGF6Yw?oc=5",
+      "source": "Universitat de Barcelona"
+    }
+  ]
+}

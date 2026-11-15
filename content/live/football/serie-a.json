@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401874791",
-   "date": "2026-11-07T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Cagliari",
-   "away": "Frosinone",
-   "hs": "1",
-   "as": "0",
-   "venue": "Unipol Domus"
-  },
-  {
-   "id": "401874811",
-   "date": "2026-11-07T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Torino",
-   "away": "Lecce",
-   "hs": "1",
-   "as": "1",
-   "venue": "Stadio Olimpico Grande Torino"
-  },
-  {
-   "id": "401874974",
-   "date": "2026-11-07T17:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Parma",
-   "away": "Bologna",
-   "hs": "1",
-   "as": "2",
-   "venue": "Ennio Tardini"
-  },
-  {
-   "id": "401874803",
-   "date": "2026-11-07T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "AS Roma",
-   "away": "Sassuolo",
-   "hs": "3",
-   "as": "0",
-   "venue": "Olimpico"
-  },
-  {
    "id": "401874810",
    "date": "2026-11-08T11:30Z",
    "status": "post",
@@ -388,7 +344,62 @@
    "hs": "0",
    "as": "0",
    "venue": "Stadio Diego Armando Maradona"
+  },
+  {
+   "id": "401875008",
+   "date": "2026-11-22T11:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Juventus",
+   "away": "Venezia",
+   "hs": "0",
+   "as": "0",
+   "venue": "Allianz Stadium"
+  },
+  {
+   "id": "401875047",
+   "date": "2026-11-22T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bologna",
+   "away": "Udinese",
+   "hs": "0",
+   "as": "0",
+   "venue": "Renato Dall'Ara"
+  },
+  {
+   "id": "401874960",
+   "date": "2026-11-22T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Sassuolo",
+   "away": "Genoa",
+   "hs": "0",
+   "as": "0",
+   "venue": "Mapei Stadium"
+  },
+  {
+   "id": "401874989",
+   "date": "2026-11-22T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AC Milan",
+   "away": "Frosinone",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Siro"
+  },
+  {
+   "id": "401875001",
+   "date": "2026-11-22T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Atalanta",
+   "away": "Internazionale",
+   "hs": "0",
+   "as": "0",
+   "venue": "New Balance Arena"
   }
  ],
- "updatedAt": "2026-11-14T03:06:20.814Z"
+ "updatedAt": "2026-11-15T01:58:20.970Z"
 }

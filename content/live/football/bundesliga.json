@@ -221,61 +221,6 @@
  ],
  "results": [
   {
-   "id": "401884745",
-   "date": "2026-11-07T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Borussia Dortmund",
-   "away": "SV Elversberg",
-   "hs": "2",
-   "as": "1",
-   "venue": "Signal Iduna Park"
-  },
-  {
-   "id": "401884740",
-   "date": "2026-11-07T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Mainz",
-   "away": "Bayern Munich",
-   "hs": "1",
-   "as": "2",
-   "venue": "MEWA ARENA"
-  },
-  {
-   "id": "401884744",
-   "date": "2026-11-07T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "RB Leipzig",
-   "away": "FC Augsburg",
-   "hs": "5",
-   "as": "2",
-   "venue": "Red Bull Arena"
-  },
-  {
-   "id": "401884737",
-   "date": "2026-11-07T14:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "SC Paderborn 07",
-   "away": "Eintracht Frankfurt",
-   "hs": "2",
-   "as": "2",
-   "venue": "Home Deluxe Arena"
-  },
-  {
-   "id": "401884743",
-   "date": "2026-11-07T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "VfB Stuttgart",
-   "away": "Werder Bremen",
-   "hs": "1",
-   "as": "0",
-   "venue": "MHPArena"
-  },
-  {
    "id": "401884738",
    "date": "2026-11-08T14:30Z",
    "status": "post",
@@ -386,7 +331,29 @@
    "hs": "0",
    "as": "0",
    "venue": "Veltins Arena"
+  },
+  {
+   "id": "401884733",
+   "date": "2026-11-22T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "FC Augsburg",
+   "away": "Mainz",
+   "hs": "0",
+   "as": "0",
+   "venue": "WWK Arena"
+  },
+  {
+   "id": "401884730",
+   "date": "2026-11-22T16:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Werder Bremen",
+   "away": "Hamburg SV",
+   "hs": "0",
+   "as": "0",
+   "venue": "Weserstadion"
   }
  ],
- "updatedAt": "2026-11-14T03:06:21.070Z"
+ "updatedAt": "2026-11-15T01:58:21.392Z"
 }

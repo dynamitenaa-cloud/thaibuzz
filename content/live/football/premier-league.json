@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401878758",
-   "date": "2026-11-07T12:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Leeds United",
-   "away": "Tottenham Hotspur",
-   "hs": "1",
-   "as": "0",
-   "venue": "Elland Road"
-  },
-  {
-   "id": "401878760",
-   "date": "2026-11-07T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Arsenal",
-   "away": "Hull City",
-   "hs": "1",
-   "as": "0",
-   "venue": "Emirates Stadium"
-  },
-  {
-   "id": "401879241",
-   "date": "2026-11-07T15:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Fulham",
-   "away": "Newcastle United",
-   "hs": "1",
-   "as": "1",
-   "venue": "Craven Cottage"
-  },
-  {
-   "id": "401878757",
-   "date": "2026-11-07T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Nottingham Forest",
-   "away": "Manchester City",
-   "hs": "3",
-   "as": "1",
-   "venue": "The City Ground"
-  },
-  {
    "id": "401879244",
    "date": "2026-11-08T14:00Z",
    "status": "post",
@@ -421,7 +377,29 @@
    "hs": "0",
    "as": "0",
    "venue": "St. James' Park"
+  },
+  {
+   "id": "401879234",
+   "date": "2026-11-22T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Hull City",
+   "away": "Brighton & Hove Albion",
+   "hs": "0",
+   "as": "0",
+   "venue": "The MKM Stadium"
+  },
+  {
+   "id": "401878755",
+   "date": "2026-11-22T16:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Liverpool",
+   "away": "Manchester United",
+   "hs": "0",
+   "as": "0",
+   "venue": "Anfield"
   }
  ],
- "updatedAt": "2026-11-14T03:06:20.294Z"
+ "updatedAt": "2026-11-15T01:58:20.486Z"
 }

@@ -245,50 +245,6 @@
  ],
  "results": [
   {
-   "id": "401882812",
-   "date": "2026-11-07T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Málaga",
-   "away": "Racing Santander",
-   "hs": "1",
-   "as": "2",
-   "venue": "La Rosaleda"
-  },
-  {
-   "id": "401882813",
-   "date": "2026-11-07T15:15Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Espanyol",
-   "away": "Deportivo",
-   "hs": "0",
-   "as": "0",
-   "venue": "RCDE Stadium"
-  },
-  {
-   "id": "401882811",
-   "date": "2026-11-07T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Osasuna",
-   "away": "Athletic Club",
-   "hs": "1",
-   "as": "1",
-   "venue": "El Sadar"
-  },
-  {
-   "id": "401882808",
-   "date": "2026-11-07T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Valencia",
-   "away": "Real Madrid",
-   "hs": "0",
-   "as": "3",
-   "venue": "Mestalla Stadium"
-  },
-  {
    "id": "401882814",
    "date": "2026-11-08T13:00Z",
    "status": "post",
@@ -399,7 +355,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Santiago Bernabéu"
+  },
+  {
+   "id": "401882804",
+   "date": "2026-11-22T13:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Barcelona",
+   "away": "Villarreal",
+   "hs": "0",
+   "as": "0",
+   "venue": "Spotify Camp Nou"
+  },
+  {
+   "id": "401882800",
+   "date": "2026-11-22T15:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Racing Santander",
+   "away": "Real Sociedad",
+   "hs": "0",
+   "as": "0",
+   "venue": "El Sardineros"
+  },
+  {
+   "id": "401882801",
+   "date": "2026-11-22T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Osasuna",
+   "away": "Málaga",
+   "hs": "0",
+   "as": "0",
+   "venue": "El Sadar"
+  },
+  {
+   "id": "401882803",
+   "date": "2026-11-22T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Getafe",
+   "away": "Atlético Madrid",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio Coliseum"
   }
  ],
- "updatedAt": "2026-11-14T03:06:20.545Z"
+ "updatedAt": "2026-11-15T01:58:20.742Z"
 }
