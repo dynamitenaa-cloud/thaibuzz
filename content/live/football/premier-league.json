@@ -243,63 +243,7 @@
    "pts": 7
   }
  ],
- "results": [
-  {
-   "id": "401879244",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Brighton & Hove Albion",
-   "away": "Brentford",
-   "hs": "2",
-   "as": "0",
-   "venue": "American Express Stadium"
-  },
-  {
-   "id": "401879243",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Crystal Palace",
-   "away": "Liverpool",
-   "hs": "1",
-   "as": "3",
-   "venue": "Selhurst Park"
-  },
-  {
-   "id": "401878759",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Ipswich Town",
-   "away": "AFC Bournemouth",
-   "hs": "1",
-   "as": "2",
-   "venue": "Portman Road"
-  },
-  {
-   "id": "401879239",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Sunderland",
-   "away": "Chelsea",
-   "hs": "1",
-   "as": "0",
-   "venue": "Stadium of Light"
-  },
-  {
-   "id": "401879240",
-   "date": "2026-11-08T16:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Manchester United",
-   "away": "Aston Villa",
-   "hs": "4",
-   "as": "4",
-   "venue": "Old Trafford"
-  }
- ],
+ "results": [],
  "fixtures": [
   {
    "id": "401879233",
@@ -399,7 +343,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Anfield"
+  },
+  {
+   "id": "401879237",
+   "date": "2026-11-23T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Brentford",
+   "away": "Everton",
+   "hs": "0",
+   "as": "0",
+   "venue": "Gtech Community Stadium"
   }
  ],
- "updatedAt": "2026-11-15T01:58:20.486Z"
+ "updatedAt": "2026-11-16T02:01:23.102Z"
 }

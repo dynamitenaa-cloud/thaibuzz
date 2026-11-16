@@ -243,63 +243,7 @@
    "pts": 5
   }
  ],
- "results": [
-  {
-   "id": "401882814",
-   "date": "2026-11-08T13:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Elche",
-   "away": "Real Betis",
-   "hs": "0",
-   "as": "2",
-   "venue": "Estadio Martínez Valero"
-  },
-  {
-   "id": "401882810",
-   "date": "2026-11-08T15:15Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Real Sociedad",
-   "away": "Rayo Vallecano",
-   "hs": "1",
-   "as": "0",
-   "venue": "Reale Arena"
-  },
-  {
-   "id": "401882815",
-   "date": "2026-11-08T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Celta Vigo",
-   "away": "Levante",
-   "hs": "0",
-   "as": "0",
-   "venue": "Balaidos"
-  },
-  {
-   "id": "401882807",
-   "date": "2026-11-08T17:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Villarreal",
-   "away": "Getafe",
-   "hs": "2",
-   "as": "0",
-   "venue": "Estadio de la Cerámica"
-  },
-  {
-   "id": "401882816",
-   "date": "2026-11-08T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Atlético Madrid",
-   "away": "Barcelona",
-   "hs": "1",
-   "as": "2",
-   "venue": "Riyadh Air Metropolitano"
-  }
- ],
+ "results": [],
  "fixtures": [
   {
    "id": "401882805",
@@ -399,7 +343,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Estadio Coliseum"
+  },
+  {
+   "id": "401882802",
+   "date": "2026-11-23T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Levante",
+   "away": "Elche",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadi Ciutat de València"
   }
  ],
- "updatedAt": "2026-11-15T01:58:20.742Z"
+ "updatedAt": "2026-11-16T02:01:23.957Z"
 }

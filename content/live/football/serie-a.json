@@ -243,63 +243,7 @@
    "pts": 5
   }
  ],
- "results": [
-  {
-   "id": "401874810",
-   "date": "2026-11-08T11:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Napoli",
-   "away": "Lazio",
-   "hs": "1",
-   "as": "1",
-   "venue": "Stadio Diego Armando Maradona"
-  },
-  {
-   "id": "401875018",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Genoa",
-   "away": "AC Milan",
-   "hs": "1",
-   "as": "2",
-   "venue": "Stadio Luigi Ferraris"
-  },
-  {
-   "id": "401874800",
-   "date": "2026-11-08T14:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Monza",
-   "away": "Atalanta",
-   "hs": "0",
-   "as": "1",
-   "venue": "U-Power Stadium"
-  },
-  {
-   "id": "401874808",
-   "date": "2026-11-08T17:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Internazionale",
-   "away": "Como",
-   "hs": "2",
-   "as": "0",
-   "venue": "San Siro"
-  },
-  {
-   "id": "401875003",
-   "date": "2026-11-08T19:45Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Fiorentina",
-   "away": "Juventus",
-   "hs": "2",
-   "as": "2",
-   "venue": "Stadio Artemio Franchi"
-  }
- ],
+ "results": [],
  "fixtures": [
   {
    "id": "401875056",
@@ -399,7 +343,18 @@
    "hs": "0",
    "as": "0",
    "venue": "New Balance Arena"
+  },
+  {
+   "id": "401875009",
+   "date": "2026-11-23T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Monza",
+   "away": "Fiorentina",
+   "hs": "0",
+   "as": "0",
+   "venue": "U-Power Stadium"
   }
  ],
- "updatedAt": "2026-11-15T01:58:20.970Z"
+ "updatedAt": "2026-11-16T02:01:24.467Z"
 }
