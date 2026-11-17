@@ -436,6 +436,106 @@
   }
  ],
  "results": [],
- "fixtures": [],
- "updatedAt": "2026-11-12T02:53:00.303Z"
+ "fixtures": [
+  {
+   "id": "401915380",
+   "date": "2026-11-24T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bodo/Glimt",
+   "away": "LASK Linz",
+   "hs": "0",
+   "as": "0",
+   "venue": "Aspmyra Stadion"
+  },
+  {
+   "id": "401915300",
+   "date": "2026-11-24T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Galatasaray",
+   "away": "Aston Villa",
+   "hs": "0",
+   "as": "0",
+   "venue": "RAMS Park"
+  },
+  {
+   "id": "401915295",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Arsenal",
+   "away": "Borussia Dortmund",
+   "hs": "0",
+   "as": "0",
+   "venue": "Emirates Stadium"
+  },
+  {
+   "id": "401915296",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Como",
+   "away": "AEK Athens",
+   "hs": "0",
+   "as": "0",
+   "venue": "Giuseppe Sinigaglia"
+  },
+  {
+   "id": "401915294",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Feyenoord Rotterdam",
+   "away": "FC Porto",
+   "hs": "0",
+   "as": "0",
+   "venue": "De Kuip"
+  },
+  {
+   "id": "401915379",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Manchester City",
+   "away": "Napoli",
+   "hs": "0",
+   "as": "0",
+   "venue": "Etihad Stadium"
+  },
+  {
+   "id": "401915299",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "RB Leipzig",
+   "away": "Lens",
+   "hs": "0",
+   "as": "0",
+   "venue": "Red Bull Arena"
+  },
+  {
+   "id": "401915298",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Real Madrid",
+   "away": "PSV Eindhoven",
+   "hs": "0",
+   "as": "0",
+   "venue": "Santiago Bernabéu"
+  },
+  {
+   "id": "401915297",
+   "date": "2026-11-24T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Slovan Bratislava",
+   "away": "Real Betis",
+   "hs": "0",
+   "as": "0",
+   "venue": "Národny Futbalovy Stadión"
+  }
+ ],
+ "updatedAt": "2026-11-17T03:44:21.606Z"
 }
