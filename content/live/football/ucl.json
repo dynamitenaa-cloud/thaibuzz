@@ -535,7 +535,106 @@
    "hs": "0",
    "as": "0",
    "venue": "Národny Futbalovy Stadión"
+  },
+  {
+   "id": "401915378",
+   "date": "2026-11-25T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Sabah FK",
+   "away": "Barcelona",
+   "hs": "0",
+   "as": "0",
+   "venue": "Baku Olympic Stadium"
+  },
+  {
+   "id": "401915293",
+   "date": "2026-11-25T17:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Slavia Prague",
+   "away": "Villarreal",
+   "hs": "0",
+   "as": "0",
+   "venue": "Fortuna Arena"
+  },
+  {
+   "id": "401915291",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Atlético Madrid",
+   "away": "Viking FK",
+   "hs": "0",
+   "as": "0",
+   "venue": "Riyadh Air Metropolitano"
+  },
+  {
+   "id": "401915292",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Club Brugge",
+   "away": "Liverpool",
+   "hs": "0",
+   "as": "0",
+   "venue": "Jan Breydel Stadium"
+  },
+  {
+   "id": "401915376",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Internazionale",
+   "away": "VfB Stuttgart",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Siro"
+  },
+  {
+   "id": "401915377",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Lille",
+   "away": "Bayern Munich",
+   "hs": "0",
+   "as": "0",
+   "venue": "Decathlon Arena - Stade Pierre-Mauroy"
+  },
+  {
+   "id": "401915374",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Paris Saint-Germain",
+   "away": "AS Roma",
+   "hs": "0",
+   "as": "0",
+   "venue": "Parc des Princes"
+  },
+  {
+   "id": "401915375",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Shakhtar Donetsk",
+   "away": "Fenerbahce",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stamford Bridge"
+  },
+  {
+   "id": "401915373",
+   "date": "2026-11-25T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Sporting CP",
+   "away": "Manchester United",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estádio José Alvalade"
   }
  ],
- "updatedAt": "2026-11-17T03:44:21.606Z"
+ "updatedAt": "2026-11-18T03:39:03.476Z"
 }
