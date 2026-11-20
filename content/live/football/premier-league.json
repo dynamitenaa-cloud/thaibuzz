@@ -354,7 +354,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Gtech Community Stadium"
+  },
+  {
+   "id": "401879225",
+   "date": "2026-11-27T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Nottingham Forest",
+   "away": "Chelsea",
+   "hs": "0",
+   "as": "0",
+   "venue": "The City Ground"
   }
  ],
- "updatedAt": "2026-11-16T02:01:23.102Z"
+ "updatedAt": "2026-11-20T03:05:36.531Z"
 }

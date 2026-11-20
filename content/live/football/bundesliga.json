@@ -319,7 +319,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Weserstadion"
+  },
+  {
+   "id": "401884720",
+   "date": "2026-11-27T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Werder Bremen",
+   "away": "Borussia Mönchengladbach",
+   "hs": "0",
+   "as": "0",
+   "venue": "Weserstadion"
   }
  ],
- "updatedAt": "2026-11-16T02:01:24.666Z"
+ "updatedAt": "2026-11-20T03:05:37.285Z"
 }

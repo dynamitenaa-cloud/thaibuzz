@@ -354,7 +354,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Estadi Ciutat de València"
+  },
+  {
+   "id": "401882791",
+   "date": "2026-11-27T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Levante",
+   "away": "Racing Santander",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadi Ciutat de València"
   }
  ],
- "updatedAt": "2026-11-16T02:01:23.957Z"
+ "updatedAt": "2026-11-20T03:05:36.781Z"
 }
