@@ -248,8 +248,8 @@
   {
    "id": "401882805",
    "date": "2026-11-20T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "6'",
    "home": "Athletic Club",
    "away": "Espanyol",
    "hs": "0",
@@ -367,5 +367,5 @@
    "venue": "Estadi Ciutat de València"
   }
  ],
- "updatedAt": "2026-11-20T03:05:36.781Z"
+ "updatedAt": "2026-11-20T20:08:21.864Z"
 }

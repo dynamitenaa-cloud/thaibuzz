@@ -224,12 +224,12 @@
   {
    "id": "401884736",
    "date": "2026-11-20T19:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "38'",
    "home": "Bayern Munich",
    "away": "FC Cologne",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Allianz Arena"
   },
   {
@@ -332,5 +332,5 @@
    "venue": "Weserstadion"
   }
  ],
- "updatedAt": "2026-11-20T03:05:37.285Z"
+ "updatedAt": "2026-11-20T20:08:22.142Z"
 }
