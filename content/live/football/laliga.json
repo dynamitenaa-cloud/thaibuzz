@@ -77,13 +77,13 @@
   {
    "rank": 7,
    "team": "Athletic Club",
-   "p": 11,
+   "p": 12,
    "w": 4,
    "d": 4,
-   "l": 3,
+   "l": 4,
    "gf": 15,
-   "ga": 11,
-   "gd": 4,
+   "ga": 12,
+   "gd": 3,
    "pts": 16
   },
   {
@@ -112,6 +112,18 @@
   },
   {
    "rank": 10,
+   "team": "Espanyol",
+   "p": 13,
+   "w": 4,
+   "d": 3,
+   "l": 6,
+   "gf": 14,
+   "ga": 14,
+   "gd": 0,
+   "pts": 15
+  },
+  {
+   "rank": 11,
    "team": "Racing Santander",
    "p": 12,
    "w": 4,
@@ -123,7 +135,7 @@
    "pts": 14
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Celta Vigo",
    "p": 12,
    "w": 2,
@@ -135,7 +147,7 @@
    "pts": 13
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Alavés",
    "p": 12,
    "w": 3,
@@ -145,18 +157,6 @@
    "ga": 17,
    "gd": -2,
    "pts": 13
-  },
-  {
-   "rank": 13,
-   "team": "Espanyol",
-   "p": 12,
-   "w": 3,
-   "d": 3,
-   "l": 6,
-   "gf": 13,
-   "ga": 14,
-   "gd": -1,
-   "pts": 12
   },
   {
    "rank": 14,
@@ -243,19 +243,20 @@
    "pts": 5
   }
  ],
- "results": [],
- "fixtures": [
+ "results": [
   {
    "id": "401882805",
    "date": "2026-11-20T20:00Z",
-   "status": "in",
-   "detail": "6'",
+   "status": "post",
+   "detail": "FT",
    "home": "Athletic Club",
    "away": "Espanyol",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "San Mamés"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882806",
    "date": "2026-11-21T13:00Z",
@@ -365,7 +366,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Estadi Ciutat de València"
+  },
+  {
+   "id": "401882796",
+   "date": "2026-11-28T13:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Real Betis",
+   "away": "Rayo Vallecano",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio La Cartuja"
+  },
+  {
+   "id": "401882790",
+   "date": "2026-11-28T15:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Málaga",
+   "away": "Athletic Club",
+   "hs": "0",
+   "as": "0",
+   "venue": "La Rosaleda"
+  },
+  {
+   "id": "401882793",
+   "date": "2026-11-28T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Elche",
+   "away": "Atlético Madrid",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio Martínez Valero"
+  },
+  {
+   "id": "401882789",
+   "date": "2026-11-28T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Real Madrid",
+   "away": "Alavés",
+   "hs": "0",
+   "as": "0",
+   "venue": "Santiago Bernabéu"
   }
  ],
- "updatedAt": "2026-11-20T20:08:21.864Z"
+ "updatedAt": "2026-11-21T01:24:15.107Z"
 }

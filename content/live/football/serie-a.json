@@ -365,7 +365,40 @@
    "hs": "0",
    "as": "0",
    "venue": "Stadio Pier Luigi Penzo"
+  },
+  {
+   "id": "401875081",
+   "date": "2026-11-28T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Frosinone",
+   "away": "Parma",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Benito Stirpe"
+  },
+  {
+   "id": "401874826",
+   "date": "2026-11-28T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Torino",
+   "away": "Lazio",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Olimpico Grande Torino"
+  },
+  {
+   "id": "401874977",
+   "date": "2026-11-28T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Internazionale",
+   "away": "Genoa",
+   "hs": "0",
+   "as": "0",
+   "venue": "San Siro"
   }
  ],
- "updatedAt": "2026-11-20T03:05:37.066Z"
+ "updatedAt": "2026-11-21T01:24:15.589Z"
 }

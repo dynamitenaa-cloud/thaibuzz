@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Bayern Munich",
-   "p": 9,
+   "p": 10,
    "w": 6,
-   "d": 3,
+   "d": 4,
    "l": 0,
-   "gf": 29,
-   "ga": 9,
+   "gf": 30,
+   "ga": 10,
    "gd": 20,
-   "pts": 21
+   "pts": 22
   },
   {
    "rank": 2,
@@ -160,6 +160,18 @@
   },
   {
    "rank": 14,
+   "team": "FC Cologne",
+   "p": 10,
+   "w": 2,
+   "d": 4,
+   "l": 4,
+   "gf": 11,
+   "ga": 15,
+   "gd": -4,
+   "pts": 10
+  },
+  {
+   "rank": 15,
    "team": "FC Augsburg",
    "p": 9,
    "w": 2,
@@ -168,18 +180,6 @@
    "gf": 20,
    "ga": 20,
    "gd": 0,
-   "pts": 9
-  },
-  {
-   "rank": 15,
-   "team": "FC Cologne",
-   "p": 9,
-   "w": 2,
-   "d": 3,
-   "l": 4,
-   "gf": 10,
-   "ga": 14,
-   "gd": -4,
    "pts": 9
   },
   {
@@ -219,19 +219,20 @@
    "pts": 4
   }
  ],
- "results": [],
- "fixtures": [
+ "results": [
   {
    "id": "401884736",
    "date": "2026-11-20T19:30Z",
-   "status": "in",
-   "detail": "38'",
+   "status": "post",
+   "detail": "FT",
    "home": "Bayern Munich",
    "away": "FC Cologne",
    "hs": "1",
    "as": "1",
    "venue": "Allianz Arena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884732",
    "date": "2026-11-21T14:30Z",
@@ -330,7 +331,62 @@
    "hs": "0",
    "as": "0",
    "venue": "Weserstadion"
+  },
+  {
+   "id": "401884721",
+   "date": "2026-11-28T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "FC Cologne",
+   "away": "SV Elversberg",
+   "hs": "0",
+   "as": "0",
+   "venue": "RheinEnergieStadion"
+  },
+  {
+   "id": "401884722",
+   "date": "2026-11-28T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Hamburg SV",
+   "away": "Bayern Munich",
+   "hs": "0",
+   "as": "0",
+   "venue": "Volksparkstadion"
+  },
+  {
+   "id": "401884723",
+   "date": "2026-11-28T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Mainz",
+   "away": "1. FC Union Berlin",
+   "hs": "0",
+   "as": "0",
+   "venue": "MEWA ARENA"
+  },
+  {
+   "id": "401884719",
+   "date": "2026-11-28T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "SC Paderborn 07",
+   "away": "Schalke 04",
+   "hs": "0",
+   "as": "0",
+   "venue": "Home Deluxe Arena"
+  },
+  {
+   "id": "401884726",
+   "date": "2026-11-28T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "VfB Stuttgart",
+   "away": "Eintracht Frankfurt",
+   "hs": "0",
+   "as": "0",
+   "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-11-20T20:08:22.142Z"
+ "updatedAt": "2026-11-21T01:24:16.025Z"
 }

@@ -365,7 +365,40 @@
    "hs": "0",
    "as": "0",
    "venue": "The City Ground"
+  },
+  {
+   "id": "401879227",
+   "date": "2026-11-28T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Leeds United",
+   "away": "Coventry City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Elland Road"
+  },
+  {
+   "id": "401879226",
+   "date": "2026-11-28T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Manchester United",
+   "away": "Brentford",
+   "hs": "0",
+   "as": "0",
+   "venue": "Old Trafford"
+  },
+  {
+   "id": "401878752",
+   "date": "2026-11-28T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Ipswich Town",
+   "away": "Aston Villa",
+   "hs": "0",
+   "as": "0",
+   "venue": "Portman Road"
   }
  ],
- "updatedAt": "2026-11-20T03:05:36.531Z"
+ "updatedAt": "2026-11-21T01:24:14.599Z"
 }
