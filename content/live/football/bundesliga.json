@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "VfB Stuttgart",
+   "p": 10,
+   "w": 4,
+   "d": 1,
+   "l": 5,
+   "gf": 15,
+   "ga": 15,
+   "gd": 0,
+   "pts": 13
+  },
+  {
+   "rank": 9,
    "team": "SV Elversberg",
    "p": 10,
    "w": 4,
@@ -97,18 +109,6 @@
    "ga": 19,
    "gd": -2,
    "pts": 13
-  },
-  {
-   "rank": 9,
-   "team": "VfB Stuttgart",
-   "p": 9,
-   "w": 4,
-   "d": 0,
-   "l": 5,
-   "gf": 15,
-   "ga": 15,
-   "gd": 0,
-   "pts": 12
   },
   {
    "rank": 10,
@@ -184,6 +184,18 @@
   },
   {
    "rank": 16,
+   "team": "Schalke 04",
+   "p": 10,
+   "w": 1,
+   "d": 4,
+   "l": 5,
+   "gf": 5,
+   "ga": 11,
+   "gd": -6,
+   "pts": 7
+  },
+  {
+   "rank": 17,
    "team": "1. FC Union Berlin",
    "p": 10,
    "w": 1,
@@ -193,18 +205,6 @@
    "ga": 26,
    "gd": -18,
    "pts": 7
-  },
-  {
-   "rank": 17,
-   "team": "Schalke 04",
-   "p": 9,
-   "w": 1,
-   "d": 3,
-   "l": 5,
-   "gf": 5,
-   "ga": 11,
-   "gd": -6,
-   "pts": 6
   },
   {
    "rank": 18,
@@ -285,20 +285,20 @@
    "hs": "0",
    "as": "1",
    "venue": "URSAPHARM-Arena an der Kaiserlinde"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884729",
    "date": "2026-11-21T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Schalke 04",
    "away": "VfB Stuttgart",
    "hs": "0",
    "as": "0",
    "venue": "Veltins Arena"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884733",
    "date": "2026-11-22T14:30Z",
@@ -388,5 +388,5 @@
    "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-11-21T17:27:41.208Z"
+ "updatedAt": "2026-11-21T23:08:30.468Z"
 }

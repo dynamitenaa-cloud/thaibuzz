@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Arsenal",
-   "p": 10,
+   "p": 11,
    "w": 9,
-   "d": 0,
+   "d": 1,
    "l": 1,
-   "gf": 15,
-   "ga": 5,
+   "gf": 17,
+   "ga": 7,
    "gd": 10,
-   "pts": 27
+   "pts": 28
   },
   {
    "rank": 2,
@@ -137,14 +137,14 @@
   {
    "rank": 12,
    "team": "Newcastle United",
-   "p": 10,
+   "p": 11,
    "w": 3,
-   "d": 3,
+   "d": 4,
    "l": 4,
-   "gf": 13,
-   "ga": 16,
+   "gf": 15,
+   "ga": 18,
    "gd": -3,
-   "pts": 12
+   "pts": 13
   },
   {
    "rank": 13,
@@ -309,20 +309,20 @@
    "hs": "2",
    "as": "0",
    "venue": "Tottenham Hotspur Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879232",
    "date": "2026-11-21T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Newcastle United",
    "away": "Arsenal",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "2",
    "venue": "St. James' Park"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879234",
    "date": "2026-11-22T14:00Z",
@@ -401,5 +401,5 @@
    "venue": "Portman Road"
   }
  ],
- "updatedAt": "2026-11-21T17:27:40.719Z"
+ "updatedAt": "2026-11-21T23:08:29.918Z"
 }
