@@ -88,6 +88,18 @@
   },
   {
    "rank": 8,
+   "team": "Alavés",
+   "p": 13,
+   "w": 4,
+   "d": 4,
+   "l": 5,
+   "gf": 18,
+   "ga": 18,
+   "gd": 0,
+   "pts": 16
+  },
+  {
+   "rank": 9,
    "team": "Villarreal",
    "p": 12,
    "w": 4,
@@ -96,18 +108,6 @@
    "gf": 17,
    "ga": 15,
    "gd": 2,
-   "pts": 15
-  },
-  {
-   "rank": 9,
-   "team": "Deportivo",
-   "p": 12,
-   "w": 3,
-   "d": 6,
-   "l": 3,
-   "gf": 15,
-   "ga": 14,
-   "gd": 1,
    "pts": 15
   },
   {
@@ -124,6 +124,18 @@
   },
   {
    "rank": 11,
+   "team": "Deportivo",
+   "p": 13,
+   "w": 3,
+   "d": 6,
+   "l": 4,
+   "gf": 16,
+   "ga": 17,
+   "gd": -1,
+   "pts": 15
+  },
+  {
+   "rank": 12,
    "team": "Racing Santander",
    "p": 12,
    "w": 4,
@@ -135,7 +147,7 @@
    "pts": 14
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Celta Vigo",
    "p": 12,
    "w": 2,
@@ -147,27 +159,15 @@
    "pts": 13
   },
   {
-   "rank": 13,
-   "team": "Alavés",
-   "p": 12,
-   "w": 3,
-   "d": 4,
-   "l": 5,
-   "gf": 15,
-   "ga": 17,
-   "gd": -2,
-   "pts": 13
-  },
-  {
    "rank": 14,
    "team": "Rayo Vallecano",
-   "p": 11,
+   "p": 12,
    "w": 3,
    "d": 3,
-   "l": 5,
+   "l": 6,
    "gf": 15,
-   "ga": 21,
-   "gd": -6,
+   "ga": 22,
+   "gd": -7,
    "pts": 12
   },
   {
@@ -196,6 +196,18 @@
   },
   {
    "rank": 17,
+   "team": "Valencia",
+   "p": 13,
+   "w": 3,
+   "d": 3,
+   "l": 7,
+   "gf": 9,
+   "ga": 20,
+   "gd": -11,
+   "pts": 12
+  },
+  {
+   "rank": 18,
    "team": "Levante",
    "p": 12,
    "w": 2,
@@ -207,7 +219,7 @@
    "pts": 11
   },
   {
-   "rank": 18,
+   "rank": 19,
    "team": "Elche",
    "p": 12,
    "w": 2,
@@ -217,18 +229,6 @@
    "ga": 20,
    "gd": -6,
    "pts": 10
-  },
-  {
-   "rank": 19,
-   "team": "Valencia",
-   "p": 12,
-   "w": 2,
-   "d": 3,
-   "l": 7,
-   "gf": 8,
-   "ga": 20,
-   "gd": -12,
-   "pts": 9
   },
   {
    "rank": 20,
@@ -254,31 +254,31 @@
    "hs": "0",
    "as": "1",
    "venue": "San Mamés"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882806",
    "date": "2026-11-21T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Alavés",
    "away": "Deportivo",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "1",
    "venue": "Mendizorrotza"
   },
   {
    "id": "401882799",
    "date": "2026-11-21T15:15Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Rayo Vallecano",
    "away": "Valencia",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Estadio de Vallecas"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882797",
    "date": "2026-11-21T17:30Z",
@@ -412,5 +412,5 @@
    "venue": "Santiago Bernabéu"
   }
  ],
- "updatedAt": "2026-11-21T01:24:15.107Z"
+ "updatedAt": "2026-11-21T17:27:40.847Z"
 }

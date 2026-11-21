@@ -4,6 +4,18 @@
  "table": [
   {
    "rank": 1,
+   "team": "Borussia Dortmund",
+   "p": 10,
+   "w": 7,
+   "d": 3,
+   "l": 0,
+   "gf": 17,
+   "ga": 7,
+   "gd": 10,
+   "pts": 24
+  },
+  {
+   "rank": 2,
    "team": "Bayern Munich",
    "p": 10,
    "w": 6,
@@ -15,52 +27,40 @@
    "pts": 22
   },
   {
-   "rank": 2,
-   "team": "Borussia Dortmund",
-   "p": 9,
-   "w": 6,
-   "d": 3,
-   "l": 0,
-   "gf": 16,
-   "ga": 7,
-   "gd": 9,
-   "pts": 21
-  },
-  {
    "rank": 3,
    "team": "SC Freiburg",
-   "p": 9,
-   "w": 6,
+   "p": 10,
+   "w": 7,
    "d": 1,
    "l": 2,
-   "gf": 20,
+   "gf": 21,
    "ga": 10,
-   "gd": 10,
-   "pts": 19
+   "gd": 11,
+   "pts": 22
   },
   {
    "rank": 4,
    "team": "RB Leipzig",
-   "p": 9,
-   "w": 6,
+   "p": 10,
+   "w": 7,
    "d": 0,
    "l": 3,
-   "gf": 27,
-   "ga": 13,
-   "gd": 14,
-   "pts": 18
+   "gf": 32,
+   "ga": 14,
+   "gd": 18,
+   "pts": 21
   },
   {
    "rank": 5,
    "team": "Bayer Leverkusen",
-   "p": 9,
-   "w": 5,
+   "p": 10,
+   "w": 6,
    "d": 1,
    "l": 3,
-   "gf": 20,
+   "gf": 24,
    "ga": 17,
-   "gd": 3,
-   "pts": 16
+   "gd": 7,
+   "pts": 19
   },
   {
    "rank": 6,
@@ -76,18 +76,30 @@
   },
   {
    "rank": 7,
-   "team": "SV Elversberg",
-   "p": 9,
+   "team": "Eintracht Frankfurt",
+   "p": 10,
    "w": 4,
-   "d": 1,
-   "l": 4,
-   "gf": 17,
-   "ga": 18,
-   "gd": -1,
-   "pts": 13
+   "d": 3,
+   "l": 3,
+   "gf": 16,
+   "ga": 20,
+   "gd": -4,
+   "pts": 15
   },
   {
    "rank": 8,
+   "team": "SV Elversberg",
+   "p": 10,
+   "w": 4,
+   "d": 1,
+   "l": 5,
+   "gf": 17,
+   "ga": 19,
+   "gd": -2,
+   "pts": 13
+  },
+  {
+   "rank": 9,
    "team": "VfB Stuttgart",
    "p": 9,
    "w": 4,
@@ -99,27 +111,15 @@
    "pts": 12
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "TSG Hoffenheim",
-   "p": 9,
+   "p": 10,
    "w": 4,
    "d": 0,
-   "l": 5,
+   "l": 6,
    "gf": 16,
-   "ga": 17,
-   "gd": -1,
-   "pts": 12
-  },
-  {
-   "rank": 10,
-   "team": "Eintracht Frankfurt",
-   "p": 9,
-   "w": 3,
-   "d": 3,
-   "l": 3,
-   "gf": 15,
-   "ga": 20,
-   "gd": -5,
+   "ga": 18,
+   "gd": -2,
    "pts": 12
   },
   {
@@ -148,18 +148,6 @@
   },
   {
    "rank": 13,
-   "team": "SC Paderborn 07",
-   "p": 9,
-   "w": 2,
-   "d": 4,
-   "l": 3,
-   "gf": 8,
-   "ga": 11,
-   "gd": -3,
-   "pts": 10
-  },
-  {
-   "rank": 14,
    "team": "FC Cologne",
    "p": 10,
    "w": 2,
@@ -168,6 +156,18 @@
    "gf": 11,
    "ga": 15,
    "gd": -4,
+   "pts": 10
+  },
+  {
+   "rank": 14,
+   "team": "SC Paderborn 07",
+   "p": 10,
+   "w": 2,
+   "d": 4,
+   "l": 4,
+   "gf": 8,
+   "ga": 15,
+   "gd": -7,
    "pts": 10
   },
   {
@@ -185,13 +185,13 @@
   {
    "rank": 16,
    "team": "1. FC Union Berlin",
-   "p": 9,
+   "p": 10,
    "w": 1,
    "d": 4,
-   "l": 4,
-   "gf": 7,
-   "ga": 21,
-   "gd": -14,
+   "l": 5,
+   "gf": 8,
+   "ga": 26,
+   "gd": -18,
    "pts": 7
   },
   {
@@ -209,13 +209,13 @@
   {
    "rank": 18,
    "team": "Borussia Mönchengladbach",
-   "p": 9,
+   "p": 10,
    "w": 1,
    "d": 1,
-   "l": 7,
+   "l": 8,
    "gf": 12,
-   "ga": 25,
-   "gd": -13,
+   "ga": 26,
+   "gd": -14,
    "pts": 4
   }
  ],
@@ -230,64 +230,64 @@
    "hs": "1",
    "as": "1",
    "venue": "Allianz Arena"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884732",
    "date": "2026-11-21T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "1. FC Union Berlin",
    "away": "RB Leipzig",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "5",
    "venue": "Stadion An der Alten Försterei"
   },
   {
    "id": "401884735",
    "date": "2026-11-21T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Bayer Leverkusen",
    "away": "SC Paderborn 07",
-   "hs": "0",
+   "hs": "4",
    "as": "0",
    "venue": "BayArena"
   },
   {
    "id": "401884731",
    "date": "2026-11-21T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Borussia Mönchengladbach",
    "away": "Borussia Dortmund",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "BORUSSIA-PARK"
   },
   {
    "id": "401884734",
    "date": "2026-11-21T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Eintracht Frankfurt",
    "away": "TSG Hoffenheim",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "Deutsche Bank Park"
   },
   {
    "id": "401884728",
    "date": "2026-11-21T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "SV Elversberg",
    "away": "SC Freiburg",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "URSAPHARM-Arena an der Kaiserlinde"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884729",
    "date": "2026-11-21T17:30Z",
@@ -388,5 +388,5 @@
    "venue": "MHPArena"
   }
  ],
- "updatedAt": "2026-11-21T01:24:16.025Z"
+ "updatedAt": "2026-11-21T17:27:41.208Z"
 }

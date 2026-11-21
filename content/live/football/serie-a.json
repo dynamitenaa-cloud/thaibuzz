@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Lazio",
-   "p": 11,
-   "w": 9,
+   "p": 12,
+   "w": 10,
    "d": 2,
    "l": 0,
-   "gf": 25,
+   "gf": 28,
    "ga": 9,
-   "gd": 16,
-   "pts": 29
+   "gd": 19,
+   "pts": 32
   },
   {
    "rank": 2,
@@ -40,6 +40,18 @@
   },
   {
    "rank": 4,
+   "team": "Como",
+   "p": 12,
+   "w": 8,
+   "d": 2,
+   "l": 2,
+   "gf": 20,
+   "ga": 10,
+   "gd": 10,
+   "pts": 26
+  },
+  {
+   "rank": 5,
    "team": "AC Milan",
    "p": 11,
    "w": 7,
@@ -49,18 +61,6 @@
    "ga": 13,
    "gd": 10,
    "pts": 24
-  },
-  {
-   "rank": 5,
-   "team": "Como",
-   "p": 11,
-   "w": 7,
-   "d": 2,
-   "l": 2,
-   "gf": 18,
-   "ga": 10,
-   "gd": 8,
-   "pts": 23
   },
   {
    "rank": 6,
@@ -101,13 +101,13 @@
   {
    "rank": 9,
    "team": "Cagliari",
-   "p": 11,
+   "p": 12,
    "w": 5,
    "d": 1,
-   "l": 5,
+   "l": 6,
    "gf": 10,
-   "ga": 15,
-   "gd": -5,
+   "ga": 17,
+   "gd": -7,
    "pts": 16
   },
   {
@@ -161,13 +161,13 @@
   {
    "rank": 14,
    "team": "Lecce",
-   "p": 11,
+   "p": 12,
    "w": 3,
    "d": 1,
-   "l": 7,
+   "l": 8,
    "gf": 12,
-   "ga": 22,
-   "gd": -10,
+   "ga": 25,
+   "gd": -13,
    "pts": 10
   },
   {
@@ -243,35 +243,36 @@
    "pts": 5
   }
  ],
- "results": [],
- "fixtures": [
+ "results": [
   {
    "id": "401875056",
    "date": "2026-11-21T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Como",
    "away": "Cagliari",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Giuseppe Sinigaglia"
   },
   {
    "id": "401874981",
    "date": "2026-11-21T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Lazio",
    "away": "Lecce",
-   "hs": "0",
+   "hs": "3",
    "as": "0",
    "venue": "Olimpico"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401874967",
    "date": "2026-11-21T17:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "28'",
    "home": "Parma",
    "away": "AS Roma",
    "hs": "0",
@@ -400,5 +401,5 @@
    "venue": "San Siro"
   }
  ],
- "updatedAt": "2026-11-21T01:24:15.589Z"
+ "updatedAt": "2026-11-21T17:27:41.055Z"
 }
