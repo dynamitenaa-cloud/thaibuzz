@@ -399,7 +399,51 @@
    "hs": "0",
    "as": "0",
    "venue": "San Siro"
+  },
+  {
+   "id": "401875031",
+   "date": "2026-11-29T11:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Udinese",
+   "away": "Fiorentina",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadio Friuli"
+  },
+  {
+   "id": "401874992",
+   "date": "2026-11-29T14:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Sassuolo",
+   "away": "Napoli",
+   "hs": "0",
+   "as": "0",
+   "venue": "Mapei Stadium"
+  },
+  {
+   "id": "401874769",
+   "date": "2026-11-29T17:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AS Roma",
+   "away": "Monza",
+   "hs": "0",
+   "as": "0",
+   "venue": "Olimpico"
+  },
+  {
+   "id": "401874994",
+   "date": "2026-11-29T19:45Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Como",
+   "away": "Juventus",
+   "hs": "0",
+   "as": "0",
+   "venue": "Giuseppe Sinigaglia"
   }
  ],
- "updatedAt": "2026-11-21T23:08:30.259Z"
+ "updatedAt": "2026-11-22T03:00:23.417Z"
 }

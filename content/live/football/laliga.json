@@ -410,7 +410,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Santiago Bernabéu"
+  },
+  {
+   "id": "401882787",
+   "date": "2026-11-29T13:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Valencia",
+   "away": "Osasuna",
+   "hs": "0",
+   "as": "0",
+   "venue": "Mestalla Stadium"
+  },
+  {
+   "id": "401882794",
+   "date": "2026-11-29T15:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Deportivo",
+   "away": "Barcelona",
+   "hs": "0",
+   "as": "0",
+   "venue": "Riazor"
+  },
+  {
+   "id": "401882795",
+   "date": "2026-11-29T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Celta Vigo",
+   "away": "Villarreal",
+   "hs": "0",
+   "as": "0",
+   "venue": "Balaidos"
+  },
+  {
+   "id": "401882788",
+   "date": "2026-11-29T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Real Sociedad",
+   "away": "Sevilla",
+   "hs": "0",
+   "as": "0",
+   "venue": "Reale Arena"
   }
  ],
- "updatedAt": "2026-11-21T23:08:30.042Z"
+ "updatedAt": "2026-11-22T03:00:23.054Z"
 }

@@ -386,7 +386,40 @@
    "hs": "0",
    "as": "0",
    "venue": "MHPArena"
+  },
+  {
+   "id": "401884724",
+   "date": "2026-11-29T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "SC Freiburg",
+   "away": "RB Leipzig",
+   "hs": "0",
+   "as": "0",
+   "venue": "Europa-Park Stadion"
+  },
+  {
+   "id": "401884725",
+   "date": "2026-11-29T16:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "TSG Hoffenheim",
+   "away": "FC Augsburg",
+   "hs": "0",
+   "as": "0",
+   "venue": "PreZero Arena"
+  },
+  {
+   "id": "401884727",
+   "date": "2026-11-29T18:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Borussia Dortmund",
+   "away": "Bayer Leverkusen",
+   "hs": "0",
+   "as": "0",
+   "venue": "Signal Iduna Park"
   }
  ],
- "updatedAt": "2026-11-21T23:08:30.468Z"
+ "updatedAt": "2026-11-22T03:00:24.062Z"
 }

@@ -399,7 +399,73 @@
    "hs": "0",
    "as": "0",
    "venue": "Portman Road"
+  },
+  {
+   "id": "401879229",
+   "date": "2026-11-29T12:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Everton",
+   "away": "Liverpool",
+   "hs": "0",
+   "as": "0",
+   "venue": "Hill Dickinson Stadium"
+  },
+  {
+   "id": "401879231",
+   "date": "2026-11-29T14:05Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Brighton & Hove Albion",
+   "away": "Newcastle United",
+   "hs": "0",
+   "as": "0",
+   "venue": "American Express Stadium"
+  },
+  {
+   "id": "401879230",
+   "date": "2026-11-29T14:05Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Crystal Palace",
+   "away": "Hull City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Selhurst Park"
+  },
+  {
+   "id": "401879228",
+   "date": "2026-11-29T14:05Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Fulham",
+   "away": "AFC Bournemouth",
+   "hs": "0",
+   "as": "0",
+   "venue": "Craven Cottage"
+  },
+  {
+   "id": "401879224",
+   "date": "2026-11-29T14:05Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Sunderland",
+   "away": "Tottenham Hotspur",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadium of Light"
+  },
+  {
+   "id": "401878753",
+   "date": "2026-11-29T16:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Arsenal",
+   "away": "Manchester City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Emirates Stadium"
   }
  ],
- "updatedAt": "2026-11-21T23:08:29.918Z"
+ "updatedAt": "2026-11-22T03:00:21.904Z"
 }
