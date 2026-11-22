@@ -17,13 +17,13 @@
   {
    "rank": 2,
    "team": "Brighton & Hove Albion",
-   "p": 10,
+   "p": 11,
    "w": 7,
    "d": 1,
-   "l": 2,
+   "l": 3,
    "gf": 26,
-   "ga": 7,
-   "gd": 19,
+   "ga": 9,
+   "gd": 17,
    "pts": 22
   },
   {
@@ -40,6 +40,18 @@
   },
   {
    "rank": 4,
+   "team": "Liverpool",
+   "p": 11,
+   "w": 6,
+   "d": 3,
+   "l": 2,
+   "gf": 18,
+   "ga": 10,
+   "gd": 8,
+   "pts": 21
+  },
+  {
+   "rank": 5,
    "team": "AFC Bournemouth",
    "p": 11,
    "w": 5,
@@ -47,18 +59,6 @@
    "l": 3,
    "gf": 18,
    "ga": 14,
-   "gd": 4,
-   "pts": 18
-  },
-  {
-   "rank": 5,
-   "team": "Liverpool",
-   "p": 10,
-   "w": 5,
-   "d": 3,
-   "l": 2,
-   "gf": 14,
-   "ga": 10,
    "gd": 4,
    "pts": 18
   },
@@ -124,6 +124,18 @@
   },
   {
    "rank": 11,
+   "team": "Hull City",
+   "p": 11,
+   "w": 3,
+   "d": 5,
+   "l": 3,
+   "gf": 13,
+   "ga": 11,
+   "gd": 2,
+   "pts": 14
+  },
+  {
+   "rank": 12,
    "team": "Aston Villa",
    "p": 11,
    "w": 3,
@@ -135,7 +147,7 @@
    "pts": 14
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Newcastle United",
    "p": 11,
    "w": 3,
@@ -147,7 +159,7 @@
    "pts": 13
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "Coventry City",
    "p": 11,
    "w": 4,
@@ -157,18 +169,6 @@
    "ga": 21,
    "gd": -8,
    "pts": 12
-  },
-  {
-   "rank": 14,
-   "team": "Hull City",
-   "p": 10,
-   "w": 2,
-   "d": 5,
-   "l": 3,
-   "gf": 11,
-   "ga": 11,
-   "gd": 0,
-   "pts": 11
   },
   {
    "rank": 15,
@@ -221,13 +221,13 @@
   {
    "rank": 19,
    "team": "Manchester United",
-   "p": 10,
+   "p": 11,
    "w": 1,
    "d": 5,
-   "l": 4,
+   "l": 5,
    "gf": 14,
-   "ga": 19,
-   "gd": -5,
+   "ga": 23,
+   "gd": -9,
    "pts": 8
   },
   {
@@ -320,31 +320,31 @@
    "hs": "2",
    "as": "2",
    "venue": "St. James' Park"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879234",
    "date": "2026-11-22T14:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Hull City",
    "away": "Brighton & Hove Albion",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "The MKM Stadium"
   },
   {
    "id": "401878755",
    "date": "2026-11-22T16:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Liverpool",
    "away": "Manchester United",
-   "hs": "0",
+   "hs": "4",
    "as": "0",
    "venue": "Anfield"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879237",
    "date": "2026-11-23T20:00Z",
@@ -467,5 +467,5 @@
    "venue": "Emirates Stadium"
   }
  ],
- "updatedAt": "2026-11-22T03:00:21.904Z"
+ "updatedAt": "2026-11-22T18:32:33.930Z"
 }

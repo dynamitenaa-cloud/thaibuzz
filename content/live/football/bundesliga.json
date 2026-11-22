@@ -112,6 +112,18 @@
   },
   {
    "rank": 10,
+   "team": "FC Augsburg",
+   "p": 10,
+   "w": 3,
+   "d": 3,
+   "l": 4,
+   "gf": 23,
+   "ga": 21,
+   "gd": 2,
+   "pts": 12
+  },
+  {
+   "rank": 11,
    "team": "TSG Hoffenheim",
    "p": 10,
    "w": 4,
@@ -123,7 +135,7 @@
    "pts": 12
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Hamburg SV",
    "p": 9,
    "w": 4,
@@ -135,19 +147,19 @@
    "pts": 12
   },
   {
-   "rank": 12,
+   "rank": 13,
    "team": "Mainz",
-   "p": 9,
+   "p": 10,
    "w": 3,
    "d": 1,
-   "l": 5,
-   "gf": 18,
-   "ga": 19,
-   "gd": -1,
+   "l": 6,
+   "gf": 19,
+   "ga": 22,
+   "gd": -3,
    "pts": 10
   },
   {
-   "rank": 13,
+   "rank": 14,
    "team": "FC Cologne",
    "p": 10,
    "w": 2,
@@ -159,7 +171,7 @@
    "pts": 10
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "SC Paderborn 07",
    "p": 10,
    "w": 2,
@@ -169,18 +181,6 @@
    "ga": 15,
    "gd": -7,
    "pts": 10
-  },
-  {
-   "rank": 15,
-   "team": "FC Augsburg",
-   "p": 9,
-   "w": 2,
-   "d": 3,
-   "l": 4,
-   "gf": 20,
-   "ga": 20,
-   "gd": 0,
-   "pts": 9
   },
   {
    "rank": 16,
@@ -296,31 +296,31 @@
    "hs": "0",
    "as": "0",
    "venue": "Veltins Arena"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884733",
    "date": "2026-11-22T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "FC Augsburg",
    "away": "Mainz",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "1",
    "venue": "WWK Arena"
   },
   {
    "id": "401884730",
    "date": "2026-11-22T16:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Werder Bremen",
    "away": "Hamburg SV",
-   "hs": "0",
+   "hs": "4",
    "as": "0",
    "venue": "Weserstadion"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884720",
    "date": "2026-11-27T19:30Z",
@@ -421,5 +421,5 @@
    "venue": "Signal Iduna Park"
   }
  ],
- "updatedAt": "2026-11-22T03:00:24.062Z"
+ "updatedAt": "2026-11-22T18:32:34.364Z"
 }

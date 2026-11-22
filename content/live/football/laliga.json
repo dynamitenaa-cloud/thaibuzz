@@ -5,14 +5,14 @@
   {
    "rank": 1,
    "team": "Barcelona",
-   "p": 12,
-   "w": 11,
+   "p": 13,
+   "w": 12,
    "d": 0,
    "l": 1,
-   "gf": 48,
-   "ga": 13,
-   "gd": 35,
-   "pts": 33
+   "gf": 51,
+   "ga": 15,
+   "gd": 36,
+   "pts": 36
   },
   {
    "rank": 2,
@@ -53,13 +53,13 @@
   {
    "rank": 5,
    "team": "Real Sociedad",
-   "p": 12,
+   "p": 13,
    "w": 7,
    "d": 1,
-   "l": 4,
-   "gf": 21,
-   "ga": 20,
-   "gd": 1,
+   "l": 5,
+   "gf": 23,
+   "ga": 23,
+   "gd": 0,
    "pts": 22
   },
   {
@@ -76,6 +76,18 @@
   },
   {
    "rank": 7,
+   "team": "Racing Santander",
+   "p": 13,
+   "w": 5,
+   "d": 2,
+   "l": 6,
+   "gf": 20,
+   "ga": 32,
+   "gd": -12,
+   "pts": 17
+  },
+  {
+   "rank": 8,
    "team": "Athletic Club",
    "p": 12,
    "w": 4,
@@ -87,7 +99,7 @@
    "pts": 16
   },
   {
-   "rank": 8,
+   "rank": 9,
    "team": "Alavés",
    "p": 13,
    "w": 4,
@@ -99,19 +111,19 @@
    "pts": 16
   },
   {
-   "rank": 9,
+   "rank": 10,
    "team": "Villarreal",
-   "p": 12,
+   "p": 13,
    "w": 4,
    "d": 3,
-   "l": 5,
-   "gf": 17,
-   "ga": 15,
-   "gd": 2,
+   "l": 6,
+   "gf": 19,
+   "ga": 18,
+   "gd": 1,
    "pts": 15
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "Espanyol",
    "p": 13,
    "w": 4,
@@ -123,7 +135,7 @@
    "pts": 15
   },
   {
-   "rank": 11,
+   "rank": 12,
    "team": "Deportivo",
    "p": 13,
    "w": 3,
@@ -133,18 +145,6 @@
    "ga": 17,
    "gd": -1,
    "pts": 15
-  },
-  {
-   "rank": 12,
-   "team": "Racing Santander",
-   "p": 12,
-   "w": 4,
-   "d": 2,
-   "l": 6,
-   "gf": 17,
-   "ga": 30,
-   "gd": -13,
-   "pts": 14
   },
   {
    "rank": 13,
@@ -298,39 +298,39 @@
    "hs": "2",
    "as": "1",
    "venue": "Santiago Bernabéu"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882804",
    "date": "2026-11-22T13:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Barcelona",
    "away": "Villarreal",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "2",
    "venue": "Spotify Camp Nou"
   },
   {
    "id": "401882800",
    "date": "2026-11-22T15:15Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Racing Santander",
    "away": "Real Sociedad",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "2",
    "venue": "El Sardineros"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882801",
    "date": "2026-11-22T17:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "HT",
    "home": "Osasuna",
    "away": "Málaga",
-   "hs": "0",
+   "hs": "1",
    "as": "0",
    "venue": "El Sadar"
   },
@@ -456,5 +456,5 @@
    "venue": "Reale Arena"
   }
  ],
- "updatedAt": "2026-11-22T03:00:23.054Z"
+ "updatedAt": "2026-11-22T18:32:34.078Z"
 }
