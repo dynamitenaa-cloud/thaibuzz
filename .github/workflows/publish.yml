@@ -29,6 +29,10 @@ on:
         description: '미리보기(reel_preview)와 함께 쓰기: 영상으로 만들 글 slug 목록 (쉼표 구분, 비우면 가장 최근 글 1개)'
         type: string
         default: ''
+      reel_telegram:
+        description: '미리보기와 함께 쓰기: 만든 영상을 틱톡용으로 텔레그램에 전송'
+        type: boolean
+        default: false
       kr_only:
         description: 'K-บันเทิง 후보만으로 글 생성 (테스트용)'
         type: boolean
@@ -323,6 +327,28 @@ jobs:
           # 음성 엔진 순서 (기본 edge,gemini) / Edge 음성 이름 (기본 th-TH-PremwadeeNeural, 남성 th-TH-NiwatNeural)
           REELS_VOICE_ENGINE: ${{ vars.REELS_VOICE_ENGINE }}
           EDGE_TTS_VOICE: ${{ vars.EDGE_TTS_VOICE }}
+
+      # 페북 릴스가 없을 때(토큰 만료 등) 수동으로 틱톡용 영상을 텔레그램에 보내기
+      - name: Send reel preview to Telegram
+        if: ${{ inputs.reel_preview && inputs.reel_telegram }}
+        run: |
+          cat > .cache/send-preview.mjs <<'EOF'
+          import fs from 'node:fs';
+          import { caption } from '../scripts/lib/social.mjs';
+          import { sendTelegramVideo } from '../scripts/lib/delivery.mjs';
+          const slugs = fs.readFileSync('.cache/new-urls.txt', 'utf8').split('\n').map((u) => u.match(/([0-9]{8}-[0-9a-z]+)/)?.[1]).filter(Boolean);
+          for (const [i, s] of slugs.entries()) {
+            const f = `.cache/reels/${s}.mp4`;
+            if (!fs.existsSync(f)) { console.warn('no video:', s); continue; }
+            const p = JSON.parse(fs.readFileSync(`content/posts/${s}.json`, 'utf8'));
+            await sendTelegramVideo(f, `🎯 틱톡용 ${i + 1}/${slugs.length}\n\n${caption(p, 'tiktok')}\n\n🆔 ${s}`);
+            console.log('sent', s);
+          }
+          EOF
+          node .cache/send-preview.mjs
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
       - name: Upload reel preview
         if: ${{ inputs.reel_preview }}
