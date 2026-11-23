@@ -29,14 +29,14 @@
   {
    "rank": 3,
    "team": "Atlético Madrid",
-   "p": 12,
-   "w": 9,
+   "p": 13,
+   "w": 10,
    "d": 1,
    "l": 2,
-   "gf": 23,
+   "gf": 26,
    "ga": 10,
-   "gd": 13,
-   "pts": 28
+   "gd": 16,
+   "pts": 31
   },
   {
    "rank": 4,
@@ -148,6 +148,18 @@
   },
   {
    "rank": 13,
+   "team": "Osasuna",
+   "p": 13,
+   "w": 4,
+   "d": 3,
+   "l": 6,
+   "gf": 13,
+   "ga": 23,
+   "gd": -10,
+   "pts": 15
+  },
+  {
+   "rank": 14,
    "team": "Celta Vigo",
    "p": 13,
    "w": 2,
@@ -159,7 +171,7 @@
    "pts": 13
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "Rayo Vallecano",
    "p": 12,
    "w": 3,
@@ -171,31 +183,7 @@
    "pts": 12
   },
   {
-   "rank": 15,
-   "team": "Getafe",
-   "p": 12,
-   "w": 3,
-   "d": 3,
-   "l": 6,
-   "gf": 8,
-   "ga": 18,
-   "gd": -10,
-   "pts": 12
-  },
-  {
    "rank": 16,
-   "team": "Osasuna",
-   "p": 12,
-   "w": 3,
-   "d": 3,
-   "l": 6,
-   "gf": 12,
-   "ga": 23,
-   "gd": -11,
-   "pts": 12
-  },
-  {
-   "rank": 17,
    "team": "Valencia",
    "p": 13,
    "w": 3,
@@ -204,6 +192,18 @@
    "gf": 9,
    "ga": 20,
    "gd": -11,
+   "pts": 12
+  },
+  {
+   "rank": 17,
+   "team": "Getafe",
+   "p": 13,
+   "w": 3,
+   "d": 3,
+   "l": 7,
+   "gf": 8,
+   "ga": 21,
+   "gd": -13,
    "pts": 12
   },
   {
@@ -233,13 +233,13 @@
   {
    "rank": 20,
    "team": "Málaga",
-   "p": 12,
+   "p": 13,
    "w": 0,
    "d": 5,
-   "l": 7,
+   "l": 8,
    "gf": 9,
-   "ga": 23,
-   "gd": -14,
+   "ga": 24,
+   "gd": -15,
    "pts": 5
   }
  ],
@@ -320,14 +320,12 @@
    "hs": "3",
    "as": "2",
    "venue": "El Sardineros"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882801",
    "date": "2026-11-22T17:30Z",
-   "status": "in",
-   "detail": "HT",
+   "status": "post",
+   "detail": "FT",
    "home": "Osasuna",
    "away": "Málaga",
    "hs": "1",
@@ -337,14 +335,16 @@
   {
    "id": "401882803",
    "date": "2026-11-22T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Getafe",
    "away": "Atlético Madrid",
    "hs": "0",
-   "as": "0",
+   "as": "3",
    "venue": "Estadio Coliseum"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882802",
    "date": "2026-11-23T20:00Z",
@@ -454,7 +454,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Reale Arena"
+  },
+  {
+   "id": "401882792",
+   "date": "2026-11-30T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Espanyol",
+   "away": "Getafe",
+   "hs": "0",
+   "as": "0",
+   "venue": "RCDE Stadium"
   }
  ],
- "updatedAt": "2026-11-22T18:32:34.078Z"
+ "updatedAt": "2026-11-23T00:28:53.319Z"
 }

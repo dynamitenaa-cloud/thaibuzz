@@ -1,0 +1,98 @@
+{
+  "slug": "20261123-a46b41c4",
+  "title": "BTS คว้า 5 รางวัลใหญ่ MAMA 2026 สร้างสถิติสูงสุดตลอดกาล",
+  "excerpt": "บอยแบนด์ระดับโลก BTS สร้างประวัติศาสตร์หน้าใหม่ในงานประกาศรางวัล MAMA AWARDS 2026 ที่ประเทศญี่ปุ่น ด้วยการกวาด 5 รางวัล พร้อมสร้างสถิติคว้าแดซังมากที่สุด",
+  "summary": [
+    "BTS คว้ารางวัลรวม 5 สาขาในงาน MAMA AWARDS 2026 ที่ประเทศญี่ปุ่น",
+    "สร้างประวัติศาสตร์สะสมรางวัลแดซังรวม 24 ถ้วย สูงที่สุดในประวัติศาสตร์งาน MAMA"
+  ],
+  "sections": [
+    {
+      "heading": "สร้างประวัติศาสตร์",
+      "paragraphs": [
+        "“10 ปี ก่อน ครั้งแรก แดซัง ที่ได้รับ ช่วงเวลานั้น หวนนึกถึง”",
+        "วง BTS ฝากข้อความผ่านวิดีโอในงาน MAMA AWARDS 2026 ที่จัดขึ้น ณ โอซาก้า Kyocera Dome ประเทศญี่ปุ่น หลังจากพวกเขาคว้ารางวัลกลับบ้านไปได้ถึง 5 สาขาด้วยกัน",
+        "การประกาศรางวัลครั้งนี้ทำให้วงสร้างสถิติใหม่ด้วยยอดสะสมรางวัลแดซังรวม 24 ถ้วย ทุบสถิติสูงสุดในประวัติศาสตร์ของงานประกาศรางวัลดังกล่าว โดยได้รับเสียงสนับสนุนอย่างล้นหลามจากแฟนคลับทั่วโลก"
+      ]
+    },
+    {
+      "heading": "ความสำเร็จอัลบั้มใหม่",
+      "paragraphs": [
+        "ในงานนี้วงสามารถคว้าสองรางวัลใหญ่คือ สาขา แห่งปี Artist และ แห่งปี Album จากผลงาน Full Album ชุดที่ 5 Arirang",
+        "นอกจากนี้ยังมีเพลง SPAGHETTI j-hope ร่วมงานกับวง LE SSERAFIM คว้ารางวัลยอดเยี่ยมมาครองได้สำเร็จเช่นกัน แม้สมาชิกจะติดภารกิจเวิลด์ทัวร์แต่ก็ส่งตรงความประทับใจถึงแฟน ๆ ชาวไทยและทั่วโลก"
+      ]
+    }
+  ],
+  "timeline": [],
+  "faq": [],
+  "tags": [
+    "BTS",
+    "j-hope",
+    "MAMA AWARDS",
+    "LE SSERAFIM",
+    "K-POP"
+  ],
+  "entities": [
+    {
+      "name": "BTS",
+      "type": "group"
+    },
+    {
+      "name": "j-hope",
+      "type": "person"
+    }
+  ],
+  "category": "K-บันเทิง",
+  "thumb": "/thumbs/20261123-a46b41c4.jpg",
+  "thumbSm": "/thumbs/20261123-a46b41c4-sm.webp",
+  "thumbClean": "",
+  "thumbLg": "/thumbs/20261123-a46b41c4-lg.webp",
+  "imageAlt": "BTS ในงานประกาศรางวัล MAMA AWARDS 2026",
+  "imageCredit": "",
+  "createdAt": "2026-11-23T00:28:38.431Z",
+  "traffic": 0,
+  "keyword": "방탄소년단, '2026 MAMA'서 5관왕…'최다 대상 수상' 새 역사",
+  "format": "brief",
+  "hook": "BTS ทุบสถิติคว้าแดซัง MAMA สูงสุดตลอดกาล",
+  "question": "ประทับใจเพลงไหนของ BTS มากที่สุด?",
+  "poll": [
+    "เพลงใหม่จากอัลบั้ม Arirang",
+    "ผลงานเพลงฮิตในอดีต",
+    "ชอบทุกเพลง"
+  ],
+  "koreaAngle": "สื่อเกาหลีรายงานว่าการคว้ารางวัลแดซังครั้งนี้ถือเป็นการกลับมาทวงบัลลังก์อันดับหนึ่งในรอบ 4 ปีของวง BTS บนเวที MAMA หลังจากเว้นวรรคไปจากภารกิจทางทหารและความตั้งใจในการสร้างสรรค์อัลบั้มชุดใหม่ที่สะท้อนอัตลักษณ์ของวงอย่างชัดเจน",
+  "origin": "kr",
+  "model": "gemini-3.5-flash-lite",
+  "sources": [
+    {
+      "title": "방탄소년단, '2026 MAMA'서 5관왕…'최다 대상 수상' 새 역사",
+      "url": "https://www.enpnow.com/news/articleView.html?idxno=110216",
+      "source": "EPN엔피나우"
+    },
+    {
+      "title": "BTS, '2026 마마 어워즈' 5관왕…통산 대상 24개",
+      "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5086259",
+      "source": "신아일보"
+    },
+    {
+      "title": "화사, ‘2026 MAMA AWARDS’서 2관왕",
+      "url": "https://news.jtbc.co.kr/article/NB12329223",
+      "source": "JTBC"
+    },
+    {
+      "title": "코르티스·BTS·엔하이픈, 감격의 대상…방탄소년단은 5관왕(종합) [2026 MAMA]",
+      "url": "https://www.news1.kr/entertain/music/6361689",
+      "source": "뉴스1"
+    },
+    {
+      "title": "방탄소년단, '2026 MAMA' 대상 2개 포함 5관왕",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBLUVk5LUFtLTJzRGdoZ29PRGdWeG1aN2RxcjRTMU5MNWp3MW5WLVVQUzJILW45RTRuOVBSTkFGbGY5Z3UzRXVIRGM2T1VQMUdlNkFKekZNRGUydWhqZWo5dg?oc=5",
+      "source": "iMBC 연예"
+    },
+    {
+      "title": "방탄소년단, '마마' 통산 대상 24개 금자탑···10년 서사의 완성",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBFMlcwdFBpOEtiZ0p4U2l0Q183d3JPTWVpRjNWOWlaZEdRUEhPUUM0VHlpdDFhYkZIRVlZV0cxS291MXhUdl9TaDhEd3l4dVMwMW9YUUtOS21WODR6eHBvR9IBeEFVX3lxTE50VExsN3ZJRVNtYmc1dTNxc2Fybl9acDZSYzJNUUFpZHhkWG9OSEZaWTY0VnZ5TGFING9CQjhaUmViazZqN2F3cm93QW5obEZsVVVsd29uQWVlOFFxVjVmaG9LelhJbmdDZDRLWlp5Rno3c0c1RHFqag?oc=5",
+      "source": "뉴시스"
+    }
+  ]
+}
