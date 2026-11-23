@@ -348,8 +348,8 @@
   {
    "id": "401882802",
    "date": "2026-11-23T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "60'",
    "home": "Levante",
    "away": "Elche",
    "hs": "0",
@@ -467,5 +467,5 @@
    "venue": "RCDE Stadium"
   }
  ],
- "updatedAt": "2026-11-23T00:28:53.319Z"
+ "updatedAt": "2026-11-23T21:18:56.273Z"
 }

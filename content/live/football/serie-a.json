@@ -348,11 +348,11 @@
   {
    "id": "401875009",
    "date": "2026-11-23T19:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "74'",
    "home": "Monza",
    "away": "Fiorentina",
-   "hs": "0",
+   "hs": "3",
    "as": "0",
    "venue": "U-Power Stadium"
   },
@@ -467,5 +467,5 @@
    "venue": "Unipol Domus"
   }
  ],
- "updatedAt": "2026-11-23T00:28:53.812Z"
+ "updatedAt": "2026-11-23T21:18:56.547Z"
 }

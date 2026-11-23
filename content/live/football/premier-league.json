@@ -348,11 +348,11 @@
   {
    "id": "401879237",
    "date": "2026-11-23T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "51'",
    "home": "Brentford",
    "away": "Everton",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Gtech Community Stadium"
   },
@@ -467,5 +467,5 @@
    "venue": "Emirates Stadium"
   }
  ],
- "updatedAt": "2026-11-22T18:32:33.930Z"
+ "updatedAt": "2026-11-23T21:18:55.773Z"
 }
