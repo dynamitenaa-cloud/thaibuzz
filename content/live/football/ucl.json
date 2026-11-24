@@ -440,8 +440,8 @@
   {
    "id": "401915380",
    "date": "2026-11-24T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "13'",
    "home": "Bodo/Glimt",
    "away": "LASK Linz",
    "hs": "0",
@@ -451,8 +451,8 @@
   {
    "id": "401915300",
    "date": "2026-11-24T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "13'",
    "home": "Galatasaray",
    "away": "Aston Villa",
    "hs": "0",
@@ -636,5 +636,5 @@
    "venue": "Estádio José Alvalade"
   }
  ],
- "updatedAt": "2026-11-18T03:39:03.476Z"
+ "updatedAt": "2026-11-24T17:58:56.304Z"
 }
