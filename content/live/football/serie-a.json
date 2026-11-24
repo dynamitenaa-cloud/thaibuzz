@@ -160,6 +160,18 @@
   },
   {
    "rank": 14,
+   "team": "Monza",
+   "p": 12,
+   "w": 3,
+   "d": 1,
+   "l": 8,
+   "gf": 20,
+   "ga": 25,
+   "gd": -5,
+   "pts": 10
+  },
+  {
+   "rank": 15,
    "team": "Lecce",
    "p": 12,
    "w": 3,
@@ -171,19 +183,19 @@
    "pts": 10
   },
   {
-   "rank": 15,
+   "rank": 16,
    "team": "Fiorentina",
-   "p": 11,
+   "p": 12,
    "w": 2,
    "d": 3,
-   "l": 6,
+   "l": 7,
    "gf": 17,
-   "ga": 25,
-   "gd": -8,
+   "ga": 28,
+   "gd": -11,
    "pts": 9
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Parma",
    "p": 12,
    "w": 2,
@@ -195,7 +207,7 @@
    "pts": 8
   },
   {
-   "rank": 17,
+   "rank": 18,
    "team": "Sassuolo",
    "p": 12,
    "w": 2,
@@ -205,18 +217,6 @@
    "ga": 31,
    "gd": -15,
    "pts": 8
-  },
-  {
-   "rank": 18,
-   "team": "Monza",
-   "p": 11,
-   "w": 2,
-   "d": 1,
-   "l": 8,
-   "gf": 17,
-   "ga": 25,
-   "gd": -8,
-   "pts": 7
   },
   {
    "rank": 19,
@@ -342,20 +342,20 @@
    "hs": "4",
    "as": "4",
    "venue": "New Balance Arena"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401875009",
    "date": "2026-11-23T19:45Z",
-   "status": "in",
-   "detail": "74'",
+   "status": "post",
+   "detail": "FT",
    "home": "Monza",
    "away": "Fiorentina",
    "hs": "3",
    "as": "0",
    "venue": "U-Power Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401875004",
    "date": "2026-11-27T19:45Z",
@@ -467,5 +467,5 @@
    "venue": "Unipol Domus"
   }
  ],
- "updatedAt": "2026-11-23T21:18:56.547Z"
+ "updatedAt": "2026-11-24T06:08:31.304Z"
 }

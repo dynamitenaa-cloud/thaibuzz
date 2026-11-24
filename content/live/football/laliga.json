@@ -172,6 +172,18 @@
   },
   {
    "rank": 15,
+   "team": "Levante",
+   "p": 13,
+   "w": 2,
+   "d": 6,
+   "l": 5,
+   "gf": 17,
+   "ga": 22,
+   "gd": -5,
+   "pts": 12
+  },
+  {
+   "rank": 16,
    "team": "Rayo Vallecano",
    "p": 12,
    "w": 3,
@@ -183,7 +195,7 @@
    "pts": 12
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Valencia",
    "p": 13,
    "w": 3,
@@ -195,7 +207,7 @@
    "pts": 12
   },
   {
-   "rank": 17,
+   "rank": 18,
    "team": "Getafe",
    "p": 13,
    "w": 3,
@@ -207,28 +219,16 @@
    "pts": 12
   },
   {
-   "rank": 18,
-   "team": "Levante",
-   "p": 12,
-   "w": 2,
-   "d": 5,
-   "l": 5,
-   "gf": 16,
-   "ga": 21,
-   "gd": -5,
-   "pts": 11
-  },
-  {
    "rank": 19,
    "team": "Elche",
-   "p": 12,
+   "p": 13,
    "w": 2,
-   "d": 4,
+   "d": 5,
    "l": 6,
-   "gf": 14,
-   "ga": 20,
+   "gf": 15,
+   "ga": 21,
    "gd": -6,
-   "pts": 10
+   "pts": 11
   },
   {
    "rank": 20,
@@ -342,20 +342,20 @@
    "hs": "0",
    "as": "3",
    "venue": "Estadio Coliseum"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882802",
    "date": "2026-11-23T20:00Z",
-   "status": "in",
-   "detail": "60'",
+   "status": "post",
+   "detail": "FT",
    "home": "Levante",
    "away": "Elche",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "1",
    "venue": "Estadi Ciutat de València"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882791",
    "date": "2026-11-27T20:00Z",
@@ -467,5 +467,5 @@
    "venue": "RCDE Stadium"
   }
  ],
- "updatedAt": "2026-11-23T21:18:56.273Z"
+ "updatedAt": "2026-11-24T06:08:31.218Z"
 }

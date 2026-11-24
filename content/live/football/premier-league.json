@@ -64,6 +64,18 @@
   },
   {
    "rank": 6,
+   "team": "Brentford",
+   "p": 11,
+   "w": 4,
+   "d": 5,
+   "l": 2,
+   "gf": 20,
+   "ga": 11,
+   "gd": 9,
+   "pts": 17
+  },
+  {
+   "rank": 7,
    "team": "Leeds United",
    "p": 11,
    "w": 4,
@@ -73,18 +85,6 @@
    "ga": 9,
    "gd": 5,
    "pts": 17
-  },
-  {
-   "rank": 7,
-   "team": "Everton",
-   "p": 10,
-   "w": 4,
-   "d": 4,
-   "l": 2,
-   "gf": 12,
-   "ga": 10,
-   "gd": 2,
-   "pts": 16
   },
   {
    "rank": 8,
@@ -100,6 +100,18 @@
   },
   {
    "rank": 9,
+   "team": "Everton",
+   "p": 11,
+   "w": 4,
+   "d": 4,
+   "l": 3,
+   "gf": 12,
+   "ga": 14,
+   "gd": -2,
+   "pts": 16
+  },
+  {
+   "rank": 10,
    "team": "Tottenham Hotspur",
    "p": 11,
    "w": 4,
@@ -109,18 +121,6 @@
    "ga": 11,
    "gd": 1,
    "pts": 15
-  },
-  {
-   "rank": 10,
-   "team": "Brentford",
-   "p": 10,
-   "w": 3,
-   "d": 5,
-   "l": 2,
-   "gf": 16,
-   "ga": 11,
-   "gd": 5,
-   "pts": 14
   },
   {
    "rank": 11,
@@ -342,20 +342,20 @@
    "hs": "4",
    "as": "0",
    "venue": "Anfield"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879237",
    "date": "2026-11-23T20:00Z",
-   "status": "in",
-   "detail": "51'",
+   "status": "post",
+   "detail": "FT",
    "home": "Brentford",
    "away": "Everton",
-   "hs": "2",
+   "hs": "4",
    "as": "0",
    "venue": "Gtech Community Stadium"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879225",
    "date": "2026-11-27T20:00Z",
@@ -465,7 +465,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Emirates Stadium"
+  },
+  {
+   "id": "401879221",
+   "date": "2026-12-01T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Coventry City",
+   "away": "Ipswich Town",
+   "hs": "0",
+   "as": "0",
+   "venue": "Coventry Building Society Arena"
   }
  ],
- "updatedAt": "2026-11-23T21:18:55.773Z"
+ "updatedAt": "2026-11-24T06:08:31.134Z"
 }
