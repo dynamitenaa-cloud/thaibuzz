@@ -465,7 +465,29 @@
    "hs": "0",
    "as": "0",
    "venue": "RCDE Stadium"
+  },
+  {
+   "id": "401882698",
+   "date": "2026-12-02T18:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Real Sociedad",
+   "away": "Real Madrid",
+   "hs": "0",
+   "as": "0",
+   "venue": "Reale Arena"
+  },
+  {
+   "id": "401882700",
+   "date": "2026-12-02T20:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Barcelona",
+   "away": "Atlético Madrid",
+   "hs": "0",
+   "as": "0",
+   "venue": "Spotify Camp Nou"
   }
  ],
- "updatedAt": "2026-11-24T06:08:31.218Z"
+ "updatedAt": "2026-11-25T02:19:03.893Z"
 }

@@ -476,7 +476,95 @@
    "hs": "0",
    "as": "0",
    "venue": "Coventry Building Society Arena"
+  },
+  {
+   "id": "401879222",
+   "date": "2026-12-02T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Chelsea",
+   "away": "Crystal Palace",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stamford Bridge"
+  },
+  {
+   "id": "401879220",
+   "date": "2026-12-02T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Hull City",
+   "away": "Nottingham Forest",
+   "hs": "0",
+   "as": "0",
+   "venue": "The MKM Stadium"
+  },
+  {
+   "id": "401879219",
+   "date": "2026-12-02T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Liverpool",
+   "away": "Sunderland",
+   "hs": "0",
+   "as": "0",
+   "venue": "Anfield"
+  },
+  {
+   "id": "401879218",
+   "date": "2026-12-02T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Manchester City",
+   "away": "Leeds United",
+   "hs": "0",
+   "as": "0",
+   "venue": "Etihad Stadium"
+  },
+  {
+   "id": "401879223",
+   "date": "2026-12-02T20:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AFC Bournemouth",
+   "away": "Brighton & Hove Albion",
+   "hs": "0",
+   "as": "0",
+   "venue": "Vitality Stadium"
+  },
+  {
+   "id": "401878751",
+   "date": "2026-12-02T20:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Aston Villa",
+   "away": "Everton",
+   "hs": "0",
+   "as": "0",
+   "venue": "Villa Park"
+  },
+  {
+   "id": "401878750",
+   "date": "2026-12-02T20:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Brentford",
+   "away": "Arsenal",
+   "hs": "0",
+   "as": "0",
+   "venue": "Gtech Community Stadium"
+  },
+  {
+   "id": "401879217",
+   "date": "2026-12-02T20:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Newcastle United",
+   "away": "Manchester United",
+   "hs": "0",
+   "as": "0",
+   "venue": "St. James' Park"
   }
  ],
- "updatedAt": "2026-11-24T06:08:31.134Z"
+ "updatedAt": "2026-11-25T02:19:03.614Z"
 }
