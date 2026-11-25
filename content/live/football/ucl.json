@@ -17,14 +17,14 @@
   {
    "rank": 2,
    "team": "Paris Saint-Germain",
-   "p": 4,
+   "p": 5,
    "w": 4,
-   "d": 0,
+   "d": 1,
    "l": 0,
-   "gf": 20,
-   "ga": 5,
+   "gf": 22,
+   "ga": 7,
    "gd": 15,
-   "pts": 12
+   "pts": 13
   },
   {
    "rank": 3,
@@ -40,6 +40,30 @@
   },
   {
    "rank": 4,
+   "team": "Barcelona",
+   "p": 5,
+   "w": 4,
+   "d": 0,
+   "l": 1,
+   "gf": 18,
+   "ga": 7,
+   "gd": 11,
+   "pts": 12
+  },
+  {
+   "rank": 5,
+   "team": "Liverpool",
+   "p": 5,
+   "w": 4,
+   "d": 0,
+   "l": 1,
+   "gf": 17,
+   "ga": 10,
+   "gd": 7,
+   "pts": 12
+  },
+  {
+   "rank": 6,
    "team": "Real Betis",
    "p": 5,
    "w": 4,
@@ -51,7 +75,7 @@
    "pts": 12
   },
   {
-   "rank": 5,
+   "rank": 7,
    "team": "Arsenal",
    "p": 5,
    "w": 3,
@@ -63,7 +87,7 @@
    "pts": 11
   },
   {
-   "rank": 6,
+   "rank": 8,
    "team": "Manchester City",
    "p": 5,
    "w": 3,
@@ -75,7 +99,19 @@
    "pts": 10
   },
   {
-   "rank": 7,
+   "rank": 9,
+   "team": "Sporting CP",
+   "p": 5,
+   "w": 3,
+   "d": 1,
+   "l": 1,
+   "gf": 10,
+   "ga": 6,
+   "gd": 4,
+   "pts": 10
+  },
+  {
+   "rank": 10,
    "team": "Borussia Dortmund",
    "p": 5,
    "w": 3,
@@ -87,19 +123,7 @@
    "pts": 10
   },
   {
-   "rank": 8,
-   "team": "Barcelona",
-   "p": 4,
-   "w": 3,
-   "d": 0,
-   "l": 1,
-   "gf": 14,
-   "ga": 6,
-   "gd": 8,
-   "pts": 9
-  },
-  {
-   "rank": 9,
+   "rank": 11,
    "team": "Aston Villa",
    "p": 5,
    "w": 3,
@@ -111,43 +135,31 @@
    "pts": 9
   },
   {
-   "rank": 10,
-   "team": "Liverpool",
-   "p": 4,
-   "w": 3,
-   "d": 0,
-   "l": 1,
-   "gf": 14,
-   "ga": 10,
-   "gd": 4,
-   "pts": 9
-  },
-  {
-   "rank": 11,
-   "team": "Club Brugge",
-   "p": 4,
-   "w": 3,
-   "d": 0,
-   "l": 1,
-   "gf": 11,
-   "ga": 7,
-   "gd": 4,
-   "pts": 9
-  },
-  {
    "rank": 12,
-   "team": "Sporting CP",
-   "p": 4,
+   "team": "Internazionale",
+   "p": 5,
    "w": 3,
    "d": 0,
-   "l": 1,
-   "gf": 8,
-   "ga": 4,
+   "l": 2,
+   "gf": 10,
+   "ga": 6,
    "gd": 4,
    "pts": 9
   },
   {
    "rank": 13,
+   "team": "Club Brugge",
+   "p": 5,
+   "w": 3,
+   "d": 0,
+   "l": 2,
+   "gf": 11,
+   "ga": 10,
+   "gd": 1,
+   "pts": 9
+  },
+  {
+   "rank": 14,
    "team": "Galatasaray",
    "p": 5,
    "w": 3,
@@ -159,31 +171,67 @@
    "pts": 9
   },
   {
-   "rank": 14,
+   "rank": 15,
    "team": "Bayern Munich",
-   "p": 4,
+   "p": 5,
    "w": 2,
    "d": 2,
-   "l": 0,
-   "gf": 12,
-   "ga": 5,
-   "gd": 7,
+   "l": 1,
+   "gf": 13,
+   "ga": 7,
+   "gd": 6,
    "pts": 8
   },
   {
-   "rank": 15,
-   "team": "VfB Stuttgart",
-   "p": 4,
+   "rank": 16,
+   "team": "Fenerbahce",
+   "p": 5,
    "w": 2,
-   "d": 1,
+   "d": 2,
    "l": 1,
    "gf": 7,
-   "ga": 4,
-   "gd": 3,
+   "ga": 11,
+   "gd": -4,
+   "pts": 8
+  },
+  {
+   "rank": 17,
+   "team": "VfB Stuttgart",
+   "p": 5,
+   "w": 2,
+   "d": 1,
+   "l": 2,
+   "gf": 7,
+   "ga": 6,
+   "gd": 1,
    "pts": 7
   },
   {
-   "rank": 16,
+   "rank": 18,
+   "team": "Atlético Madrid",
+   "p": 5,
+   "w": 2,
+   "d": 1,
+   "l": 2,
+   "gf": 6,
+   "ga": 5,
+   "gd": 1,
+   "pts": 7
+  },
+  {
+   "rank": 19,
+   "team": "Manchester United",
+   "p": 5,
+   "w": 2,
+   "d": 1,
+   "l": 2,
+   "gf": 10,
+   "ga": 10,
+   "gd": 0,
+   "pts": 7
+  },
+  {
+   "rank": 20,
    "team": "Bodo/Glimt",
    "p": 5,
    "w": 2,
@@ -195,19 +243,7 @@
    "pts": 7
   },
   {
-   "rank": 17,
-   "team": "Internazionale",
-   "p": 4,
-   "w": 2,
-   "d": 0,
-   "l": 2,
-   "gf": 8,
-   "ga": 6,
-   "gd": 2,
-   "pts": 6
-  },
-  {
-   "rank": 18,
+   "rank": 21,
    "team": "LASK Linz",
    "p": 5,
    "w": 2,
@@ -219,19 +255,7 @@
    "pts": 6
   },
   {
-   "rank": 19,
-   "team": "Manchester United",
-   "p": 4,
-   "w": 2,
-   "d": 0,
-   "l": 2,
-   "gf": 8,
-   "ga": 8,
-   "gd": 0,
-   "pts": 6
-  },
-  {
-   "rank": 20,
+   "rank": 22,
    "team": "FC Porto",
    "p": 5,
    "w": 2,
@@ -243,7 +267,7 @@
    "pts": 6
   },
   {
-   "rank": 21,
+   "rank": 23,
    "team": "RB Leipzig",
    "p": 5,
    "w": 2,
@@ -255,60 +279,36 @@
    "pts": 6
   },
   {
-   "rank": 22,
-   "team": "Fenerbahce",
-   "p": 4,
-   "w": 1,
-   "d": 2,
-   "l": 1,
-   "gf": 6,
-   "ga": 11,
-   "gd": -5,
-   "pts": 5
-  },
-  {
-   "rank": 23,
-   "team": "AS Roma",
-   "p": 4,
-   "w": 1,
-   "d": 1,
-   "l": 2,
-   "gf": 10,
-   "ga": 8,
-   "gd": 2,
-   "pts": 4
-  },
-  {
    "rank": 24,
-   "team": "Shakhtar Donetsk",
-   "p": 4,
-   "w": 1,
-   "d": 1,
-   "l": 2,
-   "gf": 4,
-   "ga": 4,
-   "gd": 0,
-   "pts": 4
+   "team": "Villarreal",
+   "p": 5,
+   "w": 2,
+   "d": 0,
+   "l": 3,
+   "gf": 9,
+   "ga": 14,
+   "gd": -5,
+   "pts": 6
   },
   {
    "rank": 25,
-   "team": "Viking FK",
-   "p": 4,
+   "team": "AS Roma",
+   "p": 5,
    "w": 1,
-   "d": 1,
+   "d": 2,
    "l": 2,
-   "gf": 9,
+   "gf": 12,
    "ga": 10,
-   "gd": -1,
-   "pts": 4
+   "gd": 2,
+   "pts": 5
   },
   {
    "rank": 26,
-   "team": "Atlético Madrid",
-   "p": 4,
+   "team": "Shakhtar Donetsk",
+   "p": 5,
    "w": 1,
    "d": 1,
-   "l": 2,
+   "l": 3,
    "gf": 4,
    "ga": 5,
    "gd": -1,
@@ -316,6 +316,18 @@
   },
   {
    "rank": 27,
+   "team": "Viking FK",
+   "p": 5,
+   "w": 1,
+   "d": 1,
+   "l": 3,
+   "gf": 9,
+   "ga": 12,
+   "gd": -3,
+   "pts": 4
+  },
+  {
+   "rank": 28,
    "team": "Napoli",
    "p": 5,
    "w": 1,
@@ -327,7 +339,19 @@
    "pts": 4
   },
   {
-   "rank": 28,
+   "rank": 29,
+   "team": "Lille",
+   "p": 5,
+   "w": 1,
+   "d": 1,
+   "l": 3,
+   "gf": 6,
+   "ga": 11,
+   "gd": -5,
+   "pts": 4
+  },
+  {
+   "rank": 30,
    "team": "PSV Eindhoven",
    "p": 5,
    "w": 1,
@@ -337,30 +361,6 @@
    "ga": 9,
    "gd": -5,
    "pts": 4
-  },
-  {
-   "rank": 29,
-   "team": "Villarreal",
-   "p": 4,
-   "w": 1,
-   "d": 0,
-   "l": 3,
-   "gf": 8,
-   "ga": 14,
-   "gd": -6,
-   "pts": 3
-  },
-  {
-   "rank": 30,
-   "team": "Sabah FK",
-   "p": 4,
-   "w": 1,
-   "d": 0,
-   "l": 3,
-   "gf": 4,
-   "ga": 10,
-   "gd": -6,
-   "pts": 3
   },
   {
    "rank": 31,
@@ -388,6 +388,18 @@
   },
   {
    "rank": 33,
+   "team": "Sabah FK",
+   "p": 5,
+   "w": 1,
+   "d": 0,
+   "l": 4,
+   "gf": 5,
+   "ga": 14,
+   "gd": -9,
+   "pts": 3
+  },
+  {
+   "rank": 34,
    "team": "Lens",
    "p": 5,
    "w": 1,
@@ -399,27 +411,15 @@
    "pts": 3
   },
   {
-   "rank": 34,
-   "team": "Slavia Prague",
-   "p": 4,
-   "w": 0,
-   "d": 1,
-   "l": 3,
-   "gf": 5,
-   "ga": 9,
-   "gd": -4,
-   "pts": 1
-  },
-  {
    "rank": 35,
-   "team": "Lille",
-   "p": 4,
+   "team": "Slavia Prague",
+   "p": 5,
    "w": 0,
    "d": 1,
-   "l": 3,
-   "gf": 4,
+   "l": 4,
+   "gf": 5,
    "ga": 10,
-   "gd": -6,
+   "gd": -5,
    "pts": 1
   },
   {
@@ -534,108 +534,107 @@
    "hs": "0",
    "as": "2",
    "venue": "Národny Futbalovy Stadión"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401915378",
    "date": "2026-11-25T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Sabah FK",
    "away": "Barcelona",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "4",
    "venue": "Baku Olympic Stadium"
   },
   {
    "id": "401915293",
    "date": "2026-11-25T17:45Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Slavia Prague",
    "away": "Villarreal",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Fortuna Arena"
   },
   {
    "id": "401915291",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Atlético Madrid",
    "away": "Viking FK",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Riyadh Air Metropolitano"
   },
   {
    "id": "401915292",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Club Brugge",
    "away": "Liverpool",
    "hs": "0",
-   "as": "0",
+   "as": "3",
    "venue": "Jan Breydel Stadium"
   },
   {
    "id": "401915376",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Internazionale",
    "away": "VfB Stuttgart",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "San Siro"
   },
   {
    "id": "401915377",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Lille",
    "away": "Bayern Munich",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "1",
    "venue": "Decathlon Arena - Stade Pierre-Mauroy"
   },
   {
    "id": "401915374",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Paris Saint-Germain",
    "away": "AS Roma",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "2",
    "venue": "Parc des Princes"
   },
   {
    "id": "401915375",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Shakhtar Donetsk",
    "away": "Fenerbahce",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "Stamford Bridge"
   },
   {
    "id": "401915373",
    "date": "2026-11-25T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Sporting CP",
    "away": "Manchester United",
-   "hs": "0",
-   "as": "0",
+   "hs": "2",
+   "as": "2",
    "venue": "Estádio José Alvalade"
   }
  ],
- "updatedAt": "2026-11-25T02:19:05.113Z"
+ "fixtures": [],
+ "updatedAt": "2026-11-25T22:28:41.627Z"
 }
