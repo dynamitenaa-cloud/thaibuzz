@@ -564,7 +564,18 @@
    "hs": "0",
    "as": "0",
    "venue": "St. James' Park"
+  },
+  {
+   "id": "401878749",
+   "date": "2026-12-03T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Tottenham Hotspur",
+   "away": "Fulham",
+   "hs": "0",
+   "as": "0",
+   "venue": "Tottenham Hotspur Stadium"
   }
  ],
- "updatedAt": "2026-11-25T02:19:03.614Z"
+ "updatedAt": "2026-11-26T05:01:24.535Z"
 }
