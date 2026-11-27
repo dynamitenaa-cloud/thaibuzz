@@ -419,7 +419,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Signal Iduna Park"
+  },
+  {
+   "id": "401884718",
+   "date": "2026-12-04T19:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bayern Munich",
+   "away": "SC Paderborn 07",
+   "hs": "0",
+   "as": "0",
+   "venue": "Allianz Arena"
   }
  ],
- "updatedAt": "2026-11-23T00:28:54.630Z"
+ "updatedAt": "2026-11-27T08:07:14.889Z"
 }

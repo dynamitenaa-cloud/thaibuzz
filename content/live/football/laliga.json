@@ -487,7 +487,18 @@
    "hs": "0",
    "as": "0",
    "venue": "Spotify Camp Nou"
+  },
+  {
+   "id": "401882786",
+   "date": "2026-12-04T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Alavés",
+   "away": "Espanyol",
+   "hs": "0",
+   "as": "0",
+   "venue": "Mendizorrotza"
   }
  ],
- "updatedAt": "2026-11-25T02:19:03.893Z"
+ "updatedAt": "2026-11-27T08:07:14.790Z"
 }
