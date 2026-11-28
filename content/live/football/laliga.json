@@ -64,6 +64,18 @@
   },
   {
    "rank": 6,
+   "team": "Racing Santander",
+   "p": 14,
+   "w": 6,
+   "d": 2,
+   "l": 6,
+   "gf": 23,
+   "ga": 33,
+   "gd": -10,
+   "pts": 20
+  },
+  {
+   "rank": 7,
    "team": "Sevilla",
    "p": 13,
    "w": 5,
@@ -73,18 +85,6 @@
    "ga": 20,
    "gd": -2,
    "pts": 19
-  },
-  {
-   "rank": 7,
-   "team": "Racing Santander",
-   "p": 13,
-   "w": 5,
-   "d": 2,
-   "l": 6,
-   "gf": 20,
-   "ga": 32,
-   "gd": -12,
-   "pts": 17
   },
   {
    "rank": 8,
@@ -173,13 +173,13 @@
   {
    "rank": 15,
    "team": "Levante",
-   "p": 13,
+   "p": 14,
    "w": 2,
    "d": 6,
-   "l": 5,
-   "gf": 17,
-   "ga": 22,
-   "gd": -5,
+   "l": 6,
+   "gf": 18,
+   "ga": 25,
+   "gd": -7,
    "pts": 12
   },
   {
@@ -244,17 +244,6 @@
   }
  ],
  "results": [
-  {
-   "id": "401882805",
-   "date": "2026-11-20T20:00Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Athletic Club",
-   "away": "Espanyol",
-   "hs": "0",
-   "as": "1",
-   "venue": "San Mamés"
-  },
   {
    "id": "401882806",
    "date": "2026-11-21T13:00Z",
@@ -353,20 +342,20 @@
    "hs": "1",
    "as": "1",
    "venue": "Estadi Ciutat de València"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401882791",
    "date": "2026-11-27T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Levante",
    "away": "Racing Santander",
-   "hs": "0",
-   "as": "0",
+   "hs": "1",
+   "as": "3",
    "venue": "Estadi Ciutat de València"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401882796",
    "date": "2026-11-28T13:00Z",
@@ -498,7 +487,51 @@
    "hs": "0",
    "as": "0",
    "venue": "Mendizorrotza"
+  },
+  {
+   "id": "401882780",
+   "date": "2026-12-05T13:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Racing Santander",
+   "away": "Deportivo",
+   "hs": "0",
+   "as": "0",
+   "venue": "El Sardineros"
+  },
+  {
+   "id": "401882779",
+   "date": "2026-12-05T15:15Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Rayo Vallecano",
+   "away": "Levante",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio de Vallecas"
+  },
+  {
+   "id": "401882777",
+   "date": "2026-12-05T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Villarreal",
+   "away": "Real Sociedad",
+   "hs": "0",
+   "as": "0",
+   "venue": "Estadio de la Cerámica"
+  },
+  {
+   "id": "401882783",
+   "date": "2026-12-05T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Barcelona",
+   "away": "Celta Vigo",
+   "hs": "0",
+   "as": "0",
+   "venue": "Spotify Camp Nou"
   }
  ],
- "updatedAt": "2026-11-27T08:07:14.790Z"
+ "updatedAt": "2026-11-28T01:56:47.562Z"
 }

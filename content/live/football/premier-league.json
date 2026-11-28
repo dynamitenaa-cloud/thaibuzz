@@ -89,13 +89,13 @@
   {
    "rank": 8,
    "team": "Chelsea",
-   "p": 11,
+   "p": 12,
    "w": 5,
    "d": 1,
-   "l": 5,
-   "gf": 20,
-   "ga": 20,
-   "gd": 0,
+   "l": 6,
+   "gf": 22,
+   "ga": 23,
+   "gd": -1,
    "pts": 16
   },
   {
@@ -160,6 +160,18 @@
   },
   {
    "rank": 14,
+   "team": "Nottingham Forest",
+   "p": 12,
+   "w": 3,
+   "d": 3,
+   "l": 6,
+   "gf": 12,
+   "ga": 17,
+   "gd": -5,
+   "pts": 12
+  },
+  {
+   "rank": 15,
    "team": "Coventry City",
    "p": 11,
    "w": 4,
@@ -171,7 +183,7 @@
    "pts": 12
   },
   {
-   "rank": 15,
+   "rank": 16,
    "team": "Fulham",
    "p": 11,
    "w": 2,
@@ -183,7 +195,7 @@
    "pts": 11
   },
   {
-   "rank": 16,
+   "rank": 17,
    "team": "Ipswich Town",
    "p": 11,
    "w": 3,
@@ -193,18 +205,6 @@
    "ga": 22,
    "gd": -7,
    "pts": 11
-  },
-  {
-   "rank": 17,
-   "team": "Nottingham Forest",
-   "p": 11,
-   "w": 2,
-   "d": 3,
-   "l": 6,
-   "gf": 9,
-   "ga": 15,
-   "gd": -6,
-   "pts": 9
   },
   {
    "rank": 18,
@@ -353,20 +353,20 @@
    "hs": "4",
    "as": "0",
    "venue": "Gtech Community Stadium"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401879225",
    "date": "2026-11-27T20:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Nottingham Forest",
    "away": "Chelsea",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "2",
    "venue": "The City Ground"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401879227",
    "date": "2026-11-28T15:00Z",
@@ -575,7 +575,84 @@
    "hs": "0",
    "as": "0",
    "venue": "Tottenham Hotspur Stadium"
+  },
+  {
+   "id": "401879213",
+   "date": "2026-12-05T12:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Chelsea",
+   "away": "Liverpool",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stamford Bridge"
+  },
+  {
+   "id": "401879216",
+   "date": "2026-12-05T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "AFC Bournemouth",
+   "away": "Hull City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Vitality Stadium"
+  },
+  {
+   "id": "401879215",
+   "date": "2026-12-05T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Aston Villa",
+   "away": "Crystal Palace",
+   "hs": "0",
+   "as": "0",
+   "venue": "Villa Park"
+  },
+  {
+   "id": "401879211",
+   "date": "2026-12-05T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Leeds United",
+   "away": "Ipswich Town",
+   "hs": "0",
+   "as": "0",
+   "venue": "Elland Road"
+  },
+  {
+   "id": "401879210",
+   "date": "2026-12-05T15:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Manchester United",
+   "away": "Coventry City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Old Trafford"
+  },
+  {
+   "id": "401878747",
+   "date": "2026-12-05T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Nottingham Forest",
+   "away": "Brighton & Hove Albion",
+   "hs": "0",
+   "as": "0",
+   "venue": "The City Ground"
+  },
+  {
+   "id": "401879214",
+   "date": "2026-12-05T20:00Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Brentford",
+   "away": "Manchester City",
+   "hs": "0",
+   "as": "0",
+   "venue": "Gtech Community Stadium"
   }
  ],
- "updatedAt": "2026-11-26T05:01:24.535Z"
+ "updatedAt": "2026-11-28T01:56:47.323Z"
 }

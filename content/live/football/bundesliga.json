@@ -65,14 +65,14 @@
   {
    "rank": 6,
    "team": "Werder Bremen",
-   "p": 10,
+   "p": 11,
    "w": 5,
-   "d": 3,
+   "d": 4,
    "l": 2,
-   "gf": 21,
-   "ga": 15,
+   "gf": 24,
+   "ga": 18,
    "gd": 6,
-   "pts": 18
+   "pts": 19
   },
   {
    "rank": 7,
@@ -209,28 +209,17 @@
   {
    "rank": 18,
    "team": "Borussia Mönchengladbach",
-   "p": 10,
+   "p": 11,
    "w": 1,
-   "d": 1,
+   "d": 2,
    "l": 8,
-   "gf": 12,
-   "ga": 26,
+   "gf": 15,
+   "ga": 29,
    "gd": -14,
-   "pts": 4
+   "pts": 5
   }
  ],
  "results": [
-  {
-   "id": "401884736",
-   "date": "2026-11-20T19:30Z",
-   "status": "post",
-   "detail": "FT",
-   "home": "Bayern Munich",
-   "away": "FC Cologne",
-   "hs": "1",
-   "as": "1",
-   "venue": "Allianz Arena"
-  },
   {
    "id": "401884732",
    "date": "2026-11-21T14:30Z",
@@ -318,20 +307,20 @@
    "hs": "4",
    "as": "0",
    "venue": "Weserstadion"
-  }
- ],
- "fixtures": [
+  },
   {
    "id": "401884720",
    "date": "2026-11-27T19:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "post",
+   "detail": "FT",
    "home": "Werder Bremen",
    "away": "Borussia Mönchengladbach",
-   "hs": "0",
-   "as": "0",
+   "hs": "3",
+   "as": "3",
    "venue": "Weserstadion"
-  },
+  }
+ ],
+ "fixtures": [
   {
    "id": "401884721",
    "date": "2026-11-28T14:30Z",
@@ -430,7 +419,73 @@
    "hs": "0",
    "as": "0",
    "venue": "Allianz Arena"
+  },
+  {
+   "id": "401884712",
+   "date": "2026-12-05T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "1. FC Union Berlin",
+   "away": "Hamburg SV",
+   "hs": "0",
+   "as": "0",
+   "venue": "Stadion An der Alten Försterei"
+  },
+  {
+   "id": "401884716",
+   "date": "2026-12-05T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Bayer Leverkusen",
+   "away": "Borussia Mönchengladbach",
+   "hs": "0",
+   "as": "0",
+   "venue": "BayArena"
+  },
+  {
+   "id": "401884713",
+   "date": "2026-12-05T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "FC Augsburg",
+   "away": "FC Cologne",
+   "hs": "0",
+   "as": "0",
+   "venue": "WWK Arena"
+  },
+  {
+   "id": "401884717",
+   "date": "2026-12-05T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "RB Leipzig",
+   "away": "Mainz",
+   "hs": "0",
+   "as": "0",
+   "venue": "Red Bull Arena"
+  },
+  {
+   "id": "401884715",
+   "date": "2026-12-05T14:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "SC Freiburg",
+   "away": "TSG Hoffenheim",
+   "hs": "0",
+   "as": "0",
+   "venue": "Europa-Park Stadion"
+  },
+  {
+   "id": "401884714",
+   "date": "2026-12-05T17:30Z",
+   "status": "pre",
+   "detail": "Scheduled",
+   "home": "Eintracht Frankfurt",
+   "away": "Werder Bremen",
+   "hs": "0",
+   "as": "0",
+   "venue": "Deutsche Bank Park"
   }
  ],
- "updatedAt": "2026-11-27T08:07:14.889Z"
+ "updatedAt": "2026-11-28T01:56:48.010Z"
 }
