@@ -370,23 +370,23 @@
   {
    "id": "401879227",
    "date": "2026-11-28T15:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "50'",
    "home": "Leeds United",
    "away": "Coventry City",
-   "hs": "0",
+   "hs": "2",
    "as": "0",
    "venue": "Elland Road"
   },
   {
    "id": "401879226",
    "date": "2026-11-28T15:00Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "49'",
    "home": "Manchester United",
    "away": "Brentford",
    "hs": "0",
-   "as": "0",
+   "as": "2",
    "venue": "Old Trafford"
   },
   {
@@ -654,5 +654,5 @@
    "venue": "Gtech Community Stadium"
   }
  ],
- "updatedAt": "2026-11-28T01:56:47.323Z"
+ "updatedAt": "2026-11-28T16:07:38.275Z"
 }

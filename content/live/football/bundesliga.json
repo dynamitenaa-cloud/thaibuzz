@@ -324,19 +324,19 @@
   {
    "id": "401884721",
    "date": "2026-11-28T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "79'",
    "home": "FC Cologne",
    "away": "SV Elversberg",
-   "hs": "0",
+   "hs": "5",
    "as": "0",
    "venue": "RheinEnergieStadion"
   },
   {
    "id": "401884722",
    "date": "2026-11-28T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "79'",
    "home": "Hamburg SV",
    "away": "Bayern Munich",
    "hs": "0",
@@ -346,23 +346,23 @@
   {
    "id": "401884723",
    "date": "2026-11-28T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "78'",
    "home": "Mainz",
    "away": "1. FC Union Berlin",
    "hs": "0",
-   "as": "0",
+   "as": "1",
    "venue": "MEWA ARENA"
   },
   {
    "id": "401884719",
    "date": "2026-11-28T14:30Z",
-   "status": "pre",
-   "detail": "Scheduled",
+   "status": "in",
+   "detail": "77'",
    "home": "SC Paderborn 07",
    "away": "Schalke 04",
-   "hs": "0",
-   "as": "0",
+   "hs": "6",
+   "as": "1",
    "venue": "Home Deluxe Arena"
   },
   {
@@ -487,5 +487,5 @@
    "venue": "Deutsche Bank Park"
   }
  ],
- "updatedAt": "2026-11-28T01:56:48.010Z"
+ "updatedAt": "2026-11-28T16:07:39.601Z"
 }
